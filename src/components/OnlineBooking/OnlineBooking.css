@@ -1,0 +1,36 @@
+.online-booking-section {
+    background-color: #f8f9fa;
+  }
+  
+  .booking-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .booking-title span {
+    color: #000;   
+  }
+  
+  .booking-subtitle {
+    font-size: 1rem;
+    color: #555;
+  }    
+  
+  .booking-box {
+    background-color: #fff;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color: #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .booking-box:hover {
+    background-color: #ff4d30;
+    color: #fff;
+    border-color: #ff4d30;
+  }
+  

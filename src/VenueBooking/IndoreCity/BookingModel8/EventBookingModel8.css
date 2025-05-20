@@ -1,0 +1,61 @@
+      .event-booking-model {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.venue-header {
+  background: linear-gradient(to right, #7b1fa2, #b71c1c);
+  padding: 60px 0;
+  text-align: center;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.enquiry-box h4 {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.facilities-section {
+  background-color: #1e1e1e;
+}
+
+.facility-box {
+  background-color: #fff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.facility-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.badges .badge {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.tags .badge {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 30px;
+}
+
+.event-promo li {
+  font-size: 16px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,66 @@
+.dashboard {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Profile Section */
+.profile-icon {
+  width: 100px; 
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+  animation: fadeIn 1s ease;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.profile-email {
+  font-size: 16px;
+  color: #6c757d;
+}
+
+/* Account Card */
+.account-card {
+  border-radius: 15px;
+  border: none;
+}
+
+.save-btn {
+  background-color: #000;
+  color: #fff;
+  border-radius: 25px;
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+  
+}
+
+.save-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Tweaks */
+@media (max-width: 767px) {
+  .profile-name {
+    font-size: 20px;
+  }
+  .profile-email {
+    font-size: 14px;
+  }
+}

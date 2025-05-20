@@ -1,0 +1,105 @@
+.prfo-info {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .section-heading {
+    font-weight: bold;
+    font-size: 28px;
+    border-left: 5px solid #000;
+    padding-left: 15px;
+    animation: fadeInDown 1s ease;
+  }
+  
+  .prfo-box {
+    background-color: #d6efff;
+    border-radius: 15px;
+  }
+  
+  .profile-section {
+    margin-bottom: 20px;
+  }
+  
+  .upload-profile {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px dashed #007bff;
+    padding: 10px;
+    background-color: #fff;
+    animation: zoomIn 1s ease;
+  }
+  
+  .upload-btn-wrapper {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  
+  .upload-btn {
+    padding: 6px;
+  }
+  
+  .form-card {
+    background-color: #fff;
+    border: 2px solid #ff0000;
+    border-radius: 15px;
+  }
+  
+  .prev-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  
+  .next-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  
+  .prev-btn:hover,
+  .next-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Animation Keyframes */
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 767px) {
+    .upload-profile {
+      width: 140px;
+      height: 140px;
+    }
+    .section-heading {
+      font-size: 22px;
+    }
+  }
+  

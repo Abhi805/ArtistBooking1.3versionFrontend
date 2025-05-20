@@ -1,0 +1,19 @@
+.edit-artist-container {
+    background-color: #f5f9fd;
+    min-height: 100vh;
+  }
+  
+  .profile-header img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .profile-header h4 {
+    margin-bottom: 5px;
+  }
+  .profile-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+  }
+  

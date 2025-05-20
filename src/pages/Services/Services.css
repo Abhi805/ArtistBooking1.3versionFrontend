@@ -1,0 +1,64 @@
+.service-hero {
+  background: linear-gradient(to bottom, #7f0000, #6e1b1b);
+}
+  
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffe4e1, #f8f9fa); /* Misty Rose to very light gray gradient on hover */
+  }
+  
+  .service-card:hover .service-icon {
+    opacity: 0.8; /* Slight opacity effect on image */
+  }
+  
+  .service-icon {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  h5 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .service-card:hover h5 {
+    color: #333; /* Keep title color dark on hover */
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+  }
+  
+  .service-card:hover p {
+    color: #333; /* Keep description text color dark on hover */
+  }
+  
+  /* Add padding and margin to give spacing around the section */
+  .services-section .container {
+    padding: 0 30px;
+  } 
+  @media (max-width: 768px) {
+    .service-card {
+      padding: 2rem;
+    }
+  
+    h5 {
+      font-size: 1.2rem;
+    }
+  
+    p {
+      font-size: 0.9rem;
+    }
+  }

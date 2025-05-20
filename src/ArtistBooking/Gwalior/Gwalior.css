@@ -1,0 +1,27 @@
+.artist-header {
+    background: linear-gradient(to right, #7f0000, #c40000);
+    color: white;
+  }
+  
+  .artist-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+  }  
+  
+  .artist-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .artist-card img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+  }   
+  
+  .card-body h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  

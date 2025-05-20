@@ -1,0 +1,29 @@
+.search-artist-button {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.search-artist-button .btn {
+  display: flex;
+  align-items: center;
+  background-color: #007bff; /* blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.search-artist-button .btn:hover {
+  background-color: #0056b3;
+}
+
+.search-artist-button .icon {
+  margin-left: 8px;
+  font-size: 16px;
+}

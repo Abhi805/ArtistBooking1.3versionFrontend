@@ -1,0 +1,96 @@
+.contact-hero {
+  background: linear-gradient(to bottom, #7f0000, #6e1b1b);
+}
+
+.card h5 {
+  font-weight: 600;
+}
+
+/* Remove forced red color */
+.social-icons i {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Platform-specific default colors */
+.social-icons .bi-instagram {
+  color: #E1306C; /* Instagram pink */
+}
+
+.social-icons .bi-facebook {
+  color: #3b5998; /* Facebook blue */
+}
+
+.social-icons .bi-youtube {
+  color: #FF0000; /* YouTube red */
+}
+
+.social-icons .bi-linkedin {
+  color: #0077b5; /* LinkedIn blue */
+}
+
+/* Hover effects */
+.social-icons i:hover {
+  color: #000;
+}
+
+
+
+
+
+
+
+
+/* Base style */
+.contact-info-card {
+  color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Individual card themes */
+.card-address {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Blue-Violet */
+}
+
+.card-email {
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Pink-Red */
+}
+
+.card-phone {
+  background: linear-gradient(135deg, #11998e, #38ef7d); /* Green */
+}
+
+.card-whatsapp {
+  background: linear-gradient(135deg, #d3c30f, #21aad7); /* WhatsApp Green */
+}
+
+/* Hover effect */
+.contact-info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Link styling inside cards */
+.contact-info-card a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info-card a:hover {
+  text-decoration: underline;
+}
+
+/* Title inside card */
+.contact-info-card h5 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,98 @@
+.pe-section {
+  background: #f5f7fa;
+  padding: 4rem 1rem;
+}
+
+.pe-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pe-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #e63946;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.pe-title {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: #1d3557;
+}
+
+.pe-title-highlight {
+  color: #e63946;
+}
+
+.pe-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pe-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+.pe-image-wrapper {
+  width: 100%;
+  padding-top: 75%; /* 4:3 ratio = height is 75% of width */
+  position: relative;
+  overflow: hidden;
+}
+
+.pe-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pe-card:hover .pe-image {
+  transform: scale(1.05);
+}
+
+.pe-content {
+  padding: 1.2rem 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pe-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.pe-card-text {
+  font-size: 1rem;
+  color: #6c757d;  
+  line-height: 1.5;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #adb5bd;
+} 
+
+.slick-dots li.slick-active button:before {
+  color: #e63946;
+}

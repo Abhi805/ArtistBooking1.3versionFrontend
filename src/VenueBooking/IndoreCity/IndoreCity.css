@@ -1,0 +1,132 @@
+/* Hero Section with Keyframe Background Zoom */
+.hero-section {
+  position: relative;
+  height: 350px;
+  /* background: url('https://source.unsplash.com/1600x400/?event,conference') center/cover fixed; */
+  display: flex;
+ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #b37979;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+.hero-title, .hero-subtitle {
+  position: relative;
+  z-index: 1;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: fadeInZoom 1.2s ease both;
+}
+.hero-subtitle {
+  margin-top: 1rem;
+  max-width: 700px;
+  font-size: 1.1rem;
+  animation: fadeInUp 1s 0.5s ease both;
+}
+
+/* Card Base */
+.venue-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.venue-card:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* Image Shine */
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 160px;
+}
+.img-wrap img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition: transform 0.6s ease;
+}
+.venue-card:hover .img-wrap img {
+  transform: scale(1.1);
+}
+.shine {
+  position: absolute;
+  top:0; left:-80%;
+  width:50%; height:100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-30deg);
+  transition: left 0.8s ease;
+}
+.venue-card:hover .shine {
+  left:150%;
+}
+
+/* Active Pulse */
+.venue-card.active {
+  border: 2px solid #e91e63;
+  animation: pulseCard 0.8s ease-out;
+}
+@keyframes pulseCard {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Text */
+.venue-card h5 {
+  margin: .75rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+.rating {
+  color: #ffc107;
+  font-size: .9rem;
+  margin-bottom: .5rem;
+}
+.address {
+  font-size: .85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Centered Button */
+.book-btn {
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  padding: .6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 auto 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.book-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Hero Animations */
+@keyframes fadeInZoom {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

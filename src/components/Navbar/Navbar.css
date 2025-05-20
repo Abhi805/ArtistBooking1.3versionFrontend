@@ -1,0 +1,96 @@
+/* .navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;
+  z-index: 1000;
+} */
+
+
+
+.navbar {
+  position: sticky;
+  top: 40px; /* default space when TopNavbar is visible */
+  width: 100%;
+  z-index: 1020;
+  transition: top 0.3s ease;
+}
+.navbar {
+  top: 40px; /* space when TopNavbar is visible */
+  transition: top 0.3s ease;
+}  
+
+body.top-navbar-hidden .navbar {
+  top: 0; /* shift up when TopNavbar hides */
+}
+
+
+
+.navbar-brand img {
+  height: 45px;
+  object-fit: contain;
+}    
+     
+.navbar-nav {
+  gap: 10px;
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 8px 15px;
+  color: #333 !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #d32f2f !important;
+  background-color: rgba(211, 47, 47, 0.05);
+  border-radius: 4px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #d32f2f !important;
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-item:hover {
+  background-color: #f7f7f7;
+}
+    
+.btncust{
+   color: white !important;
+   padding: 10px 15px !important;
+   border-radius: 2px;
+}
+
+
+/* ✅ Responsive hamburger tweaks */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: white;
+    padding: 10px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+    box-shadow: none;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .dropdown-item {
+    padding-left: 1.5rem;
+  }
+}
+   

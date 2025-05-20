@@ -1,0 +1,40 @@
+ .hero-section {
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../assets/hero-bg.jpg") center/cover no-repeat;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: bold;  
+}
+
+.highlight {
+  color: #dc3545;
+}
+
+.logo-card {
+  border-radius: 12px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.logo-card:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  max-height: 100px;
+  max-width: 100%;
+  object-fit: contain;
+} 
+  

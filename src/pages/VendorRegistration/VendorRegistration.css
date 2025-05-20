@@ -1,0 +1,50 @@
+.vendor-section {
+  background-color: #f8f9fa;
+}
+
+.vendor-subtitle {
+  color: #fff;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  padding: 5px 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.vendor-title {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  color: #343a40;
+}
+
+.vendor-description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #6c757d;
+}
+
+.vendor-form input {
+  height: 50px;
+  font-size: 15px;
+}
+
+.vendor-form input[type="file"] {
+  padding: 12px;
+}
+
+.vendor-form button {
+  height: 50px;
+  font-size: 18px;
+}
+
+.breadcrumb {
+  background-color: transparent;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}

@@ -1,0 +1,46 @@
+.client-feedback-section {
+    background-color: #f9f9f9;
+  }
+  
+  .subtitle {
+    color: #ff4d30;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+     
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold; 
+  }
+  
+  .title span {
+    color: #ff4d30;
+  }
+  
+  .feedback-card {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .feedback-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feedback-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #ff4d30;
+    padding: 3px;
+  }
+  
+  .feedback-stars {
+    font-size: 18px;
+    color: #ffc107;
+  }
+  

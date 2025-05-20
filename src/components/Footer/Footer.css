@@ -1,0 +1,94 @@
+.footer-section {
+  background-color: #111;
+  color: #ccc;
+  padding: 30px 0;
+  font-size: 14px;
+}
+
+.footer-logo {
+  width: 120px;
+  height: auto;
+}
+
+.footer-title {
+  color: #ff0000;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.footer-description {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+.footer-section h5 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-section a i:hover {
+  color: #ff0000;
+  text-decoration: underline;
+}
+
+   
+.social-icons1 a {
+  margin: 0 10px;
+  font-size: 25px;
+  transition: transform 0.3s ease;
+}
+
+/* Brand Colors */
+.social-icons1 .facebook {
+  color: #3b5998;
+}
+
+.social-icons1 .instagram {
+  color: #E1306C;    
+}
+
+.social-icons1 .youtube {
+  color: #FF0000;
+}
+
+.social-icons1 .linkedin {
+  color: #0077b5;
+}
+
+/* Hover Effect */
+.social-icons1 a:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+.bottom-bar {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  margin-top: 30px;
+  font-size: 13px;
+}
+
+.designed-by {
+  color: #aaa;
+}
+
+.designed-by span {
+  color: red;
+  font-weight: bold;
+}

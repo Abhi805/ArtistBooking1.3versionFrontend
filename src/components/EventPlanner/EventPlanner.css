@@ -1,0 +1,144 @@
+.event-planner-container {
+  background: #fefefe;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.top-tagline {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #ff3d3d;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+  margin-top: 8px;
+}
+
+.highlight-red {
+  color: #e01010;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.red-highlight {
+  background-color: #ff3d3d;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #b20000;
+}
+
+.stat-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: #b20000;
+}
+
+/* Image Cards */
+.past-events .event-card {
+  margin: 10px auto;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 0px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  max-width: 240px;
+}
+
+.past-events .event-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.past-events .event-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.past-events .event-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Contact Button */
+.contact-btn {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #0062ff;
+  color: white;
+  font-weight: 600;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+  background-color: #004ecc;
+  transform: scale(1.05);
+  color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .main-heading {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .description,
+  .top-tagline {
+    text-align: center;
+  }
+
+  .stats-row {
+    justify-content: center;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .stat-label {
+    font-size: 16px;
+  }
+
+  .past-events .event-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .main-heading {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .event-planner-container {
+    padding: 10px;
+  }
+
+  .contact-btn {
+    padding: 10px 30px;
+    font-size: 0.9rem;
+  }
+}

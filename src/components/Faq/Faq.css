@@ -1,0 +1,55 @@
+.faq-section {
+    background-color: #f9f9f9;
+  }
+  
+  .subtitle {
+    color: #ff4d30;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 38px;
+  }   
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .title span {
+    color: #ff4d30;
+  }   
+  
+  .accordion-button {
+    background-color: #ffffff;
+    font-weight: bold;
+    color: #000;
+    box-shadow: none;
+  }
+  
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: #ffffff;
+    color: #ff4d30;
+  }
+  
+  .accordion-body {
+    background: #f1f1f1;
+  }
+  
+  .explore-btn {
+    background-color: #ff4d30;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: #e03e1f;
+  }
+  
