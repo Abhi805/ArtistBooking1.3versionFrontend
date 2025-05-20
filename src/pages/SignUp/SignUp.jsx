@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Signup.css";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Signup = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -24,9 +31,13 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", formData, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       setMessage(res.data.msg); // success message
     } catch (err) {
       setMessage(err.response?.data?.msg || "Something went wrong");
@@ -36,26 +47,36 @@ const Signup = () => {
   return (
     <section className="signup-section">
       <div className="container">
-        <div className="row justify-content-center align-items-center min-vh-100">
+        <div className="row justify-content-center align-items-center mt-5">
           <div className="col-lg-10">
-            <div className="row shadow-lg rounded-4 overflow-hidden">
+            <div className="row shadow-lg card-wrapper">
               {/* Left */}
-              <div className="col-md-6 bg-primary text-white p-5 text-center d-flex flex-column justify-content-center">
-                <h2 className="mb-4">Come join us!</h2>
-                <p>
-                  We are so excited to have you here. If you haven't already,
-                  create an account to get access to exclusive offers, rewards,
-                  and discounts.
+              <div
+                className="col-md-6 bg-primary text-white p-5 text-center d-flex flex-column justify-content-center"
+                data-aos="fade-right"
+              >
+                <p className="mb-4 fs-1 fw-bold text-white ">
+                  List Your Talent & Get Booked Online Instantly
                 </p>
-                <a href="#" className="btn btn-outline-light mt-4">
-                  Already have an account? Signin.
-                </a>
+                <p className="fs-5 text-white ">
+                  Join our platform and showcase your talent to a wide audience.
+                  Create your artist profile today and start receiving event
+                  bookings instantly!
+                </p>
+                <p className="btn mt-5" style={{cursor:"default"}}>
+                  Boost Your Brand & Network
+                </p>
               </div>
 
               {/* Right */}
-              <div className="col-md-6 bg-white p-5">
+              <div
+                className="col-md-6 bg-white p-4"
+                data-aos="fade-left"
+              >
                 <h2 className="text-center mb-4">Signup</h2>
-                {message && <p className="text-center text-danger">{message}</p>}
+                {message && (
+                  <p className="text-center text-danger">{message}</p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <input
@@ -117,6 +138,11 @@ const Signup = () => {
                       Signup
                     </button>
                   </div>
+
+                  <p className="text-center mb-0">
+                    Already have an account?{" "}
+                    <Link to="/login">Sign in</Link>
+                  </p>
                 </form>
               </div>
             </div>
