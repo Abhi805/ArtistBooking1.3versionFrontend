@@ -6,7 +6,6 @@ import "./App.css";
 
 import EventPopup from "./components/EventPopup/EventPopup";
 
-
 import AboutUs from "./pages/AboutUs/About";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -23,9 +22,6 @@ import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
 import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 
-
-
-
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
@@ -33,15 +29,6 @@ import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
 import ArtistDetail2 from "./ArtistBooking/Indore/ArtistDetail2";
 import ArtistDetail3 from "./ArtistBooking/Jabalpur/ArtistDetail3";
 import ArtistDetail4 from "./ArtistBooking/Ujjain/ArtistDetail4";
-
-
-
-
-
-
-
-
-
 
 import IndoreCity from "./VenueBooking/IndoreCity/IndoreCity";
 
@@ -75,17 +62,13 @@ import EventBookingModel5 from "./VenueBooking/IndoreCity/BookingModel5/EventBoo
 import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBookingModel6";
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
-
-
-
-
-
+// import ArtistDashboard from "./pages/ArtistDashboard";
+import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute"; 
 // import EventBookingModel9 from "./VenueBooking/UjjainCity/BookingModel9/EventBookingModel9";
 // import EventBookingModel10 from "./VenueBooking/UjjainCity/BookingModel10/EventBookingModel10";
 // import EventBookingModel11 from "./VenueBooking/UjjainCity/BookingModel11/EventBookingModel11";
 // import EventBookingModel12 from "./VenueBooking/UjjainCity/BookingModel12/EventBookingModel12";
 // import EventBookingModel13 from "./VenueBooking/UjjainCity/BookingModel13/EventBookingModel13";
-
 
 // import EventBookingModel14 from "./VenueBooking/GwaliorCity/BookingModel14/EventBookingModel14";
 // import EventBookingModel15 from "./VenueBooking/GwaliorCity/BookingModel15/EventBookingModel15";
@@ -134,57 +117,31 @@ function App() {
           <Route path="/ArtistDetail3" element={<ArtistDetail3 />} />
           <Route path="/ArtistDetail4" element={<ArtistDetail4 />} />
 
-
-
-
-
-
-
-
-
           <Route path="/IndoreCity" element={<IndoreCity />} />
           <Route path="/BhopalCity" element={<BhopalCity />} />
           <Route path="/GwaliorCity" element={<GwaliorCity />} />
           {/* <Route path="/JabalpurCity" element={<JabalpurCity />} /> */}
-          
-          
-          
+
           <Route path="/UjjainCity" element={<UjjainCity />} />
-          
-          
-          
+
           {/* <Route path="/EventPopup" element={<EventPopup />} /> */}
 
-          
-          
-          
-          
-          
           <Route path="/BasicDetail" element={<BasicDetail />} />
           <Route path="/PrfoInfo" element={<PrfoInfo />} />
           <Route path="/AddInfo" element={<AddInfo />} />
           <Route path="/MediaUpload" element={<MediaUpload />} />
           <Route path="/EditArtistProfile" element={<EditArtistProfile />} />
-          <Route path="/newsblog" element={<NewsBlog />}  />
-         <Route path="/EventBookingModel1" element={<EventBookingModel1 />} /> 
-         <Route path="/EventBookingModel2" element={<EventBookingModel2 />} /> 
-         <Route path="/EventBookingModel3" element={<EventBookingModel3 />} /> 
-         <Route path="/EventBookingModel4" element={<EventBookingModel4 />} /> 
-         <Route path="/EventBookingModel5" element={<EventBookingModel5 />} /> 
-         <Route path="/EventBookingModel6" element={<EventBookingModel6 />} /> 
-         <Route path="/EventBookingModel7" element={<EventBookingModel7 />} /> 
-         <Route path="/EventBookingModel8" element={<EventBookingModel8 />} /> 
- 
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
+          <Route path="/newsblog" element={<NewsBlog />} />
+          <Route path="/EventBookingModel1" element={<EventBookingModel1 />} />
+          <Route path="/EventBookingModel2" element={<EventBookingModel2 />} />
+          <Route path="/EventBookingModel3" element={<EventBookingModel3 />} />
+          <Route path="/EventBookingModel4" element={<EventBookingModel4 />} />
+          <Route path="/EventBookingModel5" element={<EventBookingModel5 />} />
+          <Route path="/EventBookingModel6" element={<EventBookingModel6 />} />
+          <Route path="/EventBookingModel7" element={<EventBookingModel7 />} />
+          <Route path="/EventBookingModel8" element={<EventBookingModel8 />} />
+
+          {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
          <Route path="/EventBookingModel10" element={<EventBookingModel10 />} /> 
          <Route path="/EventBookingModel11" element={<EventBookingModel11 />} /> 
          <Route path="/EventBookingModel12" element={<EventBookingModel12 />} /> 
@@ -196,9 +153,7 @@ function App() {
          <Route path="/EventBookingModel16" element={<EventBookingModel16 />} /> 
          <Route path="/EventBookingModel17" element={<EventBookingModel17 />} />  */}
 
-
-
-           
+        {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
         </Routes>
         <Footer />
       </Router>

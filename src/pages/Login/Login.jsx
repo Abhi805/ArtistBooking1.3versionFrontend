@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Login.css";
-import img from "../../VenueBooking/BhopalCity/assets20/cotyard.jpg"
+// import img from "../../VenueBooking/BhopalCity/assets20/cotyard.jpg"
 
 const Login = () => {
   const [email, setEmail] = useState("");
