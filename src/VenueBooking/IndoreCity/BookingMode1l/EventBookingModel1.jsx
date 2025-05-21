@@ -1,6 +1,95 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {
+  FaGlassCheers,
+  FaClipboardCheck,
+  FaThumbsUp,
+  FaUtensils,
+  FaCar,
+  FaClock,
+  FaPaintBrush,
+   FaHandHolding,
+   
+} from "react-icons/fa";
 import "./EventBookingModel1.css";
 import image1 from "../assets2/gh.jpeg";
+import image2 from "../assets2/venueevent.webp";
+
+const cardData = [
+  {
+    title: "Alcohol",
+    content: ["Alcohol allowed", "Bar service available"],
+    icon: <FaGlassCheers />,
+  },
+  {
+    title: "Booking Policies",
+    content: [
+      "Booking is confirmed against 50% payment of the total estimated amount.",
+      
+    ],
+    icon: <FaClipboardCheck />,
+    bg: "bg-danger text-white",
+  },
+  {
+    title: "Good For Occasion",
+    content: [
+      "Corporate Event, MICE, Anniversary, Baby Shower",
+      
+    ],
+    icon: <FaThumbsUp />,
+  },
+  {
+    title: "Food",
+    content: ["In-house catering available", "Outside food allowed"],
+    icon: <FaUtensils />,
+  },
+  {
+    title: "Car Parking",
+    content: ["Valet service available", "Ample parking space"],
+    icon: <FaCar />,
+  },
+  {
+    title: "Venue Timing",
+    content: ["Venue available from 10 AM to 11 PM"],
+    icon: <FaClock />,
+  },
+  {
+    title: "Decoration",
+    content: ["Outside decorators allowed", "Decor provided by the venue"],
+    icon: <FaPaintBrush />,
+  },
+  {
+    title: "Additional Facilities",
+    content: ["DJ Services", "Rooms Available", "Security"],
+    icon: <FaHandHolding  />,
+  },
+];
+
+const sliderSettings = {
+  dots: false,
+  infinite: true,
+  speed: 1000,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
 const EventBookingModel = () => {
   return (
@@ -62,69 +151,39 @@ const EventBookingModel = () => {
               Nestled in the heart of the city, our hotel offers a serene escape
               for travelers, families, and business guests alike.
             </p>
-            <div className="badges d-flex flex-wrap gap-2 mt-3">
-              <span className="badge bg-success">✔ Verified Listing</span>
-              <span className="badge bg-dark">📍 Agra</span>
-              <span className="badge bg-danger">🏛 BANQUET HALL</span>
-              <span className="badge bg-warning text-dark">⭐ 4.3</span>
-              <span className="badge bg-secondary">💬 3326 reviews</span>
-            </div>
           </div>
-        </div>  
+        </div>
       </div>
 
-      {/* Facilities Overview */}
+      {/* Facilities Overview - Sliding Cards */}
       <div className="facilities-section py-5 text-white">
         <div className="container text-center">
           <h4 className="text-uppercase text-white mb-4">
             Facilities Overview
           </h4>
-          <div className="row g-4">
-            <div className="col-md-4">
-              <div className="facility-box p-4 h-100">
-                <h6 className="text-danger">Decoration</h6>
-                <p>Outside decorators allowed</p>
-                <p>Decor provided by the venue</p>
+          <Slider {...sliderSettings}>
+            {cardData.map((card, index) => (
+              <div key={index} className="px-2">
+                <div
+                  className={`facility-box p-4 h-100 ${
+                    card.bg || "bg-light text-dark"
+                  }`}
+                >
+                  <h6 className="fw-bold text-center text-danger">
+                    {card.title}
+                  </h6>
+                  <ul className="list-unstyled small">
+                    {card.content.map((line, i) => (
+                      <li key={i}>{line}</li>
+                    ))}
+                  </ul>
+                  <div className="icon-box text-center mt-3 fs-3 text-danger">
+                    {card.icon}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="col-md-4">
-              <div className="facility-box bg-danger text-white p-4 h-100">
-                <h6>Booking Policies</h6>
-                <p>Booking confirmed against 50% payment</p>
-                <p>Taxes applicable as per the venue</p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="facility-box p-4 h-100">
-                <h6 className="text-danger">Good For Occasion</h6>
-                <p>
-                  Corporate Event, MICE, Anniversaries, Baby Shower, Kitty
-                  Party...
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Locations Suggestion */}
-      <div className="container py-5">
-        <h5>Don't Miss Out: Also Look Out From Popular Location</h5>
-        <div className="tags mt-3">
-          {[
-            "Mumbai",
-            "Delhi",
-            "Agra",
-            "Lucknow",
-            "Surat",
-            "Indore",
-            "Noida",
-            "Bhopal",
-          ].map((city, i) => (
-            <span key={i} className="badge bg-light text-dark border me-2 mb-2">
-              {city}
-            </span>
-          ))}
+            ))}
+          </Slider>
         </div>
       </div>
 
@@ -155,7 +214,7 @@ const EventBookingModel = () => {
             </div>
             <div className="col-md-6 text-center">
               <img
-                src="https://img.freepik.com/free-photo/audience-taking-photos-while-speaker-presenting-stage_23-2149315147.jpg"
+                src={image2}
                 className="img-fluid rounded shadow"
                 alt="Corporate Event"
               />
