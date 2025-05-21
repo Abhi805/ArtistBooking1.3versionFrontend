@@ -12,7 +12,7 @@ import artist4 from '../../ArtistBooking/Bhopal/assets33/artist4.jpeg';
 
 
 
-const Bhopal = () => {   
+const Bhopal = () => {      
   useEffect(() => {   
     AOS.init({ duration: 800 });
   }, []);
@@ -54,10 +54,11 @@ const Bhopal = () => {
             <div className="row">
               {section.artists.map((artist, i) => (
                 <div key={i} className="col-md-3 mb-4">
-                  <div className="card artist-card h-100 shadow-sm">
+
+                  <div className="card artist-card4 h-100 shadow-sm">
                     <img src={artist.image} className="card-img-top" alt={artist.name} />
                     <div className="card-body">
-                      <h6 className="card-title fw-bold">{artist.name}</h6>
+                     <h6 className="card-title fw-bold">{artist.name}</h6>
                       <p className="text-muted mb-1">⭐ {artist.rating} ({artist.reviews} Reviews)</p>
                       <p className="text-muted small">Performance Duration: {artist.duration}</p>
                       <Link to="/ArtistDetail"

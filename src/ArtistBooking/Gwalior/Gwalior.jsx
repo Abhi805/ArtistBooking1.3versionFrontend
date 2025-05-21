@@ -14,7 +14,7 @@ import artist4 from '../../ArtistBooking/Gwalior/assets32/artist4.jpeg';
 const Gwalior = () => {
   useEffect(() => {
     AOS.init({ duration: 800 });
-  }, []);
+  }, []);  
 
   const navigate = useNavigate(); // ✅ Step 2: Initialize navigate
 
@@ -52,7 +52,7 @@ const Gwalior = () => {
             <div className="row">
               {section.artists.map((artist, i) => (
                 <div key={i} className="col-md-3 mb-4">
-                  <div className="card artist-card h-100 shadow-sm">
+                  <div className="card artist-card8 h-100 shadow-sm">
                     <img src={artist.image} className="card-img-top" alt={artist.name} />
                     <div className="card-body">
                       <h6 className="card-title fw-bold">{artist.name}</h6>
