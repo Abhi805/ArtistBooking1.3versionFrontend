@@ -16,7 +16,7 @@ const Ujjain = () => {
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
-
+   
   const navigate = useNavigate(); 
 
   const artistData = [
@@ -56,7 +56,7 @@ const Ujjain = () => {
             <div className="row">
               {section.artists.map((artist, i) => (
                 <div key={i} className="col-md-3 mb-4">
-                  <div className="card artist-card h-100 shadow-sm">
+                  <div className="card artist-card6 h-100 shadow-sm">
                     <img src={artist.image} className="card-img-top" alt={artist.name} />
                     <div className="card-body">
                       <h6 className="card-title fw-bold">{artist.name}</h6>

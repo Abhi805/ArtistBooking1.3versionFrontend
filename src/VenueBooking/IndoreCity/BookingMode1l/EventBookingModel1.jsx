@@ -5,7 +5,6 @@ import image1 from "../assets2/gh.jpeg";
 const EventBookingModel = () => {
   return (
     <div className="event-booking-model">
-
       {/* Header Section */}
       <div className="venue-header text-white">
         <div className="container">
@@ -21,26 +20,47 @@ const EventBookingModel = () => {
             <div className="enquiry-box shadow p-4">
               <h4>Enquire Now</h4>
               <form>
-                <input type="text" placeholder="Name" className="form-control mb-2" />
-                <input type="text" placeholder="Phone Number" className="form-control mb-2" />
-                <input type="email" placeholder="Email Address" className="form-control mb-2" />
-                <textarea placeholder="Description" className="form-control mb-3"></textarea>
-                <button className="btn btn-danger w-100">REQUEST BOOKING</button>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="form-control mb-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  className="form-control mb-2"
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="form-control mb-2"
+                />
+                <textarea
+                  placeholder="Description"
+                  className="form-control mb-3"
+                ></textarea>
+                <button className="btn btn-danger w-100">
+                  REQUEST BOOKING
+                </button>
               </form>
             </div>
           </div>
 
           {/* Venue Image & Description */}
           <div className="col-md-8">
-            <h5 className="text-danger">AGRMILAN AGRA</h5>
-            <h2>About Agrmilan Agra</h2>
+            <h5 className="text-danger">Brilliant Hotel</h5>
+            <h2>About Briliant Hotel</h2>
             <img
               src={image1}
               className="img-fluid rounded mb-4"
               alt="Agrmilan Agra"
             />
-            <p>
-              Agrmilan Agra stands as an exceptional event venue in the heart of Agra, India, renowned for its versatility, modern amenities, and commitment to delivering impeccable event experiences...
+            <p className="text-capitalize">
+              Welcome to Brilliant Hotel – Where Luxury Meets Comfort At
+              Brilliant Hotel, we believe in redefining hospitality with a
+              perfect blend of elegance, comfort, and world-class service.
+              Nestled in the heart of the city, our hotel offers a serene escape
+              for travelers, families, and business guests alike.
             </p>
             <div className="badges d-flex flex-wrap gap-2 mt-3">
               <span className="badge bg-success">✔ Verified Listing</span>
@@ -50,13 +70,15 @@ const EventBookingModel = () => {
               <span className="badge bg-secondary">💬 3326 reviews</span>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
 
       {/* Facilities Overview */}
       <div className="facilities-section py-5 text-white">
         <div className="container text-center">
-          <h4 className="text-uppercase text-white mb-4">Facilities Overview</h4>
+          <h4 className="text-uppercase text-white mb-4">
+            Facilities Overview
+          </h4>
           <div className="row g-4">
             <div className="col-md-4">
               <div className="facility-box p-4 h-100">
@@ -75,7 +97,10 @@ const EventBookingModel = () => {
             <div className="col-md-4">
               <div className="facility-box p-4 h-100">
                 <h6 className="text-danger">Good For Occasion</h6>
-                <p>Corporate Event, MICE, Anniversaries, Baby Shower, Kitty Party...</p>
+                <p>
+                  Corporate Event, MICE, Anniversaries, Baby Shower, Kitty
+                  Party...
+                </p>
               </div>
             </div>
           </div>
@@ -86,8 +111,19 @@ const EventBookingModel = () => {
       <div className="container py-5">
         <h5>Don't Miss Out: Also Look Out From Popular Location</h5>
         <div className="tags mt-3">
-          {["Mumbai", "Delhi", "Agra", "Lucknow", "Surat", "Indore", "Noida", "Bhopal"].map((city, i) => (
-            <span key={i} className="badge bg-light text-dark border me-2 mb-2">{city}</span>
+          {[
+            "Mumbai",
+            "Delhi",
+            "Agra",
+            "Lucknow",
+            "Surat",
+            "Indore",
+            "Noida",
+            "Bhopal",
+          ].map((city, i) => (
+            <span key={i} className="badge bg-light text-dark border me-2 mb-2">
+              {city}
+            </span>
           ))}
         </div>
       </div>
@@ -96,7 +132,10 @@ const EventBookingModel = () => {
       <div className="event-promo bg-light py-5">
         <div className="container">
           <h5 className="text-danger text-center">OUR SPECIALTY</h5>
-          <h2 className="text-center fw-bold">Let the Best Event Planners Handle Your Next <span className="text-danger">Corporate Occasion</span></h2>
+          <h2 className="text-center fw-bold">
+            Let the Best Event Planners Handle Your Next{" "}
+            <span className="text-danger">Corporate Occasion</span>
+          </h2>
           <div className="row align-items-center mt-4">
             <div className="col-md-6">
               <ul className="list-unstyled">
@@ -105,9 +144,11 @@ const EventBookingModel = () => {
                   "Corporate Event Planning",
                   "Sports Event Management",
                   "Book Artist, Comedian, and Celebrity",
-                  "Event Production & Equipment Rental"
+                  "Event Production & Equipment Rental",
                 ].map((item, i) => (
-                  <li key={i} className="mb-2">✅ {item}</li>
+                  <li key={i} className="mb-2">
+                    ✅ {item}
+                  </li>
                 ))}
               </ul>
               <button className="btn btn-danger mt-3">CONTACT US NOW</button>
@@ -122,7 +163,6 @@ const EventBookingModel = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

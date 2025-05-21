@@ -22,7 +22,7 @@ import artist14 from './assets33/artist14.jpeg';
 import artist15 from './assets33/artist15.jpeg';
 import headerBg1 from './assets33/headerBg1.avif';
 
-const Comedians = () => {
+const Comedians = () => {  
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
@@ -105,7 +105,7 @@ const Comedians = () => {
             <div className="row">
               {section.artists.map((artist, i) => (
                 <div key={i} className="col-md-3 col-sm-6 mb-4">
-                  <div className="card artist-card h-100 shadow-sm" data-aos="zoom-in">
+                  <div className="card artist-card3 h-100 shadow-sm" data-aos="zoom-in">
                     <img src={artist.image} className="card-img-top" alt={artist.name} />
                     <div className="card-body">
                       <h6 className="card-title fw-bold">{artist.name}</h6>

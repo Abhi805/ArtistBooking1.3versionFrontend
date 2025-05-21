@@ -16,7 +16,7 @@ const EventBookingModel = () => {
       {/* About Section */}
       <div className="container py-5">
         <div className="row g-4">
-          {/* Enquiry Form */}
+          {/* Enquiry Form */}   
           <div className="col-md-4">
             <div className="enquiry-box shadow p-4">
               <h4>Enquire Now</h4>
