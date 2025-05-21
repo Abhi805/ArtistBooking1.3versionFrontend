@@ -1,24 +1,28 @@
 import React from 'react';
 import './MediaUpload.css';
 import { useNavigate } from "react-router-dom";
+
 const MediaUpload = () => {
+  // const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  // const handleNext = (e) => {
+  //   e.preventDefault();
+  //   navigate("/EditArtistProfile");
+  // };
 
-  const handleNext = (e) =>{
-    e.preventDefault()
-    navigate("/EditArtistProfile")
-  }
+  // const handlePrevious = () => {
+  //   navigate("/AddInfo"); // or navigate(-1)
+  // };
+
   return (
     <div className="media-upload-container">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-8 col-lg-6">
             <div className="form-card position-relative">
-              {/* Profile Icon */}
               <div className="profile-icon">
                 <img src="https://via.placeholder.com/100" alt="Profile" className="rounded-circle" />
-              </div>   
+              </div>
 
               <h5 className="text-center mb-4">Media Uploads</h5>
 
@@ -66,14 +70,18 @@ const MediaUpload = () => {
 
                 <div className="row">
                   <div className="col-6">
-                    <button type="button" className="btn btn-danger w-100">Previous</button>
+                    <button type="button" className="btn btn-danger w-100" onClick={handlePrevious}>
+                      Previous
+                    </button>
                   </div>
                   <div className="col-6">
-                    <button type="submit" className="btn btn-danger w-100">Next</button>
+                    <button type="submit" className="btn btn-danger w-100">
+                      Next
+                    </button>
                   </div>
                 </div>
 
-               </form>
+              </form>
             </div>
           </div>
         </div>

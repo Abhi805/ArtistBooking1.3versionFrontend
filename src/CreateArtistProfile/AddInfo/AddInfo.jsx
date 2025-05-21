@@ -3,11 +3,11 @@ import "./AddInfo.css";
 import { useNavigate } from "react-router-dom";
 
 const AddInfo = () => {
-    const navigate = useNavigate();
-    const handleNext = (e) =>{
-        e.preventDefault()
-        navigate("/MediaUpload")
-      }
+    // const navigate = useNavigate();
+    // const handleNext = (e) =>{
+    //     e.preventDefault()
+    //     navigate("/MediaUpload")
+    //   }
   return (
     <div className="add-info py-5">
       <div className="container">
