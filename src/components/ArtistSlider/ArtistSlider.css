@@ -8,8 +8,8 @@
   margin: 0 auto;
 }
 
-.pe-subtitle {
-  text-align: center;
+.pe-subtitle {  
+  text-align: center ;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -27,7 +27,7 @@
 }
 
 .pe-title-highlight {
-  color: #e63946;
+  color: #e63946 ;
 }
 
 .pe-card {
