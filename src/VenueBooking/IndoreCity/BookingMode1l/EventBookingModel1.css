@@ -1,4 +1,4 @@
-      .event-booking-model {
+  .event-booking-model {
   font-family: "Segoe UI", sans-serif;
 }
 
@@ -22,16 +22,51 @@
 .facilities-section {
   background-color: #1e1e1e;
 }
-
 .facility-box {
-  background-color: #fff;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  animation: zoomIn 0.6s ease-in;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
+
 .facility-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-8px) scale(1.03);
+  border-image: linear-gradient(135deg, #d32f2f, #f57c00) 1;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
 }
+/* Icon style inside card */
+.facility-box .icon-box {
+  font-size: 2rem;
+  color: #d32f2f;
+  background: #fff;
+  border: 2px solid #d32f2f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.facility-box:hover .icon-box {
+  background: #d32f2f;
+  color: #fff;
+  transform: rotate(360deg);
+}
+
+
+/* .facility-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(35, 4, 4, 0.2);
+} */
 
 .badges .badge {
   font-size: 13px;
@@ -43,19 +78,63 @@
   font-size: 14px;
   border-radius: 30px;
 }
-
 .event-promo li {
   font-size: 16px;
 }
+.info-slider-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem;
+  background-color: #1d1d1d;
+}
 
-/* Animations */
-@keyframes fadeInDown {
-  from {
+.info-slider {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.info-card {
+  min-width: 300px;
+  max-width: 300px;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.card-icon {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  border: 4px solid red;
+  border-radius: 50%;
+  padding: 0.6rem;
+  font-size: 1.5rem;
+}
+/* Card entrance animation */
+@keyframes zoomIn {
+  0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: scale(0.95);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
