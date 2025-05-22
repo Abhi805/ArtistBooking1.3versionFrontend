@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
@@ -18,7 +24,9 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -30,53 +38,82 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match", { position: "top-center" });
+      return;
+    }
+
     try {
-      const res = await axios.post(
+      setIsLoading(true);
+
+      // First: Signup API
+      const registerRes = await axios.post(
         "http://localhost:5000/api/auth/register",
         formData,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
-      setMessage(res.data.msg); // success message
+
+      if (registerRes.status === 201) {
+        toast.success("Signup successful! Auto Logging you in...", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+
+        // Second: Auto Login API
+        const loginRes = await axios.post(
+          "http://localhost:5000/api/auth/login",
+          {
+            email: formData.email,
+            password: formData.password,
+          },
+          { withCredentials: true }
+        );
+
+        if (loginRes.status === 200) {
+          setTimeout(() => {
+            navigate("/basicdetail");
+          }, 2000);
+        } else {
+          toast.error("Auto login failed. Please login manually.", {
+            position: "top-center",
+          });
+        }
+      }
     } catch (err) {
-      setMessage(err.response?.data?.msg || "Something went wrong");
+      toast.error(err.response?.data?.msg || "Signup failed", {
+        position: "top-center",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <section className="signup-section">
+      <ToastContainer />
       <div className="container">
         <div className="row justify-content-center align-items-center mt-5">
           <div className="col-lg-10">
             <div className="row shadow-lg card-wrapper">
-              {/* Left */}
               <div
                 className="col-md-6 bg-primary text-white p-5 text-center d-flex flex-column justify-content-center"
                 data-aos="fade-right"
               >
-                <p className="mb-4 fs-1 fw-bold text-white ">
+                <p className="mb-4 fs-1 fw-bold">
                   List Your Talent & Get Booked Online Instantly
                 </p>
-                <p className="fs-5 text-white ">
+                <p className="fs-5">
                   Join our platform and showcase your talent to a wide audience.
                   Create your artist profile today and start receiving event
                   bookings instantly!
                 </p>
-                <p className="btn mt-5" style={{cursor:"default"}}>
+                <p className="btn mt-5" style={{ cursor: "default" }}>
                   Boost Your Brand & Network
                 </p>
               </div>
 
-              {/* Right */}
-              <div
-                className="col-md-6 bg-white p-4"
-                data-aos="fade-left"
-              >
+              <div className="col-md-6 bg-white p-4" data-aos="fade-left">
                 <h2 className="text-center mb-4">Signup</h2>
-                {message && (
-                  <p className="text-center text-danger">{message}</p>
-                )}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <input
@@ -111,9 +148,10 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-3">
+
+                  <div className="mb-3 position-relative">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       className="form-control"
                       placeholder="Password"
@@ -121,10 +159,24 @@ const Signup = () => {
                       value={formData.password}
                       onChange={handleChange}
                     />
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="position-absolute"
+                      style={{
+                        right: "10px",
+                        top: "8px",
+                        cursor: "pointer",
+                        color: "#555",
+                      }}
+                      aria-label={showPassword ? "Hide Password" : "Show Password"}
+                    >
+                      <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                    </span>
                   </div>
-                  <div className="mb-4">
+
+                  <div className="mb-4 position-relative">
                     <input
-                      type="password"
+                      type={showConfirmPassword ? "text" : "password"}
                       name="confirmPassword"
                       className="form-control"
                       placeholder="Confirm Password"
@@ -132,16 +184,37 @@ const Signup = () => {
                       value={formData.confirmPassword}
                       onChange={handleChange}
                     />
+                    <span
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      className="position-absolute"
+                      style={{
+                        right: "10px",
+                        top: "8px",
+                        cursor: "pointer",
+                        color: "#555",
+                      }}
+                      aria-label={
+                        showConfirmPassword ? "Hide Password" : "Show Password"
+                      }
+                    >
+                      <FontAwesomeIcon
+                        icon={showConfirmPassword ? faEyeSlash : faEye}
+                      />
+                    </span>
                   </div>
+
                   <div className="d-grid mb-3">
-                    <button type="submit" className="btn btn-primary">
-                      Signup
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "Creating..." : "Signup"}
                     </button>
                   </div>
 
                   <p className="text-center mb-0">
-                    Already have an account?{" "}
-                    <Link to="/login">Sign in</Link>
+                    Already have an account? <Link to="/login">Sign in</Link>
                   </p>
                 </form>
               </div>

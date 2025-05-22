@@ -38,9 +38,7 @@ import GwaliorCity from "./VenueBooking/GwaliorCity/GwaliorCity";
 import UjjainCity from "./VenueBooking/UjjainCity/UjjainCity";
 
 import BasicDetail from "./CreateArtistProfile/BasicDetail/BasicDetail";
-import PrfoInfo from "./CreateArtistProfile/PrfoInfo/PrfoInfo";
-import AddInfo from "./CreateArtistProfile/AddInfo/AddInfo";
-import MediaUpload from "./CreateArtistProfile/MediaUpload/MediaUpload";
+
 import EditArtistProfile from "./CreateArtistProfile/EditArtistProfile/EditArtistProfile";
 import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
@@ -63,7 +61,8 @@ import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBoo
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
 // import ArtistDashboard from "./pages/ArtistDashboard";
-import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute"; 
+import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import EventBookingModel9 from "./VenueBooking/UjjainCity/BookingModel9/EventBookingModel9";
 // import EventBookingModel10 from "./VenueBooking/UjjainCity/BookingModel10/EventBookingModel10";
 // import EventBookingModel11 from "./VenueBooking/UjjainCity/BookingModel11/EventBookingModel11";
@@ -74,6 +73,7 @@ import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
 // import EventBookingModel15 from "./VenueBooking/GwaliorCity/BookingModel15/EventBookingModel15";
 // import EventBookingModel16 from "./VenueBooking/GwaliorCity/BookingModel16/EventBookingModel16";
 // import EventBookingModel17 from "./VenueBooking/GwaliorCity/BookingModel17/EventBookingModel17";
+
 
 function App() {
   return (
@@ -97,7 +97,14 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-
+          <Route
+            path="/BasicDetail"
+            element={
+              <ProtectedRoute >
+                <BasicDetail />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/EventRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -127,9 +134,7 @@ function App() {
           {/* <Route path="/EventPopup" element={<EventPopup />} /> */}
 
           <Route path="/BasicDetail" element={<BasicDetail />} />
-          <Route path="/PrfoInfo" element={<PrfoInfo />} />
-          <Route path="/AddInfo" element={<AddInfo />} />
-          <Route path="/MediaUpload" element={<MediaUpload />} />
+
           <Route path="/EditArtistProfile" element={<EditArtistProfile />} />
           <Route path="/newsblog" element={<NewsBlog />} />
           <Route path="/EventBookingModel1" element={<EventBookingModel1 />} />
@@ -153,7 +158,7 @@ function App() {
          <Route path="/EventBookingModel16" element={<EventBookingModel16 />} /> 
          <Route path="/EventBookingModel17" element={<EventBookingModel17 />} />  */}
 
-        {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
+          {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
         </Routes>
         <Footer />
       </Router>

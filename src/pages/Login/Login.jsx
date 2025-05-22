@@ -1,41 +1,69 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Login.css";
-// import img from "../../VenueBooking/BhopalCity/assets20/cotyard.jpg"
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Spinner } from "react-bootstrap";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [showPassword, setShowPassword] = useState(false);  // ✅ New state for toggle
+  const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
+
+        const savedEmail = localStorage.getItem("rememberEmail");
+    if (savedEmail) {
+      setFormData((prev) => ({ ...prev, email: savedEmail }));
+      setRememberMe(true);
+    }
+
   }, []);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg("");
-
-    try { 
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      }, { withCredentials: true });
-
+  setLoading(true);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      if (rememberMe) {
+        localStorage.setItem("rememberEmail", formData.email);
+      } else {
+        localStorage.removeItem("rememberEmail");
+      }
       localStorage.setItem("token", res.data.token);
-      alert("Login successful!");
+      toast.success("Login successful!", { position: "top-center" });
+
+      setTimeout(() => {
+        navigate("/basicdetail");
+      }, 2000);
     } catch (err) {
-      setErrorMsg(err.response?.data?.msg || "Login failed");
+      toast.error(err.response?.data?.msg || "Login failed", {
+        position: "top-center",
+      });
+    }finally{
+      setLoading(false);
     }
   };
 
   return (
     <section className="login-section">
+      <ToastContainer />
       <div className="container">
-        <div className="row align-items-center justify-content-center ">
+        <div className="row align-items-center justify-content-center">
           <div className="col-md-6" data-aos="fade-up">
             <div className="card8 p-5 shadow-lg bg-white rounded-4">
               <div className="card-body">
@@ -55,21 +83,32 @@ const Login = () => {
                     />
                   </div>
 
-                  <div className="mb-3">
+                  <div className="mb-3 position-relative">
                     <label className="form-label">Password</label>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}  // toggle type
                       className="form-control"
                       placeholder="Enter password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
+                    {/* Toggle button */}
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "38px",
+                        cursor: "pointer",
+                        userSelect: "none",
+                        color: "#555",
+                      }}
+                      title={showPassword ? "Hide Password" : "Show Password"}
+                    >
+                      {showPassword ? "🙈" : "👁️"}
+                    </span>
                   </div>
-
-                  {errorMsg && (
-                    <div className="alert alert-danger">{errorMsg}</div>
-                  )}
 
                   <div className="d-grid mb-3">
                     <button type="submit" className="btn btn-primary login-btn">
