@@ -99,10 +99,10 @@ const Signup = () => {
                 className="col-md-6 bg-primary text-white p-5 text-center d-flex flex-column justify-content-center"
                 data-aos="fade-right"
               >
-                <p className="mb-4 fs-1 fw-bold">
+                <p className="mb-4 fs-1 fw-bold text-white ">
                   List Your Talent & Get Booked Online Instantly
                 </p>
-                <p className="fs-5">
+                <p className="fs-5 text-white ">
                   Join our platform and showcase your talent to a wide audience.
                   Create your artist profile today and start receiving event
                   bookings instantly!
