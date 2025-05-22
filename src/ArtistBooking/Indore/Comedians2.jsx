@@ -11,7 +11,7 @@ import artist3 from "./assets33/artist3.jpg";
 import artist4 from "./assets33/artist4.jpeg";
 import artist5 from "./assets33/artist5.jpg";
 import artist6 from "./assets33/artist6.webp";
-import artist7 from "./assets33/artist7.jpeg";
+import artist7 from "./assets33/artist7.jpeg"; 
 import artist8 from "./assets33/artist8.jpg";
 import artist9 from "./assets33/artist9.webp";
 import artist10 from "./assets33/artist10.jpeg";

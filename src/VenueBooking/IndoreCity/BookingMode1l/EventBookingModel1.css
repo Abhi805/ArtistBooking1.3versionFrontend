@@ -4,9 +4,19 @@
 
 .venue-header {
   background: linear-gradient(to right, #7b1fa2, #b71c1c);
-  padding: 60px 0;
+  padding:22px;
   text-align: center;
   animation: fadeInDown 1s ease-in-out;
+}
+
+ .hero-section {
+  height: 80vh;
+   /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../assets/hero-bg.jpg") center/cover no-repeat;  */
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .breadcrumb {
@@ -14,13 +24,42 @@
   opacity: 0.8;
 }
 
-.enquiry-box h4 {
-  color: #d32f2f;
-  font-weight: 600;   
+.enquiry-box {
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 450px;
+  width: 100%; /* or fixed like 350px */
+}
+ .enquiry-box input,
+.enquiry-box textarea {
+  height: 45px;
+  font-size: 14px;
+}
+.enquiry-box textarea {
+  height: 100px;
+  resize: none;
 }
 
+.crop{
+  width: 100%;
+  height: 73%;
+}
+
+.venue-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.back{
+   background: linear-gradient(to right, #7b1fa2, #b71c1c) !important;
+}
+
+
+
 .facilities-section {
-  background-color: #1e1e1e;
+  background-color: #975353;
 }
 .facility-box {
   background: linear-gradient(135deg, #ffffff, #f0f0f0);
@@ -29,7 +68,7 @@
   text-align: center;
   transition: all 0.4s ease-in-out;
   position: relative;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(167, 60, 60, 0.15);
   animation: zoomIn 0.6s ease-in;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -43,7 +82,7 @@
 /* Icon style inside card */
 .facility-box .icon-box {
   font-size: 2rem;
-  color: #d32f2f;
+  color: #1e6f29;
   background: #fff;
   border: 2px solid #d32f2f;
   display: inline-flex;
@@ -63,10 +102,16 @@
 }
 
 
-/* .facility-box:hover {
+ .facility-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(35, 4, 4, 0.2);
-} */
+} 
+
+
+
+
+
+
 
 .badges .badge {
   font-size: 13px;
@@ -127,14 +172,41 @@
   padding: 0.6rem;
   font-size: 1.5rem;
 }
-/* Card entrance animation */
-@keyframes zoomIn {
+/* EventPromo.css */
+
+.event-promo {
+  background-color: #f8f9fa;
+}
+
+.event-promo img {
+  max-width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+.event-promo img:hover {
+  transform: scale(1.03);
+}
+
+.event-promo li {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.animate-fade {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }

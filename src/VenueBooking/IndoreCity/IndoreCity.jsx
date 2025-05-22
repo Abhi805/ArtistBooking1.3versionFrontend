@@ -21,7 +21,7 @@ const IndoreCity = () => {
 
 
   const venues = [
-    {
+    {  
       image: img1,
       venue: "Brilliant Hotel",
       rating: "4.5",

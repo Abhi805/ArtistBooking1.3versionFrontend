@@ -18,7 +18,7 @@ import BlogPosts from "../../components/BlogPost/BlogPosts";
 import OnlineBooking from "../../components/OnlineBooking/OnlineBooking";
 
 const Home = () => {   
-  return (    
+  return (        
     <div className="container-fluid" style={{ padding: "0px" }}>
       <HeroSection />
       <div className="mt-5 mb-5" >      
@@ -33,30 +33,30 @@ const Home = () => {
       <div className="mb-5" > 
         <PastEvent />  
       </div>
-      <div>
+      {/* <div>
         <EventManagment />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <ArtistSlider />
-      </div>
+      </div> */}
       <div className="mb-5">
         <TrustCompany />
       </div>
-      <div>
+      {/* <div>
         <EquipmentSection />
-      </div>
+      </div> */}
       <div>
         <PlanningEvent />
       </div>
-      <div>
+      {/* <div>
         <ExpertPlanner/>
-      </div>
+      </div> */}
       <div>  
         <ClientFeedBack/>
       </div>
-      <div>
+      {/* <div>
         <Faq/>
-      </div>   
+      </div>    */}
       <div> 
         <BlogPosts/>
       </div>

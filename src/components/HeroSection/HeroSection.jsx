@@ -26,7 +26,7 @@ export default function HeroSection() {
           disableOnInteraction: false,
         }}
         pagination={{
-          clickable: true,
+          clickable: true,  
         }}
         // navigation={true}
         parallax={true}

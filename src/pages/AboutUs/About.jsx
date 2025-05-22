@@ -73,7 +73,7 @@ export default function AboutUs() {
             Welcome To <br /> GNV India Entertainment
           </h1>
         </div>
-      </section>
+      </section>  
 
       <section className="about-section py-5">
         <div className="container">
