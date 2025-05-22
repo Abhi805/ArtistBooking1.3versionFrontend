@@ -13,12 +13,12 @@ const ArtistProfileForm = () => {
     city: "",
     duration: "",
     travel: "",
-    category: "", 
+    category: "",
     genre: "",
     team: "",
     location: "",
     description: "",
-    images: [], 
+    images: [],
     videoLink: "",
     profileTitle: "",
     profileKeywords: "",
@@ -71,11 +71,19 @@ const ArtistProfileForm = () => {
       });
 
       // Replace URL below with your backend endpoint
-      const response = await axios.post("/api/artist-profile", submitData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/artists/add",
+        submitData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // <-- Add this line
+          },
+          withCredentials: true, // Optional if you're using cookies; required for cross-origin cookies
+        }
+      );
+
+         // ✅ Save token to localStorage
+    localStorage.setItem("token", response.data.token);
 
       alert("Profile submitted successfully!");
       // Reset form or redirect as needed
@@ -101,7 +109,7 @@ const ArtistProfileForm = () => {
       });
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Error submitting profile, try again.");
+      alert("Error: " + error.response?.data?.message || error.message);
     }
   };
 
@@ -132,7 +140,7 @@ const ArtistProfileForm = () => {
                 src={
                   formData.images.length > 0
                     ? URL.createObjectURL(formData.images[0])
-                    : "https://via.placeholder.com/150"
+                    : "dfhfjgfh fdgfty rgjkdrtyj"
                 }
                 alt="Profile"
                 className="upload-profile"
@@ -151,7 +159,11 @@ const ArtistProfileForm = () => {
           {/* Right Side - Form */}
           <div className="col-md-8">
             <div className="form-card p-4">
-              <form onSubmit={step === 4 ? handleSubmit : handleNext}>
+              <form
+                onSubmit={step === 4 ? handleSubmit : handleNext}
+                method="POST"
+                encType="multipart/form-data"
+              >
                 {/* Step 1: Basic Details */}
                 {step === 1 && (
                   <>
@@ -371,7 +383,7 @@ const ArtistProfileForm = () => {
                           value={formData.description}
                           onChange={handleChange}
                           required
-                          maxLengthLength={300}
+                          maxLength={300}
                         ></textarea>
                       </div>
                     </div>
@@ -392,6 +404,23 @@ const ArtistProfileForm = () => {
                   <>
                     <h5 className="mb-4">Media Uploads & Profile SEO</h5>
 
+                    {/* Image Upload Field */}
+                    <div className="row">
+                      <div className="col-12 mb-3">
+                        <label htmlFor="profileImage" className="form-label">
+                          Profile Image
+                        </label>
+                        <input
+                          type="file"
+                          className="form-control"
+                          id="profileImage"
+                          accept="image/*"
+                          onChange={handleImageChange} // Add this function in your component
+                        />
+                      </div>
+                    </div>
+
+                    {/* Existing Fields */}
                     <div className="row">
                       <div className="col-12 mb-3">
                         <label htmlFor="videoLink" className="form-label">
@@ -442,7 +471,10 @@ const ArtistProfileForm = () => {
 
                     <div className="row">
                       <div className="col-12 mb-3">
-                        <label htmlFor="profileDescription" className="form-label">
+                        <label
+                          htmlFor="profileDescription"
+                          className="form-label"
+                        >
                           Profile Description
                         </label>
                         <textarea
@@ -472,7 +504,7 @@ const ArtistProfileForm = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .section-heading {
           font-weight: 700;
           font-size: 2rem;
