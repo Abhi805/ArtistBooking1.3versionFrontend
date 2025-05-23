@@ -6,9 +6,9 @@ import "aos/dist/aos.css";
 import "./Login.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Spinner } from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -106,7 +106,7 @@ const Login = () => {
                       }}
                       title={showPassword ? "Hide Password" : "Show Password"}
                     >
-                      {showPassword ? "🙈" : "👁️"}
+                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                     </span>
                   </div>
 
