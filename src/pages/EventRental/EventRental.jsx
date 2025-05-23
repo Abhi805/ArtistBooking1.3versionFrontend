@@ -14,7 +14,7 @@ import Eq6 from "./Eqimage/Eq6.jpg";
 import Eq7 from "./Eqimage/Eq7.jpg";
 import Eq8 from "./Eqimage/Eq8.jpg";
 import Eq9 from "./Eqimage/Eq9.jpg";
-import Eq10 from "./Eqimage/Eq10.jpg";
+import Eq10 from "./Eqimage/Eq10.jpg";    
 import Eq11 from "./Eqimage/Eq11.jpg";
 import Eq12 from "./Eqimage/Eq12.jpg";
 import Eq13 from "./Eqimage/Eq13.jpg";
@@ -26,6 +26,9 @@ import Eq18 from "./Eqimage/Eq18.jpg";
 import Eq19 from "./Eqimage/Eq19.jpg";
 import Eq20 from "./Eqimage/Eq20.jpg";
 import Eq21 from "./Eqimage/Eq21.jpg";
+import Eq22 from "./Eqimage/Eq22.jpg";
+import Eq23 from "./Eqimage/Eq23.jpg";
+import Eq24 from "./Eqimage/Eq24.jpg";
 
 const EventRental = () => {
   useEffect(() => {
@@ -39,152 +42,174 @@ const EventRental = () => {
       title: "Book The Best Live Band For Events And Weddings In Bhopal",
       artists: [
         {
-          name: "Dr. Anjana Jha",
+          name: "Audio Interfaces And Di Boxes",
           image: Eq1,
           rating: "4.5★",
           reviews: "1010",
-          duration: "90-100 Mins",
+          Suitablefor: "Conference,Seminar,Concerts,Corporate Events,College Fest ,DJ Night...",
         },
         {
-          name: "Ayush Rojariya",
+          name: "Audio Mixing Console",
           image: Eq2,
           rating: "4.5★",
           reviews: "1010",
-          duration: "90-100 Mins",
+          Suitablefor: "to control and balance audio levels of singers, bands, or DJs",
         },
         {
-          name: "Shahab Masoom",
+          name: "Field Audio MixerRecorder (Zoom F-Control or similar)",
           image: Eq3,
           rating: "4.6★",
           reviews: "1375",
-          duration: "90-130 Mins",
+          Suitablefor: "For recording live performances directly from stage mics",
         },
         {
-          name: "Hemesh Raj",
+          name: "Headphone",
           image: Eq4,
           rating: "4.4★",
           reviews: "1578",
-          duration: "85-120 Mins",
+          Suitablefor: "Used by sound engineers, musicians, and DJs to monitor and mix audio accurately.",
         },
         {
-          name: "Dhruv chorasiya",
+          name: "Intercom System",
           image: Eq5,
           rating: "4.6★",
           reviews: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: " Used by event crew to coordinate backstage, lighting, and sound operations.",
         },
         {
-          name: "Akshay Raykwar",
+          name: "Laptop",
           image: Eq6,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "High-performance laptops are used for music production, film editing, and design.",
         },
         {
-          name: "ShridharNagraj",
+          name: "Laptop",
           image: Eq7,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: "High-performance laptops are used for music production, film editing, and design.",
         },
         {
-          name: "Pooja Thakre",
+          name: "Lights",
           image: Eq8,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: "To enhance stage presence, audience experience, and ambiance (weddings, concerts, parties).",
         },
         {
-          name: "Shashwat Singh",
+          name: "Colour Lights",
           image:  Eq9,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: " For decoration, stage lighting, and dance floor effects.",
         },
         {
-          name: "Dance Troupe",
+          name: "Mic",
           image: Eq10,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "For vocal performances, speeches, and announcements.",
         },
         {
-          name: "Asad Khan ",
+          name: "Microphone With Headphone",
           image: Eq11,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+           Suitablefor: "For clear voice capture while monitoring audio in real-time.",
         },
         {
-          name: "Boby Chorasiya",
+          name: "Pioneer DJ Controller (CDJ + DJM Mixer)",
           image:Eq12,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: " DJs use it to perform live sets and mix tracks seamlessly.",
         },
         {
-          name: "Sardul Pandit",
+          name: "Mic",
           image: Eq13,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "For vocal performances, speeches, and announcements.",
         },
         {
-          name: "Shrey Mittal",
+          name: "Smoke Machine",
           image: Eq14,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: " To add drama and highlight light beams or laser effects.",
         },
         {
-          name: "Las Cury",
+          name: "Smoke Machine",
           image: Eq15,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "Powerful output with a quick warm-up,Remote control included for easy operation",
         },
         {
-          name: "Sanjay kumar",
+          name: "Speaker",
           image: Eq16,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: "Studio monitors are used for accurate sound playback during mixing and mastering.",
         },
         {
-          name: "Sanjay kumar",
+          name: "Speakers And Wireless Mic",
           image: Eq17,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "Speakers convert electrical audio signals into sound to amplify music, speech, or any audio for listeners.",
         },
         {
-          name: "Sanjay kumar",
+          name: "Speakers",
           image: Eq18,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "large-sized loudspeakers designed to deliver high power and loud sound output for big venues and outdoor events.",
         },
         {
-          name: "Sanjay kumar",
+          name: "Stage Lighting",
           image: Eq19,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+         Suitablefor: " Ensures performers and key elements are clearly seen by the audience.",
         },
         {
-          name: "Sanjay kumar",
+          name: "Stage Lights",
           image: Eq20,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: " Ensures performers and key elements are clearly seen by the audience.",
         },
         {
-          name: "Sanjay kumar",
+          name: "Studio Condenser Microphone",
           image: Eq21,
           rating: "4.6★",
           review: "1027",
-          duration: "75-100 Mins",
+          Suitablefor: "For singing, voice-overs, podcasts, and broadcasting.",
         },
+        {
+          name: "Audio Visual Equipment Setup",
+          image: Eq22,
+          rating: "4.6★",
+          review: "1027",
+          Suitablefor: "Cables & Accessories Control Systems Visual Equipment Audio Equipment",
+        },
+        {
+          name: "Stage Sound System Package",
+          image: Eq23,
+          rating: "4.6★",
+          review: "1027",
+        Suitablefor: "A Stage Sound System Package is a complete set of audio equipment designed to provide clear, powerful, and balanced sound reinforcement for live performances on stage.",
+        },
+        {
+          name: "Sound Package Rental",
+          image: Eq24,
+          rating: "4.6★",
+          review: "1027",
+           Suitablefor: "Sound Package Rental refers to renting a complete set of audio equipment for events, including speakers, microphones, mixers, amplifiers, and accessories, for temporary use",
+        },
+       
       ],
     },
   ];
@@ -201,7 +226,7 @@ const EventRental = () => {
                 <div key={i} className="col-md-3 mb-4">
                   <div className="card artist-card h-100 shadow-sm">
                     <img
-                      src={Eq1}
+                      src={artist.image}
                       className="card-img-top"
                       alt={artist.name}
                     />
@@ -211,22 +236,21 @@ const EventRental = () => {
                         ⭐ {artist.rating} ({artist.reviews} Reviews)
                       </p>
                       <p className="text-muted small">
-                        Performance Duration: {artist.duration}
+                        Suitablefor: {artist. Suitablefor}
                       </p>
-                      <button className="btn btn-danger btn-sm">
-                        BOOK NOW
-                      </button>
+                     <div className="text-center">
+                     <Link className="btn btn-outline-danger" to="/RentalDetail">
+                    Book Now 
+                   </Link>
+                  </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="text-center">
-              <Link className="btn btn-outline-danger" to="/Comedians">
-                View More →
-              </Link>
-            </div>
-          </div>
+            
+
+     </div>
         ))}
       </div>
     

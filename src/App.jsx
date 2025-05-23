@@ -19,10 +19,15 @@ import MyBoard from "./pages/MyBoard/MyBoard";
 import Indore from "./ArtistBooking/Indore/Indore";
 import Bhopal from "./ArtistBooking/Bhopal/Bhopal";
 import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
-import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
+import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";  
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
+
+
+import RentalDetail from "./pages/EventRental/RentalDetail";
+
+
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
@@ -60,6 +65,10 @@ import EventBookingModel5 from "./VenueBooking/IndoreCity/BookingModel5/EventBoo
 import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBookingModel6";
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
+
+
+
+
 // import ArtistDashboard from "./pages/ArtistDashboard";
 import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -117,12 +126,21 @@ function App() {
           <Route path="/Jabalpur" element={<Jabalpur />} />
           <Route path="/Ujjain" element={<Ujjain />} />
 
+
+          <Route path="/RentalDetail" element={<RentalDetail />}/>
+
+
+
           <Route path="/Comedians" element={<Comedians />} />
           <Route path="/ArtistDetail" element={<ArtistDetail />} />
           <Route path="/ArtistDetail1" element={<ArtistDetail1 />} />
           <Route path="/ArtistDetail2" element={<ArtistDetail2 />} />
           <Route path="/ArtistDetail3" element={<ArtistDetail3 />} />
           <Route path="/ArtistDetail4" element={<ArtistDetail4 />} />
+
+
+
+
 
           <Route path="/IndoreCity" element={<IndoreCity />} />
           <Route path="/BhopalCity" element={<BhopalCity />} />
