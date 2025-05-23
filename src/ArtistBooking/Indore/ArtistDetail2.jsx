@@ -261,7 +261,7 @@ import { useParams } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./ArtistDetail2.css";
-import axios from "axios";
+import axios from "axios"; 
 
 const ArtistDetail = () => {
   const { id } = useParams();
@@ -274,15 +274,17 @@ const ArtistDetail = () => {
 
   const fetchArtist = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/artists/${id}`);
+      const res = await axios.get(`http://localhost:5000/api/artists`);
+          console.log("Fetched artist data:", res.data); // 👈 YE LINE ADD KARO
       setArtist(res.data);
+      
     } catch (err) {
       console.error("Error fetching artist data", err);
     }
   };
 
   if (!artist) {
-    return <div className="text-center py-5">Loading...</div>;
+    return <div className="text-center py-5">Loadingfgfg...</div>;
   }
 
   return (
