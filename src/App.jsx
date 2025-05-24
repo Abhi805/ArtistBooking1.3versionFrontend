@@ -18,14 +18,11 @@ import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
 import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";  
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
-<<<<<<< HEAD
-=======
 
  import RentalDetail from "./pages/EventRental/RentalDetail";
 
 
 
->>>>>>> 9887f38d6419882a7d87fa701e1f8408254122b7
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
 import ArtistDetail2 from "./ArtistBooking/Indore/ArtistDetail2";
