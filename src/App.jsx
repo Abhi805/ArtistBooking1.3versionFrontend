@@ -1,13 +1,9 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
 import "./App.css";
-
 import EventPopup from "./components/EventPopup/EventPopup";
-
 import AboutUs from "./pages/AboutUs/About";
-
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -21,24 +17,18 @@ import Bhopal from "./ArtistBooking/Bhopal/Bhopal";
 import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
 import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
-
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
-
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
 import ArtistDetail2 from "./ArtistBooking/Indore/ArtistDetail2";
 import ArtistDetail3 from "./ArtistBooking/Jabalpur/ArtistDetail3";
 import ArtistDetail4 from "./ArtistBooking/Ujjain/ArtistDetail4";
-
 import IndoreCity from "./VenueBooking/IndoreCity/IndoreCity";
-
 import BhopalCity from "./VenueBooking/BhopalCity/BhopalCity";
 // import JabalpurCity from "./VenueBooking/JabalpurCity/JabalpurCity";
 import GwaliorCity from "./VenueBooking/GwaliorCity/GwaliorCity";
 import UjjainCity from "./VenueBooking/UjjainCity/UjjainCity";
-
 import BasicDetail from "./CreateArtistProfile/BasicDetail/BasicDetail";
-
 import EditArtistProfile from "./CreateArtistProfile/EditArtistProfile/EditArtistProfile";
 import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
@@ -99,12 +89,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/BasicDetail"
-            element={
-              <ProtectedRoute >
-                <BasicDetail />
-              </ProtectedRoute>
-            }
-          />
+            element={<ProtectedRoute ><BasicDetail /> </ProtectedRoute> } />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/EventRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -145,20 +130,16 @@ function App() {
           <Route path="/EventBookingModel6" element={<EventBookingModel6 />} />
           <Route path="/EventBookingModel7" element={<EventBookingModel7 />} />
           <Route path="/EventBookingModel8" element={<EventBookingModel8 />} />
-
-          {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
+         {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
          <Route path="/EventBookingModel10" element={<EventBookingModel10 />} /> 
          <Route path="/EventBookingModel11" element={<EventBookingModel11 />} /> 
          <Route path="/EventBookingModel12" element={<EventBookingModel12 />} /> 
          <Route path="/EventBookingModel13" element={<EventBookingModel13 />} /> 
-
-
          <Route path="/EventBookingModel14" element={<EventBookingModel14 />} /> 
          <Route path="/EventBookingModel15" element={<EventBookingModel15 />} /> 
          <Route path="/EventBookingModel16" element={<EventBookingModel16 />} /> 
          <Route path="/EventBookingModel17" element={<EventBookingModel17 />} />  */}
-
-          {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
+         {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
         </Routes>
         <Footer />
       </Router>

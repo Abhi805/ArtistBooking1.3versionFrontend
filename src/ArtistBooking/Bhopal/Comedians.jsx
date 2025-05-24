@@ -23,9 +23,7 @@ import artist15 from './assets33/artist15.jpeg';
 import headerBg1 from './assets33/headerBg1.avif';
 
 const Comedians = () => {  
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
+ 
 
   const artistData = [
     {
