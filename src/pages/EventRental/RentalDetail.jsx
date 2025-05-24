@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./ArtistDetail.css";
+// import "./ArtistDetail.css";
 import { useParams } from "react-router-dom";
 
 import image from "./assets33/AnmolGarg1.jpg";
