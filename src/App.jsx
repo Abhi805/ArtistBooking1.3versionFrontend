@@ -24,8 +24,7 @@ import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
 
-
-// import RentalDetail from "./pages/EventRental/RentalDetail";
+ import RentalDetail from "./pages/EventRental/RentalDetail";
 
 
 
@@ -127,7 +126,7 @@ function App() {
           <Route path="/Ujjain" element={<Ujjain />} />
 
 
-          {/* <Route path="/RentalDetail" element={<RentalDetail />}/> */}
+           <Route path="/RentalDetail" element={<RentalDetail />}/> 
 
 
 

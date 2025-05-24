@@ -14,7 +14,7 @@ const EventPlanner = () => {
     {
       image: "https://via.placeholder.com/300x150",
       title: "MICE Technology: AI, VR in Events",
-      date: "Apr 28, 2025",
+      date: "Apr 28, 2025",   
       category: "MICE Event",
       description: "Explore how AI is changing virtual events.",
     },

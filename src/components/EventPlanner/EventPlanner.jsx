@@ -21,8 +21,8 @@ import { Link } from "react-router-dom";
                 </div> 
               ))}
             </div>  
-
-            <div className="text-center mt-4">
+                     
+            <div className="text-center mt-4 text-white">
               <Link to="/contactUs" className="contact-btn">
                 Contact Us <span></span>
               </Link>

@@ -1,250 +1,111 @@
 import React, { useEffect } from "react";
+import "./RentalDetail.css";
+import Eqimage from "./Eqimage/Eq11.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import "./ArtistDetail.css";
-import { useParams } from "react-router-dom";
 
-import image from "./assets33/AnmolGarg1.jpg";
-import photo1 from "./assets33/AnmolGarg1.jpg";
-import photo2 from "./assets33/AnmolGarg2.jpg";
-import photo3 from "./assets33/AnmolGarg3.jpg";
-import photo4 from "./assets33/AnmolGarg4.jpg";
-import photo5 from "./assets33/AnmolGarg5.jpg";
-import photo6 from "./assets33/AnmolGarg6.jpg";  
-   
-const videoLinks = [
-  "https://www.youtube.com/embed/madhSjDzYEI?si=f7mMdRbtZgYLySpC",
-  "https://www.youtube.com/embed/wcU3yse-lDA?si=hVUszzGIHqegepV",
-  "https://www.youtube.com/embed/lGzqlL8UAxw?si=32D0jWL-aK6w73h0",
-  "https://www.youtube.com/embed/ho98tKWgh7U?si=bgvDNNyrWd6t8hmc",
-];
-                  
-const ArtistDetail = () => {   
+const RentalDetail = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 1000 });
   }, []);
 
-  const { id } = useParams();
-
   return (
-    <div className="artist-detail-page bg-light">
-      {/* Header Section  */}
-      <div className="container py-5 text-center">
-        <h2 className="display-5 fw-bold" data-aos="fade-down">
-          Artist<span>Profile</span>
-        </h2>
-        <p className="text-muted" data-aos="fade-up">
-          <strong>{id}</strong>
-        </p>
-      </div>
-
-      {/* Main Content  */}
-      <div className="container-fluid px-0">
-        {/* Top Section - Image, Form, Info Grid Together  */}
-        <div className="container" data-aos="fade-up">
-          <div className="row g-4 align-items-start">
-            {/* Artist Image  */}
-            <div className="col-lg-3 text-center">
-              <img
-                src={image}
-                alt="artist"
-                className="img-fluid rounded shadow-lg artist-main-img"
-              />
-            </div>
-            {/* 
-           Booking Form  */}
-            <div className="col-lg-5">
-              <div className="booking-form p-4 bg-white rounded shadow">
-                <h5 className="text-center mb-4 fw-bold">
-                  🎤 Book {id} for Your Event
-                </h5>
-                <form>
-                  <div className="row g-3">
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Full Name"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="tel"
-                        className="form-control"
-                        placeholder="Phone Number"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Email Address"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Event Type"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="date"
-                        className="form-control"
-                        placeholder="Event Date"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Budget"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="City Name"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Type of Requirement"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center mt-4">
-                    <button className="btn btn-danger w-100 fw-semibold">
-                      🚀 Submit Request
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            {/* Info Grid  */}
-            <div className="col-lg-4">
-              <div className="row g-3">
-                {[
-                  { icon: "⏱", text: "60-90 Mins" },
-                  { icon: "👥", text: "1-2 Members" },
-                  { icon: "🌍", text: "Worldwide" },
-                  { icon: "🗣", text: "English/Hindi" },
-                  { icon: "🎵", text: "Music/Genre" },
-                  { icon: " 🎤", text: "Artist Type / City" },
-                ].map((item, index) => (
-                  <div className="col-6" key={index}>
-                    <div
-                      className="info-card-glow text-center p-3 rounded h-100"
-                      data-aos="zoom-in-up"
-                    >
-                      <div className="display-5">{item.icon}</div>
-                      <div className="fw-semibold mt-2 fs-6">{item.text}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container py-4" data-aos="fade-up">
-          <h4 className="fw-bold mb-3">About {id}</h4>
-          <p className="text-muted">
-            {id} Anmol Garg, or "Corporate Babaji," as he likes to call himself,
-            is a Bengaluru stand-up comedian and has created his own space in
-            the genre of corporate and startup humor. The professional
-            qualifications of Garg are in software engineering and
-            entrepreneurship, and this real-life experience informs all his
-            comedic narratives, which run deep within the corporate
-            professionals who are relatable to them. He was working as a
-            software engineer for IBM before taking the plunge into comedy.
-            After that, he started Sales5X, which is a training and consulting
-            firm for sales. His experiences of having traveled through a variety
-            of jobs in the corporate world provided him with a treasure trove of
-            material, which he now turns into fun and relatable entertainment.
-            His acts generally focus on subjects like office politics, start-up
-            culture, and the brass tacks of corporate life-the realities of
-            homelessness for many working adults. Garg's unique style of comedic
-            play has attracted numerous admirers on platforms such as LinkedIn
-            and Instagram, where he shares excerpts of his performances and
-            interacts with the audience. Given his ability to speak about
-            workplace issues with humor and authenticity, Garg has become one of
-            the most sought-after performers at corporate events and
-            conferences. Indeed, he has been the performer in several prominent
-            events like the ET Soonicorns Summit 2023, where he enlightened and
-            entertained the audience regarding the insights into corporate
-            dynamics.
+    <div className="barco-projector">
+      {/* Header */}
+      <div className="header-section text-white text-center py-4">
+        <div className="container">
+          <h1 className="fw-bold" data-aos="fade-down">Barco Projector</h1>
+          <p className="lead px-2" data-aos="fade-up">
+            We offer <strong>Barco Projector on Rent</strong> along with complete solutions for your event production setup needs. <strong>Contact us today!</strong>
           </p>
         </div>
-        {/* gallery image */}
-        <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Photo Gallery</h5>
-          <div className="row g-3">
-            {[photo1, photo2, photo3, photo4, photo5, photo6].map((img, i) => (
-              <div key={i} className="col-6 col-md-3 kap">
-                <img
-                  src={img}
-                  className="img-fluid rounded shadow-sm hover-zoom"
-                  alt={`${id} Show ${i + 1}`}
-                />
+      </div>
+
+      {/* Main Content */}
+      <div className="container my-4">
+        <div className="row gy-4 align-items-center">
+          {/* Image */}
+          <div className="col-md-6 text-center element" data-aos="zoom-in">
+            <img
+              src={Eqimage}
+              alt="Barco Projector"
+              className="img-fluid rounded shadow projector-img"
+            />
+          </div>
+
+          {/* Info Box */}
+          <div className="col-md-6" data-aos="fade-left">
+            <div className="info-box p-3 p-md-4 bg-light rounded shadow-sm">
+              <p><strong>Category:</strong> Audio Visual</p>
+              <h2 className="fw-bold text-danger">BARCO PROJECTOR</h2>
+              <ul className="list-unstyled mt-3">
+                <li className="mb-2">
+                  <i className="bi bi-box-seam text-danger me-2"></i>
+                  <strong>Brand:</strong> Barco
+                </li>
+                <li className="mb-2">
+                  <i className="bi bi-currency-exchange text-danger me-2"></i>
+                  <strong>Rental:</strong> As per requirement
+                </li>
+                <li className="mb-2">
+                  <i className="bi bi-calendar-event text-danger me-2"></i>
+                  <strong>Use:</strong> Conference, Seminar, Concerts, DJ Night
+                </li>
+              </ul>
+              <div className="mt-3">
+                <h6 className="fw-bold">Available Cities:</h6>
+                <p className="city-list">
+                  Agartala, Agra, Ahmedabad, Amritsar, Asansol, Aurangabad, Bangalore, Bhopal, Chandigarh, Chennai, Coimbatore, Delhi, Goa, Gurugram, Hyderabad, Indore, Jaipur, Kolkata
+                </p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
-        <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Video Gallery</h5>
-          <div className="row g-3">
-            {videoLinks.map((link, i) => (
-              <div key={i} className="col-6 col-md-3">
-                <div className="ratio ratio-16x9">
-                  <iframe
-                    src={link}
-                    title={`Video ${i + 1}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+        {/* Booking Section */}
+        <div className="row gy-4 mt-5">
+          {/* Booking Form */}
+          <div className="col-lg-6" data-aos="fade-right">
+            <div className="booking-form p-3 p-md-4 bg-white rounded shadow">
+              <h5 className="text-center mb-3 fw-bold">Book Your Equipment</h5>
+              <form>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <input type="text" className="form-control" placeholder="Full Name" required />
+                  </div>
+                  <div className="col-md-6">
+                    <input type="tel" className="form-control" placeholder="Phone Number" required />
+                  </div>
+                  <div className="col-md-6">
+                    <input type="email" className="form-control" placeholder="Email Address" required />
+                  </div>
+                  <div className="col-md-6">
+                    <input type="text" className="form-control" placeholder="Equipment Name" />
+                  </div>
+                  <div className="col-12">
+                    <textarea className="form-control" rows="3" placeholder="Description"></textarea>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Review Anmol Garg {id}</h5>
-
-          {/* Rate Us Section */}
-          <div className="mb-3">
-            <label className="form-label fw-semibold">Rate Us:</label>
-            <div className="star-rating">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span key={star} className="star">
-                  &#9733;
-                </span>
-              ))}
+                <div className="text-center mt-3">
+                  <button className="btn btn-danger px-4 fw-semibold">🚀 Submit</button>
+                </div>
+              </form>
             </div>
           </div>
 
-          {/* Review Textarea */}
-          <textarea
-            className="form-control mb-3"
-            rows="3"
-            placeholder="Write your review..."
-          ></textarea>
-          <button className="btn btn-danger">Submit Review</button>
+          {/* Description */}
+          <div className="col-lg-6 d-flex align-items-center" data-aos="fade-left">
+            <div className="ps-lg-4">
+              <h3 className="fw-bold text-danger">Barco Projector Rentals for Concerts and Events</h3>
+              <p className="mt-3 text-muted">
+                We provide high-performance Barco projector rentals for concerts, corporate events, and festivals across India. With brightness options of 10,000 to 50,000 lumens, we ensure crystal-clear visuals in all lighting conditions.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default ArtistDetail;
+export default RentalDetail;

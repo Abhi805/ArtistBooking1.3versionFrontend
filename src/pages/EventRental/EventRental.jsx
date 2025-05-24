@@ -4,7 +4,6 @@ import "aos/dist/aos.css";
 import "./EventRental.css";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import Eq1 from "./Eqimage/Eq1.jpg";
 import Eq2 from "./Eqimage/Eq2.jpg";
 import Eq3 from "./Eqimage/Eq3.jpg";
@@ -14,7 +13,7 @@ import Eq6 from "./Eqimage/Eq6.jpg";
 import Eq7 from "./Eqimage/Eq7.jpg";
 import Eq8 from "./Eqimage/Eq8.jpg";
 import Eq9 from "./Eqimage/Eq9.jpg";
-import Eq10 from "./Eqimage/Eq10.jpg";    
+import Eq10 from "./Eqimage/Eq10.jpg";
 import Eq11 from "./Eqimage/Eq11.jpg";
 import Eq12 from "./Eqimage/Eq12.jpg";
 import Eq13 from "./Eqimage/Eq13.jpg";
@@ -39,70 +38,78 @@ const EventRental = () => {
 
   const artistData = [
     {
-      title: "Book The Best Live Band For Events And Weddings In Bhopal",
       artists: [
         {
           name: "Audio Interfaces And Di Boxes",
           image: Eq1,
           rating: "4.5★",
           reviews: "1010",
-          Suitablefor: "Conference,Seminar,Concerts,Corporate Events,College Fest ,DJ Night...",
+          Suitablefor:
+            "Conference,Seminar,Concerts,Corporate Events,College Fest ,DJ Night...",
         },
         {
           name: "Audio Mixing Console",
           image: Eq2,
           rating: "4.5★",
           reviews: "1010",
-          Suitablefor: "to control and balance audio levels of singers, bands, or DJs",
+          Suitablefor:
+            "to control and balance audio levels of singers, bands, or DJs",
         },
         {
           name: "Field Audio MixerRecorder (Zoom F-Control or similar)",
           image: Eq3,
           rating: "4.6★",
           reviews: "1375",
-          Suitablefor: "For recording live performances directly from stage mics",
+          Suitablefor:
+            "For recording live performances directly from stage mics",
         },
         {
           name: "Headphone",
           image: Eq4,
           rating: "4.4★",
           reviews: "1578",
-          Suitablefor: "Used by sound engineers, musicians, and DJs to monitor and mix audio accurately.",
+          Suitablefor:
+            "Used by sound engineers, musicians, and DJs to monitor and mix audio accurately.",
         },
         {
           name: "Intercom System",
           image: Eq5,
           rating: "4.6★",
           reviews: "1027",
-          Suitablefor: " Used by event crew to coordinate backstage, lighting, and sound operations.",
+          Suitablefor:
+            " Used by event crew to coordinate backstage, lighting, and sound operations.",
         },
         {
           name: "Laptop",
           image: Eq6,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: "High-performance laptops are used for music production, film editing, and design.",
+          Suitablefor:
+            "High-performance laptops are used for music production, film editing, and design.",
         },
         {
           name: "Laptop",
           image: Eq7,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: "High-performance laptops are used for music production, film editing, and design.",
+          Suitablefor:
+            "High-performance laptops are used for music production, film editing, and design.",
         },
         {
           name: "Lights",
           image: Eq8,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: "To enhance stage presence, audience experience, and ambiance (weddings, concerts, parties).",
+          Suitablefor:
+            "To enhance stage presence, audience experience, and ambiance (weddings, concerts, parties).",
         },
         {
           name: "Colour Lights",
-          image:  Eq9,
+          image: Eq9,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: " For decoration, stage lighting, and dance floor effects.",
+          Suitablefor:
+            " For decoration, stage lighting, and dance floor effects.",
         },
         {
           name: "Mic",
@@ -116,14 +123,16 @@ const EventRental = () => {
           image: Eq11,
           rating: "4.6★",
           review: "1027",
-           Suitablefor: "For clear voice capture while monitoring audio in real-time.",
+          Suitablefor:
+            "For clear voice capture while monitoring audio in real-time.",
         },
         {
           name: "Pioneer DJ Controller (CDJ + DJM Mixer)",
-          image:Eq12,
+          image: Eq12,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: " DJs use it to perform live sets and mix tracks seamlessly.",
+          Suitablefor:
+            " DJs use it to perform live sets and mix tracks seamlessly.",
         },
         {
           name: "Mic",
@@ -137,49 +146,56 @@ const EventRental = () => {
           image: Eq14,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: " To add drama and highlight light beams or laser effects.",
+          Suitablefor:
+            " To add drama and highlight light beams or laser effects.",
         },
         {
           name: "Smoke Machine",
           image: Eq15,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: "Powerful output with a quick warm-up,Remote control included for easy operation",
+          Suitablefor:
+            "Powerful output with a quick warm-up,Remote control included for easy operation",
         },
         {
           name: "Speaker",
           image: Eq16,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: "Studio monitors are used for accurate sound playback during mixing and mastering.",
+          Suitablefor:
+            "Studio monitors are used for accurate sound playback during mixing and mastering.",
         },
         {
           name: "Speakers And Wireless Mic",
           image: Eq17,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: "Speakers convert electrical audio signals into sound to amplify music, speech, or any audio for listeners.",
+          Suitablefor:
+            "Speakers convert electrical audio signals into sound to amplify music, speech, or any audio for listeners.",
         },
         {
           name: "Speakers",
           image: Eq18,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: "large-sized loudspeakers designed to deliver high power and loud sound output for big venues and outdoor events.",
+          Suitablefor:
+            "large-sized loudspeakers designed to deliver high power and loud sound output for big venues and outdoor events.",
         },
         {
           name: "Stage Lighting",
           image: Eq19,
           rating: "4.6★",
           review: "1027",
-         Suitablefor: " Ensures performers and key elements are clearly seen by the audience.",
+          Suitablefor:
+            " Ensures performers and key elements are clearly seen by the audience.",
         },
         {
           name: "Stage Lights",
           image: Eq20,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: " Ensures performers and key elements are clearly seen by the audience.",
+          Suitablefor:
+            " Ensures performers and key elements are clearly seen by the audience.",
         },
         {
           name: "Studio Condenser Microphone",
@@ -193,31 +209,45 @@ const EventRental = () => {
           image: Eq22,
           rating: "4.6★",
           review: "1027",
-          Suitablefor: "Cables & Accessories Control Systems Visual Equipment Audio Equipment",
+          Suitablefor:
+            "Cables & Accessories Control Systems Visual Equipment Audio Equipment",
         },
         {
           name: "Stage Sound System Package",
           image: Eq23,
           rating: "4.6★",
           review: "1027",
-        Suitablefor: "A Stage Sound System Package is a complete set of audio equipment designed to provide clear, powerful, and balanced sound reinforcement for live performances on stage.",
+          Suitablefor:
+            "A Stage Sound System Package is a complete set of audio equipment designed to provide clear, powerful, and balanced sound reinforcement for live performances on stage.",
         },
         {
           name: "Sound Package Rental",
           image: Eq24,
           rating: "4.6★",
           review: "1027",
-           Suitablefor: "Sound Package Rental refers to renting a complete set of audio equipment for events, including speakers, microphones, mixers, amplifiers, and accessories, for temporary use",
+          Suitablefor:
+            "Sound Package Rental refers to renting a complete set of audio equipment for events, including speakers, microphones, mixers, amplifiers, and accessories, for temporary use",
         },
-       
       ],
     },
   ];
 
   return (
-    
-          
-       <div className="container my-5">
+    <div className="container-fluid my-5">
+      <div className="venue-header text-white">
+        <div className="container">
+          <h1>Event Equipment Rental</h1>
+          <p className="text-capitalize text-white">
+            Welcome to Make your event truly spectacular with our top-quality
+            event equipment on rent. From professional sound systems, dazzling
+            lighting setups, LED walls, trussing, projectors to stage décor
+            elements – we provide everything you need to elevate your event
+            experience.
+          </p>
+        </div>
+      </div>
+
+      <div className="container">
         {artistData.map((section, index) => (
           <div key={index} className="mb-5" data-aos="fade-up">
             <h5 className="fw-bold mb-4">{section.title}</h5>
@@ -230,30 +260,32 @@ const EventRental = () => {
                       className="card-img-top"
                       alt={artist.name}
                     />
+
                     <div className="card-body">
                       <h6 className="card-title fw-bold">{artist.name}</h6>
                       <p className="text-muted mb-1">
                         ⭐ {artist.rating} ({artist.reviews} Reviews)
                       </p>
                       <p className="text-muted small">
-                        Suitablefor: {artist. Suitablefor}
+                        Suitablefor: {artist.Suitablefor}
                       </p>
-                     <div className="text-center">
-                     <Link className="btn btn-outline-danger" to="/RentalDetail">
-                    Book Now 
-                   </Link>
-                  </div>
+                      <div className="text-center">
+                        <Link
+                          className="btn btn-outline-danger text-white"
+                          to="/RentalDetail"
+                        >
+                          Book Now
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            
-
-     </div>
+          </div>
         ))}
       </div>
-    
+    </div>
   );
 };
 

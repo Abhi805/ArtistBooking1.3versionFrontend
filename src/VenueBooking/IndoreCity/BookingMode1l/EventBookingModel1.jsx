@@ -32,7 +32,7 @@ const cardData = [
   {
     title: "Good For Occasion",
 
-    icon: <FaThumbsUp />,
+    icon: <FaThumbsUp />,  
   },
   {
     title: "Food",
