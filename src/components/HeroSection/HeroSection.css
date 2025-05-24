@@ -10,10 +10,10 @@
 }
 
 
-/* .swiper-button-next,
+ .swiper-button-next,
 .swiper-button-prev {
   color: #000;
-} */
+} 
 
 .highlight{
   color: red;
@@ -21,7 +21,7 @@
 }
 .mySwiper{
   background-color: #fcf2ed;
- 
+   
 
 }
 /* Base custom button styles */
@@ -39,7 +39,7 @@
 
 /* Primary filled button */
 .primary-btn {
-  background-color: #ff3c00;  /* Hire4Event's reddish-orange */
+  background-color: #ff3c00;
   color: white;
   border: 2px solid #ff3c00;
 }

@@ -12,7 +12,7 @@ import coii from '../../assets/coii.jpeg';
 import dabar from '../../assets/dabar.jpeg';
 import dna from '../../assets/dna.jpeg';
 import eag from '../../assets/eag.jpeg';
-import hdfclife from '../../assets/hdfclife.jpeg';
+import hdfclife from '../../assets/hdfclife.jpeg';  
 import hettich from '../../assets/hettich.jpeg';  
 import incridableindia from '../../assets/incridableindia.jpeg';
 import johndeere from '../../assets/johndeere.jpeg';
@@ -67,14 +67,18 @@ export default function AboutUs() {
 
   return (
     <>
-      <section className="hero-section text-white d-flex align-items-center justify-content-center">
-        <div className="container text-center" data-aos="zoom-in">
-          <h1 className="hero-title" data-aos="fade-up" data-aos-delay="200">
-            Welcome To <br /> GNV India Entertainment
-          </h1>
+    
+        <div className="venue-header text-white">
+        <div className="container">
+          <h1>About Us</h1>
+          <p className="text-capitalize text-white">
+            Welcome to Make your event truly spectacular with our top-quality
+          GNV India Entertainment Pvt. Ltd. is a leading event management and entertainment company, delivering extraordinary experiences that leave lasting impressions. With a creative edge and a passion for excellence
+          </p>
         </div>
-      </section>  
-
+      </div>
+     
+  
       <section className="about-section py-5">
         <div className="container">
           <div className="row justify-content-center">

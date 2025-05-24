@@ -18,7 +18,7 @@
   color: #222;
   margin-top: 8px;
 }
-
+    
 .highlight-red {
   color: #e01010;
 }
@@ -81,7 +81,7 @@
 .contact-btn {
   display: inline-block;
   padding: 10px 40px;
-  background-color: #0062ff;
+   background: linear-gradient(45deg, #cd211d, #e95200);
   color: white;
   font-weight: 600;
   border-radius: 40px;
@@ -90,7 +90,7 @@
 }
 
 .contact-btn:hover {
-  background-color: #004ecc;
+  background: linear-gradient(45deg, #cd211d, #e95200);
   transform: scale(1.05);
   color: white;
 }

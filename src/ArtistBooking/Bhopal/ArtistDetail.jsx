@@ -18,7 +18,7 @@ const videoLinks = [
   "https://www.youtube.com/embed/lGzqlL8UAxw?si=32D0jWL-aK6w73h0",
   "https://www.youtube.com/embed/ho98tKWgh7U?si=bgvDNNyrWd6t8hmc",
 ];
-  
+                  
 const ArtistDetail = () => {   
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
