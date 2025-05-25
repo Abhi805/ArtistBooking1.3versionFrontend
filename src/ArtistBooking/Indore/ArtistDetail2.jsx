@@ -3,9 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import "./ArtistDetail2.css";
+import { useParams } from "react-router-dom";
 
 const ArtistDetail2 = () => {
-  const id = "68320ff7556373681251df54";
+
+const { id } = useParams(); // Yeh 'id' aapko URL se milega
   const [artist, setArtist] = useState(null);
   const [imageSrc, setImageSrc] = useState([]);
 
