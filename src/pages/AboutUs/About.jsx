@@ -4,32 +4,32 @@ import "aos/dist/aos.css";
 import "./About.css";
 
 // Import all logo images from assets
-import accenture from '../../assets/accenture.jpeg';
-import bankmaharastra from '../../assets/bankmaharastra.jpeg';
-import axsibank from '../../assets/axsibank.jpeg';
-import cipla from '../../assets/cipla.jpeg';
-import coii from '../../assets/coii.jpeg';
-import dabar from '../../assets/dabar.jpeg';
-import dna from '../../assets/dna.jpeg';
-import eag from '../../assets/eag.jpeg';
-import hdfclife from '../../assets/hdfclife.jpeg';  
-import hettich from '../../assets/hettich.jpeg';  
-import incridableindia from '../../assets/incridableindia.jpeg';
-import johndeere from '../../assets/johndeere.jpeg';
-import unionbank from '../../assets/unionbank.jpeg';
-import ultratrack from '../../assets/ultratrack.jpeg';
-import srf from '../../assets/srf.jpeg';
-import sopa from '../../assets/sopa.jpeg';
-import solidaridad from '../../assets/solidaridad.jpeg';
-import seventy from '../../assets/seventy.jpeg';
-import sbilife from '../../assets/sbilife.jpeg';
-import WM from '../../assets/WM.jpeg';
-import sbigeneral from '../../assets/sbigeneral.jpeg';
-import sbi from '../../assets/sbi.jpeg';
-import samsung from '../../assets/samsung.jpeg';
-import nationalinstitude from '../../assets/nationalinstitude.jpeg';
-import lic from '../../assets/lic.jpeg';
-import lenskart from '../../assets/lenskart.jpeg';
+import accenture from "../../assets/accenture.jpeg";
+import bankmaharastra from "../../assets/bankmaharastra.jpeg";
+import axsibank from "../../assets/axsibank.jpeg";
+import cipla from "../../assets/cipla.jpeg";
+import coii from "../../assets/coii.jpeg";
+import dabar from "../../assets/dabar.jpeg";
+import dna from "../../assets/dna.jpeg";
+import eag from "../../assets/eag.jpeg";
+import hdfclife from "../../assets/hdfclife.jpeg";
+import hettich from "../../assets/hettich.jpeg";
+import incridableindia from "../../assets/incridableindia.jpeg";
+import johndeere from "../../assets/johndeere.jpeg";
+import unionbank from "../../assets/unionbank.jpeg";
+import ultratrack from "../../assets/ultratrack.jpeg";
+import srf from "../../assets/srf.jpeg";
+import sopa from "../../assets/sopa.jpeg";
+import solidaridad from "../../assets/solidaridad.jpeg";
+import seventy from "../../assets/seventy.jpeg";
+import sbilife from "../../assets/sbilife.jpeg";
+import WM from "../../assets/WM.jpeg";
+import sbigeneral from "../../assets/sbigeneral.jpeg";
+import sbi from "../../assets/sbi.jpeg";
+import samsung from "../../assets/samsung.jpeg";
+import nationalinstitude from "../../assets/nationalinstitude.jpeg";
+import lic from "../../assets/lic.jpeg";
+import lenskart from "../../assets/lenskart.jpeg";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -38,10 +38,32 @@ export default function AboutUs() {
   }, []);
 
   const services = [
-    accenture, bankmaharastra, axsibank, cipla, coii, dabar, dna, eag, hdfclife,
-    hettich, incridableindia, johndeere, unionbank, ultratrack, srf, sopa,
-    solidaridad, seventy, sbilife, WM, sbigeneral, sbi, samsung, nationalinstitude,
-    lic, lenskart
+    accenture,
+    bankmaharastra,
+    axsibank,
+    cipla,
+    coii,
+    dabar,
+    dna,
+    eag,
+    hdfclife,
+    hettich,
+    incridableindia,
+    johndeere,
+    unionbank,
+    ultratrack,
+    srf,
+    sopa,
+    solidaridad,
+    seventy,
+    sbilife,
+    WM,
+    sbigeneral,
+    sbi,
+    samsung,
+    nationalinstitude,
+    lic,
+    lenskart,
   ];
 
   const renderCardRow = (cards, direction, delayStart = 0) => (
@@ -54,11 +76,7 @@ export default function AboutUs() {
           data-aos-delay={delayStart + index * 50}
         >
           <div className="logo-card shadow-sm">
-            <img
-              src={image}
-              alt="logo"
-              className="logo-img"
-            />
+            <img src={image} alt="logo" className="logo-img" />
           </div>
         </div>
       ))}
@@ -67,30 +85,36 @@ export default function AboutUs() {
 
   return (
     <>
-    
-        <div className="venue-header text-white">
+      <div className="venue-header text-white">
         <div className="container">
           <h1>About Us</h1>
           <p className="text-capitalize text-white">
             Welcome to Make your event truly spectacular with our top-quality
-          GNV India Entertainment Pvt. Ltd. is a leading event management and entertainment company, delivering extraordinary experiences that leave lasting impressions. With a creative edge and a passion for excellence
+            GNV India Entertainment Pvt. Ltd. is a leading event management and
+            entertainment company, delivering extraordinary experiences that
+            leave lasting impressions. With a creative edge and a passion for
+            excellence
           </p>
         </div>
       </div>
-     
-  
+
       <section className="about-section py-5">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div
+              className="col-lg-8 text-center"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <h2 className="about-title">
                 About <span className="highlight">GNV India Entertainment</span>
               </h2>
               <p className="about-text mt-3 text-capitalize text-black">
-                GNV India Event Pvt. Ltd. is a visionary event management and entertainment company,
-                dedicated to designing immersive experiences across India. With expertise in celebrity
-                appearances, international acts, and large-scale event execution, we turn ideas into
-                captivating realities.
+                GNV India Event Pvt. Ltd. is a visionary event management and
+                entertainment company, dedicated to designing immersive
+                experiences across India. With expertise in celebrity
+                appearances, international acts, and large-scale event
+                execution, we turn ideas into captivating realities.
               </p>
               <Link
                 to="/contactUs"
@@ -107,7 +131,11 @@ export default function AboutUs() {
 
       <section className="services-section py-5 bg-light">
         <div className="container">
-          <h2 className="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+          <h2
+            className="text-center mb-5"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Our <span className="highlight">Clients</span>
           </h2>
 
@@ -117,12 +145,10 @@ export default function AboutUs() {
           {/* Line 2 */}
           {renderCardRow(services.slice(9, 18), "fade-left", 100)}
 
-          {/* Line 3 */}  
+          {/* Line 3 */}
           {renderCardRow(services.slice(18, 27), "fade-right", 100)}
         </div>
       </section>
     </>
   );
 }
-  
-

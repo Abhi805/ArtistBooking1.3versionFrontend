@@ -29,7 +29,7 @@ const Home = () => {
       <div style={{padding:"0px"}} className="container-fluid">
         <Bookcard />
       </div>     
-      <div>
+      <div> 
         <EventPlanner />
       </div> 
       <div className="mb-5" > 

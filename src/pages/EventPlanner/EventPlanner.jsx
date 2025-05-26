@@ -18,9 +18,9 @@ const EventPlanner = () => {
       category: "MICE Event",
       description: "Explore how AI is changing virtual events.",
     },
-    {
+    {   
       image: "https://via.placeholder.com/300x150",
-      title: "Corporate Trip Planning Services in India",
+      title: "Corporate Trip Planning Services in India",    
       date: "Apr 23, 2025",
       category: "Trip Planner",
       description: "Professional services for smooth travel planning.",

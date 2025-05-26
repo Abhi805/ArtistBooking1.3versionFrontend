@@ -1,31 +1,31 @@
 import React from "react";
 import "./BookCard.css";
 
-import OrganizeConference from './assets3/gop.jpg';
+import volunteer from './assets3/volunteer.jpeg';
 import Bookartists from './assets3/Bookartists.jpeg';
 import renteventequipment from './assets3/renteventequipment.jpeg';
-import plancorporateoffsite from './assets3/plancorporateoffsite.jpg';
+import eventplanner from './assets3/planner.jpeg';
 import bookeventvenue from './assets3/bookeventvenue.webp';
 
 export default function BookCard() {
   const cardData = [
     {
-      img: OrganizeConference,   
+      img: volunteer,   
       title: "Book Volunteer",
       btn: "Book Now",
-    },
+    },  
     {
-      img: Bookartists,
+      img: Bookartists,  
       title: "Book Artists",   
       btn: "Book Now",
     },
-    {
+    {   
       img: renteventequipment,
       title: "Rent Event Equipment",
       btn: "Book Now", 
     },
     {
-      img: plancorporateoffsite,
+      img: eventplanner,
       title: "Event Planner",
       btn: "Book Now",
     },
@@ -37,10 +37,10 @@ export default function BookCard() {
   ];
 
   return (
-    <div className="container bookcard-wrapper py-5">
+    <div className="container-fluid bookcard-wrapper py-5">
      {/* 👇 Add your heading here */}
    <h2 className="section-title mb-5 fw-bold">
-    What We Offer
+    What We Offer  
     </h2>
        <div className="row justify-content-center px-3 px-md-0">
         {cardData.slice(0, 3).map((card, index) => (

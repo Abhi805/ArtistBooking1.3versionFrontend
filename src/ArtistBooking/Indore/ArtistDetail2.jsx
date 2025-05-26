@@ -125,7 +125,7 @@ const { id } = useParams(); // Yeh 'id' aapko URL se milega
                     <div className="col-md-6">
                       <input
                         type="text"
-                        className="form-control"
+ className="form-control"
                         placeholder="Event Type"
                       />
                     </div>

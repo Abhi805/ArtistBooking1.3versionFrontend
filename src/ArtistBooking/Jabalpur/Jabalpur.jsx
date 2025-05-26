@@ -13,7 +13,7 @@ import artist4 from '../../ArtistBooking/Jabalpur/assets31/artist4.jpg';
 const Jabalpur = () => {
   useEffect(() => {
     AOS.init({ duration: 800 });
-  }, []);     
+  }, []);        
 
   const navigate = useNavigate();    
 
@@ -34,12 +34,16 @@ const Jabalpur = () => {
 
   return (
     <div className="artist-booking">
-      <div className="artist-header text-white py-5 text-center">
+     
+
+
+
+      <div className="venue-header text-white">
         <div className="container">
-          <h1 className="fw-bold">Book Top Artists In Jabalpur</h1>
-          <p className="mt-3"
-            style={{color:"white"}}>
-            Book live bands, singers, comedians, celebrities, and more with GNV India. Find the perfect artist for your event in Jabalpur.
+          <h1>Book Top Artists In Jabalpur</h1>
+          <p className="text-capitalize text-white">
+            Book live bands, singers, comedians, celebrities, and more with GNV
+            India. Find the perfect artist for your event in Bhopal.
           </p>
         </div>
       </div>

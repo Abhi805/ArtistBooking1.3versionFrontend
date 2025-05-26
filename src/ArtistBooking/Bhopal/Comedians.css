@@ -15,8 +15,8 @@
   width: 100%;
   height: 100%;
 }
-
-.animated-header > .container {
+  
+.animated-header > .container {   
   position: relative;
   z-index: 2;    
 }
