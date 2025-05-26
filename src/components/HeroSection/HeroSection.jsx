@@ -1,8 +1,5 @@
-
-
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, Parallax } from "swiper/modules";
+import { Pagination, Autoplay, Parallax } from "swiper/modules";
 import image1 from "../../assets/corporate.png";
 import image2 from "../../assets/conference.webp";
 import image3 from "../../assets/Artist.png";

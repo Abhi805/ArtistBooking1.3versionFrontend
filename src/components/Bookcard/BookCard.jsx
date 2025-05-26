@@ -37,6 +37,7 @@ export default function BookCard() {
   ];
 
   return (
+    <div className="container-fluid kappp">
     <div className="container bookcard-wrapper py-5">
      {/* 👇 Add your heading here */}
    <h2 className="section-title mb-5 fw-bold">
@@ -79,6 +80,7 @@ export default function BookCard() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }
