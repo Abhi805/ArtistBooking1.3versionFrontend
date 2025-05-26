@@ -119,7 +119,7 @@ function App() {
           <Route path="/Comedians" element={<Comedians />} />
           <Route path="/ArtistDetail" element={<ArtistDetail />} />
           <Route path="/ArtistDetail1" element={<ArtistDetail1 />} />
-          <Route path="/ArtistDetail2" element={<ArtistDetail2 />} />
+          <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/ArtistDetail3" element={<ArtistDetail3 />} />
           <Route path="/ArtistDetail4" element={<ArtistDetail4 />} />
 
