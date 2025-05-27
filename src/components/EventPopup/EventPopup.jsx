@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./EventPopup.css";
-import image from "./eventimage.jpg";
+import image from "./pop.jpeg";
 
 const EventPopup = () => {
   const [show, setShow] = useState(false);
@@ -50,21 +50,17 @@ const EventPopup = () => {
                 <Form.Select>
                   <option>Services</option>
                   <option>Event Planning</option>
-                  <option>Wedding</option>
-                  <option>Corporate</option>
+                  <option>Artist Booking</option>
+                  <option>Venue Booking</option>
+                  <option>Volunteer Booking</option>
+                  <option>Event Rental</option>
+                     <option>Other</option>
+
                 </Form.Select>
               </div>
+    
               <div className="col-md-6">
-                <Form.Control type="text" placeholder="Your Company Name" />
-              </div>
-              <div className="col-md-6">
-                <Form.Select>
-                  <option>Budget</option>
-                  <option>1L to 5L</option>
-                  <option>5L to 10L</option>
-                  <option>10L to 25L</option>
-                  <option>25L+</option>
-                </Form.Select>
+                
               </div>
               <div className="col-12">
                 <Form.Check

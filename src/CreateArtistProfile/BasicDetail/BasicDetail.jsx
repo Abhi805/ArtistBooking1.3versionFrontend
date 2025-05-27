@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const BasicDetail = () => {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -20,55 +21,236 @@ const BasicDetail = () => {
     location: "",
     description: "",
     images: [],
-    videoLink: "",
+    videoLink: [""], // Optional video links
     profileTitle: "",
     profileKeywords: "",
     profileDescription: "",
   });
 
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  // Update preview when images change
+  useEffect(() => {
+    if (formData.images.length > 0) {
+      const objectUrl = URL.createObjectURL(formData.images[0]);
+      setPreviewUrl(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
+    } else {
+      setPreviewUrl(null);
+    }
+  }, [formData.images]);
+
+ // Validate mobile: allows optional +91 and exactly 10 digits
+const validateMobile = (mobile) => {
+  const regex = /^(?:\+91[-\s]?)?[0]?[6-9]\d{9}$/;
+  return regex.test(mobile);
+};
+
+
+  // Validate YouTube URL (only if not empty)
+const isValidYoutubeUrl = (url) => {
+  if (!url.trim()) return true;
+  const ytRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}(&.*|\?.*)?$/;
+  return ytRegex.test(url.trim());
+};
+
+  // Check duplicate YouTube URLs (ignoring empty)
+  const hasDuplicateYoutubeUrls = (urls) => {
+    const filtered = urls.filter((u) => u.trim() !== "");
+    return new Set(filtered).size !== filtered.length;
+  };
+
+  // Handle text input changes
   const handleChange = (e) => {
     const { id, value } = e.target;
+
+    // Mobile validation on typing - only digits allowed
+    if (id === "mobile") {
+      if (value && !/^\d*$/.test(value)) {
+        toast.error("Mobile number must contain digits only");
+        return;
+      }
+    }
+
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
+  // Handle video link input change
+const handleVideoLinkChange = (index, value) => {
+  if (value.trim() === '') {
+    // Empty allowed
+    const newLinks = [...formData.videoLink];
+    newLinks[index] = value;
+    setFormData({ ...formData, videoLink: newLinks });
+    return;
+  }
+
+  if (isValidYoutubeUrl(value)) {
+    const newLinks = [...formData.videoLink];
+    newLinks[index] = value;
+    setFormData({ ...formData, videoLink: newLinks });
+  } else {
+    const minLength = 15;
+    if (value.length >= minLength) {
+      toast.error(`Invalid YouTube URL at position ${index + 1}`);
+    }
+    const newLinks = [...formData.videoLink];
+    newLinks[index] = value;
+    setFormData({ ...formData, videoLink: newLinks });
+  }
+};
+
+
+  // Add new video link input (max 6)
+  const addVideoLinkInput = () => {
+    if (formData.videoLink.length >= 6) {
+      toast.error("Maximum 6 YouTube URLs allowed");
+      return;
+    }
+    setFormData((prev) => ({ ...prev, videoLink: [...prev.videoLink, ""] }));
+  };
+
+  // Remove video link input by index
+  const removeVideoLinkInput = (index) => {
+    if (formData.videoLink.length === 1) return; // keep at least one input
+    const newVideoLinks = formData.videoLink.filter((_, i) => i !== index);
+    setFormData((prev) => ({ ...prev, videoLink: newVideoLinks }));
+  };
+
+  // Handle image upload (max 5 unique)
   const handleImageChange = (e) => {
+    const newFiles = Array.from(e.target.files);
+
+    // Filter duplicates by name+size
+    const uniqueNewFiles = newFiles.filter(
+      (file) =>
+        !formData.images.some(
+          (img) => img.name === file.name && img.size === file.size
+        )
+    );
+
+    if (formData.images.length + uniqueNewFiles.length > 5) {
+      toast.error("You can upload up to 5 unique images only");
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
-      images: Array.from(e.target.files),
+      images: [...prev.images, ...uniqueNewFiles],
     }));
   };
 
+  // Remove image by index
+  const removeImage = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index),
+    }));
+  };
+
+  // Validate required fields per step
+  const validateStep = () => {
+    if (step === 1) {
+      if (
+        !formData.firstName.trim() ||
+        !formData.lastName.trim() ||
+        !formData.email.trim() ||
+        !formData.mobile.trim()
+      ) {
+        toast.error("Please fill all required fields in Basic Details");
+        return false;
+      }
+      if (!validateMobile(formData.mobile.trim())) {
+        toast.error("Mobile number must be 10 to 15 digits");
+        return false;
+      }
+    } else if (step === 2) {
+      if (
+        !formData.city.trim() ||
+        !formData.duration.trim() ||
+        !formData.travel.trim() ||
+        !formData.category.trim()
+      ) {
+        toast.error("Please fill all required fields in Performance Info");
+        return false;
+      }
+    } else if (step === 3) {
+      if (
+        !formData.genre.trim() ||
+        !formData.team.trim() ||
+        !formData.location.trim() ||
+        !formData.description.trim()
+      ) {
+        toast.error("Please fill all required fields in Additional Info");
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Next step handler
   const handleNext = (e) => {
     e.preventDefault();
-    setStep((prev) => prev + 1);
+    if (validateStep()) {
+      setStep((prev) => prev + 1);
+    }
   };
 
+  // Previous step handler
   const handlePrev = (e) => {
     e.preventDefault();
-    setStep((prev) => prev - 1);
+    if (step > 1) setStep((prev) => prev - 1);
   };
 
+  // Submit form handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate final step fields
+    if (!validateStep()) return;
+
+    // Validate YouTube URLs if any filled
+    const nonEmptyLinks = formData.videoLink.filter((v) => v.trim() !== "");
+
+    if (nonEmptyLinks.length > 6) {
+      toast.error("Maximum 6 YouTube URLs allowed");
+      return;
+    }
+
+    if (hasDuplicateYoutubeUrls(nonEmptyLinks)) {
+      toast.error("Duplicate YouTube URLs found");
+      return;
+    }
+
+    for (const link of nonEmptyLinks) {
+      if (!isValidYoutubeUrl(link)) {
+        toast.error("Invalid YouTube URL found");
+        return;
+      }
+    }
+
+    setLoading(true);
 
     try {
       const submitData = new FormData();
 
-      for (const key in formData) {
-        if (key !== "images") {
-          submitData.append(key, formData[key]);
+      // Append fields to formData for submission
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key === "images") {
+          value.forEach((file) => submitData.append("images", file));
+        } else if (key === "videoLink") {
+          nonEmptyLinks.forEach((link) =>
+            submitData.append("videoLink[]", link)
+          );
+        } else {
+          submitData.append(key, value);
         }
-      }
-
-      formData.images.forEach((file) => {
-        submitData.append("images", file);
       });
 
-      const response = await axios.post(
-        "http://localhost:5000/api/artists/add",
-        submitData,
-        { withCredentials: true }
-      );
+      // Replace URL with your backend endpoint
+      await axios.post("http://localhost:5000/api/artists/add", submitData, {
+        withCredentials: true,
+      });
 
       toast.success("Profile submitted successfully!");
       setStep(1);
@@ -86,14 +268,16 @@ const BasicDetail = () => {
         location: "",
         description: "",
         images: [],
-        videoLink: "",
+        videoLink: [""],
         profileTitle: "",
         profileKeywords: "",
         profileDescription: "",
       });
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast.error("Error: " + (error.response?.data?.message || error.message));
+    } catch (err) {
+      toast.error("Error submitting form");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -101,338 +285,372 @@ const BasicDetail = () => {
     <div className="artist-profile-form py-5">
       <ToastContainer />
       <div className="container">
-        <div className="row mb-4">
-          <div className="col-12">
-            <h2 className="section-heading">
-              {step === 1
-                ? "Create Artist Profile"
-                : step === 2
-                ? "Performance Information"
-                : step === 3
-                ? "Additional Performance Info"
-                : "Media Uploads"}
-            </h2>
-          </div>
+        {/* Step Indicator */}
+        <div className="mb-4 text-center">
+          {[1, 2, 3, 4].map((s) => (
+            <span
+              key={s}
+              className={`mx-2 px-3 py-2 rounded ${
+                step === s ? "bg-primary text-white" : "bg-light text-secondary"
+              }`}
+              style={{ cursor: "pointer" }}
+              onClick={() => setStep(s)}
+            >
+              Step {s}
+            </span>
+          ))}
         </div>
 
-        <div className="row g-4 align-items-start p-4 shadow">
+        <div className="row g-4 align-items-start p-4 shadow rounded">
           <div className="col-md-4 text-center">
             <div className="profile-section mb-3">
               <img
+                style={{ height: "200px", width: "200px", objectFit: "cover" }}
                 src={
-                  formData.images.length > 0
-                    ? URL.createObjectURL(formData.images[0])
-                    : "https://via.placeholder.com/150?text=Profile+Image"
+                  previewUrl ||
+                  "https://via.placeholder.com/200?text=Profile+Image"
                 }
-                alt="Profile"
-                className="upload-profile"
+                alt="Profile Preview"
+                className="upload-profile rounded"
               />
             </div>
-            <div className="upload-btn-wrapper">
+            <div className="upload-btn-wrapper mb-4">
               <input
                 type="file"
-                name="images"
-                className="form-control upload-btn"
                 multiple
+                accept="image/*"
                 onChange={handleImageChange}
+                className="form-control"
               />
+              <small className="text-muted">Upload up to 5 unique images</small>
             </div>
-          </div>
 
+            {/* Show uploaded images with remove button */}
+            <div className="d-flex flex-wrap justify-content-center gap-2">
+              {formData.images.map((file, i) => (
+                <div
+                  key={i}
+                  className="position-relative"
+                  style={{ width: 60, height: 60 }}
+                >
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt={`upload-${i}`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: 4,
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeImage(i)}
+                    className="btn btn-danger btn-sm position-absolute top-0 end-0"
+                    style={{ zIndex: 10 }}
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>{" "}
           <div className="col-md-8">
-            <div className="form-card p-4">
-              <form
-                onSubmit={step === 4 ? handleSubmit : handleNext}
-                method="POST"
-                encType="multipart/form-data"
-              >
-                {step === 1 && (
-                  <>
-                    <h5 className="mb-4">Basic Details</h5>
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="firstName" className="form-label">
-                          First name*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="firstName"
-                          value={formData.firstName}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="lastName" className="form-label">
-                          Last name*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="lastName"
-                          value={formData.lastName}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
+            <form onSubmit={step === 4 ? handleSubmit : handleNext}>
+              {/* Step 1: Basic Details */}
+              {step === 1 && (
+                <>
+                  <h4>Basic Details</h4>
+                  <div className="mb-3">
+                    <label htmlFor="firstName" className="form-label">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="lastName" className="form-label">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="mobile" className="form-label">
+                      Mobile Number *
+                    </label>
+                    <input
+                      type="text"
+                      id="mobile"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                      maxLength={15}
+                      className="form-control"
+                      required
+                    />
+                    <small className="form-text text-muted">
+                      Digits only, 10 characters
+                    </small>
+                  </div>
+                </>
+              )}
 
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="email" className="form-label">
-                          Email Address*
-                        </label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="mobile" className="form-label">
-                          Mobile No*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="mobile"
-                          value={formData.mobile}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
+              {/* Step 2: Performance Info */}
+              {step === 2 && (
+                <>
+                  <h4>Performance Info</h4>
+                  <div className="mb-3">
+                    <label htmlFor="city" className="form-label">
+                      City *
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="duration" className="form-label">
+                      Duration *
+                    </label>
+                    <input
+                      type="text"
+                      id="duration"
+                      value={formData.duration}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="travel" className="form-label">
+                      Travel *
+                    </label>
+                    <input
+                      type="text"
+                      id="travel"
+                      value={formData.travel}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="category" className="form-label">
+                      Category *
+                    </label>
+                    <input
+                      type="text"
+                      id="category"
+                      value={formData.category}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                </>
+              )}
 
-                    <div className="text-start">
-                      <button type="submit" className="btn next-btn">
-                        Next →
-                      </button>
-                    </div>
-                  </>
-                )}
+              {/* Step 3: Additional Info */}
+              {step === 3 && (
+                <>
+                  <h4>Additional Info</h4>
+                  <div className="mb-3">
+                    <label htmlFor="genre" className="form-label">
+                      Genre *
+                    </label>
+                    <input
+                      type="text"
+                      id="genre"
+                      value={formData.genre}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="team" className="form-label">
+                      Team *
+                    </label>
+                    <input
+                      type="text"
+                      id="team"
+                      value={formData.team}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="location" className="form-label">
+                      Location *
+                    </label>
+                    <input
+                      type="text"
+                      id="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="description" className="form-label">
+                      Description *
+                    </label>
+                    <textarea
+                      id="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      className="form-control"
+                      rows={3}
+                      required
+                    />
+                  </div>
+                </>
+              )}
 
-                {step === 2 && (
-                  <>
-                    <h5 className="mb-4">Performance Info</h5>
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="city" className="form-label">
-                          City*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="city"
-                          value={formData.city}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="duration" className="form-label">
-                          Performance Duration*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="duration"
-                          value={formData.duration}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
+              {/* Step 4: SEO and Video Links */}
+              {step === 4 && (
+                <>
+                  <h4>SEO & Video Links</h4>
+                  <div className="mb-3">
+                    <label htmlFor="profileTitle" className="form-label">
+                      Profile Title
+                    </label>
+                    <input
+                      type="text"
+                      id="profileTitle"
+                      value={formData.profileTitle}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="profileKeywords" className="form-label">
+                      Profile Keywords
+                    </label>
+                    <input
+                      type="text"
+                      id="profileKeywords"
+                      value={formData.profileKeywords}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="profileDescription" className="form-label">
+                      Profile Description
+                    </label>
+                    <textarea
+                      id="profileDescription"
+                      value={formData.profileDescription}
+                      onChange={handleChange}
+                      className="form-control"
+                      rows={3}
+                    />
+                  </div>
 
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="travel" className="form-label">
-                          Open To Travel*
-                        </label>
+                  <div>
+                    <label className="form-label">
+                      YouTube Video Links (optional)
+                    </label>
+                    {formData.videoLink.map((link, i) => (
+                      <div key={i} className="input-group mb-2">
                         <input
                           type="text"
+                          value={link}
+                          placeholder="https://youtu.be/xyz"
+                          onChange={(e) =>
+                            handleVideoLinkChange(i, e.target.value)
+                          }
                           className="form-control"
-                          id="travel"
-                          value={formData.travel}
-                          onChange={handleChange}
-                          required
                         />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="category" className="form-label">
-                          Category*
-                        </label>
-                        <select
-                          className="form-select"
-                          id="category"
-                          value={formData.category}
-                          onChange={handleChange}
-                          required
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          onClick={() => removeVideoLinkInput(i)}
+                          disabled={formData.videoLink.length === 1}
                         >
-                          <option value="">Select Category</option>
-                          <option value="Musician">Musician</option>
-                          <option value="Anchor">Anchor</option>
-                          <option value="Performer">Performer</option>
-                        </select>
+                          &times;
+                        </button>
                       </div>
-                    </div>
+                    ))}
+                    {formData.videoLink.length < 6 && (
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={addVideoLinkInput}
+                      >
+                        Add Video Link
+                      </button>
+                    )}
+                  </div>
+                </>
+              )}
 
-                    <div className="d-flex justify-content-between mt-4">
-                      <button className="btn prev-btn" onClick={handlePrev}>
-                        ← Previous
-                      </button>
-                      <button type="submit" className="btn next-btn">
-                        Next →
-                      </button>
-                    </div>
-                  </>
+              {/* Navigation buttons */}
+              <div className="mt-4 d-flex justify-content-between">
+                {step > 1 && (
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary"
+                    onClick={handlePrev}
+                    disabled={loading}
+                  >
+                    Previous
+                  </button>
                 )}
 
-                {step === 3 && (
-                  <>
-                    <h5 className="mb-4">Additional Performance Info</h5>
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="genre" className="form-label">
-                          Genre*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="genre"
-                          value={formData.genre}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label htmlFor="team" className="form-label">
-                          Team Members*
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="team"
-                          value={formData.team}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="location" className="form-label">
-                        Location*
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="description" className="form-label">
-                        Description (Max 300 characters)
-                      </label>
-                      <textarea
-                        id="description"
-                        className="form-control"
-                        rows="4"
-                        maxLength="300"
-                        value={formData.description}
-                        onChange={handleChange}
-                        required
-                      ></textarea>
-                    </div>
-
-                    <div className="d-flex justify-content-between mt-4">
-                      <button className="btn prev-btn" onClick={handlePrev}>
-                        ← Previous
-                      </button>
-                      <button type="submit" className="btn next-btn">
-                        Next →
-                      </button>
-                    </div>
-                  </>
+                {step < 4 && (
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={loading}
+                  >
+                    Next
+                  </button>
                 )}
 
                 {step === 4 && (
-                  <>
-                    <h5 className="mb-4">SEO & Media Info</h5>
-                    <div className="mb-3">
-                      <label htmlFor="videoLink" className="form-label">
-                        Video Link (Optional)
-                      </label>
-                      <input
-                        type="url"
-                        className="form-control"
-                        id="videoLink"
-                        value={formData.videoLink}
-                        onChange={handleChange}
-                      />
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="profileTitle" className="form-label">
-                        Profile Title (SEO)
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="profileTitle"
-                        value={formData.profileTitle}
-                        onChange={handleChange}
-                      />
-                    </div>
-
-                    <div className="mb-3">
-                      <label htmlFor="profileKeywords" className="form-label">
-                        Profile Keywords (SEO)
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="profileKeywords"
-                        value={formData.profileKeywords}
-                        onChange={handleChange}
-                      />
-                    </div>
-
-                    <div className="mb-3">
-                      <label
-                        htmlFor="profileDescription"
-                        className="form-label"
-                      >
-                        Profile Description (SEO)
-                      </label>
-                      <textarea
-                        id="profileDescription"
-                        className="form-control"
-                        rows="4"
-                        value={formData.profileDescription}
-                        onChange={handleChange}
-                      ></textarea>
-                    </div>
-
-                    <div className="d-flex justify-content-between mt-4">
-                      <button className="btn prev-btn" onClick={handlePrev}>
-                        ← Previous
-                      </button>
-                      <button type="submit" className="btn submit-btn">
-                        Submit Profile
-                      </button>
-                    </div>
-                  </>
+                  <button
+                    type="submit"
+                    className="btn btn-success"
+                    disabled={loading}
+                  >
+                    {loading ? "Submitting..." : "Submit"}
+                  </button>
                 )}
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
