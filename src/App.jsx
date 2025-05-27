@@ -15,13 +15,11 @@ import MyBoard from "./pages/MyBoard/MyBoard";
 import Indore from "./ArtistBooking/Indore/Indore";
 import Bhopal from "./ArtistBooking/Bhopal/Bhopal";
 import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
-import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";  
+import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
 
- import RentalDetail from "./pages/EventRental/RentalDetail";
-
-
+import RentalDetail from "./pages/EventRental/RentalDetail";
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
@@ -56,12 +54,10 @@ import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBoo
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
 
-
-
-
 // import ArtistDashboard from "./pages/ArtistDashboard";
 import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import LogoutUser from "./pages/Logout/LogoutUser";
 // import EventBookingModel9 from "./VenueBooking/UjjainCity/BookingModel9/EventBookingModel9";
 // import EventBookingModel10 from "./VenueBooking/UjjainCity/BookingModel10/EventBookingModel10";
 // import EventBookingModel11 from "./VenueBooking/UjjainCity/BookingModel11/EventBookingModel11";
@@ -72,7 +68,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import EventBookingModel15 from "./VenueBooking/GwaliorCity/BookingModel15/EventBookingModel15";
 // import EventBookingModel16 from "./VenueBooking/GwaliorCity/BookingModel16/EventBookingModel16";
 // import EventBookingModel17 from "./VenueBooking/GwaliorCity/BookingModel17/EventBookingModel17";
-
 
 function App() {
   return (
@@ -95,10 +90,16 @@ function App() {
           <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/login" element={<Login />} />
+          {/* <Route path="/LogoutUser" element={<LogoutUser/>} /> */}
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/BasicDetail"
-            element={<ProtectedRoute ><BasicDetail /> </ProtectedRoute> } />
+            element={
+              <ProtectedRoute>
+                <BasicDetail />{" "}
+              </ProtectedRoute>
+            }
+          />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/EventRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -111,10 +112,7 @@ function App() {
           <Route path="/Jabalpur" element={<Jabalpur />} />
           <Route path="/Ujjain" element={<Ujjain />} />
 
-
-           <Route path="/RentalDetail" element={<RentalDetail />}/> 
-
-
+          <Route path="/RentalDetail" element={<RentalDetail />} />
 
           <Route path="/Comedians" element={<Comedians />} />
           <Route path="/ArtistDetail" element={<ArtistDetail />} />
@@ -122,10 +120,6 @@ function App() {
           <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/ArtistDetail3" element={<ArtistDetail3 />} />
           <Route path="/ArtistDetail4" element={<ArtistDetail4 />} />
-
-
-
-
 
           <Route path="/IndoreCity" element={<IndoreCity />} />
           <Route path="/BhopalCity" element={<BhopalCity />} />
@@ -148,7 +142,7 @@ function App() {
           <Route path="/EventBookingModel6" element={<EventBookingModel6 />} />
           <Route path="/EventBookingModel7" element={<EventBookingModel7 />} />
           <Route path="/EventBookingModel8" element={<EventBookingModel8 />} />
-         {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
+          {/* <Route path="/EventBookingModel9" element={<EventBookingModel9 />} /> 
          <Route path="/EventBookingModel10" element={<EventBookingModel10 />} /> 
          <Route path="/EventBookingModel11" element={<EventBookingModel11 />} /> 
          <Route path="/EventBookingModel12" element={<EventBookingModel12 />} /> 
@@ -157,7 +151,7 @@ function App() {
          <Route path="/EventBookingModel15" element={<EventBookingModel15 />} /> 
          <Route path="/EventBookingModel16" element={<EventBookingModel16 />} /> 
          <Route path="/EventBookingModel17" element={<EventBookingModel17 />} />  */}
-         {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
+          {/* <Route path="/artist/dashboard" element={<PrivateRoute><ArtistDashboard /></PrivateRoute>}/> */}
         </Routes>
         <Footer />
       </Router>

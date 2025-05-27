@@ -6,11 +6,49 @@ import {
   FaYoutube,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
+  // ✅ Logout handler
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get("http://localhost:5000/api/auth/logout", {
+        withCredentials: true,
+      });
+      console.log(res.data.msg);
+      setIsLoggedIn(false);
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Logout failed. Please try again.");
+    }
+  };
+
+  // ✅ Check login status from cookie
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/auth/check-auth", {
+          withCredentials: true,
+        });
+        console.log(res)
+        setIsLoggedIn(res.data.loggedIn);
+      } catch (error) {
+        console.error("Auth check failed:", error);
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkLoginStatus();
+  }, []);
+
+  // ✅ Show/hide top navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
@@ -50,7 +88,7 @@ const TopNavbar = () => {
               +91-9691474449
             </a>
           </span>
-        </div>  
+        </div>
 
         <div className="d-flex align-items-center gap-3 flex-wrap social-icons">
           <Link to="https://www.facebook.com/gnvindiaevents" target="_blank">
@@ -80,16 +118,29 @@ const TopNavbar = () => {
               ACCOUNT
             </button>
             <ul className="dropdown-menu" aria-labelledby="accountDropdown">
-              <li>
-                <Link className="dropdown-item" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/signup">
-                  Signup
-                </Link>
-              </li>
+              {!isLoggedIn && (
+                <>
+                  <li>
+                    <Link className="dropdown-item" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/signup">
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {isLoggedIn && (
+                <li>
+                  <Link className="dropdown-item" to="/" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </li>
+              )}
+
               <li>
                 <hr className="dropdown-divider" />
               </li>
