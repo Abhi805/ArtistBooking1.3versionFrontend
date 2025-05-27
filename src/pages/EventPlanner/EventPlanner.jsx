@@ -1,84 +1,133 @@
-import React from "react";
-import "animate.css";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./EventPlanner.css";
+import { Link, useNavigate } from "react-router-dom";
+
+import image6 from './planimg/planner6.jpg';
+import image7 from './planimg/planner7.jpg';
+import image3 from './planimg/planner3.jpeg';
+import image4 from './planimg/planner4.jpeg';
+import image5 from './planimg/planner5.jpeg';
 
 const EventPlanner = () => {
-  const articles = [
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
+  const navigate = useNavigate();
+
+  const artistData = [
     {
-      image: "https://via.placeholder.com/300x150",
-      title: "Top Event Management Company in Noida",
-      date: "May 07, 2025",
-      category: "Event Management",
-      description: "Top event company for private events and planning.",
-    },
-    {
-      image: "https://via.placeholder.com/300x150",
-      title: "MICE Technology: AI, VR in Events",
-      date: "Apr 28, 2025",   
-      category: "MICE Event",
-      description: "Explore how AI is changing virtual events.",
-    },
-    {   
-      image: "https://via.placeholder.com/300x150",
-      title: "Corporate Trip Planning Services in India",    
-      date: "Apr 23, 2025",
-      category: "Trip Planner",
-      description: "Professional services for smooth travel planning.",
-    },
-    {
-      image: "https://via.placeholder.com/300x150",
-      title: "Top Artists in India for Corporate Events",
-      date: "Apr 18, 2025",
-      category: "Artist",
-      description: "Top performers to entertain your guests.",
-    },
-    {
-      image: "https://via.placeholder.com/300x150",
-      title: "How to Plan an Offsite Event in 2025",
-      date: "Apr 21, 2025",
-      category: "Planning Guide",
-      description: "Complete step-by-step guide to event planning.",
+      artists: [
+        {
+          Name: "Name:",
+           image: image3,
+            PhoneNo: "Phone No.",
+            EmailAddress: "Email Address:",
+            WorkExperience: "Work Experience:",
+        },
+        {
+         Name: "Name:",
+           image: image7,
+            PhoneNo: "Phone No.",
+            EmailAddress: "Email Address:",
+            WorkExperience: "Work Experience:",
+        },
+        {
+          Name: "Name:",
+           image: image6,
+            PhoneNo: "Phone No.",
+            EmailAddress: "Email Address:",
+            WorkExperience: "Work Experience:",
+        },
+        {
+         Name: "Name:",
+           image: image4,
+            PhoneNo: "Phone No.",
+            EmailAddress: "Email Address:",
+            WorkExperience: "Work Experience:",
+        },
+        {
+         Name: "Name:",
+           image: image5,
+            PhoneNo: "Phone No.",
+            EmailAddress: "Email Address:",
+            WorkExperience: "Work Experience:",
+        },
+      ],
     },
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="hero-section text-white text-center py-5 animate__animated animate__fadeInDown">
+    <div className="container-fluid my-5">
+      <div className="venue-header text-white">
         <div className="container">
-          <h1 className="display-5 fw-bold">Best Event Management Companies in Delhi NCR</h1>
-          <p className="lead">
-            Discover the top companies for weddings, corporate events, trips & more.
-          </p>
-        </div>
-      </section>
+          <h1>Plan With The Best</h1>
 
-      {/* Article Cards */}
-      <div className="container my-5">
-        <div className="row">
-          {articles.map((item, index) => (
-            <div className="col-md-4 mb-4" key={index}>
-              <div
-                className={`card h-100 article-card animate__animated animate__fadeInUp`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <img src={item.image} className="card-img-top" alt={item.title}  />
-                <div className="card-body">
-                  <p className="text-muted mb-1">{item.date} | {item.category}</p>
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.description}</p>
-                  <a href="#" className="btn btn-outline-primary btn-sm">Read More</a>
+          <p className="text-capitalize text-white">
+            From intimate gatherings to grand celebrations, our expert event planners bring your vision to life <br></br>with precision and passion. We handle every detail — from concept and coordination to flawless execution — so you can enjoy every moment, stress-free.
+          </p>
+          <Link to="/EventPlannerForm">
+         <button className="btn btn-primary px-4 py-2">
+       Registeration
+      </button>
+     </Link>
+        </div>  
+      </div>
+
+      <div className="container">
+  {artistData.map((section, index) => (
+    <div key={index} className="mb-5" data-aos="fade-up">
+      <h5 className="fw-bold mb-4">{section.title}</h5>
+
+      {/* Row for top 3 cards */}
+      <div className="row justify-content-start">
+        {section.artists.slice(0, 3).map((artist, i) => (
+          <div key={i} className="col-md-4 mb-4">
+            <div className="card artist-card h-100 shadow-sm">
+              <img src={artist.image} className="card-img-top"style={{objectFit:"inherit"}} alt={artist.name} />
+              <div className="card-body">
+                <h6 className="card-title fw-bold">{artist.Name}</h6>
+                <h6 className="card-title fw-bold">{artist.PhoneNo}</h6>
+               <h6 className="card-title fw-bold">{artist.EmailAddress}</h6>
+               <h6 className="card-title fw-bold">{artist.WorkExperience}</h6>
+                <div className="text-center">
+                  <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      {/* Row for bottom 2 cards center aligned */}
+      <div className="row justify-content-center">
+        {section.artists.slice(3).map((artist, i) => (
+          <div key={i} className="col-md-4 mb-4">
+            <div className="card artist-card h-100 shadow-sm">
+              <img src={artist.image} className="card-img-top" alt={artist.name} />
+              <div className="card-body">
+                <h6 className="card-title fw-bold">{artist.Name}</h6>
+                <h6 className="card-title fw-bold">{artist.PhoneNo}</h6>
+               <h6 className="card-title fw-bold">{artist.EmailAddress}</h6>
+               <h6 className="card-title fw-bold">{artist.WorkExperience}</h6>
+                <div className="text-center">
+                  <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  ))}
+</div>
+
+    
     </div>
   );
 };
 
 export default EventPlanner;
-
-
-  

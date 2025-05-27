@@ -2,6 +2,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
+
+import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
+
+
+
+
 import EventPopup from "./components/EventPopup/EventPopup";
 import AboutUs from "./pages/AboutUs/About";
 import Navbar from "./components/Navbar/Navbar";
@@ -19,7 +25,12 @@ import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
 
-import RentalDetail from "./pages/EventRental/RentalDetail";
+ import RentalDetail from "./pages/EventRental/RentalDetail";
+import PlannerProfile from "./pages/EventPlanner/PlannerProfile";
+import EventPlannerForm from "./pages/EventPlanner/EventPlannerForm";
+import VolunteerForm from "./pages/VolunteerBooking/VolunteerForm";
+import VolunteerProfile from "./pages/VolunteerBooking/VolunteerProfile";
+
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
@@ -36,8 +47,8 @@ import EditArtistProfile from "./CreateArtistProfile/EditArtistProfile/EditArtis
 import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
-import SearchArtistButton from "./components/SearchArtistButton/SearchArtistButton";
-import ScrollUpBar from "./components/ScrollUpBar/ScrollUpBar";
+// import SearchArtistButton from "./components/SearchArtistButton/SearchArtistButton";
+// import ScrollUpBar from "./components/ScrollUpBar/ScrollUpBar";
 import Services from "./pages/Services/Services";
 import EventRental from "./pages/EventRental/EventRental";
 import EventPlanner from "./pages/EventPlanner/EventPlanner";
@@ -82,9 +93,13 @@ function App() {
           <ContactWidget />
           {/* ...rest of your app */}
         </ScrollProvider>
-        <SearchArtistButton />
-        <ScrollUpBar />
+        {/* <SearchArtistButton /> */}
+        {/* <ScrollUpBar /> */}
+        <ScrollToTopButton />
         <Routes>
+
+
+
           <Route path="/" element={<Home />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
@@ -92,14 +107,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           {/* <Route path="/LogoutUser" element={<LogoutUser/>} /> */}
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/BasicDetail"
-            element={
-              <ProtectedRoute>
-                <BasicDetail />{" "}
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/BasicDetail" element={<ProtectedRoute ><BasicDetail /> </ProtectedRoute> } />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/EventRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -112,7 +120,15 @@ function App() {
           <Route path="/Jabalpur" element={<Jabalpur />} />
           <Route path="/Ujjain" element={<Ujjain />} />
 
-          <Route path="/RentalDetail" element={<RentalDetail />} />
+
+           <Route path="/RentalDetail" element={<RentalDetail />}/> 
+           <Route path="/PlannerProfile" element={<PlannerProfile />} />
+           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
+           <Route path="/VolunteerForm" element={<VolunteerForm />} />
+          <Route path="/VolunteerProfile" element={<VolunteerProfile />} />
+
+
+
 
           <Route path="/Comedians" element={<Comedians />} />
           <Route path="/ArtistDetail" element={<ArtistDetail />} />

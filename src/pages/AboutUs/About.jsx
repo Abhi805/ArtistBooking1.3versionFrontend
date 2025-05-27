@@ -3,152 +3,117 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./About.css";
 
-// Import all logo images from assets
-import accenture from "../../assets/accenture.jpeg";
-import bankmaharastra from "../../assets/bankmaharastra.jpeg";
-import axsibank from "../../assets/axsibank.jpeg";
-import cipla from "../../assets/cipla.jpeg";
-import coii from "../../assets/coii.jpeg";
-import dabar from "../../assets/dabar.jpeg";
-import dna from "../../assets/dna.jpeg";
-import eag from "../../assets/eag.jpeg";
-import hdfclife from "../../assets/hdfclife.jpeg";
-import hettich from "../../assets/hettich.jpeg";
-import incridableindia from "../../assets/incridableindia.jpeg";
-import johndeere from "../../assets/johndeere.jpeg";
-import unionbank from "../../assets/unionbank.jpeg";
-import ultratrack from "../../assets/ultratrack.jpeg";
-import srf from "../../assets/srf.jpeg";
-import sopa from "../../assets/sopa.jpeg";
-import solidaridad from "../../assets/solidaridad.jpeg";
-import seventy from "../../assets/seventy.jpeg";
-import sbilife from "../../assets/sbilife.jpeg";
-import WM from "../../assets/WM.jpeg";
-import sbigeneral from "../../assets/sbigeneral.jpeg";
-import sbi from "../../assets/sbi.jpeg";
-import samsung from "../../assets/samsung.jpeg";
-import nationalinstitude from "../../assets/nationalinstitude.jpeg";
-import lic from "../../assets/lic.jpeg";
-import lenskart from "../../assets/lenskart.jpeg";
-import { Link } from "react-router-dom";
-
-export default function AboutUs() {
+const About = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 1000 });
   }, []);
 
-  const services = [
-    accenture,
-    bankmaharastra,
-    axsibank,
-    cipla,
-    coii,
-    dabar,
-    dna,
-    eag,
-    hdfclife,
-    hettich,
-    incridableindia,
-    johndeere,
-    unionbank,
-    ultratrack,
-    srf,
-    sopa,
-    solidaridad,
-    seventy,
-    sbilife,
-    WM,
-    sbigeneral,
-    sbi,
-    samsung,
-    nationalinstitude,
-    lic,
-    lenskart,
+  const cards = [
+    {
+      icon: "bi-boxes",
+      title: "One-Stop Event Platform",
+      text: "From artist booking to venue rental and staffing, everything in one place.",
+      color: "text-warning",
+    },
+    {
+      icon: "bi-shield-check",
+      title: "Verified Professionals",
+      text: "Trusted DJs, engineers, planners, and volunteers ready to perform.",
+      color: "text-success",
+    },
+    {
+      icon: "bi-person-check",
+      title: "Tailored Solutions",
+      text: "Personalized support and seamless execution for every event.",
+      color: "text-primary",
+    },
+    {
+      icon: "bi-megaphone",
+      title: "Industry Insights",
+      text: "Stay updated with the latest blogs, trends, and event news.",
+      color: "text-danger",
+    },
+    {
+      icon: "bi-heart-pulse",
+      title: "Client-First Approach",
+      text: "Your event is our priority — delivered with passion and precision.",
+      color: "text-danger",
+    },
   ];
 
-  const renderCardRow = (cards, direction, delayStart = 0) => (
-    <div className="row g-4 mb-4 justify-content-center">
-      {cards.map((image, index) => (
-        <div
-          className="col-lg-2 col-md-3 col-sm-4 col-6"
-          key={index}
-          data-aos={direction}
-          data-aos-delay={delayStart + index * 50}
-        >
-          <div className="logo-card shadow-sm">
-            <img src={image} alt="logo" className="logo-img" />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-
   return (
-    <>
+    <div className="container-fluid my-5 about-us">
       <div className="venue-header text-white">
-        <div className="container">
+        <div className="container-fluid text-center">
           <h1>About Us</h1>
           <p className="text-capitalize text-white">
-            Welcome to Make your event truly spectacular with our top-quality
-            GNV India Entertainment Pvt. Ltd. is a leading event management and
-            entertainment company, delivering extraordinary experiences that
-            leave lasting impressions. With a creative edge and a passion for
-            excellence
+            At Gnv India Entertainment, we’re transforming the way events come
+            to life. Our all-in-one digital platform connects organizers,
+            artists, and service providers to deliver seamless, impactful
+            experiences — from corporate events and weddings to concerts and
+            cultural festivals.
           </p>
         </div>
       </div>
 
-      <section className="about-section py-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div
-              className="col-lg-8 text-center"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <h2 className="about-title">
-                About <span className="highlight">GNV India Entertainment</span>
-              </h2>
-              <p className="about-text mt-3 text-capitalize text-black">
-                GNV India Event Pvt. Ltd. is a visionary event management and
-                entertainment company, dedicated to designing immersive
-                experiences across India. With expertise in celebrity
-                appearances, international acts, and large-scale event
-                execution, we turn ideas into captivating realities.
+      <div className="container">
+        <div data-aos="fade-up">
+          <h2 className="mb-4 text-center">💡 Why <span style={{color:'red'}}>Choose Us</span></h2>
+       
+
+
+     <div className="row g-5">
+     {cards.slice(0, 3).map((card, idx) => (
+    <div className="col-md-6 col-lg-4" key={idx} data-aos="zoom-in-up">
+      <div className="about-card h-100 text-center p-4 shadow-sm">
+        <i className={`bi ${card.icon} fs-1 ${card.color} glowing-icon mb-3`}></i>
+        <h5 className="card-title">{card.title}</h5>
+        <p className="card-text">{card.text}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<div className="row g-5 justify-content-center mt-2">
+  {cards.slice(3).map((card, idx) => (
+    <div className="col-md-6 col-lg-4" key={idx + 3} data-aos="zoom-in-up">
+      <div className="about-card h-100 text-center p-4 shadow-sm">
+        <i className={`bi ${card.icon} fs-1 ${card.color} glowing-icon mb-3`}></i>
+        <h5 className="card-title">{card.title}</h5>
+        <p className="card-text">{card.text}</p>
+      </div>
+    </div>
+  ))}
+</div>
+            <section className="vision-mission text-center py-5">
+            <h2 className="title fw-bold">Unlock A World Of Possibilities!</h2>
+
+            <div className="line-arrow my-4 mx-auto"></div>
+
+            <div className="vision-section" data-aos="fade-up">
+              <h3 className="fw-bold">Our Vision</h3>
+              <p className="text-black w-75 mx-auto">
+                To become India’s most trusted digital platform for event
+                solutions — empowering individuals, professionals, and
+                businesses to create meaningful and unforgettable experiences.
               </p>
-              <Link
-                to="/contactUs"
-                className="btn btn-danger mt-4"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Contact Us
-              </Link>
             </div>
-          </div>
+
+            <div className="line-arrow my-4 mx-auto"></div>
+
+            <div className="mission-section" data-aos="fade-up">
+              <h3 className="fw-bold">Our Mission</h3>
+              <p className="text-black w-75 mx-auto">
+                To simplify the event journey by offering end-to-end solutions,
+                promoting collaboration, and providing reliable resources that
+                help every event succeed — from planning to execution.
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
-
-      <section className="services-section py-5 bg-light">
-        <div className="container">
-          <h2
-            className="text-center mb-5"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            Our <span className="highlight">Clients</span>
-          </h2>
-
-          {/* Line 1 */}
-          {renderCardRow(services.slice(0, 9), "fade-right", 100)}
-
-          {/* Line 2 */}
-          {renderCardRow(services.slice(9, 18), "fade-left", 100)}
-
-          {/* Line 3 */}
-          {renderCardRow(services.slice(18, 27), "fade-right", 100)}
-        </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
-}
+};
+
+export default About;

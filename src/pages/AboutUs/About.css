@@ -1,43 +1,134 @@
+.about-us h2 {
+  font-weight: bold;
+  color: #222;
+}
+
+.about-us h4 {
+  color: #e8a800;
+  font-weight: 600;
+}
+
+.about-us p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.vision-mission {
+  /* background: linear-gradient(to bottom, #ffffff, #f4eaff); */
+  color: #4b0082;
+  padding: 60px 20px;
+}
+
+.vision-mission .title {
+  font-size: 2rem;
+  color: #e74949;
+}
+
+.line-arrow {
+  width: 2px;
+  height: 40px;
+  background-color: #c7364c;
+  position: relative;
+}
+
+.line-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #b491f2;
+}
+
+.vision-section,
+.mission-section {
+  margin-bottom: 40px;
+}
+
+.vision-section h3,
+.mission-section h3 {
+  color: #d63131;
+  margin-bottom: 15px;
+}
+
+.quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #333;
+  position: relative;
+}
+
+.quote::before {
+  content: "“";
+  font-size: 3rem;
+  color: #d1b3ff;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+}
 
 
 .venue-header {
   background: linear-gradient(to right, #141e30, #243b55);
   padding: 3rem 0;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .venue-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
 }
-.about-title {
-  font-size: 2rem;       
-  font-weight: bold;  
+
+/* 🌟 Enhanced Card Styling */
+.about-card {
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.highlight {
-  color: #dc3545;
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.logo-card {
-  border-radius: 12px;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;  
-  padding: 10px;
-  transition: transform 0.3s ease;
+.about-card:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-.logo-card:hover {
-  transform: scale(1.05);
+.glowing-icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.logo-img {
-  max-height: 100px;
-  max-width: 100%;
-  object-fit: contain;
-} 
-  
+.about-card:hover .glowing-icon {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* ✨ Subtle gradient effect on hover */
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(122, 0, 255, 0.05), rgba(255, 215, 0, 0.05));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}

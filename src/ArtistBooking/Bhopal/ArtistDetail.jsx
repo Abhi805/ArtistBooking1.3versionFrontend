@@ -78,7 +78,7 @@ const ArtistDetail = () => {
                     </div>
                     <div className="col-md-6">
                       <input
-                        type="email"
+                        type="email"   
                         className="form-control"
                         placeholder="Email Address"
                         required

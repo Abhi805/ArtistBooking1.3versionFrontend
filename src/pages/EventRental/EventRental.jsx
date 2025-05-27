@@ -18,7 +18,7 @@ import Eq11 from "./Eqimage/Eq11.jpg";
 import Eq12 from "./Eqimage/Eq12.jpg";
 import Eq13 from "./Eqimage/Eq13.jpg";
 import Eq14 from "./Eqimage/Eq14.jpg";  
-import Eq15 from "./Eqimage/Eq15.jpg";
+import Eq15 from "./Eqimage/Eq15.jpg";  
 import Eq16 from "./Eqimage/Eq16.jpg";
 import Eq17 from "./Eqimage/Eq17.jpg";
 import Eq18 from "./Eqimage/Eq18.jpg";
@@ -247,7 +247,7 @@ const EventRental = () => {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container">    
         {artistData.map((section, index) => (
           <div key={index} className="mb-5" data-aos="fade-up">
             <h5 className="fw-bold mb-4">{section.title}</h5>

@@ -25,7 +25,7 @@ const RentalDetail = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div>   
       <div className="container mt-5">
         <div className="row">
           <div className="col">
