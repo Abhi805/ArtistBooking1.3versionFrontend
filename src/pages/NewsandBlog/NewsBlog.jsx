@@ -1,63 +1,77 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./NewsBlog.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import img1 from "../../assets/pastevent2.jpeg"
-
 
 const blogData = [
   {
-    id: 1,
-    title: "Top 10 Event Trends of 2025",
-    date: "May 10, 2025",
-    image: img1,
-    excerpt: "Discover the latest trends shaping the event industry in 2025...",
+    title: "Emerging Artists Shine at The Heart of Art",
+    desc: "The Art and Print to present its Premium Art event at World Trade Center, where some of the most talented emerging artists...",
+    img: "/images/blog1.jpg",
   },
   {
-    id: 2,
-    title: "How to Choose the Right Venue",
-    date: "April 28, 2025",
-    image: img1,
-    excerpt: "Choosing the right venue can make or break your event...",
+    title: "Best Wall Paintings for Home Interiors",
+    desc: "Wall paintings can transform any space, adding personality, style, and a touch of elegance to your interiors...",
+    img: "/images/blog2.jpg",
   },
   {
-    id: 3,
-    title: "Lighting Tips for Grand Events",
-    date: "April 15, 2025",
-    image: img1,
-    excerpt: "Proper lighting enhances event ambiance and guest experience...",
+    title: "The Indian Arts Festival: Celebrating Creativity",
+    desc: "India has long been a cradle of artistic expression, with its rich history, diverse cultures, and vibrant traditions of creativity...",
+    img: "/images/blog3.jpg",
   },
+  // ...add 9 more objects to make 12 blogs
 ];
 
 const NewsBlog = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   return (
-    <section className="news-blog py-5">
+    <div className="blog-page">
+      <div className="blog-banner">
+        <h1 className="banner-title">Blogs</h1>
+      </div>
+
+      <div className="blog-heading text-center my-4">
+        <h2>Blogs</h2>
+        <hr className="blog-underline" />
+      </div>
+
       <div className="container">
-        <div className="text-center mb-5">
-          <h2 className="section-title">News & Blogs</h2>
-          <p className="section-subtitle">Stay updated with the latest event news</p>
-        </div>
         <div className="row">
-          {blogData.map((blog) => (
-            <div key={blog.id} className="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
-              <div className="card blog-card h-100 shadow-sm">
-                <img src={blog.image} className="card-img-top" alt={blog.title} />
+          {blogData.map((blog, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="card blog-card h-100">
+                <img
+                  src={blog.img}
+                  className="card-img-top"
+                  alt={blog.title}
+                />
                 <div className="card-body">
-                  <small className="text-muted">{blog.date}</small>
-                  <h5 className="card-title mt-2">{blog.title}</h5>
-                  <p className="card-text">{blog.excerpt}</p>
-                  <a href="#" className="btn btn-outline-primary btn-sm">Read More</a>
+                  <h5 className="card-title">{blog.title}</h5>
+                  <p className="card-text">{blog.desc}</p>
+                  <a href="#" className="read-more-link">
+                    Read More →
+                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        <div className="pagination text-center mt-4">
+          <nav>
+            <ul className="pagination justify-content-center">
+              <li className="page-item active">
+                <a className="page-link" href="#">
+                  1
+                </a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">
+                  2
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

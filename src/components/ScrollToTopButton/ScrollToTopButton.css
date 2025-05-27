@@ -1,0 +1,19 @@
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  background: linear-gradient(45deg, #cd211d, #e95200);
+  color: white;
+  border: none;
+  padding: 12px 14px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.scroll-to-top-btn:hover {
+  background: linear-gradient(45deg, #e95200, #cd211d);
+}

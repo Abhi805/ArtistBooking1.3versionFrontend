@@ -20,7 +20,7 @@ const ContactUs = () => {
           GNVIndia is your trusted partner in event management, proudly serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand exhibition, a cultural celebration, or a corporate gathering — we’re just one click away from making your vision come alive.
           </p>
         </div>
-      </section>
+      </section>   
 
       {/* Contact Info */}
       <section className="py-5 bg-light">

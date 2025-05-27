@@ -20,7 +20,7 @@
 .artist-card:hover img {
   transform: scale(1.05);
 }
-
+   
 .artist-card .card-body {
   padding: 1rem;
 }
@@ -58,7 +58,7 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.75rem;
-}
+}   
 
 .venue-header {
   background: linear-gradient(to right, #141e30, #243b55);
