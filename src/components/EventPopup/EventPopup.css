@@ -1,22 +1,23 @@
 .event-modal .modal-dialog {
-  max-width: 90%;
+  max-width: 70%;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   margin: 1rem auto;
 }
 
 .modal-body {
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
+  padding: 10px;
 }
 
 .form-section {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 60px;
   width: 100%;
+  max-width: 80%;
 }
 
 .modal-title {
@@ -42,7 +43,7 @@
 }
 
 .popup-image img {
-  border-radius: 8px;
+  border-radius: 2px;
   height: 100%;
   width: 100%;
   object-fit: cover;

@@ -3,10 +3,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Parallax } from "swiper/modules";
-import image1 from "../../assets/corporate.png";
-import image2 from "../../assets/conference.webp";
-import image3 from "../../assets/Artist.png";
-import image4 from "../../assets/offsite.png";
+import image1 from "../../assets/Web.png";
+import image2 from "../../assets/Web 0.png";
+import image3 from "../../assets/Web 4.png";
+import image4 from "../../assets/Web 1.png";
+import image5 from "../../assets/web 3.png";
 import "./HeroSection.css"
 import "swiper/css";
 import "swiper/css/navigation"; 
@@ -40,15 +41,16 @@ export default function HeroSection() {
               <div style={{marginTop:"50px"}} className="row">
                 <div className="col-5">
                   <div data-swiper-parallax="-100">
-                  <h5 className=" cold">Best Event Planning Company In Indore </h5>
+                  <h5 className=" cold">Be Seen. Be Heard. Be Booked. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}} >
-                      <span className="highlight">Corporate Offsites,Team-Building, And Travel</span>
-                     <span className="text-black" > -Flawless Planning, Effortless Execution-GNVIndia </span>
+                      <span className="highlight">Whether you’re a singer, dancer, DJ, or visual artist — </span>
+                     <span className="text-black" > -your next gig could be just one profile away. </span>
                     </p>
                     <p>
-                      Expertly Planned Corporate Offsites, Team-Building. And
-                      Travel-Seamless Execution Stress-Free Experiences,Only
-                      With GNVIndia!
+                     Create your artist profile on GNV and showcase your talent to event organizers across the country.
+                     Get noticed, get booked, and grow your career with ease.
+
+
                     </p>
                     <div className="d-flex gap-3 mt-4">
                       <Link to="/services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
@@ -72,14 +74,12 @@ export default function HeroSection() {
               <div style={{marginTop:"50px"}} className="row">
                 <div className="col-5">
                   <div data-swiper-parallax="-100">
-                  <h5 className="cold">Best Event Planning Company In Indore </h5>
+                  <h5 className="cold">From profile to bookings in minutes</h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
-               <span className="text-black" >        Host A </span> <span className="highlight">Conference</span> <span  className="text-black"> That Speaks Success-Planned
-                      By Experts,Executed To perfection! </span>
+               <span className="text-black" >        Showcase your  </span> <span className="highlight">Venues</span> <span  className="text-black">  to thousands — register on GNV and start receiving bookings today!</span>
                     </p>
                     <p>
-                      GNVIndia Supplied Security Equipment And Ensuring For All
-                      The Event Security{" "}
+                   Venues with complete profiles on GNV stand out and receive more inquiries. Showcase your strengths, gather client reviews, and watch your booking rates grow.  {" "}
                     </p>
                     <div className="d-flex gap-3 mt-4">
                       <Link to="/Services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
@@ -103,15 +103,12 @@ export default function HeroSection() {
               <div style={{marginTop:"50px"}} className="row">
                 <div className="col-5">
                   <div data-swiper-parallax="-100">
-                  <h5 className="cold">Best Event Planning Company In Indore </h5>
+                  <h5 className="cold">From lights to mics — if you supply it </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
-                  <span className="text-black" >    One Platform, </span> <span className="highlight">Endless Possibilities</span><span className="text-black" >  -Book
-                      Artists,Secure Venues,And Power Up Event Production </span>
+                  <span className="text-black" >    Event suppliers,  </span> <span className="highlight">it’s time to go digital</span><span className="text-black" > — register on GNV and grow your bookings.  </span>
                     </p>
                     <p className="text-capitalize" >
-                      Your all-in-one event solution-book top artists,secure the
-                      best venues,and elevate production seamlessly Endless
-                      possibilities await!{" "}
+                      GNV makes it easy for suppliers to manage listings, respond to inquiries, and get hired — all from one dashboard. Create your profile, upload your services, and let clients come to you!{" "}
                     </p>
                     <div className="d-flex gap-3 mt-4">
                       <Link to="/Services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
@@ -135,16 +132,13 @@ export default function HeroSection() {
               <div style={{marginTop:"50px"}} className="row">
                 <div className="col-5">
                   <div data-swiper-parallax="-100">
-                  <h5 className="cold">Best event planning company in Indore </h5>
+                  <h5 className="cold">Your next big event starts with a profile on GNV. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
-                      <span className="highlight">Corporate Offsites,Team-Building,And Travel</span>
-            <span className="text-black" >          -Flawless Planning,Effortless Execution-GNVIndi</span>
+                      <span className="highlight">From weddings to corporate events </span>
+               <span className="text-black" >   — planners can now grow their network and bookings on GNV.</span>
                     </p>
                     <p className="text-capitalize">
-                      Expertly planned corporate offsites,team-building.and
-                      travel-seamless execution stress-free experiences,only
-                      with GNVIndia!
-                    </p>
+                    Event planners and organizers can create a professional profile on GNV to showcase their expertise and past events. Connect directly with clients, venues, and suppliers to plan and manage unforgettable experiences </p>
 
                     <div className="d-flex gap-3 mt-4">
                       <Link to="/Services"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
@@ -155,6 +149,36 @@ export default function HeroSection() {
                 <div className="col">
                   <div data-swiper-parallax="-100">
                     <img src={image4} alt="Slide" className="img-fluid" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        
+        <SwiperSlide>
+          <div className="mt-5" data-swiper-parallax="-100">
+            <div className="container">
+              <div style={{marginTop:"50px"}} className="row">
+                <div className="col-5">
+                  <div data-swiper-parallax="-100">
+                  <h5 className="cold">Be the backbone of every event — volunteer now. </h5>
+                    <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
+                      <span className="highlight">"As a volunteer on GNV, </span>
+               <span className="text-black" >  you’ll have the opportunity to work with top event planners and suppliers.".</span>
+                    </p>
+                    <p className="text-capitalize">
+                  Volunteers can register on GNV to join exciting events and support registered planners, suppliers, and artists. From setup to backstage assistance, your contribution helps bring events to life. </p>
+
+                    <div className="d-flex gap-3 mt-4">
+                      <Link to="/Services"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
+                       </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div data-swiper-parallax="-100">
+                    <img src={image5} alt="Slide" className="img-fluid" />
                   </div>
                 </div>
               </div>
