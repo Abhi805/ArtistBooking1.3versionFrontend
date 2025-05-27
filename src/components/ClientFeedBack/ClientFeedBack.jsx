@@ -28,7 +28,7 @@ const ClientFeedBack = () => {
       <div className="container">
         <div className="text-center mb-5">
           {/* <h5 className="subtitle">Testimonials</h5> */}
-          <h6 className="title">Client <span>FeedBacks</span></h6>
+          <h6 className="title">Client <span>FeedBack</span></h6>
         </div>
         <div className="row g-4">
           {feedbacks.map((item, index) => (

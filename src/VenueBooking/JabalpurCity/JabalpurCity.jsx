@@ -20,7 +20,7 @@
       
       //   const [selected, setSelected] = useState(null);
       //   const handleClick = (i) => setSelected(i);
-      
+         
       //   const venues = [
       //        { image: img1, venue: "Aashirwad Hotel", rating: "4.5", address: "Opposite Krishi Upaj Mandi Gate no. 2 near Deen Dayal Chowk ISBT, Damoh Rd, Jabalpur, Madhya Pradesh 482001" },
       //       { image: img2, venue: "Delitegrand Hotel",   rating: "5.0", address: "Delite Talkies Campus, Delite Talkies Ln, near Railway Station Road, Prestige Town, South Civil Lines, Jabalpur, Madhya Pradesh 482001"   },

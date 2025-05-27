@@ -22,7 +22,7 @@ const IndoreCity = () => {
 
   const venues = [
     {  
-      image: img1,
+      image: img1,  
       venue: "Brilliant Hotel",
       rating: "4.5",
       address: "Plot No 5, Vijay Nagar",
@@ -69,29 +69,24 @@ const IndoreCity = () => {
   return (
     <div className="indore-page">
       {/* Hero Section */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center">
-        <h2
-          className="hero-title"
-          data-aos="fade-down"
-          data-aos-duration="1000"
-          data-aos-delay="200"
-          style={{ color: "white" }}
-        >
-          Book Top <span className="highlight">Venues in Indore</span>
-        </h2>
-        <p
-          className="hero-subtitle"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-delay="400"
-          style={{ color: "white" }}
-         >
-          Looking To Book The Best Venues In BhopalCity for your Next Event?
+      
+
+
+
+
+
+
+      <div className="venue-header text-white">
+        <div className="container">
+          <h1>Book Top Venues In Indore</h1>
+          <p className="text-capitalize text-white">
+            Looking To Book The Best Venues In IndoreCity for your Next Event?
           GNVIndia offers A Seamless Venue Booking Experience For Corporate
           Events, Weddings, Exhibitions, And Private Parties. Choose From Our
           Extensive Network Of Banquet Halls, Luxury Hotels, Outdoor Lawns,
           Resorts, And Convention Centers To Make Your Event Truly Special.
-        </p>
+          </p>
+        </div>
       </div>
 
       {/* Venue Cards */}

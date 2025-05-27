@@ -25,7 +25,7 @@ import headerBg1 from './assets33/headerBg1.avif';
 const Comedians = () => {  
  
 
-  const artistData = [
+  const artistData = [  
     {
       title: "Book The Best Live Band For  Events And Weddings In Bhopal",
       artists: [
@@ -63,6 +63,10 @@ const Comedians = () => {
           <p className="mt-3 px-md-5 text-light small">
             Book live bands for weddings, parties, corporate shows & more! Top-rated artists, unforgettable performances!
           </p>
+
+
+          
+
 
           {/* 🔍 Search Bar */}
           <div className="search-bar bg-white rounded shadow p-3 d-flex flex-column flex-md-row justify-content-center mt-4">

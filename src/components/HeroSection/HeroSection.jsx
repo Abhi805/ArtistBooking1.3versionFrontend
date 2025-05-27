@@ -1,13 +1,18 @@
-
-
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+<<<<<<< HEAD
 import { Navigation, Pagination, Autoplay, Parallax } from "swiper/modules";
 import image1 from "../../assets/Web.png";
 import image2 from "../../assets/Web 0.png";
 import image3 from "../../assets/Web 4.png";
 import image4 from "../../assets/Web 1.png";
 import image5 from "../../assets/web 3.png";
+=======
+import { Pagination, Autoplay, Parallax } from "swiper/modules";
+import image1 from "../../assets/corporate.png";
+import image2 from "../../assets/conference.webp";
+import image3 from "../../assets/Artist.png";
+import image4 from "../../assets/offsite.png";
+>>>>>>> d35fd38492cbde53a93fbab9cddd6a76a0ab98de
 import "./HeroSection.css"
 import "swiper/css";
 import "swiper/css/navigation"; 
