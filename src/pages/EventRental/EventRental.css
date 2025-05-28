@@ -44,7 +44,7 @@
 }
 
 .btn-outline-danger:hover {
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b,  #ff416c);
   transform: scale(1.05);
 }
 

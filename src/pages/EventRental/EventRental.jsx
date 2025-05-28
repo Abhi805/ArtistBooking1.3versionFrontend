@@ -12,7 +12,7 @@ import Eq5 from "./Eqimage/Eq5.jpg";
 import Eq6 from "./Eqimage/Eq6.jpg";
 import Eq7 from "./Eqimage/Eq7.jpg";
 import Eq8 from "./Eqimage/Eq8.jpg";
-import Eq9 from "./Eqimage/Eq9.jpg";
+import Eq9 from "./Eqimage/Eq9.jpg";  
 import Eq10 from "./Eqimage/Eq10.jpg";
 import Eq11 from "./Eqimage/Eq11.jpg";
 import Eq12 from "./Eqimage/Eq12.jpg";

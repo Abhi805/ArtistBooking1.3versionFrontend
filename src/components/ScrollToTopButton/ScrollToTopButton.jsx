@@ -24,7 +24,7 @@ const ScrollToTopButton = () => {
       top: 0,
       behavior: "smooth"
     });
-  };
+  };  
 
   return (
     isVisible && (

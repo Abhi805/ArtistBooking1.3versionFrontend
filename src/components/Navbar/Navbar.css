@@ -18,7 +18,7 @@
   top: 40px; /* space when TopNavbar is visible */
   transition: top 0.3s ease;
 }  
-
+   
 body.top-navbar-hidden .navbar {
   top: 0; /* shift up when TopNavbar hides */
 }

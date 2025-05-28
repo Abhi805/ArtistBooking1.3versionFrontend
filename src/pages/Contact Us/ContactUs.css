@@ -11,7 +11,7 @@
   font-size: 1.6rem;
   cursor: pointer;
   transition: color 0.3s ease;
-}
+}   
 
 /* Platform-specific default colors */
 .social-icons .bi-instagram {
@@ -56,7 +56,7 @@
 
 /* Individual card themes */
 .card-address {
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Blue-Violet */
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
 }
 
 .card-email {
@@ -64,11 +64,11 @@
 }
 
 .card-phone {
-  background: linear-gradient(135deg, #11998e, #38ef7d); /* Green */
+  background: linear-gradient(135deg,  #ff512f, #dd2476); /* Green */
 }
 
 .card-whatsapp {
-  background: linear-gradient(135deg, #d3c30f, #21aad7); /* WhatsApp Green */
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* WhatsApp Green */
 }
 
 /* Hover effect */

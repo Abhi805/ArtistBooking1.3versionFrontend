@@ -25,10 +25,10 @@ const Home = () => {
         <PastEvent />
       </div>
       <div>
-        <ClientFeedBack />
+        <ClientFeedBack />  
       </div> 
       <div>
-        <BlogPosts />
+        <BlogPosts /> 
       </div>
       <div>
         <OnlineBooking />
