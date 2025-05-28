@@ -1,10 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Parallax } from "swiper/modules";
-import image1 from "../../assets/corporate.png";
-import image2 from "../../assets/conference.webp";
-import image3 from "../../assets/Artist.png";
-import image4 from "../../assets/offsite.png";
-import image5 from "../../assets/WM.jpeg";
+
+import image1 from "../../assets/heroartist.png";
+import image2 from "../../assets/herovenue.png";
+import image3 from "../../assets/herorental.png";
+import image4 from "../../assets/heroevent.png";
+import image5 from "../../assets/herovolunteer.png";
+
+
+
 import "./HeroSection.css"
 import "swiper/css";
 import "swiper/css/navigation"; 
@@ -18,7 +22,7 @@ export default function HeroSection() {
       <Swiper
         className="mySwiper mt-5"
         loop={true}   
-        speed={2500}  
+        speed={2500}    
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
@@ -50,7 +54,7 @@ export default function HeroSection() {
 
                     </p>
                     <div className="d-flex gap-3 mt-4">
-                      <Link to="/services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/Bhopal" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
                       <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
                        </div>
                   </div>
@@ -79,7 +83,7 @@ export default function HeroSection() {
                    Venues with complete profiles on GNV stand out and receive more inquiries. Showcase your strengths, gather client reviews, and watch your booking rates grow.  {" "}
                     </p>
                     <div className="d-flex gap-3 mt-4">
-                      <Link to="/Services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/BhopalCity" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
                       <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
                        </div>
                   </div>
@@ -102,13 +106,13 @@ export default function HeroSection() {
                   <div data-swiper-parallax="-100">
                   <h5 className="cold">From lights to mics — if you supply it </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
-                  <span className="text-black" >    Event suppliers,  </span> <span className="highlight">it’s time to go digital</span><span className="text-black" > — register on GNV and grow your bookings.  </span>
+                  <span className="text-black" >    Event Equipment suppliers,  </span> <span className="highlight">it’s time to go digital</span><span className="text-black" > — register on GNV and grow your bookings.  </span>
                     </p>
                     <p className="text-capitalize" >
                       GNV makes it easy for suppliers to manage listings, respond to inquiries, and get hired — all from one dashboard. Create your profile, upload your services, and let clients come to you!{" "}
                     </p>
                     <div className="d-flex gap-3 mt-4">
-                      <Link to="/Services" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/EventRental" className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
                       <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
                        </div>
                   </div>
@@ -138,7 +142,7 @@ export default function HeroSection() {
                     Event planners and organizers can create a professional profile on GNV to showcase their expertise and past events. Connect directly with clients, venues, and suppliers to plan and manage unforgettable experiences </p>
 
                     <div className="d-flex gap-3 mt-4">
-                      <Link to="/Services"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/EventPlanner"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
                       <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
                        </div>
                   </div>
@@ -168,7 +172,7 @@ export default function HeroSection() {
                   Volunteers can register on GNV to join exciting events and support registered planners, suppliers, and artists. From setup to backstage assistance, your contribution helps bring events to life. </p>
 
                     <div className="d-flex gap-3 mt-4">
-                      <Link to="/Services"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
+                      <Link to="/VolunteerBooking"  className="custom-btn primary-btn">Explore Now <span>&rarr;</span></Link>
                       <Link to="/ContactUs" className="custom-btn outline-btn">Contact Us</Link>
                        </div>
                   </div>

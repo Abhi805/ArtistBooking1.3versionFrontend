@@ -17,7 +17,7 @@ import image7 from "../../assets/exhibitionsimage.jpg";
 import image8 from "../../assets/celebritymanagement.jpg";
 import image9 from "../../assets/promotionaactivites.png";
 import image10 from "../../assets/artistimages.jpg";
-import image11 from "../../assets/entertainmentevents.jpg";
+import image11 from "../../assets/entertainmentevents.jpg";  
 import image12 from "../../assets/modelcorpo.avif";
 import image13 from "../../assets/brandimage.gif";
 import image14 from "../../assets/eventmanagment.jpg";
@@ -178,3 +178,4 @@ export default function Services() {
     </div> 
   );
 }
+

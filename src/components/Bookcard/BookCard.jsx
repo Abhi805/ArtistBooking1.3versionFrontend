@@ -19,7 +19,7 @@ export default function BookCard() {
       title: "Book Artists",   
       btn: "Book Now",
     },
-    {   
+    {     
       img: renteventequipment,
       title: "Rent Event Equipment",
       btn: "Book Now", 

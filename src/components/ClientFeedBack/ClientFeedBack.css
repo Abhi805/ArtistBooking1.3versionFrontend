@@ -1,46 +1,73 @@
 .client-feedback-section {
-      background-color: #f8f9fa;
+  background-color: #f8f9fa;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.title span {
+  color: #ff4d30;
+}
+
+.feedback-card {
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-in-out forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 320px;
+}
+
+.feedback-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.feedback-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid #ff4d30;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.feedback-stars {
+  font-size: 18px;
+  color: #ffc107;
+}
+
+/* Slider spacing and layout */
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-dots li button:before {
+  color: #ff4d30;
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff4d30;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .subtitle {
-    color: #ff4d30;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-     
-  .title {
-    font-size: 2.5rem;
-    font-weight: bold; 
-  }
-  
-  .title span { 
-    color: #ff4d30;
-  }
-  
-  .feedback-card {
-    background: #fff;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .feedback-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .feedback-image img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 3px solid #ff4d30;
-    padding: 3px;
-  }
-  
-  .feedback-stars {
-    font-size: 18px;
-    color: #ffc107;
-  }
-  
+}

@@ -11,16 +11,31 @@ const ContactUs = () => {
   return (
     <div className="contact-page">
       {/* Top Section */}
-      <section className="contact-hero text-white text-center py-5">
+      {/* <section className="contact-hero text-white text-center py-5">
         <div className="container">
           <h1 className="fw-bold" data-aos="fade-down">
-            Let's Get In Touch   
+            Let's Get In Touch
           </h1>
           <p className="mt-3 text-white text-capitalize" data-aos="fade-up">
-          GNVIndia is your trusted partner in event management, proudly serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand exhibition, a cultural celebration, or a corporate gathering — we’re just one click away from making your vision come alive.
+            GNVIndia is your trusted partner in event management, proudly
+            serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand
+            exhibition, a cultural celebration, or a corporate gathering — we’re
+            just one click away from making your vision come alive.
           </p>
         </div>
-      </section>   
+      </section> */}
+
+      <div className="venue-header text-white">
+        <div className="container">
+          <h1>  Let's Get In Touch</h1>
+          <p className="text-capitalize text-white">
+              GNVIndia is your trusted partner in event management, proudly
+            serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand
+            exhibition, a cultural celebration, or a corporate gathering — we’re
+            just one click away from making your vision come alive.
+          </p>
+        </div>
+      </div>
 
       {/* Contact Info */}
       <section className="py-5 bg-light">
@@ -32,59 +47,53 @@ const ContactUs = () => {
             Creating Unforgettable Moments Starts Here
           </h2>
           <div className="row g-4">
-  {[
-    {
-      title: "Address",
-      text: "Shop No. 5, 3rd Floor, Plot No. 53, Shree Jee Avanue, Scheme No53, Vijay Nagar Indore 452011",
-      link: "https://www.google.com/maps?q=Shop+No.+5,+3rd+Floor,+Plot+No.+53,+Shree+Jee+Avanue,+Scheme+No53,+Vijay+Nagar+Indore+452011",
-      cardClass: "card-address"
-    },
-    {
-      title: "Email",
-      text: "events@gnvindia.in",
-      link: "mailto:events@gnvindia.in",
-      cardClass: "card-email"
-    },
-    {
-      title: "Phone Number",
-      text: "9691474449",
-      link: "tel:9691474449",
-      cardClass: "card-phone"
-    },
-    {
-      title: "WhatsApp",
-      text: "9691474449",
-      link: "https://wa.me/919691474449",
-      cardClass: "card-whatsapp"
-    },
-  ].map((info, index) => (
-    <div
-      className="col-12 col-md-6 col-lg-3"
-      key={index}
-      data-aos="fade-up"
-      data-aos-delay={index * 100}
-    >
-      <div className={`contact-info-card ${info.cardClass}`}>
-        <h5>{info.title}</h5>
-        <p>
-          <a
-            href={info.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {info.text}
-          </a>
-        </p>
-      </div>
-    </div>
-  ))}
-</div>
-
-
-
-
-
-
+            {[
+              {
+                title: "Address",
+                text: "Shop No. 5, 3rd Floor, Plot No. 53, Shree Jee Avanue, Scheme No53, Vijay Nagar Indore 452011",
+                link: "https://www.google.com/maps?q=Shop+No.+5,+3rd+Floor,+Plot+No.+53,+Shree+Jee+Avanue,+Scheme+No53,+Vijay+Nagar+Indore+452011",
+                cardClass: "card-address",
+              },
+              {
+                title: "Email",
+                text: "events@gnvindia.in",
+                link: "mailto:events@gnvindia.in",
+                cardClass: "card-email",
+              },
+              {
+                title: "Phone Number",
+                text: "9691474449",
+                link: "tel:9691474449",
+                cardClass: "card-phone",
+              },
+              {
+                title: "WhatsApp",
+                text: "9691474449",
+                link: "https://wa.me/919691474449",
+                cardClass: "card-whatsapp",
+              },
+            ].map((info, index) => (
+              <div
+                className="col-12 col-md-6 col-lg-3"
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className={`contact-info-card ${info.cardClass}`}>
+                  <h5>{info.title}</h5>
+                  <p>
+                    <a
+                      href={info.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {info.text}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
