@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
   setLoading(true);
     try {
-      const res = await axios.post(
+      const res = await axios.post( 
         "http://localhost:5000/api/auth/login",
         { email, password },
         { withCredentials: true }

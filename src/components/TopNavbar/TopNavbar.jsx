@@ -6,29 +6,49 @@ import {
   FaYoutube,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-       e.preventDefault(); // ❗ Yeh yahan likhna zaroori hai
+  // ✅ Logout handler
+  const handleLogout = async (e) => {
+    e.preventDefault();
     try {
-      await axios.get("http://localhost:5000/api/logout", {
-        withCredentials: true, // Cookies ke sath request jaayegi
+      const res = await axios.get("http://localhost:5000/api/auth/logout", {
+        withCredentials: true,
       });
-
-      // Redirect to login page
+      console.log(res.data.msg);
+      setIsLoggedIn(false);
       navigate("/login");
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error("Logout error:", error);
+      alert("Logout failed. Please try again.");
     }
   };
 
+  // ✅ Check login status from cookie
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/auth/check-auth", {
+          withCredentials: true,
+        });
+        console.log(res)
+        setIsLoggedIn(res.data.loggedIn);
+      } catch (error) {
+        console.error("Auth check failed:", error);
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkLoginStatus();
+  }, []);
+
+  // ✅ Show/hide top navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
@@ -98,29 +118,29 @@ const TopNavbar = () => {
               ACCOUNT
             </button>
             <ul className="dropdown-menu" aria-labelledby="accountDropdown">
-              <li>
-                <Link className="dropdown-item" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="dropdown-item text-danger"
-                  onClick={(e) => {
-                    e.preventDefault(); // prevent default navigation
-                    handleLogout();
-                  }}
-                >
-                  Logout
-                </Link>
-              </li>
+              {!isLoggedIn && (
+                <>
+                  <li>
+                    <Link className="dropdown-item" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/signup">
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              )}
 
-              <li>
-                <Link className="dropdown-item" to="/signup">
-                  Signup
-                </Link>
-              </li>
+              {isLoggedIn && (
+                <li>
+                  <Link className="dropdown-item" to="/" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </li>
+              )}
+
               <li>
                 <hr className="dropdown-divider" />
               </li>
