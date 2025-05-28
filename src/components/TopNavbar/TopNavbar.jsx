@@ -6,15 +6,16 @@ import {
   FaYoutube,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // ✅ Logout handler
+  // Logout handler
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -30,25 +31,28 @@ const TopNavbar = () => {
     }
   };
 
-  // ✅ Check login status from cookie
+  // Check login status on route change
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/check-auth", {
-          withCredentials: true,
-        });
-        console.log(res)
+        const res = await axios.get(
+          "http://localhost:5000/api/auth/check-auth",
+          {
+            withCredentials: true,
+          }
+        );
+        console.log("setIsLoggedIn", res.data.loggedIn);
         setIsLoggedIn(res.data.loggedIn);
+        console.log("setIsLoggedIn", res.data.loggedIn);
       } catch (error) {
-        console.error("Auth check failed:", error);
         setIsLoggedIn(false);
       }
     };
 
     checkLoginStatus();
-  }, []);
+  }, [location]);
 
-  // ✅ Show/hide top navbar on scroll
+  // Show/hide top navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
@@ -91,21 +95,34 @@ const TopNavbar = () => {
         </div>
 
         <div className="d-flex align-items-center gap-3 flex-wrap social-icons">
-          <Link to="https://www.facebook.com/gnvindiaevents" target="_blank">
-            <FaFacebookF className="icon" /> Facebook
-          </Link>
-          <Link to="https://www.instagram.com/gnvindiaevents/" target="_blank">
-            <FaInstagram className="icon" /> Instagram
-          </Link>
-          <Link to="https://www.youtube.com/@gnvindia7" target="_blank">
-            <FaYoutube className="icon" /> YouTube
-          </Link>
-          <Link
-            to="https://www.linkedin.com/company/gnv-india-entertainment/"
+          <a
+            href="https://www.facebook.com/gnvindiaevents"
             target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF className="icon" /> Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/gnvindiaevents/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="icon" /> Instagram
+          </a>
+          <a
+            href="https://www.youtube.com/@gnvindia7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube className="icon" /> YouTube
+          </a>
+          <a
+            href="https://www.linkedin.com/company/gnv-india-entertainment/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedinIn className="icon" /> LinkedIn
-          </Link>
+          </a>
 
           <div className="dropdown">
             <button
@@ -135,9 +152,9 @@ const TopNavbar = () => {
 
               {isLoggedIn && (
                 <li>
-                  <Link className="dropdown-item" to="/" onClick={handleLogout}>
+                  <button className="dropdown-item" onClick={handleLogout}>
                     Logout
-                  </Link>
+                  </button>
                 </li>
               )}
 
@@ -145,17 +162,17 @@ const TopNavbar = () => {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <Link className="dropdown-item" to="/Registration">
+                <Link className="dropdown-item" to="/registration">
                   Vendor Registration
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" to="/MyBoard">
+                <Link className="dropdown-item" to="/myboard">
                   MyDashboard
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" to="/BasicDetail">
+                <Link className="dropdown-item" to="/basicdetail">
                   CreateArtistProfile
                 </Link>
               </li>

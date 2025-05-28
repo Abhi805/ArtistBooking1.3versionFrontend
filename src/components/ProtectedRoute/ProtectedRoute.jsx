@@ -9,10 +9,13 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/protected", {
+        const res = await axios.get("http://localhost:5000/api/auth/protected", {
           withCredentials: true,
         });
+         console.log("Protected route response:", res);
         setAuth(res.status === 200);
+     
+
       } catch (err) {
         setAuth(false);
       }
