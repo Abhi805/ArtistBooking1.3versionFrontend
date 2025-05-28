@@ -176,6 +176,7 @@ const ArtistDetail2 = () => {
 
         <div className="container py-4" data-aos="fade-up">
           <h5 className="fw-bold mb-3">Review {artist.firstName} {artist.lastName}</h5>
+          <h6 className="text-capitalize" >City: {artist.city}</h6>
           <form>
             <div className="mb-3">
               <label className="form-label fw-semibold" htmlFor="rating">Rate Us:</label>

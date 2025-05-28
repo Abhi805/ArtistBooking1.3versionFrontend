@@ -9,52 +9,57 @@ import "react-toastify/dist/ReactToastify.css";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);  // ✅ New state for toggle
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
 
-        const savedEmail = localStorage.getItem("rememberEmail");
+    const savedEmail = localStorage.getItem("rememberEmail");
     if (savedEmail) {
-      setFormData((prev) => ({ ...prev, email: savedEmail }));
+      setEmail(savedEmail);
       setRememberMe(true);
     }
-
   }, []);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-  setLoading(true);
+    setLoading(true);
+
     try {
-      const res = await axios.post( 
+      const res = await axios.post(
         "http://localhost:5000/api/auth/login",
         { email, password },
-        { withCredentials: true }
+        { withCredentials: true } // very important for cookie based auth
       );
+
       if (rememberMe) {
-        localStorage.setItem("rememberEmail", formData.email);
+        localStorage.setItem("rememberEmail", email);
       } else {
         localStorage.removeItem("rememberEmail");
       }
-      localStorage.setItem("token", res.data.token);
+
+      // Optional: if backend sends token in response body
+      if (res.data.token) localStorage.setItem("token", res.data.token);
+
       toast.success("Login successful!", { position: "top-center" });
 
       setTimeout(() => {
-        navigate("/basicdetail");
+        console.log("Before navigate");
+        navigate("/Basicdetail");
+        console.log("After navigate");
       }, 2000);
     } catch (err) {
       toast.error(err.response?.data?.msg || "Login failed", {
         position: "top-center",
       });
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -68,7 +73,9 @@ const Login = () => {
             <div className="card8 p-5 shadow-lg bg-white rounded-4">
               <div className="card-body">
                 <h2 className="login-title mb-2 text-center">Welcome back</h2>
-                <p className="login-subtitle mb-4 text-center">Please enter your details</p>
+                <p className="login-subtitle mb-4 text-center">
+                  Please enter your details
+                </p>
 
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
@@ -86,14 +93,13 @@ const Login = () => {
                   <div className="mb-3 position-relative">
                     <label className="form-label">Password</label>
                     <input
-                      type={showPassword ? "text" : "password"}  // toggle type
+                      type={showPassword ? "text" : "password"}
                       className="form-control"
                       placeholder="Enter password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
-                    {/* Toggle button */}
                     <span
                       onClick={() => setShowPassword(!showPassword)}
                       style={{
@@ -106,13 +112,39 @@ const Login = () => {
                       }}
                       title={showPassword ? "Hide Password" : "Show Password"}
                     >
-                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                      <FontAwesomeIcon
+                        icon={showPassword ? faEyeSlash : faEye}
+                      />
                     </span>
                   </div>
 
+                  <div className="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="rememberMeCheck"
+                      checked={rememberMe}
+                      onChange={() => setRememberMe(!rememberMe)}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="rememberMeCheck"
+                    >
+                      Remember Me
+                    </label>
+                  </div>
+
                   <div className="d-grid mb-3">
-                    <button type="submit" className="btn btn-primary login-btn">
-                      Sign in
+                    <button
+                      type="submit"
+                      className="btn btn-primary login-btn"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <Spinner animation="border" size="sm" />
+                      ) : (
+                        "Sign in"
+                      )}
                     </button>
                   </div>
 
