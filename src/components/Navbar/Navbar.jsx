@@ -13,7 +13,7 @@ function Navbar() {
 
         <button
           className="navbar-toggler"
-          type="button"
+          type="button"  
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"

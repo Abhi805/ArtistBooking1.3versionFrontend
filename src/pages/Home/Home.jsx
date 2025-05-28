@@ -28,7 +28,7 @@ const Home = () => {
         <ClientFeedBack />  
       </div> 
       <div>
-        <BlogPosts />
+        <BlogPosts /> 
       </div>
       <div>
         <OnlineBooking />
