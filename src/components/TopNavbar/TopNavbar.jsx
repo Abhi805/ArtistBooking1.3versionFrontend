@@ -7,9 +7,27 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+       e.preventDefault(); // ❗ Yeh yahan likhna zaroori hai
+    try {
+      await axios.get("http://localhost:5000/api/logout", {
+        withCredentials: true, // Cookies ke sath request jaayegi
+      });
+
+      // Redirect to login page
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +68,7 @@ const TopNavbar = () => {
               +91-9691474449
             </a>
           </span>
-        </div>  
+        </div>
 
         <div className="d-flex align-items-center gap-3 flex-wrap social-icons">
           <Link to="https://www.facebook.com/gnvindiaevents" target="_blank">
@@ -85,6 +103,19 @@ const TopNavbar = () => {
                   Login
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="#"
+                  className="dropdown-item text-danger"
+                  onClick={(e) => {
+                    e.preventDefault(); // prevent default navigation
+                    handleLogout();
+                  }}
+                >
+                  Logout
+                </Link>
+              </li>
+
               <li>
                 <Link className="dropdown-item" to="/signup">
                   Signup
