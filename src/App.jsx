@@ -30,6 +30,7 @@ import PlannerProfile from "./pages/EventPlanner/PlannerProfile";
 import EventPlannerForm from "./pages/EventPlanner/EventPlannerForm";
 import VolunteerForm from "./pages/VolunteerBooking/VolunteerForm";
 import VolunteerProfile from "./pages/VolunteerBooking/VolunteerProfile";
+import EventRentalForm from "./pages/EventRental/EventRentalForm";
 
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
@@ -126,6 +127,7 @@ function App() {
            <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
            <Route path="/VolunteerForm" element={<VolunteerForm />} />
           <Route path="/VolunteerProfile" element={<VolunteerProfile />} />
+          <Route path="/EventRentalForm" element={<EventRentalForm />} />
 
 
 

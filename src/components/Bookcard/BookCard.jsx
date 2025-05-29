@@ -39,7 +39,7 @@ export default function BookCard() {
       btn: "Book Now",
       link:  "/BhopalCity",
     },
-  ];
+  ];  
 
   return (
     <div className="container-fluid kappp">

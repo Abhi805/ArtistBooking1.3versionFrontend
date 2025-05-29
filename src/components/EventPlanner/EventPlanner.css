@@ -1,11 +1,14 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
+
+
 .event-planner-container {
-  background: linear-gradient(to bottom right, #fff4ef, #fcd5bd);
+  background: #ffffff; /* White background */
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(255, 100, 0, 0.2);
   color: #333;
 }
+
 
 .section-title {
   font-size: 2.4rem;
@@ -16,10 +19,10 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: #444;
-}
+}   
 
 .red-highlight {
-  background: linear-gradient(45deg, #ff3d3d, #e95200);
+  background: linear-gradient(45deg, #fffbfb, #f5f3f2);
   color: #fff;
   padding: 2px 6px;
   border-radius: 5px;
@@ -65,7 +68,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #ff3d3d;
+  background:linear-gradient(45deg, #fffbfb, #f5f3f2);
   color: white;
   border: none;
   font-size: 2rem;
@@ -77,7 +80,7 @@
 }
 
 .carousel-arrow:hover {
-  background: linear-gradient(45deg, #cd211d, #e95200);
+   background: linear-gradient(45deg, #fffbfb, #f5f3f2);
 }
 
 .left-arrow {
@@ -88,20 +91,22 @@
   right: 10px;
 }
 
-.contact-btn {
-  background: linear-gradient(45deg, #fffbfb, #f5f3f2);
+.btn-custom {
+  display: inline-block;
+  background: linear-gradient(45deg, #cd211d, #e95200);
   color: #fff;
-  padding: 12px 30px;
+  border: none;
   border-radius: 30px;
-  font-weight: bold;
+  padding: 10px 25px;
+  font-weight: 500;
   text-decoration: none;
-  font-size: 1rem;
-  transition: transform 0.3s ease;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
-.contact-btn:hover {
+.btn-custom:hover {
   transform: scale(1.05);
-  color: white;
+  color: #fff;
 }
 
 /* Responsive */

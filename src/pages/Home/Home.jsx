@@ -20,13 +20,13 @@ const Home = () => {
       </div>
       <div>
         <EventPlanner />
-      </div>
+      </div>   
       <div className="mb-5">
         <PastEvent />
       </div>
       <div>
         <ClientFeedBack />  
-      </div> 
+      </div>     
       <div>
         <BlogPosts /> 
       </div>

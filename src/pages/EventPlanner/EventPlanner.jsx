@@ -72,7 +72,7 @@ const EventPlanner = () => {
          <button className="btn btn-primary px-4 py-2">
        Registeration
       </button>
-     </Link>
+       </Link>
         </div>  
       </div>
 

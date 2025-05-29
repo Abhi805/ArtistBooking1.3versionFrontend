@@ -99,7 +99,7 @@ const PlannerProfile = () => {
                   <input
                     type="email"
                     className="form-control"
-                    placeholder="Email Address"
+                    placeholder="Email Address (optional)"
                     required
                   />
                 </div>

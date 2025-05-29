@@ -18,23 +18,27 @@ import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
-    <div className="" >
+    <div className="" >   
       <Swiper
-        className="mySwiper mt-5"
-        loop={true}   
-        speed={2500}    
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
+         className="mySwiper mt-5"
+  loop={true}
+  speed={2500}
+  autoplay={{
+    delay: 2000,
+    disableOnInteraction: false,
+  }}
         pagination={{
-          clickable: true,  
-        }}
-        // navigation={true}
-        parallax={true}
-        modules={[Autoplay, Pagination, Parallax]}
-       >
-        <div slot="container-start" data-swiper-parallax="-300"></div>
+    clickable: true,
+  }}
+  parallax={true}
+  modules={[Autoplay, Pagination, Parallax]}
+  breakpoints={{
+    320: { slidesPerView: 1 },
+    768: { slidesPerView: 1 },
+    992: { slidesPerView: 1 },
+    }}
+     >
+   <div slot="container-start" data-swiper-parallax="-300"></div>
          <div>
        <SwiperSlide>
           <div className="mt-5" data-swiper-parallax="-100">
@@ -64,7 +68,7 @@ export default function HeroSection() {
                     <img src={image1} alt="Slide" className="img-fluid" />
                   </div>
                 </div>
-              </div>
+              </div>   
             </div>
           </div>
         </SwiperSlide>
@@ -191,3 +195,6 @@ export default function HeroSection() {
     </div>
   );
 }
+
+
+

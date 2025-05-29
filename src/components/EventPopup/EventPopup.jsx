@@ -20,7 +20,7 @@ const EventPopup = () => {
       size="lg"
       centered
       className="event-modal"
-      backdrop="static"
+      backdrop="static"  
     >  
       {/* X Close Button */}
       <Modal.Header closeButton className="border-0 pb-0" />

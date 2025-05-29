@@ -90,7 +90,7 @@ const RentalDetail = () => {
                     <input
                       type="email"
                       className="form-control"
-                      placeholder="Email Address"
+                      placeholder="Email Address (optional)"
                       required
                     />
                   </div>
@@ -105,7 +105,7 @@ const RentalDetail = () => {
                     <textarea
                       className="form-control"
                       rows="3"
-                      placeholder="Description"
+                      placeholder="Description (optional)"
                     ></textarea>
                   </div>
                 </div>

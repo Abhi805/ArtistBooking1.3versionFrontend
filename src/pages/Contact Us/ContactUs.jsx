@@ -11,21 +11,7 @@ const ContactUs = () => {
   return (
     <div className="contact-page">
       {/* Top Section */}
-      {/* <section className="contact-hero text-white text-center py-5">
-        <div className="container">
-          <h1 className="fw-bold" data-aos="fade-down">
-            Let's Get In Touch
-          </h1>
-          <p className="mt-3 text-white text-capitalize" data-aos="fade-up">
-            GNVIndia is your trusted partner in event management, proudly
-            serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand
-            exhibition, a cultural celebration, or a corporate gathering — we’re
-            just one click away from making your vision come alive.
-          </p>
-        </div>
-      </section> */}
-
-      <div className="venue-header text-white">
+       <div className="venue-header text-white">
         <div className="container">
           <h1>  Let's Get In Touch</h1>
           <p className="text-capitalize text-white">
@@ -167,41 +153,39 @@ const ContactUs = () => {
                       <input
                         type="email"
                         className="form-control"
-                        placeholder="Your Email"
+                        placeholder="Your Email (optional)"
                       />
                     </div>
                     <div className="col-md-6">
                       <select className="form-select">
-                        <option>Event Planning</option>
-                        <option>Corporate Event</option>
-                        <option>Wedding</option>
+                        <option>Services</option>
+                       <option>Event Planning</option>
+                        <option>Artist Booking</option>
+                        <option>Venue Booking</option>
+                         <option>Volunteer Booking</option>
+                         <option>Event Rental</option>
+                     <option>Other</option>
                       </select>
                     </div>
                     <div className="col-md-6">
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Your Company Name"
+                        placeholder="Your Company Name (optional)"
                       />
                     </div>
+                    
                     <div className="col-md-6">
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Ex: 20 Lakh"
-                      />
-                    </div>
-                    <div className="col-12">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Address"
+                        placeholder="Address (optional)"
                       />
                     </div>
                     <div className="col-12">
                       <textarea
                         className="form-control"
-                        placeholder="Type here any requirement…"
+                        placeholder="Type here any requirement… (optional)"
                         rows="3"
                       ></textarea>
                     </div>

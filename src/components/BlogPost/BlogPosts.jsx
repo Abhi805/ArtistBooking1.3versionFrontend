@@ -1,31 +1,56 @@
 import React from "react";
 import Slider from "react-slick";
 import "./BlogPosts.css";
-import blog from "../../assets/Blog1.jpg";
-import blog1 from "../../assets/blog2.jpg";
-import blog3 from "../../assets/blog3.jpg";
+import blog from '../BlogPost/blog2.avif';
+import blog1 from '../BlogPost/blog1.jpg';
+import blog3 from '../BlogPost/blog3.webp';
 
 const blogData = [
-  {
-    img: blog,
-    title: "GNVIndia: Elevating Events with Artists, Venues, Equipment & Offsites.",
-    desc:
-      "Planning a successful event—whether a corporate conference, a wedding, a live concert, or a team-building offsite—can feel overwhelming...",
-    link: "Learn more about GNVIndia – Indore’s Event Experts in Artists, Venues & Offsites.",
-  },
+ 
   {
     img: blog1,
-    title: "Top 25 Corporate Event Themes for Employees That Inspire Engagement",
+    title: "India's Powerful Presence: ICC Called 'Event Management Company'",
     desc:
-      "Corporate Event Themes play a crucial role in today’s dynamic corporate landscape, where cultivating an environment that is positive, engaging...",
-    link: "Read more about \"Top 25 Corporate Event Themes for Employees That Inspire Engagement\"",
+      "A recent article highlights ICC being described as an event management company, reflecting India's dominant role in global cricketing events...",
+    link: (
+      <a
+        href="https://www.hindustantimes.com/cricket/indias-powerful-presence-a-complex-issue-icc-called-event-management-company-in-scathing-attack-told-to-101737868990170.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read full article on Hindustan Times
+      </a>
+    ),
+  },
+  {
+    img: blog,
+    title: "Fraud Worth Crores Found in Jaipur Wedding Planners During IT Raids",
+    desc:
+      "Income Tax raids on Jaipur-based wedding planners reveal fraudulent practices worth crores, raising serious concerns about the industry...",
+    link: (
+      <a
+        href="https://www.news18.com/business/income-tax-raids-reveal-fraud-worth-crores-among-wedding-planners-in-jaipur-ws-ab-9163134.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read full article on News18
+      </a>
+    ),
   },
   {
     img: blog3,
-    title: "Top 10 Corporate Event Trends You Need to Know in 2025",
+    title: "From BYJU's AVP to Event Disruptor: Evaga Entertainment's Journey",
     desc:
-      "In 2025, the world of corporate events is rapidly evolving, driven by technological advancements, shifting attendee expectations, and a greater...",
-    link: "Read more about \"Top 10 Corporate Event Trends You Need to Know in 2025\"",
+      "A former AVP at BYJU'S transforms the event industry with Evaga Entertainment, redefining how corporate and social events are executed in India...",
+    link: (
+      <a
+        href="https://www.zeebiz.com/india/news-from-byju-s-avp-to-revolutionising-events-evaga-entertainment-redefines-the-industry-341631"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read full article on ZeeBiz
+      </a>
+    ),
   },
 ];
 
@@ -68,7 +93,7 @@ const BlogPosts = () => {
                 className="blog-card d-flex flex-column h-100"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src={blog.img} alt={`blog-${index}`} className="img-fluid mb-3" />
+                <img src={blog.img} alt={`blog-${index}`} className="img-fluid mb-3 blog-img" />
                 <h5 className="blog-heading">{blog.title}</h5>
                 <p className="blog-text">{blog.desc}</p>
                 <div className="read-more mt-auto">{blog.link}</div>

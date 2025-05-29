@@ -1,13 +1,13 @@
 import React from 'react';
-import './VolunteerForm.css';
+import './EventRentalForm.css';
 import 'animate.css';
 
-const VolunteerForm = () => {
+const EventRentalForm = () => {
   return (
     <div className="event-form-container py-5 px-3">
       <div className="form-card bg-white p-4 rounded shadow-lg animate__animated animate__fadeInUp">
         <h2 className="text-center mb-4 form-title">
-          <span className="title-underline">Volunteer Registration</span>
+          <span className="title-underline">EventRental Registration</span>
         </h2>
         <form>
           <div className="row g-3">
@@ -35,7 +35,7 @@ const VolunteerForm = () => {
                 <option>Live coverage and social media uploads</option>
               </select>
             </div>
-            <div className="col-md-6">
+             <div className="col-md-6">
               <label className="form-label">Preferred Shift</label>
               <select className="form-select">
                 <option>Select shift</option>
@@ -44,7 +44,7 @@ const VolunteerForm = () => {
                 <option>Night</option>
                 <option>Flexible</option>
               </select>
-            </div>  
+            </div>   
             <div className="col-md-6">
               <label className="form-label">Location</label>
               <input type="text" className="form-control" placeholder="Your location/city" />
@@ -69,5 +69,4 @@ const VolunteerForm = () => {
   );
 };
 
-export default VolunteerForm;
-
+export default EventRentalForm;

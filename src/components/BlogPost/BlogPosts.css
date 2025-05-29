@@ -23,7 +23,6 @@
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 0.8s ease-in-out forwards;
-  animation-delay: 0.2s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,11 +34,6 @@
 .blog-card:hover {
   transform: translateY(-10px) scale(1.01);
   box-shadow: 0 15px 35px rgba(255, 77, 48, 0.3);
-}
-
-.blog-card:hover .blog-img {
-  transform: scale(1.05);
-  filter: brightness(1.05);
 }
 
 .blog-heading {
@@ -82,17 +76,15 @@
   transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-/* Dots Color */
 .slick-dots li button:before {
-  color: #ff4d30;
+  color: #cac2c1;
   font-size: 12px;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #ff4d30;
+  color: #dfd0ce;
 }
 
-/* Animation Keyframes */
 @keyframes fadeInUp {
   0% {
     opacity: 0;

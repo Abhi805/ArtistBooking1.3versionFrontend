@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import "./EventRental.css";
 import { Link, useNavigate } from "react-router-dom";
 
+
 import Eq1 from "./Eqimage/Eq1.jpg";
 import Eq2 from "./Eqimage/Eq2.jpg";
 import Eq3 from "./Eqimage/Eq3.jpg";
@@ -236,7 +237,7 @@ const EventRental = () => {
     <div className="container-fluid my-5">
       <div className="venue-header text-white">
         <div className="container">
-          <h1>Event Equipment Rental</h1>
+          <h1>Event Equipment Rental</h1> 
           <p className="text-capitalize text-white">
             Welcome to Make your event truly spectacular with our top-quality
             event equipment on rent. From professional sound systems, dazzling
@@ -244,6 +245,11 @@ const EventRental = () => {
             elements – we provide everything you need to elevate your event
             experience.
           </p>
+             <Link to="/EventRentalForm">
+                   <button className="btn btn-primary px-4 py-2">
+                 Registeration
+                </button>
+                 </Link>
         </div>
       </div>
 
