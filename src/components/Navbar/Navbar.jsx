@@ -10,7 +10,7 @@ function Navbar() {
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Gnv logo" />
         </Link>
-
+ 
         <button
           className="navbar-toggler"
           type="button"  
