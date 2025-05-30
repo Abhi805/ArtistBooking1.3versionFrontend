@@ -36,7 +36,7 @@ const Indore = () => {
     <div className="artist-booking">
       <div className="artist-header text-white py-5 text-center">
         <div className="container">
-          <h1 className="fw-bold">Book Top Artists</h1>
+          <h1 className="fw-bold mt-3">Book Top Artists</h1>
           <p className="mt-3" style={{ color: "white" }}>
             Book live bands, singers, comedians, celebrities, and more with GNV India.
           </p>

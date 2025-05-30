@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
-import "./PlannerProfile.css";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import "./PlannerProfile.css";
 import image from "./planimg/profile.jpg";
 import gallery from "./planimg/gallery.jpg";
 import gallery1 from "./planimg/gallery1.jpeg";
@@ -15,13 +19,57 @@ const PlannerProfile = () => {
     AOS.init({ duration: 1000 });
   }, []);
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    calender: "",
+    description: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/inquiry/form/eventplanner",
+        formData
+      );
+
+      toast.success("Request submitted successfully!");
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        calender: "",
+        description: "",
+      });
+    } catch (err) {
+      console.error("Error:", err);
+      const errorMsg =
+        err.response?.data?.message || "Something went wrong!";
+      toast.error(errorMsg);
+    }
+
+    setLoading(false);
+  };
+
   const galleries = [gallery, gallery1, gallery2, gallery3, gallery4, gallery5];
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <div className="barco-projector">
         <div className="header-section text-white text-center py-4">
-          <div className="container-fluid mt-5  ">
+          <div className="container-fluid mt-5">
             <h1 className="fw-bold" data-aos="fade-down">
               About Wedniksha Wedding Planner
             </h1>
@@ -31,11 +79,10 @@ const PlannerProfile = () => {
 
       <div className="container mt-5">
         <div className="row gy-3">
+          {/* Info Box */}
           <div className="col-lg-4" data-aos="fade-left">
-             <div className="info-box p-4 bg-light rounded shadow-sm">
-              <h4 className="fw-bold text-danger">
-                Wedniksha Wedding Planners
-              </h4>
+            <div className="info-box p-4 bg-light rounded shadow-sm">
+              <h4 className="fw-bold text-danger">Wedniksha Wedding Planners</h4>
               <ul className="list-unstyled mt-3">
                 <li className="mb-2">
                   <i className="bi bi-briefcase-fill text-danger me-2"></i>
@@ -55,8 +102,7 @@ const PlannerProfile = () => {
                 </li>
                 <li className="mb-2">
                   <i className="bi bi-x-octagon-fill text-danger me-2"></i>
-                  <strong>Cancellation:</strong> Non-refundable, date change
-                  allowed
+                  <strong>Cancellation:</strong> Non-refundable, date change allowed
                 </li>
               </ul>
               <h6 className="fw-bold mt-3">Available Cities:</h6>
@@ -67,6 +113,7 @@ const PlannerProfile = () => {
             </div>
           </div>
 
+          {/* Image */}
           <div className="col-lg-4 text-center" data-aos="zoom-in">
             <img
               src={image}
@@ -75,47 +122,76 @@ const PlannerProfile = () => {
             />
           </div>
 
+          {/* Booking Form */}
           <div className="col-lg-4" data-aos="fade-right">
             <div className="booking-form p-3 bg-white rounded shadow">
               <h5 className="text-center mb-3 fw-bold">Book Now</h5>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-2">
                   <input
                     type="text"
+                    name="fullName"
                     className="form-control"
                     placeholder="Full Name"
+                    value={formData.fullName}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="mb-2">
                   <input
                     type="tel"
+                    name="phone"
                     className="form-control"
                     placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="mb-2">
                   <input
                     type="email"
+                    name="email"
                     className="form-control"
                     placeholder="Email Address (optional)"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="mb-2">
+                  <input
+                    type="date"
+                    name="calender"
+                    className="form-control"
+                    value={formData.calender}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="mb-2">
-                  <input type="date" className="form-control" required />
-                </div>
-                <div className="mb-2">
                   <textarea
+                    name="description"
                     className="form-control"
                     rows="3"
                     placeholder="Event Description (optional)"
+                    value={formData.description}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-danger px-4 fw-semibold">
-                    Submit
+                  <button
+                    className="btn btn-danger px-4 fw-semibold"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </div>
               </form>
@@ -124,6 +200,7 @@ const PlannerProfile = () => {
         </div>
       </div>
 
+      {/* Gallery */}
       <div className="container my-5">
         <h3 className="fw-bold text-center mb-4" data-aos="fade-up">
           Our <span style={{ color: "red" }}>Stunning Work</span>

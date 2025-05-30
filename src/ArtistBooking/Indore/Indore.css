@@ -1,5 +1,6 @@
 .artist-header {
-    background: linear-gradient(to right, #7f0000, #c40000);
+    /* background: linear-gradient(to right, #ffc2c2, #693333) !important; */
+  background:linear-gradient(to right, rgb(123, 31, 162), rgb(183, 28, 28))!important;;
     color: white;
   }
   

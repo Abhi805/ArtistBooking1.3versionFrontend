@@ -10,10 +10,10 @@ function Navbar() {
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Gnv logo" />
         </Link>
- 
+
         <button
           className="navbar-toggler"
-          type="button"  
+          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
@@ -35,7 +35,11 @@ function Navbar() {
                 About Us
               </Link>
             </li>
-
+            <li className="nav-item">
+              <Link className="nav-link" to="/Indore">
+                Artist Booking
+              </Link>
+            </li>
             <li className="nav-item dropdown">
               <Link
                 className="nav-link dropdown-toggle"
@@ -74,44 +78,7 @@ function Navbar() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                ArtistBooking
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/Indore">
-                    Indore
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Bhopal">
-                    Bhopal
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Ujjain">
-                    Ujjain
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Jabalpur">
-                    Jabalpur
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Gwalior">
-                    Gwalior
-                  </Link>
-                </li>
-              </ul>
-            </li>
-
+           
             <li className="nav-item">
               <Link className="nav-link" to="/VolunteerBooking">
                 VolunteerBooking
@@ -140,7 +107,7 @@ function Navbar() {
                 Contact Us
               </Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/newsblog">
                 News & Blog
               </Link>
@@ -150,6 +117,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}  
+}
 
 export default Navbar;
