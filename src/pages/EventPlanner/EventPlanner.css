@@ -1,4 +1,4 @@
-         .artist-card {
+.artist-card {
   border: none;
   border-radius: 20px;
   overflow: hidden;
@@ -11,16 +11,22 @@
   transform: translateY(-10px);
 }
 
-.artist-card img {
-  height: 200px;
+.artist-img {
+ 
   object-fit: cover;
-  transition: transform 0.4s ease-in-out;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.artist-card img {
+    height: 300px !important;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
 }
 
 .artist-card:hover img {
   transform: scale(1.05);
 }
-   
+
 .artist-card .card-body {
   padding: 1rem;
 }
@@ -58,16 +64,86 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.75rem;
-}   
+}
 
-.venue-header {  
+.venue-header {
   background: linear-gradient(to right, #141e30, #243b55);
   padding: 3rem 0;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .venue-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+.search-box {
+  max-width: 250px;
+  width: 100%;
+}
+
+.artist-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.artist-card:hover {
+  transform: scale(1.03);
+}
+
+.card-title {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.stylish-input {
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.search-input {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #fff8f2;
+}
+
+.search-icon {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 50px 50px 0;
+}
+
+.search-icon i {
+  transition: transform 0.3s ease;
+}
+
+.stylish-input:hover .search-icon i {
+  transform: scale(1.2);
+}
+.search-inputs select,
+.search-inputs input {
+  border-radius: 50px;
+  padding: 8px 16px;
+  border: none;
+  outline: none;
 }

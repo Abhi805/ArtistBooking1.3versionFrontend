@@ -14,7 +14,7 @@ function Navbar() {
         <button
           className="navbar-toggler"
           type="button"  
-          data-bs-toggle="collapse"
+          data-bs-toggle="collapse"  
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
@@ -35,7 +35,45 @@ function Navbar() {
                 About Us
               </Link>
             </li>
+                
 
+                <li className="nav-item dropdown">
+              <Link
+                className="nav-link dropdown-toggle"
+                to="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Artist Booking
+              </Link>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" to="/Indore">
+                    Indore
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/Bhopal">
+                    Bhopal
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/Ujjain">
+                    Ujjain
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/Jabalpur">
+                    Jabalpur
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/Gwalior">
+                    Gwalior
+                  </Link>
+                </li>
+              </ul>
+            </li>
             <li className="nav-item dropdown">
               <Link
                 className="nav-link dropdown-toggle"
@@ -43,7 +81,7 @@ function Navbar() {
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                VenueBooking
+                Venue Booking
               </Link>
               <ul className="dropdown-menu">
                 <li>
@@ -74,47 +112,11 @@ function Navbar() {
               </ul>
             </li>
 
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                ArtistBooking
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/Indore">
-                    Indore
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Bhopal">
-                    Bhopal
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Ujjain">
-                    Ujjain
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Jabalpur">
-                    Jabalpur
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Gwalior">
-                    Gwalior
-                  </Link>
-                </li>
-              </ul>
-            </li>
+            
 
             <li className="nav-item">
               <Link className="nav-link" to="/VolunteerBooking">
-                VolunteerBooking
+                Volunteer Booking
               </Link>
             </li>
 
@@ -136,15 +138,18 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/ContactUs">
-                Contact Us
-              </Link>
-            </li>
-             <li className="nav-item">
               <Link className="nav-link" to="/newsblog">
                 News & Blog
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/ContactUs">
+                Contact Us
+              </Link>
+            </li>
+
+             
           </ul>
         </div>
       </div>

@@ -16,10 +16,10 @@ const Footer = () => {
         <div className="row text-center mb-5">
           <div className="col-12">
             <h2 className="footer-title">
-              GNVindiaEvents – Your Trusted Event Management Partner
+              GNV India Entertainment – Your Trusted Event Management Partner
             </h2>
             <p className="footer-description text-capitalize">
-              GNVindiaEvents is a leading event management company in Madhya
+              GNV India Entertainment is a leading event management company in Madhya
               Pradesh offering expert solutions for corporate events, trade
               shows, artist bookings, equipment rentals, and more. From planning
               to execution, we ensure seamless and memorable experiences.
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
 
           <div className="col-md-4 mb-4">
-            <h5>Our Office</h5>
+            <h5>Address</h5>
             <p>
               GNV India Entertainment Shop No.5, 3rd Floor,Plot no. 53,Shree Jee
               Avanue,Scheme no. 53,

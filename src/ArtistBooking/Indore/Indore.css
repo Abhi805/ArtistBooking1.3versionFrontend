@@ -2,11 +2,10 @@
     background: linear-gradient(to right, #7f0000, #c40000);
     color: white;
   }
-  
   .artist-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: hidden;      
   }  
   
   .artist-card:hover {

@@ -49,6 +49,7 @@ import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
 // import SearchArtistButton from "./components/SearchArtistButton/SearchArtistButton";
+
 // import ScrollUpBar from "./components/ScrollUpBar/ScrollUpBar";
 import Services from "./pages/Services/Services";
 import EventRental from "./pages/EventRental/EventRental";
@@ -86,6 +87,7 @@ function App() {
     <>
       <Router>
         <EventPopup />
+
         <TopNavbar />
         <Navbar />
 
@@ -96,7 +98,8 @@ function App() {
         </ScrollProvider>
         {/* <SearchArtistButton /> */}
         {/* <ScrollUpBar /> */}
-        <ScrollToTopButton />
+        {/* <ScrollToTopButton /> */}
+
         <Routes>
 
 
