@@ -63,7 +63,7 @@ const PlannerProfile = () => {
 
   const galleries = [gallery, gallery1, gallery2, gallery3, gallery4, gallery5];
 
-  return (
+  return (     
     <>
       <ToastContainer position="top-right" autoClose={3000} />
 
@@ -71,7 +71,7 @@ const PlannerProfile = () => {
         <div className="header-section text-white text-center py-4">
           <div className="container-fluid mt-5">
             <h1 className="fw-bold" data-aos="fade-down">
-              About Wedniksha Wedding Planner
+              About Event Planner
             </h1>
           </div>
         </div>
@@ -81,8 +81,10 @@ const PlannerProfile = () => {
         <div className="row gy-3">
           {/* Info Box */}
           <div className="col-lg-4" data-aos="fade-left">
-            <div className="info-box p-4 bg-light rounded shadow-sm">
-              <h4 className="fw-bold text-danger">Wedniksha Wedding Planners</h4>
+             <div className="info-box p-4 bg-light rounded shadow-sm">
+              <h4 className="fw-bold text-danger">
+              Isha Verma Event Planner
+              </h4>
               <ul className="list-unstyled mt-3">
                 <li className="mb-2">
                   <i className="bi bi-briefcase-fill text-danger me-2"></i>

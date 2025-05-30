@@ -1,131 +1,164 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./EventPlanner.css";
 import { Link, useNavigate } from "react-router-dom";
 
-import image6 from './planimg/planner6.jpg';
-import image7 from './planimg/planner7.jpg';
+import image1 from './planimg/planner1.jpeg';
+import image2 from './planimg/planner2.jpeg';
 import image3 from './planimg/planner3.jpeg';
 import image4 from './planimg/planner4.jpeg';
 import image5 from './planimg/planner5.jpeg';
 
-const EventPlanner = () => {
+const EventPlanner = () => {  
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
 
+  const [searchCity, setSearchCity] = useState("");
   const navigate = useNavigate();
 
   const artistData = [
     {
       artists: [
         {
-          Name: "Name:",
-           image: image3,
-            PhoneNo: "Phone No.",
-            EmailAddress: "Email Address:",
-            WorkExperience: "Work Experience:",
+          Name: "Isha Verma",
+          image: image1,
+          PhoneNo: "+91 9123456789",
+          EmailAddress: "isha.verma@mail.com",
+          WorkExperience: " 2.5 years",
+          city: "Mumbai",
+          category: "Weddings & Luxury Events",
         },
         {
-         Name: "Name:",
-           image: image7,
-            PhoneNo: "Phone No.",
-            EmailAddress: "Email Address:",
-            WorkExperience: "Work Experience:",
+          Name: "Rohit Sharma",
+          image: image2,
+          PhoneNo: " +91 9090912345",
+          EmailAddress: " rohit.sharma@mail.com",
+          WorkExperience: " 3 years",
+          city: "Mumbai",
+          category: "Event Planner",
         },
         {
-          Name: "Name:",
-           image: image6,
-            PhoneNo: "Phone No.",
-            EmailAddress: "Email Address:",
-            WorkExperience: "Work Experience:",
+         
+          Name: "Neha Singh",
+          image: image3,
+          PhoneNo: "+91 9000088888",
+          EmailAddress: " neha.singh@mail.com",
+          WorkExperience: " 5 years",
+          city: "Mumbai",
+          category: " Event Planner",
         },
         {
-         Name: "Name:",
-           image: image4,
-            PhoneNo: "Phone No.",
-            EmailAddress: "Email Address:",
-            WorkExperience: "Work Experience:",
+          Name: "Kunal Desai",
+          image: image4,
+          PhoneNo: "+91 9512312345",
+          EmailAddress: "kunal.desai@mail.com",
+          WorkExperience: " 6 years",
+          city: "Mumbai",
+          category: " Event Planner",
         },
         {
-         Name: "Name:",
-           image: image5,
-            PhoneNo: "Phone No.",
-            EmailAddress: "Email Address:",
-            WorkExperience: "Work Experience:",
+          Name: "Tanvi Mehra",
+          image: image5,
+          PhoneNo: "+91 9988776655",
+          EmailAddress: " tanvi.mehra@mail.com",
+          WorkExperience: " 3.5 years",
+          city: "Mumbai",
+          category: " Event Planner",
         },
       ],
     },
   ];
+
+  // Filter only by city now
+  const filteredData = artistData.map((section) => ({
+    ...section,
+    artists: section.artists.filter((artist) =>
+      artist.city.toLowerCase().includes(searchCity.toLowerCase())
+    ),
+  }));
 
   return (
     <div className="container-fluid my-5">
       <div className="venue-header text-white">
         <div className="container">
           <h1>Plan With The Best</h1>
-
           <p className="text-capitalize text-white">
-            From intimate gatherings to grand celebrations, our expert event planners bring your vision to life <br></br>with precision and passion. We handle every detail — from concept and coordination to flawless execution — so you can enjoy every moment, stress-free.
+            From intimate gatherings to grand celebrations, our expert event planners bring your vision to life <br />
+            with precision and passion. We handle every detail — from concept and coordination to flawless execution — so you can enjoy every moment, stress-free.
           </p>
           <Link to="/EventPlannerForm">
-         <button className="btn btn-primary px-4 py-2">
-       Registeration
-      </button>
-       </Link>
-        </div>  
-      </div>
+            <button className="btn btn-primary px-4 py-2">Registeration</button>
+          </Link>
+        </div>
 
-      <div className="container">
-  {artistData.map((section, index) => (
-    <div key={index} className="mb-5" data-aos="fade-up">
-      <h5 className="fw-bold mb-4">{section.title}</h5>
-
-      {/* Row for top 3 cards */}
-      <div className="row justify-content-start">
-        {section.artists.slice(0, 3).map((artist, i) => (
-          <div key={i} className="col-md-4 mb-4">
-            <div className="card artist-card h-100 shadow-sm">
-              <img src={artist.image} className="card-img-top"style={{objectFit:"inherit"}} alt={artist.name} />
-              <div className="card-body">
-                <h6 className="card-title fw-bold">{artist.Name}</h6>
-                <h6 className="card-title fw-bold">{artist.PhoneNo}</h6>
-               <h6 className="card-title fw-bold">{artist.EmailAddress}</h6>
-               <h6 className="card-title fw-bold">{artist.WorkExperience}</h6>
-                <div className="text-center">
-                  <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
-                </div>
-              </div>
+        <div className="d-flex justify-content-around flex-wrap mt-4">
+          {/* Left: City Search */}
+          <div className="search-box flex-grow-1">
+            <div className="input-group stylish-input">
+              <input
+                type="text"
+                className="form-control search-input"
+                placeholder="🔍 Search by City"
+                value={searchCity}
+                onChange={(e) => setSearchCity(e.target.value)}
+              />
+              <span className="input-group-text search-icon">
+                <i className="bi bi-search"></i>
+              </span>
             </div>
           </div>
-        ))}
+        </div>             
       </div>
 
-      {/* Row for bottom 2 cards center aligned */}
-      <div className="row justify-content-center">
-        {section.artists.slice(3).map((artist, i) => (
-          <div key={i} className="col-md-4 mb-4">
-            <div className="card artist-card h-100 shadow-sm">
-              <img src={artist.image} className="card-img-top" alt={artist.name} />
-              <div className="card-body">
-                <h6 className="card-title fw-bold">{artist.Name}</h6>
-                <h6 className="card-title fw-bold">{artist.PhoneNo}</h6>
-               <h6 className="card-title fw-bold">{artist.EmailAddress}</h6>
-               <h6 className="card-title fw-bold">{artist.WorkExperience}</h6>
-                <div className="text-center">
-                  <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
+      <div className="container mt-4">
+        {filteredData.map((section, index) => (
+          <div key={index} className="mb-5" data-aos="fade-up">
+            <h5 className="fw-bold mb-4">{section.title}</h5>
+
+            {/* Row for top 3 cards */}
+            <div className="row justify-content-start">
+              {section.artists.slice(0, 3).map((artist, i) => (
+                <div key={i} className="col-md-4 mb-4">
+                  <div className="card artist-card h-100 shadow-sm">
+                    <img src={artist.image} className="card-img-top" style={{ objectFit: "inherit" }} alt={artist.Name} />
+                    <div className="card-body">
+                      <h6 className="card-title fw-bold">Name : {artist.Name}</h6>
+                      <h6 className="card-title fw-bold">Phone No :{artist.PhoneNo}</h6>
+                      <h6 className="card-title fw-bold">Email Address :{artist.EmailAddress}</h6>
+                      <h6 className="card-title fw-bold">Work Experience :{artist.WorkExperience}</h6>
+                      <div className="text-center">
+                        <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          </div>
+
+            {/* Row for bottom 2 cards center aligned */}
+            <div className="row justify-content-center">
+              {section.artists.slice(3).map((artist, i) => (
+                <div key={i} className="col-md-4 mb-4">
+                  <div className="card artist-card  shadow-sm">
+                    <img src={artist.image} className="card-img-top" alt={artist.Name} />
+                    <div className="card-body">
+                      <h6 className="card-title fw-bold">Name : {artist.Name}</h6>
+                      <h6 className="card-title fw-bold">Phone No : {artist.PhoneNo}</h6>
+                      <h6 className="card-title fw-bold">Email Address : {artist.EmailAddress}</h6>
+                      <h6 className="card-title fw-bold">Work Experience : {artist.WorkExperience}</h6>
+                      <div className="text-center">
+                        <Link className="btn btn-outline-danger text-white" to="/PlannerProfile">Book Now</Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>          
         ))}
       </div>
-
-    </div>
-  ))}
-</div>
-
-    
     </div>
   );
 };

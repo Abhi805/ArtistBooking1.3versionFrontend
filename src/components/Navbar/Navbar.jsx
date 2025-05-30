@@ -13,8 +13,8 @@ function Navbar() {
 
         <button
           className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
+          type="button"  
+          data-bs-toggle="collapse"  
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
@@ -47,7 +47,7 @@ function Navbar() {
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                VenueBooking
+                Venue Booking
               </Link>
               <ul className="dropdown-menu">
                 <li>
@@ -81,7 +81,7 @@ function Navbar() {
            
             <li className="nav-item">
               <Link className="nav-link" to="/VolunteerBooking">
-                VolunteerBooking
+                Volunteer Booking
               </Link>
             </li>
 
@@ -112,6 +112,14 @@ function Navbar() {
                 News & Blog
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/ContactUs">
+                Contact Us
+              </Link>
+            </li>
+
+             
           </ul>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function HeroSection() {
   return (
     <div className="" >   
       <Swiper
-         className="mySwiper mt-5"
+         className="mySwiper mt-5"  
   loop={true}
   speed={2500}
   autoplay={{
@@ -49,7 +49,7 @@ export default function HeroSection() {
                   <h5 className=" cold">Be Seen. Be Heard. Be Booked. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}} >
                       <span className="highlight">Whether you’re a singer, dancer, DJ, or visual artist — </span>
-                     <span className="text-black" > -your next gig could be just one profile away. </span>
+                     <span className="text-black" >your next gig could be just one profile away. </span>
                     </p>
                     <p>
                      Create your artist profile on GNV and showcase your talent to event organizers across the country.

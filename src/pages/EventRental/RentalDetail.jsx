@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./RentalDetail.css";
-import Eqimage from "./Eqimage/Eq11.jpg";
+import Eqimage from "./Eqimage/Eq1.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import Eq1 from "./Eqimage/gallery1.jpg";
+import Eq2 from "./Eqimage/gallery2.jpg";
+import Eq3 from "./Eqimage/gallery3.jpg";
+import Eq4 from "./Eqimage/gallery4.jpg";
+import Eq5 from "./Eqimage/gallery5.jpg";
 
 const RentalDetail = () => {
   useEffect(() => {
@@ -59,7 +65,7 @@ const RentalDetail = () => {
         <div className="header-section mt-5 text-white text-center py-4">
           <div className="container">
             <h1 className="fw-bold" data-aos="fade-down">
-              Barco Projector
+              Audio Interfaces And Di Boxes
             </h1>
             <p className="lead px-2 text-white" data-aos="fade-up">
               We offer <strong>Barco Projector on Rent</strong> along with

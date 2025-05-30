@@ -20,13 +20,8 @@
   font-size: 1rem;
   vertical-align: middle;
 }
-
-  /* .city-list {
-  columns: 2;
-  font-size: 0.92rem;
-  line-height: 1.6; 
-  } */
-
+                            
+  
 .booking-form input,
 .booking-form textarea {
   border-radius: 8px;
@@ -47,6 +42,22 @@
   left:20px; 
   height:500px;
 }
+.gallery-img-wrapper {
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-img {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
 
 @media (max-width: 768px) {
   .city-list {
