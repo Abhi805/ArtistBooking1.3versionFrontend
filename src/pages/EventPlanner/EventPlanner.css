@@ -12,9 +12,13 @@
 }
 
 .artist-card img {
-  height: 200px;
+  height: 00px;
   object-fit: cover;
   transition: transform 0.4s ease-in-out;
+}
+.card-img-top{
+  height: 300px !important;
+    object-fit:fill;
 }
 
 .artist-card:hover img {
@@ -71,3 +75,4 @@
   font-size: 2.5rem;
   font-weight: 700;
 }
+

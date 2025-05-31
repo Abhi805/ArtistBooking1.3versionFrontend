@@ -46,10 +46,10 @@ export default function HeroSection() {
               <div style={{marginTop:"50px"}} className="row">
                 <div className="col-5">
                   <div data-swiper-parallax="-100">
-                  <h5 className=" cold">Be Seen. Be Heard. Be Booked. </h5>
+                  <h5 className=" cold "   >Be Seen. Be Heard. Be Booked. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}} >
-                      <span className="highlight">Whether you’re a singer, dancer, DJ, or visual artist — </span>
-                     <span className="text-black" > -your next gig could be just one profile away. </span>
+                      <span className="highlight herofont">Whether you’re a singer, dancer, DJ, or visual artist — </span>
+                     <span className="text-black herofont" > -your next gig could be just one profile away. </span>
                     </p>
                     <p>
                      Create your artist profile on GNV and showcase your talent to event organizers across the country.
@@ -112,7 +112,7 @@ export default function HeroSection() {
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
                   <span className="text-black" >    Event Equipment suppliers,  </span> <span className="highlight">it’s time to go digital</span><span className="text-black" > — register on GNV and grow your bookings.  </span>
                     </p>
-                    <p className="text-capitalize" >
+                    <p className="text-capitalize herofont" >
                       GNV makes it easy for suppliers to manage listings, respond to inquiries, and get hired — all from one dashboard. Create your profile, upload your services, and let clients come to you!{" "}
                     </p>
                     <div className="d-flex gap-3 mt-4">
@@ -139,8 +139,8 @@ export default function HeroSection() {
                   <div data-swiper-parallax="-100">
                   <h5 className="cold">Your next big event starts with a profile on GNV. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
-                      <span className="highlight">From weddings to corporate events </span>
-               <span className="text-black" >   — planners can now grow their network and bookings on GNV.</span>
+                      <span className="highlight herofont">From weddings to corporate events </span>
+               <span className="text-black herofont" >   — planners can now grow their network and bookings on GNV.</span>
                     </p>
                     <p className="text-capitalize">
                     Event planners and organizers can create a professional profile on GNV to showcase their expertise and past events. Connect directly with clients, venues, and suppliers to plan and manage unforgettable experiences </p>
@@ -170,7 +170,7 @@ export default function HeroSection() {
                   <h5 className="cold">Be the backbone of every event — volunteer now. </h5>
                     <p className="fs-2" style={{fontWeight:"bolder",fontSize:"30px"}}>
                       <span className="highlight">"As a volunteer on GNV, </span>
-               <span className="text-black" >  you’ll have the opportunity to work with top event planners and suppliers.".</span>
+               <span className="text-black herofont" >  you’ll have the opportunity to work with top event planners and suppliers.".</span>
                     </p>
                     <p className="text-capitalize">
                   Volunteers can register on GNV to join exciting events and support registered planners, suppliers, and artists. From setup to backstage assistance, your contribution helps bring events to life. </p>

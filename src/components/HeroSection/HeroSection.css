@@ -64,6 +64,17 @@
 }
 
 
+@media (max-width: 450px) {
+
+  .mySwiper img {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+}
+
+
 .custom-btn {
   font-weight: 500;
   padding: 12px 28px;
