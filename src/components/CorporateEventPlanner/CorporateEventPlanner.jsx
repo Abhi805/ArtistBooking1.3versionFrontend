@@ -17,7 +17,7 @@ const CorporateEventPlanner = () => {
               className="img-fluid rounded shadow"
             />
           </div>
-
+                    
           {/* Right Side - Content */}
           <div className="col-md-6 animate-fade-right">
             <h3 className="text-danger fw-bold">About Us</h3>
@@ -41,7 +41,7 @@ const CorporateEventPlanner = () => {
             <div className="stat-box shadow-sm p-4 bg-white rounded-4">
               <h5 className="text-uppercase text-secondary mb-2">Total Reach</h5>
               <h2 className="text-primary fw-bold">
-                <CountUp end={500000} duration={3} separator="," />+
+                <CountUp end={50} duration={3} separator="," />+
               </h2>
               <p className="text-muted">Across India through Events & Marketing</p>
             </div>
@@ -50,7 +50,7 @@ const CorporateEventPlanner = () => {
             <div className="stat-box shadow-sm p-4 bg-white rounded-4">
               <h5 className="text-uppercase text-secondary mb-2">Registered With Us</h5>
               <h2 className="text-success fw-bold">
-                <CountUp end={1200} duration={3} separator="," />+
+                <CountUp end={10} duration={3} separator="," />+
               </h2>
               <p className="text-muted">Artists & Vendors onboarded till now</p>
             </div>

@@ -41,6 +41,7 @@ const EventPopup = () => {
     try {
       await axios.post("http://localhost:5000/api/inquiry/form", formData);
       setSuccess(true);
+
       setFormData({
         fullName: "",
         phone: "",
@@ -48,6 +49,7 @@ const EventPopup = () => {
         service: "",
         consent: false,
       });
+
       setTimeout(() => {
         setShow(false);
         setSubmitted(true);
@@ -112,7 +114,7 @@ const EventPopup = () => {
                     value={formData.email}
                     onChange={handleChange}
                   />
-                </div>   
+                </div>
                 <div className="col-md-6">
                   <Form.Select
                     name="service"
@@ -141,7 +143,12 @@ const EventPopup = () => {
                   />
                 </div>
                 <div className="col-12 d-grid">
-                  <Button variant="primary" className="magic-btn" type="submit" disabled={loading || success}>
+                  <Button
+                    variant="primary"
+                    className="magic-btn"
+                    type="submit"
+                    disabled={loading || success}
+                  >
                     {loading ? (
                       <Spinner size="sm" animation="border" />
                     ) : success ? (

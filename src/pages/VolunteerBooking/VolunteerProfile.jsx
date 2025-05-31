@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./VolunteerProfile.css";
-import { useParams } from "react-router-dom";  
- 
+
 import volunteer from "./Volunteerimg/volunteer1.jpeg";
 
 const VolunteerProfile = () => {
@@ -61,7 +64,9 @@ const VolunteerProfile = () => {
 
   return (
     <div className="artist-detail-page bg-light">
-      {/* Header Section  */}
+      <ToastContainer />
+
+      {/* Header Section */}
       <div className="container py-5 text-center">
         <h2 className="display-5 fw-bold" data-aos="fade-down">
           Volunteer <span>Profile</span>
@@ -71,21 +76,20 @@ const VolunteerProfile = () => {
         </p>
       </div>
 
-      {/* Main Content  */}
+      {/* Main Content */}
       <div className="container-fluid px-0">
-        {/* Top Section - Image, Form, Info Grid Together  */}
         <div className="container" data-aos="fade-up">
           <div className="row g-4 align-items-start">
-            {/* Artist Image  */}
+            {/* Volunteer Image */}
             <div className="col-lg-3 text-center">
               <img
-                 src={volunteer}
-                alt="artist"
+                src={volunteer}
+                alt="volunteer"
                 className="img-fluid rounded shadow-lg artist-main-img"
               />
             </div>
-            {/* 
-           Booking Form  */}
+
+            {/* Booking Form */}
             <div className="col-lg-5">
               <div className="booking-form p-4 bg-white rounded shadow">
                 <h5 className="text-center mb-4 fw-bold">
@@ -97,6 +101,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Full Name"
                         required
@@ -105,6 +112,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Phone Number"
                         required
@@ -112,7 +122,10 @@ const VolunteerProfile = () => {
                     </div>
                     <div className="col-md-6">
                       <input
-                        type="email"   
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Email Address"
                         required
@@ -121,6 +134,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="text"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Event Type"
                       />
@@ -128,6 +144,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="date"
+                        name="calendar"
+                        value={formData.calendar}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Event Date"
                       />
@@ -135,6 +154,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="text"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Budget"
                       />
@@ -142,6 +164,9 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="City Name"
                       />
@@ -149,13 +174,20 @@ const VolunteerProfile = () => {
                     <div className="col-md-6">
                       <input
                         type="text"
+                        name="requirement"
+                        value={formData.requirement}
+                        onChange={handleChange}
                         className="form-control"
                         placeholder="Type of Requirement"
                       />
                     </div>
                   </div>
+
                   <div className="text-center mt-4">
-                    <button className="btn btn-danger w-100 fw-semibold" disabled={loading}>
+                    <button
+                      className="btn btn-danger w-100 fw-semibold"
+                      disabled={loading}
+                    >
                       {loading ? (
                         <>
                           <span
@@ -176,32 +208,10 @@ const VolunteerProfile = () => {
           </div>
         </div>
 
+        {/* Review Section */}
         <div className="container py-4" data-aos="fade-up">
-          {/* <h4 className="fw-bold mb-3">About {id}</h4> */}
-         
-        </div>
-        {/* gallery image */}
-        {/* <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Photo Gallery</h5>
-          <div className="row g-3">
-            {[photo1, photo2, photo3, photo4, photo5, photo6].map((img, i) => (
-              <div key={i} className="col-6 col-md-3 kap">
-                <img
-                //   src={img}
-                  className="img-fluid rounded shadow-sm hover-zoom"
-                  alt={`${id} Show ${i + 1}`}
-                />
-              </div>
-            ))}
-          </div>
-        </div> */}
+          <h5 className="fw-bold mb-3">Review Aakash Mehta {id}</h5>
 
-        
-
-        <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Review  Aakash Mehta{id}</h5>
-
-          {/* Rate Us Section */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Rate Us:</label>
             <div className="star-rating">
@@ -213,7 +223,6 @@ const VolunteerProfile = () => {
             </div>
           </div>
 
-          {/* Review Textarea */}
           <textarea
             className="form-control mb-3"
             rows="3"

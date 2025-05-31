@@ -258,6 +258,9 @@ const EventBookingModel = () => {
           </div>
         </div>
       </div>
+
+      {/* Toast container added here */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
