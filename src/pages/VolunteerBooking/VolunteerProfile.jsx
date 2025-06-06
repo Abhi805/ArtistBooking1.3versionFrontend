@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./VolunteerProfile.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import volunteer from "./Volunteerimg/volunteer1.jpeg";
+import "./VolunteerProfile.css";
 
 const VolunteerProfile = () => {
   useEffect(() => {

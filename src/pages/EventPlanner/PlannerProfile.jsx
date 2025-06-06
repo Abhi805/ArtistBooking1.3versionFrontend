@@ -63,7 +63,7 @@ const PlannerProfile = () => {
 
   const galleries = [gallery, gallery1, gallery2, gallery3, gallery4, gallery5];
 
-  return (
+  return (     
     <>
       <ToastContainer position="top-right" autoClose={3000} />
 

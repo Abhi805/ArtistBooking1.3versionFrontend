@@ -18,6 +18,32 @@
 }    
 
 
+
+
+
+
+
+
+
+
+.artist-main-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.star-rating .star {
+  font-size: 24px;
+  color: gold;
+  cursor: pointer;
+}
+
+.booking-form input,
+.booking-form textarea {
+  border-radius: 0.5rem;
+}
+
+
          
 .kap{
   margin: 0;        

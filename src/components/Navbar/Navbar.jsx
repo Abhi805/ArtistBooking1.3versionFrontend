@@ -112,6 +112,9 @@ function Navbar() {
                 News & Blog
               </Link>
             </li>
+
+
+             
           </ul>
         </div>
       </div>

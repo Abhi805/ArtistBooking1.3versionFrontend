@@ -88,7 +88,7 @@ const EventPopup = () => {
                   <Form.Control
                     type="text"
                     name="fullName"
-                    placeholder="Ex: Tanya Saxena"
+                    placeholder="Name"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
@@ -98,7 +98,7 @@ const EventPopup = () => {
                   <Form.Control
                     type="text"
                     name="phone"
-                    placeholder="Ex: 9999999999"
+                    placeholder="Mobile No."
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -108,7 +108,7 @@ const EventPopup = () => {
                   <Form.Control
                     type="email"
                     name="email"
-                    placeholder="Ex: tanya007@gmail.com"
+                    placeholder="Email Address"
                     value={formData.email}
                     onChange={handleChange}
                   />

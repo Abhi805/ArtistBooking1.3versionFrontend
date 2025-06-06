@@ -3,6 +3,7 @@ import "./BhopalCity.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Link, useNavigate } from "react-router-dom";
 
 import img1 from "../../VenueBooking/BhopalCity/assets20/cotyard.jpg";
 import img2 from "../../VenueBooking/BhopalCity/assets20/lakeview.jpg";
@@ -16,6 +17,8 @@ const BhopalCity = () => {
   }, []);
 
   const [selected, setSelected] = useState(null);
+  const [searchCity, setSearchCity] = useState("");
+
   const handleClick = (i) => setSelected(i);
 
   const venues = [
@@ -27,29 +30,33 @@ const BhopalCity = () => {
     },
     {
       image: img2,
-      venue: "Hotel lake View",
+      venue: "Hotel Lake View",
       rating: "5.0",
-      address: "Shyamla Hills,Bhopal-462013",
+      address: "Shyamla Hills, Bhopal-462013",
     },
     {
       image: img3,
       venue: "Jahan Numa Hotel",
       rating: "4.3",
-      address: "157,Shamala Hills,Bhopal-462013",
+      address: "157, Shamala Hills, Bhopal-462013",
     },
     {
       image: img4,
       venue: "Noor Us Sabha Palace",
       rating: "3.9",
-      address: "VIP Road,Koh-e-fiza,Bhopal 462001",
+      address: "VIP Road, Koh-e-fiza, Bhopal 462001",
     },
     {
       image: img5,
       venue: "Raja Bhoj Hotel",
       rating: "4.0",
-      address: "Opposite Of Peoples Group Bhanpur,Bhopal",
+      address: "Opposite Of Peoples Group Bhanpur, Bhopal",
     },
   ];
+
+  const filteredVenues = venues.filter((venue) =>
+    venue.address.toLowerCase().includes(searchCity.toLowerCase())
+  );
 
   return (
     <div className="bhopal-page">
@@ -59,43 +66,68 @@ const BhopalCity = () => {
           <h1>Book Top Venues In Bhopal</h1>
           <p className="text-capitalize text-white">
             Looking To Book The Best Venues In BhopalCity for your Next Event?
-          GNVIndia offers A Seamless Venue Booking Experience For Corporate
-          Events, Weddings, Exhibitions, And Private Parties. Choose From Our
-          Extensive Network Of Banquet Halls, Luxury Hotels, Outdoor Lawns,
-          Resorts, And Convention Centers To Make Your Event Truly Special.
+            GNVIndia offers A Seamless Venue Booking Experience For Corporate
+            Events, Weddings, Exhibitions, And Private Parties. Choose From Our
+            Extensive Network Of Banquet Halls, Luxury Hotels, Outdoor Lawns,
+            Resorts, And Convention Centers To Make Your Event Truly Special.
           </p>
         </div>
+        {/* Search Bar */}
+      <div className="d-flex justify-content-around flex-wrap mt-4">
+        <div className="search-box flex-grow-1">
+          <div className="input-group stylish-input">
+            <input
+              type="text"
+              className="form-control search-input"
+              placeholder="🔍 Search by City"
+              value={searchCity}
+              onChange={(e) => setSearchCity(e.target.value)}
+            />
+            <span className="input-group-text search-icon">
+              <i className="bi bi-search"></i>
+            </span>
+          </div>
+        </div>
       </div>
+      </div>
+
+      
 
       {/* Venue Cards */}
       <div className="container py-5">
         <div className="row">
-          {venues.map((v, i) => (
-            <div
-              className="col-md-3 col-sm-6 mb-4"
-              key={i}
-              data-aos="zoom-in"
-              data-aos-delay={300 + i * 100}
-            >
+          {filteredVenues.length > 0 ? (
+            filteredVenues.map((v, i) => (
               <div
-                className={`venue-card ${selected === i ? "active" : ""}`}
-                onClick={() => handleClick(i)}
+                className="col-md-3 col-sm-6 mb-4"
+                key={i}
+                data-aos="zoom-in"
+                data-aos-delay={300 + i * 100}
               >
-                <div className="img-wrap">
-                  <img src={v.image} alt={v.venue} />
-                  <div className="shine"></div>
+                <div
+                  className={`venue-card ${selected === i ? "active" : ""}`}
+                  onClick={() => handleClick(i)}
+                >
+                  <div className="img-wrap">
+                    <img src={v.image} alt={v.venue} />
+                    <div className="shine"></div>
+                  </div>
+                  <h5 className="mt-2">{v.venue}</h5>
+                  <div className="rating">
+                    <i className="fas fa-star"></i> {v.rating}
+                  </div>
+                  <p className="address">
+                    <i className="fas fa-map-marker-alt"></i> {v.address}
+                  </p>
+                  <button className="book-btn">BOOK NOW</button>
                 </div>
-                <h5 className="mt-2">{v.venue}</h5>
-                <div className="rating">
-                  <i className="fas fa-star"></i> {v.rating}
-                </div>
-                <p className="address">
-                  <i className="fas fa-map-marker-alt"></i> {v.address}
-                </p>
-                <button className="book-btn">BOOK NOW</button>
               </div>
+            ))
+          ) : (
+            <div className="text-center w-100 py-5">
+              <h5>No venues found for your search.</h5>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

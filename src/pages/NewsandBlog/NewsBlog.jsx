@@ -63,7 +63,7 @@ const NewsBlog = () => {
       </div>
 
   <div className="blog-heading text-center my-4">
-        <h2>Latest Industry News</h2>
+        <h2>Latest News</h2>
         <hr className="blog-underline" />
       </div> 
 

@@ -19,7 +19,7 @@ const Home = () => {
         <Bookcard />
       </div>
       <div>
-        <EventPlanner />
+        <EventPlanner />       
       </div>   
       <div className="mb-5">
         <PastEvent />

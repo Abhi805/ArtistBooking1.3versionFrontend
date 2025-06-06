@@ -1,4 +1,4 @@
-         .artist-card {
+.artist-card {
   border: none;
   border-radius: 20px;
   overflow: hidden;
@@ -14,7 +14,13 @@
 .artist-card img {
   height: 00px;
   object-fit: cover;
-  transition: transform 0.4s ease-in-out;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.artist-card img {
+    height: 300px !important;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
 }
 .card-img-top{
   height: 300px !important;
@@ -24,7 +30,7 @@
 .artist-card:hover img {
   transform: scale(1.05);
 }
-   
+
 .artist-card .card-body {
   padding: 1rem;
 }
@@ -62,13 +68,13 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.75rem;
-}   
+}
 
-.venue-header {  
+.venue-header {
   background: linear-gradient(to right, #141e30, #243b55);
   padding: 3rem 0;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .venue-header h1 {

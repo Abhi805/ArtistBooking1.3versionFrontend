@@ -16,7 +16,7 @@
   transform: scale(1.05);
 }
 
-.info-box ul li i {
+.info-box ul li i {          
   font-size: 1rem;
   vertical-align: middle;
 }
