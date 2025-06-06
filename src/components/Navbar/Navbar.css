@@ -19,16 +19,25 @@
   transition: top 0.3s ease;
 }  
    
-body.top-navbar-hidden .navbar {
-  top: 0; /* shift up when TopNavbar hides */
+
+.navbar {
+    padding-bottom: 4px;
+    padding-top: 12px;
 }
 
-
-
+/* Jab top navbar hide ho (body me class top-navbar-hidden lage) */
+body.top-navbar-hidden .navbar {
+  top: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+}
 .navbar-brand img {
-  height: 45px;
+  height: 48px;
   object-fit: contain;
+
 }    
+
      
 .navbar-nav {
   gap: 10px;
@@ -107,6 +116,11 @@ body.top-navbar-hidden .navbar {
 }
 .fade.event-modal.modal.show {
     z-index: 99999999;
+}
+.navbar{
+      margin-top: 7px;
+    padding-bottom: 7px;
+    
 }
 }
    

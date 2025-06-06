@@ -47,32 +47,32 @@ function Navbar() {
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                VenueBooking
+                Venue Booking
               </Link>
               <ul className="dropdown-menu">
                 <li>
                   <Link className="dropdown-item" to="/IndoreCity">
-                    IndoreCity
+                    Indore City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/BhopalCity">
-                    BhopalCity
+                    Bhopal City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/UjjainCity">
-                    UjjainCity
+                    Ujjain City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/JabalpurCity">
-                    JabalpurCity
+                    Jabalpur City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/GwaliorCity">
-                    GwaliorCity
+                    Gwalior City
                   </Link>
                 </li>
               </ul>
@@ -81,7 +81,7 @@ function Navbar() {
            
             <li className="nav-item">
               <Link className="nav-link" to="/VolunteerBooking">
-                VolunteerBooking
+                Volunteer Booking
               </Link>
             </li>
 

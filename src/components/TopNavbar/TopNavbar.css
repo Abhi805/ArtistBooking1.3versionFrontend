@@ -15,7 +15,7 @@
   font-weight: 500;
   opacity: 0;
   transform: translateY(-10px);
-  animation: slideFadeIn 1s ease forwards; 
+  animation: slideFadeIn 0.3s ease forwards; 
   will-change: opacity, transform;
 }
 
@@ -23,7 +23,7 @@
   animation-delay: 0.4s;
 }
 .contact-info span:nth-child(2) {
-  animation-delay: 0.7s;
+  animation-delay: 0.5s;
 }
 
 /* Social Icon Links */
@@ -34,10 +34,10 @@
   gap: 4px;
   opacity: 0;
   transform: translateY(-10px);
-  animation: slideFadeIn 1s ease forwards;
+  animation: slideFadeIn 0.5s ease forwards;
   will-change: opacity, transform;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   color: #212529;
   text-decoration: none;
 }
@@ -50,7 +50,7 @@
   font-size: 16px; /* Change as needed, try 14px–18px for compact look */
 }
 .social-icons a:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   text-decoration: underline;
 }
 
