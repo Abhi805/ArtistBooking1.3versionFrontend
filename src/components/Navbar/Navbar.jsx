@@ -10,11 +10,11 @@ function Navbar() {
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Gnv logo" />
         </Link>
- 
+
         <button
           className="navbar-toggler"
-          type="button"  
-          data-bs-toggle="collapse"  
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
@@ -35,44 +35,10 @@ function Navbar() {
                 About Us
               </Link>
             </li>
-                
-
-                <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
+            <li className="nav-item">
+              <Link className="nav-link" to="/Indore">
                 Artist Booking
               </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/Indore">
-                    Indore
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Bhopal">
-                    Bhopal
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Ujjain">
-                    Ujjain
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Jabalpur">
-                    Jabalpur
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/Gwalior">
-                    Gwalior
-                  </Link>
-                </li>
-              </ul>
             </li>
             <li className="nav-item dropdown">
               <Link
@@ -86,34 +52,33 @@ function Navbar() {
               <ul className="dropdown-menu">
                 <li>
                   <Link className="dropdown-item" to="/IndoreCity">
-                    IndoreCity
+                    Indore City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/BhopalCity">
-                    BhopalCity
+                    Bhopal City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/UjjainCity">
-                    UjjainCity
+                    Ujjain City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/JabalpurCity">
-                    JabalpurCity
+                    Jabalpur City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/GwaliorCity">
-                    GwaliorCity
+                    Gwalior City
                   </Link>
                 </li>
               </ul>
             </li>
 
-            
-
+           
             <li className="nav-item">
               <Link className="nav-link" to="/VolunteerBooking">
                 Volunteer Booking
@@ -138,16 +103,16 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
+              <Link className="nav-link" to="/ContactUs">
+                Contact Us
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/newsblog">
                 News & Blog
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/ContactUs">
-                Contact Us
-              </Link>
-            </li>
 
              
           </ul>
@@ -155,6 +120,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}  
+}
 
 export default Navbar;

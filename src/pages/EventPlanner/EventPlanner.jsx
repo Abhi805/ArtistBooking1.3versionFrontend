@@ -5,10 +5,10 @@ import "./EventPlanner.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import image1 from './planimg/planner1.jpeg';
-import image2 from './planimg/planner2.jpeg';
-import image3 from './planimg/planner3.jpeg';
-import image4 from './planimg/planner4.jpeg';
-import image5 from './planimg/planner5.jpeg';
+import image2 from './planimg/pla4.jpg';
+import image3 from './planimg/pla3.jpg';
+import image4 from './planimg/pla2.jpg';
+import image5 from './planimg/pla1.jpg';
 
 const EventPlanner = () => {  
   useEffect(() => {

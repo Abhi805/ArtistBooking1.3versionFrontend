@@ -20,7 +20,7 @@
 .artist-card:hover img {
   transform: scale(1.05);
 }
-   
+
 .artist-card .card-body {
   padding: 1rem;
 }
@@ -70,6 +70,7 @@
 .venue-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
+<<<<<<< HEAD
 }
 
 
@@ -145,3 +146,6 @@
 }
 
 
+=======
+}
+>>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc

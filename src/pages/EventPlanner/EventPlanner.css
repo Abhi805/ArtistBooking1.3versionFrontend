@@ -11,8 +11,13 @@
   transform: translateY(-10px);
 }
 
+<<<<<<< HEAD
 .artist-img {
  
+=======
+.artist-card img {
+  height: 00px;
+>>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc
   object-fit: cover;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -21,6 +26,13 @@
     height: 300px !important;
     object-fit: cover;
     transition: transform 0.4s ease-in-out;
+<<<<<<< HEAD
+=======
+}
+.card-img-top{
+  height: 300px !important;
+    object-fit:fill;
+>>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc
 }
 
 .artist-card:hover img {
@@ -78,6 +90,7 @@
   font-weight: 700;
 }
 
+<<<<<<< HEAD
 .search-box {
   max-width: 250px;
   width: 100%;
@@ -147,3 +160,5 @@
   border: none;
   outline: none;
 }
+=======
+>>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc

@@ -1,5 +1,6 @@
 .contact-hero {
- background: linear-gradient(to right, #ff416c, #ff4b2b);
+ background: linear-gradient(to right, rgb(123, 31, 162), rgb(183, 28, 28));
+
 }
 
 .card h5 {
@@ -60,15 +61,15 @@
 }
 
 .card-email {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Pink-Red */
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
 }
 
 .card-phone {
-  background: linear-gradient(135deg,  #ff512f, #dd2476); /* Green */
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
 }
 
 .card-whatsapp {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* WhatsApp Green */
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
 }
 
 /* Hover effect */

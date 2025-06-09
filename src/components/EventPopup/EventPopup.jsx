@@ -1,10 +1,6 @@
-
-
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./EventPopup.css";
 import image from "./pop.jpeg";
 
@@ -12,6 +8,8 @@ const EventPopup = () => {
   const [show, setShow] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -41,9 +39,8 @@ const EventPopup = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/inquiry/form", formData);
-      toast.dismiss();
-      toast.success("Request submitted successfully!");
+      await axios.post("http://localhost:5000/api/inquiry/form", formData);
+      setSuccess(true);
       setFormData({
         fullName: "",
         phone: "",
@@ -51,12 +48,14 @@ const EventPopup = () => {
         service: "",
         consent: false,
       });
-      setShow(false);
-      setSubmitted(true);
+      setTimeout(() => {
+        setShow(false);
+        setSubmitted(true);
+        setSuccess(false);
+      }, 2000);
     } catch (err) {
       console.error(err);
-      toast.dismiss();
-      toast.error("Submission failed. Please try again.");
+      alert("Submission failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -142,8 +141,14 @@ const EventPopup = () => {
                   />
                 </div>
                 <div className="col-12 d-grid">
-                  <Button variant="primary" className="magic-btn" type="submit" disabled={loading}>
-                    {loading ? <Spinner size="sm" animation="border" /> : "Let’s Connect"}
+                  <Button variant="primary" className="magic-btn" type="submit" disabled={loading || success}>
+                    {loading ? (
+                      <Spinner size="sm" animation="border" />
+                    ) : success ? (
+                      "Submitted Successfully!"
+                    ) : (
+                      "Let’s Connect"
+                    )}
                   </Button>
                 </div>
               </div>
@@ -160,9 +165,6 @@ const EventPopup = () => {
           </div>
         </Modal.Body>
       </Modal>
-
-      {/* Toast Notification Container */}
-      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 };
