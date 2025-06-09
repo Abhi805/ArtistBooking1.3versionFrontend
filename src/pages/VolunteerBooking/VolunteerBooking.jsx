@@ -21,7 +21,7 @@ const VolunteerBooking = () => {
 
   const artistData = [
     {
-      artists: [
+      artists: [  
         {
           Name: "Aakash Mehta",
           image: image1,
@@ -107,7 +107,8 @@ const VolunteerBooking = () => {
                   Registration
                 </button>
               </Link>
-            </div>
+            </div>   
+            
             <div className="d-flex justify-content-around flex-wrap mt-4"  >
               {/* Left: City Search */}
               <div className="search-box flex-grow-1">
@@ -122,7 +123,7 @@ const VolunteerBooking = () => {
                   <span className="input-group-text search-icon">
                     <i className="bi bi-search"></i>
                   </span>
-                </div>
+                </div>    
               </div>
 
               {/* Right: Category Dropdown */}
@@ -144,6 +145,7 @@ const VolunteerBooking = () => {
                 </select>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

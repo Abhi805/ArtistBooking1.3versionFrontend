@@ -12,7 +12,7 @@
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
-}
+}        
 
 .scroll-to-top-btn:hover {
   background: linear-gradient(45deg, #e95200, #cd211d);

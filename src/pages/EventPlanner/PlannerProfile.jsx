@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./PlannerProfile.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import image from "./planimg/profile.jpg";
+import image from "./planimg/planner1.jpeg";
 import gallery from "./planimg/gallery.jpg";
 import gallery1 from "./planimg/gallery1.jpeg";
 import gallery2 from "./planimg/gallery2.jpg";
@@ -17,13 +17,13 @@ const PlannerProfile = () => {
 
   const galleries = [gallery, gallery1, gallery2, gallery3, gallery4, gallery5];
 
-  return (
+  return (     
     <>
       <div className="barco-projector">
         <div className="header-section text-white text-center py-4">
           <div className="container-fluid mt-5  ">
             <h1 className="fw-bold" data-aos="fade-down">
-              About Wedniksha Wedding Planner
+              About Event Planner
             </h1>
           </div>
         </div>
@@ -34,7 +34,7 @@ const PlannerProfile = () => {
           <div className="col-lg-4" data-aos="fade-left">
              <div className="info-box p-4 bg-light rounded shadow-sm">
               <h4 className="fw-bold text-danger">
-                Wedniksha Wedding Planners
+              Isha Verma Event Planner
               </h4>
               <ul className="list-unstyled mt-3">
                 <li className="mb-2">
