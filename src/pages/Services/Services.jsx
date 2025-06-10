@@ -18,7 +18,7 @@ const services = [
     img: bookArtists,
     title: "Artists",
     desc: "Make your event unforgettable by booking top-tier artists from across India. Whether you need singers, dancers, stand-up comedians, anchors, DJs, or celebrity performers — GNV India Entertainment connects you with talent that elevates every celebration. We curate performers based on your theme, audience, and vibe to deliver a show that leaves lasting impressions.",
-    link: "/Bhopal"
+    link: "/Bhopal"          
   },
   {
     img: rentEquipment,

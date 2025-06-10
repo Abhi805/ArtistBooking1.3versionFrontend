@@ -15,7 +15,7 @@ const VolunteerBooking = () => {
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
-
+                  
   const [searchCity, setSearchCity] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
 

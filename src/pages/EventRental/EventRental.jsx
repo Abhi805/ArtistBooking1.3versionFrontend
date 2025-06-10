@@ -16,7 +16,7 @@ import Eq8 from "./Eqimage/Eq8.jpg";
 import Eq9 from "./Eqimage/Eq9.jpg";  
 import Eq10 from "./Eqimage/Eq10.jpg";
 import Eq11 from "./Eqimage/Eq11.jpg";
-import Eq12 from "./Eqimage/Eq12.jpg";
+import Eq12 from "./Eqimage/Eq12.jpg";            
 import Eq13 from "./Eqimage/Eq13.jpg";
 import Eq14 from "./Eqimage/Eq14.jpg";  
 import Eq15 from "./Eqimage/Eq15.jpg";  

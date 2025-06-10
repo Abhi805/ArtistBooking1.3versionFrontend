@@ -1,16 +1,31 @@
-.blog-banner {
-  background: url("/images/blog-banner.jpg") no-repeat center center/cover;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.blog-page {
+  background-color: #f9f9f9;
+  padding-bottom: 50px;
 }
 
-.banner-title {
-  color: white;
+.venue-header {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("/images/blog-banner.jpg") no-repeat center center/cover;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.venue-header h1 {
   font-size: 48px;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.venue-header p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.blog-heading h2 {
+  font-weight: bold;
+  font-size: 2.2rem;
+  color: #222;
 }
 
 .blog-underline {
@@ -23,6 +38,7 @@
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
 }
 
 .blog-card:hover {
@@ -33,19 +49,70 @@
 .blog-card img {
   height: 200px;
   object-fit: cover;
+  width: 100%;
 }
 
-.blog-card h5 {
+.card-title {
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #222;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
 }
 
 .read-more-link {
   color: #cd211d;
   font-weight: 500;
   text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .read-more-link:hover {
   text-decoration: underline;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .venue-header h1 {
+    font-size: 32px;
+  }
+
+  .venue-header p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .read-more-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .venue-header {
+    padding: 60px 0;
+  }
+
+  .venue-header h1 {
+    font-size: 28px;
+  }
+
+  .venue-header p {
+    font-size: 0.95rem;
+  }
+
+  .blog-card img {
+    height: 180px;
+  }
 }

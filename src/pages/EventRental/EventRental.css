@@ -2,8 +2,8 @@
   border: none;
   border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
   background: #fff;
+  transition: transform 0.3s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -13,6 +13,7 @@
 
 .artist-card img {
   height: 200px;
+  width: 100%;
   object-fit: cover;
   transition: transform 0.4s ease-in-out;
 }
@@ -28,6 +29,7 @@
 .artist-card .card-title {
   font-size: 1rem;
   color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .artist-card .text-muted {
@@ -41,33 +43,46 @@
   border: none;
   color: white;
   transition: all 0.3s ease;
-}  
+}
 
 .btn-outline-danger:hover {
-  background: linear-gradient(to right, #ff4b2b,  #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
   transform: scale(1.05);
 }
 
-.rating-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ffc107;
-  color: #000;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.75rem;
-}   
-
 .venue-header {
   background: linear-gradient(to right, #141e30, #243b55);
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .venue-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+.venue-header p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .venue-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .venue-header p {
+    font-size: 1rem;
+  }
+
+  .artist-card .card-title {
+    font-size: 0.95rem;
+  }
+
+  .artist-card .text-muted {
+    font-size: 0.8rem;
+  }
 }

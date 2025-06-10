@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import "./NewsBlog.css";
 
 import img1 from "../NewsandBlog/blog1.jpg";
-import img2 from "../NewsandBlog/blog2.avif";
+import img2 from "../NewsandBlog/blog2.avif";  
 import img3 from "../NewsandBlog/blog3.webp";
 import img4 from "../NewsandBlog/blog4.webp";
 import img5 from "../NewsandBlog/blog5.jpg";

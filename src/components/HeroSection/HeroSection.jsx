@@ -23,7 +23,7 @@ export default function HeroSection() {
          className="mySwiper mt-5"  
   loop={true}
   speed={2500}
-  autoplay={{
+  autoplay={{             
     delay: 2000,
     disableOnInteraction: false,
   }}

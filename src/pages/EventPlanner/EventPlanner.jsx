@@ -21,7 +21,7 @@ const EventPlanner = () => {
   const artistData = [
     {
       artists: [
-        {
+        {                    
           Name: "Isha Verma",
           image: image1,
           PhoneNo: "+91 9123456789",

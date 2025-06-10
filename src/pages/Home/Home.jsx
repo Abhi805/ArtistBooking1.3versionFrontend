@@ -23,7 +23,7 @@ const Home = () => {
       </div>   
       <div className="mb-5">
         <PastEvent />
-      </div>
+      </div>          
       <div>
         <ClientFeedBack />  
       </div>     
