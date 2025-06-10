@@ -176,6 +176,11 @@ const TopNavbar = () => {
                   CreateArtistProfile
                 </Link>
               </li>
+               <li>
+                <Link className="dropdown-item" to="/AdminDashboard">
+                  Admin
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

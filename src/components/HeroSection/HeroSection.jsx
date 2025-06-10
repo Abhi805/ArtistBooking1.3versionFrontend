@@ -58,8 +58,12 @@ export default function HeroSection() {
                         Your event deserves star talent. From soulful singers to
                         high-energy performers, find and hire the best with GNV.
                       </p>
-                      <div className="d-flex button justify-content-center mt-3 flex-wrap ">
-                        <Link to="/Bhopal" className="custom-btn primary-btn">
+                      
+                      <div className="d-flex gap-3 mt-4">
+                        <Link
+                          to="/Bhopal"
+                          className="custom-btn primary-btn"
+                        >
                           Explore Now <span>&rarr;</span>
                         </Link>
                         <Link
@@ -81,7 +85,7 @@ export default function HeroSection() {
             </div>
           </SwiperSlide>
 
-          {/* <SwiperSlide>
+          <SwiperSlide>
             <div className="karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div style={{ marginTop: "50px" }} className="row">
@@ -282,7 +286,7 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </SwiperSlide> */}
+          </SwiperSlide>
         </div>
       </Swiper>
     </div>

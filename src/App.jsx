@@ -66,7 +66,7 @@ import EventBookingModel5 from "./VenueBooking/IndoreCity/BookingModel5/EventBoo
 import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBookingModel6";
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
-
+import AdminDashboard from "./AdminDashBoard/AdminDashboard";
 // import ArtistDashboard from "./pages/ArtistDashboard";
 import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -105,6 +105,7 @@ function App() {
 
 
           <Route path="/" element={<Home />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
           <Route path="/Services" element={<Services />} />
