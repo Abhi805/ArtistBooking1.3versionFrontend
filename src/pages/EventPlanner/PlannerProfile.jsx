@@ -6,9 +6,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./PlannerProfile.css";
-import image from "./planimg/profile.jpg";
+import image from "./planimg/planner1.jpeg";
 import gallery from "./planimg/gallery.jpg";
-import gallery1 from "./planimg/gallery1.jpeg";
+import gallery1 from "./planimg/hop.jpg";
 import gallery2 from "./planimg/gallery2.jpg";
 import gallery3 from "./planimg/gallery3.jpg";
 import gallery4 from "./planimg/gallery4.jpg";
@@ -81,10 +81,8 @@ const PlannerProfile = () => {
         <div className="row gy-3">
           {/* Info Box */}
           <div className="col-lg-4" data-aos="fade-left">
-             <div className="info-box p-4 bg-light rounded shadow-sm">
-              <h4 className="fw-bold text-danger">
-              Isha Verma Event Planner
-              </h4>
+            <div className="info-box p-4 bg-light rounded shadow-sm">
+              <h4 className="fw-bold text-danger">Isha Verma Event Planner</h4>
               <ul className="list-unstyled mt-3">
                 <li className="mb-2">
                   <i className="bi bi-briefcase-fill text-danger me-2"></i>

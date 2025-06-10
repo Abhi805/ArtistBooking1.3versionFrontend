@@ -62,27 +62,3 @@
   font-size: 2.5rem;
   font-weight: 700;
 }
-
-.venue-header p {
-  font-size: 1.1rem;
-  max-width: 800px;
-  margin: auto;
-}
-
-@media (max-width: 768px) {
-  .venue-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .venue-header p {
-    font-size: 1rem;
-  }
-
-  .artist-card .card-title {
-    font-size: 0.95rem;
-  }
-
-  .artist-card .text-muted {
-    font-size: 0.8rem;
-  }
-}

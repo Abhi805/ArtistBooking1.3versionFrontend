@@ -1,42 +1,99 @@
-/* Responsive Utility */
-@media (max-width: 767px) {
-  .venue-header h1 {
-    font-size: 1.75rem;
-    text-align: center;
-  }
-
-  .venue-header p {
-    font-size: 0.9rem;
-    text-align: center;
-  }
-
-  .btn {
-    display: block;
-    margin: 1rem auto 0;
-  }
-
-  .search-box {
-    max-width: 100%;
-    margin-top: 1rem;
-  }
-
-  .artist-card img {
-    height: 200px !important;
-  }
-
-  .card-title {
-    font-size: 0.85rem;
-  }
-
-  .artist-card .card-body {
-    padding: 0.75rem;
-  }
+.artist-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .venue-header h1 {
-    font-size: 2rem;
-  }
+.artist-card:hover {
+  transform: translateY(-10px);
+}
+
+.artist-img {
+ 
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.artist-card img {
+    height: 300px !important;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.artist-card:hover img {
+  transform: scale(1.05);
+}
+
+.artist-card .card-body {
+  padding: 1rem;
+}
+
+.artist-card .card-title {
+  font-size: 1rem;
+  color: #333;
+}
+
+.artist-card .text-muted {
+  font-size: 0.85rem;
+}
+
+.btn-outline-danger {
+  border-radius: 50px;
+  padding: 6px 18px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  transform: scale(1.05);
+}
+
+.rating-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffc107;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.venue-header {
+  background: linear-gradient(to right, #141e30, #243b55);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.venue-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.search-box {
+  max-width: 250px;
+  width: 100%;
+}
+
+.artist-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.artist-card:hover {
+  transform: scale(1.03);
+}
 
   .card-title {
     font-size: 0.9rem;
@@ -56,3 +113,5 @@
     height: 300px !important;
   }
 }
+=======
+>>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc

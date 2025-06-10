@@ -7,8 +7,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./VolunteerProfile.css";
 
-import volunteer from "./Volunteerimg/volunteer1.jpeg";
-
 const VolunteerProfile = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -38,11 +36,10 @@ const VolunteerProfile = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/api/inquiry/form/volunteerbooking",
         formData
       );
-
       toast.success("🎉 Booking submitted successfully!");
       setFormData({
         fullName: "",
@@ -65,8 +62,6 @@ const VolunteerProfile = () => {
   return (
     <div className="artist-detail-page bg-light">
       <ToastContainer />
-
-      {/* Header Section */}
       <div className="container py-5 text-center">
         <h2 className="display-5 fw-bold" data-aos="fade-down">
           Volunteer <span>Profile</span>
@@ -76,159 +71,114 @@ const VolunteerProfile = () => {
         </p>
       </div>
 
-      {/* Main Content */}
-      <div className="container-fluid px-0">
-        <div className="container" data-aos="fade-up">
-          <div className="row g-4 align-items-start">
-            {/* Volunteer Image */}
-            <div className="col-lg-3 text-center">
-              <img
-                src={volunteer}
-                alt="volunteer"
-                className="img-fluid rounded shadow-lg artist-main-img"
-              />
-            </div>
-
-            {/* Booking Form */}
-            <div className="col-lg-5">
-              <div className="booking-form p-4 bg-white rounded shadow">
-                <h5 className="text-center mb-4 fw-bold">
-                  Book {id} for Your Event
-                </h5>
-
-                <form onSubmit={handleSubmit}>
-                  <div className="row g-3">
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Full Name"
-                        required
-                      />
+      <div className="container" data-aos="fade-up">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="row g-4 align-items-start">
+              <div className="col-md-4 text-center">
+                <img
+                  src={volunteer}
+                  alt="volunteer"
+                  className="img-fluid artist-main-img"
+                />
+              </div>
+              <div className="col-md-8">
+                <div className="booking-form p-4 bg-white">
+                  <h5 className="text-center mb-4 fw-bold">
+                    Book {id} for Your Event
+                  </h5>
+                  <form onSubmit={handleSubmit}>
+                    <div className="row g-3">
+                      {[
+                        { name: "fullName", placeholder: "Full Name" },
+                        {
+                          name: "phone",
+                          placeholder: "Phone Number",
+                          type: "tel",
+                        },
+                        {
+                          name: "email",
+                          placeholder: "Email Address",
+                          type: "email",
+                        },
+                        { name: "service", placeholder: "Event Type" },
+                        {
+                          name: "calendar",
+                          placeholder: "Event Date",
+                          type: "date",
+                        },
+                        { name: "budget", placeholder: "Budget" },
+                        { name: "city", placeholder: "City Name" },
+                        {
+                          name: "requirement",
+                          placeholder: "Type of Requirement",
+                        },
+                      ].map(({ name, placeholder, type = "text" }) => (
+                        <div className="col-md-6" key={name}>
+                          <input
+                            type={type}
+                            name={name}
+                            value={formData[name]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder={placeholder}
+                            required={[
+                              "fullName",
+                              "phone",
+                              "calendar",
+                              "city",
+                              "service",
+                            ].includes(name)}
+                          />
+                        </div>
+                      ))}
                     </div>
-                    <div className="col-md-6">
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Phone Number"
-                        required
-                      />
+                    <div className="text-center mt-4">
+                      <button
+                        className="btn btn-danger w-100 fw-semibold"
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <>
+                            <span
+                              className="spinner-border spinner-border-sm me-2"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                            Sending...
+                          </>
+                        ) : (
+                          "🚀 Submit Request"
+                        )}
+                      </button>
                     </div>
-                    <div className="col-md-6">
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Email Address"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Event Type"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="date"
-                        name="calendar"
-                        value={formData.calendar}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Event Date"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Budget"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="City Name"
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        name="requirement"
-                        value={formData.requirement}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Type of Requirement"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="text-center mt-4">
-                    <button
-                      className="btn btn-danger w-100 fw-semibold"
-                      disabled={loading}
-                    >
-                      {loading ? (
-                        <>
-                          <span
-                            className="spinner-border spinner-border-sm me-2"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                          Sending...
-                        </>
-                      ) : (
-                        "🚀 Submit Request"
-                      )}
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
+
+            
           </div>
-        </div>
+          {/* Review Section */}
+            <div className="review-box m-5 container">
+              <h5 className="fw-bold mb-3">Review {id}</h5>
 
-        {/* Review Section */}
-        <div className="container py-4" data-aos="fade-up">
-          <h5 className="fw-bold mb-3">Review Aakash Mehta {id}</h5>
+              <label className="form-label fw-semibold">Rate Us:</label>
+              <div className="star-rating mb-3">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span key={star} className="star">
+                    &#9733;
+                  </span>
+                ))}
+              </div>
 
-          <div className="mb-3">
-            <label className="form-label fw-semibold">Rate Us:</label>
-            <div className="star-rating">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span key={star} className="star">
-                  &#9733;
-                </span>
-              ))}
+              <textarea
+                className="form-control mb-3"
+                rows="3"
+                placeholder="Write your review..."
+              ></textarea>
+              <button className="btn btn-danger">Submit Review</button>
             </div>
-          </div>
-
-          <textarea
-            className="form-control mb-3"
-            rows="3"
-            placeholder="Write your review..."
-          ></textarea>
-          <button className="btn btn-danger">Submit Review</button>
         </div>
       </div>
     </div>

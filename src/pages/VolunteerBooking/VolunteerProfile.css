@@ -119,3 +119,39 @@ img.shadow-sm:hover {
   box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3) !important;
 
 }
+
+.artist-detail-page {
+  background-color: #f8f9fa;
+}
+
+.artist-main-img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.booking-form {
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.booking-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.star-rating .star {
+  font-size: 1.5rem;
+  color: gold;
+  cursor: pointer;
+}
+
+.review-box {
+  border-radius: 1rem;
+}
+
+textarea.form-control {
+  resize: none;
+}

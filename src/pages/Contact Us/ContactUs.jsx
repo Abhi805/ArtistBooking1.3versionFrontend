@@ -34,13 +34,23 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phone || !formData.service || !formData.consent) {
-      return toast.error("Please fill all required fields and agree to consent.");
+    if (
+      !formData.fullName ||
+      !formData.phone ||
+      !formData.service ||
+      !formData.consent
+    ) {
+      return toast.error(
+        "Please fill all required fields and agree to consent."
+      );
     }
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/inquiry/form/contactUs", formData);
+      const res = await axios.post(
+        "http://localhost:5000/api/inquiry/form/contactUs",
+        formData
+      );
       toast.success(res.data.message || "Submitted successfully!");
       setFormData({
         fullName: "",
@@ -62,13 +72,123 @@ const ContactUs = () => {
   return (
     <div className="contact-page">
       {/* ...your top and contact info sections stay unchanged... */}
+      {/* Top Section */}
+      <section className="contact-hero text-white text-center py-5">
+        <div className="container">
+          <h1 className="fw-bold" data-aos="fade-down">
+            Let's Get In Touch
+          </h1>
+          <p className="mt-3 text-white text-capitalize" data-aos="fade-up">
+            GNVIndia is your trusted partner in event management, proudly
+            serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand
+            exhibition, a cultural celebration, or a corporate gathering — we’re
+            just one click away from making your vision come alive.
+          </p>
+        </div>
+      </section>
 
+      {/* Contact Info */}
+      <section className="py-5 bg-light">
+        <div className="container text-center">
+          <h3 className="text-danger fw-bold" data-aos="fade-up">
+            CONTACT WITH US
+          </h3>
+          <h2 className="fw-bold mb-4" data-aos="zoom-in">
+            Creating Unforgettable Moments Starts Here
+          </h2>
+          <div className="row g-4">
+            {[
+              {
+                title: "Address",
+                text: "Shop No. 5, 3rd Floor, Plot No. 53, Shree Jee Avanue, Scheme No53, Vijay Nagar Indore 452011",
+                link: "https://www.google.com/maps?q=Shop+No.+5,+3rd+Floor,+Plot+No.+53,+Shree+Jee+Avanue,+Scheme+No53,+Vijay+Nagar+Indore+452011",
+                cardClass: "card-address",
+              },
+              {
+                title: "Email",
+                text: "events@gnvindia.in",
+                link: "mailto:events@gnvindia.in",
+                cardClass: "card-email",
+              },
+              {
+                title: "Phone Number",
+                text: "9691474449",
+                link: "tel:9691474449",
+                cardClass: "card-phone",
+              },
+              {
+                title: "WhatsApp",
+                text: "9691474449",
+                link: "https://wa.me/919691474449",
+                cardClass: "card-whatsapp",
+              },
+            ].map((info, index) => (
+              <div
+                className="col-12 col-md-6 col-lg-3"
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className={`contact-info-card ${info.cardClass}`}>
+                  <h5>{info.title}</h5>
+                  <p>
+                    <a
+                      href={info.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {info.text}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Form Side */}
       <section className="py-5">
         <div className="container">
           <div className="row g-5 align-items-start justify-content-center text-center">
             {/* Left content unchanged... */}
-
+ <div className="col-12 col-md-6" data-aos="fade-right">
+              <h3 className="fw-bold">
+                Let's Create Your Perfect Event – Contact GNVIndia!
+              </h3>
+              <p className="mt-3">
+                Got an event idea? Let’s turn it into a remarkable experience!
+              </p>
+              <div className="social-icons mt-4 d-flex gap-3 flex-wrap justify-content-center">
+                {[
+                  {
+                    name: "instagram",
+                    link: "https://www.instagram.com/gnvindiaevents/",
+                  },
+                  {
+                    name: "facebook",
+                    link: "https://www.facebook.com/gnvindiaevents",
+                  },
+                  {
+                    name: "youtube",
+                    link: "https://www.youtube.com/@gnvindia7",
+                  },
+                  {
+                    name: "linkedin",
+                    link: "https://www.linkedin.com/company/gnv-india-entertainment/",
+                  },
+                ].map((icon, idx) => (
+                  <a
+                    href={icon.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={idx}
+                    className="text-dark fs-4"
+                  >
+                    <i className={`bi bi-${icon.name}`}></i>
+                  </a>
+                ))}
+              </div>
+            </div>
             {/* Form Side */}
             <div className="col-12 col-md-6" data-aos="fade-left">
               <div className="card p-4 shadow">
@@ -171,7 +291,11 @@ const ContactUs = () => {
                       </label>
                     </div>
                     <div className="col-12">
-                      <button type="submit" className="btn btn-danger w-100" disabled={loading}>
+                      <button
+                        type="submit"
+                        className="btn btn-danger w-100"
+                        disabled={loading}
+                      >
                         {loading ? "Submitting..." : "Send Message"}
                       </button>
                     </div>

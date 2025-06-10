@@ -13,8 +13,8 @@ function Navbar() {
 
         <button
           className="navbar-toggler"
-          type="button"  
-          data-bs-toggle="collapse"  
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
@@ -52,27 +52,27 @@ function Navbar() {
               <ul className="dropdown-menu">
                 <li>
                   <Link className="dropdown-item" to="/IndoreCity">
-                    IndoreCity
+                    Indore City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/BhopalCity">
-                    BhopalCity
+                    Bhopal City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/UjjainCity">
-                    UjjainCity
+                    Ujjain City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/JabalpurCity">
-                    JabalpurCity
+                    Jabalpur City
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/GwaliorCity">
-                    GwaliorCity
+                    Gwalior City
                   </Link>
                 </li>
               </ul>

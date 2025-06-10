@@ -22,11 +22,11 @@ const TopNavbar = () => {
       const res = await axios.get("http://localhost:5000/api/auth/logout", {
         withCredentials: true,
       });
-      console.log(res.data.msg);
+      // console.log(res.data.msg);
       setIsLoggedIn(false);
       navigate("/login");
     } catch (error) {
-      console.error("Logout error:", error);
+      // console.error("Logout error:", error);
       alert("Logout failed. Please try again.");
     }
   };
@@ -41,9 +41,9 @@ const TopNavbar = () => {
             withCredentials: true,
           }
         );
-        console.log("setIsLoggedIn", res.data.loggedIn);
+        // console.log("setIsLoggedIn", res.data.loggedIn);
         setIsLoggedIn(res.data.loggedIn);
-        console.log("setIsLoggedIn", res.data.loggedIn);
+        // console.log("setIsLoggedIn", res.data.loggedIn);
       } catch (error) {
         setIsLoggedIn(false);
       }
@@ -174,6 +174,11 @@ const TopNavbar = () => {
               <li>
                 <Link className="dropdown-item" to="/basicdetail">
                   CreateArtistProfile
+                </Link>
+              </li>
+               <li>
+                <Link className="dropdown-item" to="/AdminDashboard">
+                  Admin
                 </Link>
               </li>
             </ul>
