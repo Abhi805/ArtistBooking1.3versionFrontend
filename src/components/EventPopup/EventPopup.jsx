@@ -112,7 +112,7 @@ const EventPopup = () => {
                     value={formData.email}
                     onChange={handleChange}
                   />
-                </div>
+                </div>   
                 <div className="col-md-6">
                   <Form.Select
                     name="service"

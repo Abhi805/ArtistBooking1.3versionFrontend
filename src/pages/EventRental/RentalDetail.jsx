@@ -13,6 +13,7 @@ import Eq3 from "./Eqimage/gallery3.jpg";
 import Eq4 from "./Eqimage/gallery4.jpg";
 import Eq5 from "./Eqimage/gallery5.jpg";
 
+
 const RentalDetail = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
