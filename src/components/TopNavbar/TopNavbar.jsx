@@ -177,7 +177,7 @@ const TopNavbar = () => {
                 </Link>
               </li>
                <li>
-                <Link className="dropdown-item" to="/AdminDashboard">
+                <Link className="dropdown-item" to="/AdminArtistDashboard">
                   Admin
                 </Link>
               </li>

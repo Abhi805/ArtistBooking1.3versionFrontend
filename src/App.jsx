@@ -67,6 +67,8 @@ import EventBookingModel6 from "./VenueBooking/IndoreCity/BookingModel6/EventBoo
 import EventBookingModel7 from "./VenueBooking/IndoreCity/BookingModel7/EventBookingModel7";
 import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBookingModel8";
 import AdminDashboard from "./AdminDashBoard/AdminDashboard";
+import AdminArtistDashboard from "./AdminDashBoard/AdminArtistDashboard";
+import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 // import ArtistDashboard from "./pages/ArtistDashboard";
 import PrivateRoute from "./components/SecurityCheckArtist/PrivateRoute";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -81,6 +83,8 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import EventBookingModel15 from "./VenueBooking/GwaliorCity/BookingModel15/EventBookingModel15";
 // import EventBookingModel16 from "./VenueBooking/GwaliorCity/BookingModel16/EventBookingModel16";
 // import EventBookingModel17 from "./VenueBooking/GwaliorCity/BookingModel17/EventBookingModel17";
+
+
 
 function App() {
   return (
@@ -106,6 +110,8 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/AdminArtistDashboard" element={<AdminArtistDashboard />} />
+<Route path="/artistko/:id" element={<ArtistApprovalDetail />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
           <Route path="/Services" element={<Services />} />

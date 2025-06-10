@@ -1,3 +1,6 @@
 .kapo{
     color: white !important;
 }
+.border{
+    border: 2px solid black;
+}
