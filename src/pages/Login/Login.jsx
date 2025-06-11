@@ -1,3 +1,4 @@
+// Login.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,8 +8,8 @@ import "./Login.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Spinner } from "react-bootstrap";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Login = () => {
       const res = await axios.post(
         "http://localhost:5000/api/auth/login",
         { email, password },
-        { withCredentials: true } // very important for cookie based auth
+        { withCredentials: true } // very important for cookie-based auth
       );
 
       if (rememberMe) {
@@ -45,15 +46,16 @@ const Login = () => {
         localStorage.removeItem("rememberEmail");
       }
 
-      // Optional: if backend sends token in response body
-      if (res.data.token) localStorage.setItem("token", res.data.token);
-
       toast.success("Login successful!", { position: "top-center" });
 
+      const role = res.data.user.role; // ✅ Check user role here
+
       setTimeout(() => {
-        console.log("Before navigate");
-        navigate("/Basicdetail");
-        console.log("After navigate");
+        if (role === "admin") {
+          navigate("/AdminArtistDashboard");
+        } else {
+          navigate("/Basicdetail");
+        }
       }, 2000);
     } catch (err) {
       toast.error(err.response?.data?.msg || "Login failed", {
@@ -157,13 +159,6 @@ const Login = () => {
           </div>
 
           {/* Optional image column */}
-          {/* <div className="col-md-6 d-none d-md-block" data-aos="zoom-in">
-            <img
-              src={img}
-              alt="Login visual"
-              className="img-fluid rounded-4 login-image"
-            />
-          </div> */}
         </div>
       </div>
     </section>

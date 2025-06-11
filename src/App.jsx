@@ -5,9 +5,6 @@ import "./App.css";
 
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 
-
-
-
 import EventPopup from "./components/EventPopup/EventPopup";
 import AboutUs from "./pages/AboutUs/About";
 import Navbar from "./components/Navbar/Navbar";
@@ -25,13 +22,12 @@ import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
 import Ujjain from "./ArtistBooking/Ujjain/Ujjain";
 import Comedians from "./ArtistBooking/Bhopal/Comedians";
 
- import RentalDetail from "./pages/EventRental/RentalDetail";
+import RentalDetail from "./pages/EventRental/RentalDetail";
 import PlannerProfile from "./pages/EventPlanner/PlannerProfile";
 import EventPlannerForm from "./pages/EventPlanner/EventPlannerForm";
 import VolunteerForm from "./pages/VolunteerBooking/VolunteerForm";
 import VolunteerProfile from "./pages/VolunteerBooking/VolunteerProfile";
 import EventRentalForm from "./pages/EventRental/EventRentalForm";
-
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
@@ -84,8 +80,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import EventBookingModel16 from "./VenueBooking/GwaliorCity/BookingModel16/EventBookingModel16";
 // import EventBookingModel17 from "./VenueBooking/GwaliorCity/BookingModel17/EventBookingModel17";
 
-
-
 function App() {
   return (
     <>
@@ -105,20 +99,27 @@ function App() {
         {/* <ScrollToTopButton /> */}
 
         <Routes>
-
-
-
           <Route path="/" element={<Home />} />
           <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route path="/AdminArtistDashboard" element={<AdminArtistDashboard />} />
-<Route path="/artistko/:id" element={<ArtistApprovalDetail />} />
+          <Route
+            path="/AdminArtistDashboard"
+            element={<AdminArtistDashboard />}
+          />
+          <Route path="/artistko/:id" element={<ArtistApprovalDetail />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           {/* <Route path="/LogoutUser" element={<LogoutUser/>} /> */}
           <Route path="/signup" element={<Signup />} />
-          <Route path="/BasicDetail" element={<ProtectedRoute ><BasicDetail /> </ProtectedRoute> } />
+          <Route
+            path="/BasicDetail"
+            element={
+              <ProtectedRoute>
+                <BasicDetail />{" "}
+              </ProtectedRoute>
+            }
+          />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/EventRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -131,16 +132,12 @@ function App() {
           <Route path="/Jabalpur" element={<Jabalpur />} />
           <Route path="/Ujjain" element={<Ujjain />} />
 
-
-           <Route path="/RentalDetail" element={<RentalDetail />}/> 
-           <Route path="/PlannerProfile" element={<PlannerProfile />} />
-           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
-           <Route path="/VolunteerForm" element={<VolunteerForm />} />
+          <Route path="/RentalDetail" element={<RentalDetail />} />
+          <Route path="/PlannerProfile" element={<PlannerProfile />} />
+          <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
+          <Route path="/VolunteerForm" element={<VolunteerForm />} />
           <Route path="/VolunteerProfile" element={<VolunteerProfile />} />
           <Route path="/EventRentalForm" element={<EventRentalForm />} />
-
-
-
 
           <Route path="/Comedians" element={<Comedians />} />
           <Route path="/ArtistDetail" element={<ArtistDetail />} />
