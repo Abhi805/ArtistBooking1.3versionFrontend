@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./AdminArtistDashboard.css"; // 💡 Import your CSS file
 
 const AdminArtistDashboard = () => {
   const [artistData, setArtistData] = useState([]);
@@ -24,38 +24,32 @@ const AdminArtistDashboard = () => {
     fetchArtists();
   }, []);
 
-  // Get unique city list
   const uniqueCities = [...new Set(artistData.map(a => a.city))].filter(Boolean);
 
-  // Filter artists by selected city
   const filteredArtists = selectedCity
     ? artistData.filter(a => a.city?.toLowerCase() === selectedCity.toLowerCase())
     : artistData;
 
   return (
-    <div className="artist-booking">
-     
-
-
-       <div className="venue-header text-white">
+    <div className="admin-dashboard">
+      <div className="admin-header text-white py-5">
         <div className="container">
-          <h1>Book Top Artists </h1>
-          <p className="text-capitalize text-white">
-            Book live bands, singers, comedians, celebrities, and more with GNV
-            India. Find the perfect artist for your event   and More with GNV India.
+          <h1>Welcome to GNVIndia Admin Profile </h1>
+          <p className="text-white">
+            View and manage pending applications. Filter by city and review each profile.
           </p>
         </div>
       </div>
 
       <div className="container my-5">
-        {/* 🔍 City Filter Dropdown */}
-        <div className="mb-4">
+        <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+          <h5 className="fw-bold mb-0">Pending Artists</h5>
           <select
-            className="form-select w-auto d-inline-block"
+            className="form-select city-filter"
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
           >
-            <option value="">-- Search by City --</option>
+            <option value="">-- Filter by City --</option>
             {uniqueCities.map((city, idx) => (
               <option key={idx} value={city}>
                 {city}
@@ -64,40 +58,29 @@ const AdminArtistDashboard = () => {
           </select>
         </div>
 
-        <h5 className="fw-bold mb-4">Top Artists</h5>      
         <div className="row">
           {filteredArtists.length > 0 ? (
             filteredArtists.map((artist, i) => (
-              <div key={i} className="col-md-3 mb-4">
-                <div className="card artist-card5 h-100 shadow-sm">
+              <div key={i} className="col-md-4 col-lg-3 mb-4">
+                <div className="card artist-card shadow-sm h-100" data-aos="fade-up">
                   {artist.images?.length > 0 ? (
                     <img
                       loading="lazy"
-                      style={{ height: "230px", objectFit: "cover" }}
+                      className="artist-img"
                       src={artist.images[0]}
                       alt={`${artist.firstName} ${artist.lastName}`}
-                      className="img-fluid rounded shadow-lg artist-main-img"
                     />
                   ) : (
-                    <div
-                      className="placeholder-img rounded shadow-lg d-flex align-items-center justify-content-center"
-                      style={{ height: "230px", backgroundColor: "#eee" }}
-                    >
-                      No Image
-                    </div>
+                    <div className="no-image">No Image</div>
                   )}
                   <div className="card-body">
-                    <h6 className="card-title fw-bold">
-                      {artist.firstName} {artist.lastName}
-                    </h6>
+                    <h6 className="fw-bold">{artist.firstName} {artist.lastName}</h6>
                     <p className="text-muted mb-1">
                       ⭐ {artist.rating || "N/A"} ({artist.reviews || 0} Reviews)
                     </p>
-                    <p className="text-muted small">
-                      Performance Duration: {artist.duration || "N/A"}
-                    </p>
-                    <Link to={`/artistko/${artist._id}`} className="btn btn-danger btn-sm">
-                      Explore
+                    <p className="small text-muted mb-2">Duration: {artist.duration || "N/A"}</p>
+                    <Link to={`/artistko/${artist._id}`} className="btn btn-danger btn-sm w-100">
+                      View Details
                     </Link>
                   </div>
                 </div>
@@ -105,7 +88,7 @@ const AdminArtistDashboard = () => {
             ))
           ) : (
             <div className="text-center">
-              <p>No artists found.</p>
+              <p>No pending artists found.</p>
             </div>
           )}
         </div>

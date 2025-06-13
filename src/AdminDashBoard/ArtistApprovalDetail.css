@@ -1,0 +1,150 @@
+.artist-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+  background-color: #f0f2f5;
+}
+
+.artist-card {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.left-panel {
+  flex: 0 0 150px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profile-image {
+  width: 150px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #ddd;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.right-panel h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.right-panel p {
+  margin: 3px 0;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.right-panel strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Gallery Sections */
+.gallery {
+  margin-top: 1.5rem;
+}
+
+.gallery h4 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.photo-gallery,
+.video-gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.photo-gallery img {
+  width: 140px;
+  height: 80px;
+  object-fit: cover;
+    gap : 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+ 
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+.video-wrapper iframe {
+  width: 140px;
+  height: 80px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* Buttons */
+.action-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.btn-approve,
+.btn-reject {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-approve:hover {
+  background-color: #218838;
+  transform: scale(1.02);
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-reject:hover {
+  background-color: #c82333;
+  transform: scale(1.02);
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #777;
+}

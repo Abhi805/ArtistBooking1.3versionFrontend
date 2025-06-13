@@ -15,7 +15,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/SignUp/SignUp";
 import VendorRegistration from "./pages/VendorRegistration/VendorRegistration";
 import MyBoard from "./pages/MyBoard/MyBoard";
-import Indore from "./ArtistBooking/Indore/Indore";
+import ArtistBooking from "./ArtistBooking/ArtistBooking/ArtistBooking";
 import Bhopal from "./ArtistBooking/Bhopal/Bhopal";
 import Gwalior from "./ArtistBooking/Gwalior/Gwalior";
 import Jabalpur from "./ArtistBooking/Jabalpur/Jabalpur";
@@ -31,7 +31,7 @@ import EventRentalForm from "./pages/EventRental/EventRentalForm";
 
 import ArtistDetail from "./ArtistBooking/Bhopal/ArtistDetail";
 import ArtistDetail1 from "./ArtistBooking/Gwalior/ArtistDetail1";
-import ArtistDetail2 from "./ArtistBooking/Indore/ArtistDetail2";
+import ArtistDetail2 from "./ArtistBooking/ArtistBooking/ArtistDetail2";
 import ArtistDetail3 from "./ArtistBooking/Jabalpur/ArtistDetail3";
 import ArtistDetail4 from "./ArtistBooking/Ujjain/ArtistDetail4";
 import IndoreCity from "./VenueBooking/IndoreCity/IndoreCity";
@@ -126,7 +126,7 @@ function App() {
 
           <Route path="/Registration" element={<VendorRegistration />} />
           <Route path="/MyBoard" element={<MyBoard />} />
-          <Route path="/Indore" element={<Indore />} />
+          <Route path="/ArtistBooking" element={<ArtistBooking />} />
           <Route path="/Bhopal" element={<Bhopal />} />
           <Route path="/Gwalior" element={<Gwalior />} />
           <Route path="/Jabalpur" element={<Jabalpur />} />

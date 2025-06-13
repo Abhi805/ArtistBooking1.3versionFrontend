@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Indore.css";
+import "./ArtistBooking.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Indore = () => {
+const ArtistBooking = () => {
   const [artistData, setArtistData] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
 
@@ -114,4 +114,4 @@ const Indore = () => {
   );
 };
 
-export default Indore;
+export default ArtistBooking;
