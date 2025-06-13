@@ -12,58 +12,44 @@ import axios from "axios";
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showSubmenu, setShowSubmenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Logout handler
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("http://localhost:5000/api/auth/logout", {
+      await axios.get("http://localhost:5000/api/auth/logout", {
         withCredentials: true,
       });
-      // console.log(res.data.msg);
       setIsLoggedIn(false);
       navigate("/login");
     } catch (error) {
-      // console.error("Logout error:", error);
       alert("Logout failed. Please try again.");
     }
   };
 
-  // Check login status on route change
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
         const res = await axios.get(
           "http://localhost:5000/api/auth/check-auth",
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
-        // console.log("setIsLoggedIn", res.data.loggedIn);
         setIsLoggedIn(res.data.loggedIn);
-        // console.log("setIsLoggedIn", res.data.loggedIn);
       } catch (error) {
         setIsLoggedIn(false);
       }
     };
-
     checkLoginStatus();
   }, [location]);
 
-  // Show/hide top navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       const visible = currentScroll < 50;
       setIsVisible(visible);
-
-      if (!visible) {
-        document.body.classList.add("top-navbar-hidden");
-      } else {
-        document.body.classList.remove("top-navbar-hidden");
-      }
+      document.body.classList.toggle("top-navbar-hidden", !visible);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -98,33 +84,33 @@ const TopNavbar = () => {
           <a
             href="https://www.facebook.com/gnvindiaevents"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
             <FaFacebookF className="icon" /> Facebook
           </a>
           <a
             href="https://www.instagram.com/gnvindiaevents/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
             <FaInstagram className="icon" /> Instagram
           </a>
           <a
             href="https://www.youtube.com/@gnvindia7"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
             <FaYoutube className="icon" /> YouTube
           </a>
           <a
             href="https://www.linkedin.com/company/gnv-india-entertainment/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
             <FaLinkedinIn className="icon" /> LinkedIn
           </a>
 
-          <div className="dropdown">
+          <div className="dropdown position-relative">
             <button
               className="btn btn-account dropdown-toggle"
               type="button"
@@ -158,25 +144,73 @@ const TopNavbar = () => {
                 </li>
               )}
 
-              <li>
-                <hr className="dropdown-divider" />
+         
+              {/* Manual Submenu Toggle */}
+              <li className="dropdown-submenu position-relative">
+                <button
+                  className="dropdown-item"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setShowSubmenu(!showSubmenu);
+                  }}
+                >
+                  Registration <span className="ms-2">&#9666;</span>
+                </button>
+                {showSubmenu && (
+                  <ul className="dropdown-menu show-submenu">
+                    <li>
+                      <Link className="dropdown-item" to="/basicdetail">
+                        Artist Registration
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => alert("Venue Registration coming soon!")}
+                      >
+                        Venue Registration
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() =>
+                          alert("Volunteer Registration coming soon!")
+                        }
+                      >
+                        Volunteer Registration
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() =>
+                          alert("Event Planner Registration coming soon!")
+                        }
+                      >
+                        Event Planner Registration
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() =>
+                          alert("Event Equipment Registration coming soon!")
+                        }
+                      >
+                        Event Equipment Registration
+                      </button>
+                    </li>
+                  </ul>
+                )}
               </li>
+
               <li>
-                <Link className="dropdown-item" to="/registration">
-                  Vendor Registration
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/myboard">
+                <Link className="dropdown-item" to="/MyDashBoard">
                   MyDashboard
                 </Link>
               </li>
-              <li>
-                <Link className="dropdown-item" to="/basicdetail">
-                  CreateArtistProfile
-                </Link>
-              </li>
-              
             </ul>
           </div>
         </div>

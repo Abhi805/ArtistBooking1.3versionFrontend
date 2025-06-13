@@ -4,6 +4,10 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const handleComingSoon = (msg) => {
+    alert(msg || "Coming Soon");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <div className="container-fluid">
@@ -26,19 +30,13 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                Home
-              </Link>
+              <Link className="nav-link active" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/aboutUs">
-                About Us
-              </Link>
+              <Link className="nav-link" to="/aboutUs">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Indore">
-                Artist Booking
-              </Link>
+              <Link className="nav-link" to="/ArtistBooking">Artist Booking</Link>
             </li>
             <li className="nav-item dropdown">
               <Link
@@ -46,75 +44,48 @@ function Navbar() {
                 to="#"
                 role="button"
                 data-bs-toggle="dropdown"
+                onClick={() => handleComingSoon("Volunteer Booking Coming Soon")}
               >
                 Venue Booking
               </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/IndoreCity">
-                    Indore City
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/BhopalCity">
-                    Bhopal City
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/UjjainCity">
-                    Ujjain City
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/JabalpurCity">
-                    Jabalpur City
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/GwaliorCity">
-                    Gwalior City
-                  </Link>
-                </li>
-              </ul>
+              {/* <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/IndoreCity">Indore City</Link></li>
+                <li><Link className="dropdown-item" to="/BhopalCity">Bhopal City</Link></li>
+                <li><Link className="dropdown-item" to="/UjjainCity">Ujjain City</Link></li>
+                <li><Link className="dropdown-item" to="/JabalpurCity">Jabalpur City</Link></li>
+                <li><Link className="dropdown-item" to="/GwaliorCity">Gwalior City</Link></li>
+              </ul> */}
             </li>
 
-           
             <li className="nav-item">
-              <Link className="nav-link" to="/VolunteerBooking">
+              <button className="nav-link btn btn-link  border-0 shadow-none" onClick={() => handleComingSoon("Volunteer Booking Coming Soon")}>
                 Volunteer Booking
-              </Link>
+              </button>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/EventRental">
+              <button className="nav-link btn btn-link border-0 shadow-none" onClick={() => handleComingSoon("Event Rental Coming Soon")}>
                 Event Rental
-              </Link>
+              </button>
             </li>
+
             <li className="nav-item">
-              <Link className="nav-link" to="/EventPlanner">
+              <button className="nav-link btn btn-link border-0 shadow-none" onClick={() => handleComingSoon("Event Planner Coming Soon")}>
                 Event Planner
-              </Link>
+              </button>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/services">
-                Services
-              </Link>
+              <Link className="nav-link" to="/services">Services</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/ContactUs">
-                Contact Us
-              </Link>
+              <Link className="nav-link" to="/ContactUs">Contact Us</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="nav-link" to="/newsblog">
-                News & Blog
-              </Link>
+              <Link className="nav-link" to="/newsblog">News & Blog</Link>
             </li>
-
-
-             
           </ul>
         </div>
       </div>

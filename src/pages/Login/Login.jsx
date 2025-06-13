@@ -52,9 +52,9 @@ const Login = () => {
 
       setTimeout(() => {
         if (role === "admin") {
-          navigate("/AdminArtistDashboard");
+          navigate("/AdminDashboard");
         } else {
-          navigate("/Basicdetail");
+          navigate("/user-dashboard");
         }
       }, 2000);
     } catch (err) {

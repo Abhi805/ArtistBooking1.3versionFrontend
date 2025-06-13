@@ -41,14 +41,18 @@ const ArtistApprovalDetail = () => {
     }
   };
 
-  const handleReject = async () => {
-    try {
-      await axios.delete(`http://localhost:5000/api/artists/${id}`);
-      alert("Artist rejected/deleted");
-    } catch (err) {
-      console.error("Rejection failed", err);
-    }
-  };
+const handleReject = async () => {
+  const confirmDelete = window.confirm("Are you sure you want to reject/delete this artist?");
+  if (!confirmDelete) return;
+
+  try {
+    await axios.delete(`http://localhost:5000/api/artists/${id}`);
+    alert("Artist rejected/deleted");
+  } catch (err) {
+    console.error("Rejection failed", err);
+  }
+};
+
 
   if (!artist) return <p className="text-center mt-5">Loading...</p>;
 
