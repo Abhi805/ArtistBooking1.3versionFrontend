@@ -1,8 +1,8 @@
-// src/pages/ArtistApprovalDetail.jsx
-
+// ArtistApprovalDetail.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "./ArtistApprovalDetail.css";
 
 const ArtistApprovalDetail = () => {
   const { id } = useParams();
@@ -17,25 +17,20 @@ const ArtistApprovalDetail = () => {
         console.error("Failed to load artist", err);
       }
     };
-
     fetchArtist();
   }, [id]);
 
-    const convertToEmbedUrl = (url) => {
+  const convertToEmbedUrl = (url) => {
     if (!url || typeof url !== "string") return "";
-    const youtubeRegex =
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu.be\/)([^\s&]+)/;
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu.be\/)([^\s&]+)/;
     const match = url.match(youtubeRegex);
-    return match && match[1]
-      ? `https://www.youtube.com/embed/${match[1]}`
-      : url;
+    return match && match[1] ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
-
 
   const approveArtist = async (id) => {
     try {
       await axios.patch(`http://localhost:5000/api/artists/${id}/approve`);
-      setArtist((prev) => prev.filter((artist) => artist._id !== id));
+      alert("Artist approved");
     } catch (err) {
       console.error("Approval error:", err);
     }
@@ -54,108 +49,86 @@ const handleReject = async () => {
 };
 
 
-  if (!artist) return <p className="text-center mt-5">Loading...</p>;
+  if (!artist) return <p className="loading">Loading...</p>;
 
   return (
-    <div className="container my-5">
-      <h2>
-        {artist.firstName} {artist.lastName}
-      </h2>
-      <p className="mb-1">
-        <strong>Email:</strong> {artist.email}
-      </p>
-      <p className="mb-1">
-        <strong>Category:</strong> {artist.category}
-      </p>
-      <p className="mb-1">
-        <strong>Mobile:</strong> {artist.mobile}
-      </p>
-      <p className="mb-1">
-        <strong>City:</strong> {artist.city}
-      </p>
-      <p className="mb-1">
-        <strong>Duration:</strong> {artist.duration}
-      </p>
-      <p className="mb-1">
-        <strong>Travel:</strong> {artist.travel}
-      </p>
-      <p className="mb-1">
-        <strong>Genre:</strong> {artist.genre}
-      </p>
-      <p className="mb-1">
-        <strong>Team:</strong> {artist.team}
-      </p>
-      <p className="mb-1">
-        <strong>Location:</strong> {artist.location}
-      </p>
-      <p className="mb-3">
-        <strong>Description:</strong> {artist.description}
-      </p>
-      <p className="mb-1">
-        <strong>Profile Title:</strong> {artist.profileTitle}
-      </p>
-      <p className="mb-1">
-        <strong>Keywords:</strong> {artist.profileKeywords}
-      </p>
-      <p className="mb-3">
-        <strong>Description:</strong> {artist.profileDescription}
-      </p>
+    <div className="artist-card-container">
+      <div className="artist-card">
+        <div className="left-panel">
+          <img
+            src={artist.images?.[0] || "/placeholder.png"}
+            alt="Profile"
+            className="profile-image"
+          />
+        </div>
 
-      {/* Image Gallery */}
-      <h6 className="fw-semibold mb-2">Photo Gallery</h6>
-      <div className="row g-2 mb-3">
-        {artist.images?.length > 0 ? (
-          artist.images.map((img, i) => (
-            <div key={i} className="col-4">
-              <img
-                src={img}
-                className="img-fluid rounded shadow-sm"
-                style={{ height: "200px", objectFit: "cover" }}
-                alt={`Gallery ${i}`}
-              />
+        <div className="right-panel">
+          <h2>{artist.firstName} {artist.lastName}</h2>
+          <p><strong>Email :</strong> {artist.email}</p>
+          <p><strong>Artist Type :</strong> {artist.category}</p>
+          <p><strong>Mobile:</strong> {artist.mobile}</p>
+          <p><strong>City :</strong> {artist.city}</p>
+          <p><strong>Duration :</strong> {artist.duration}</p>
+          <p><strong>Travel :</strong> {artist.travel}</p>
+          <p><strong>Genre :</strong> {artist.genre}</p>
+          <p><strong>Team :</strong> {artist.team}</p>
+          <p><strong>Location :</strong> {artist.location}</p>
+          <p><strong>Profile Title :</strong> {artist.profileTitle}</p>
+          <p><strong>Keywords :</strong> {artist.profileKeywords}</p>
+          <p><strong>Description :</strong> {artist.description}</p>
+          <p><strong>Profile Description :</strong> {artist.profileDescription}</p>
+
+          {/* Photo Gallery */}
+          <div className="gallery">
+            <h4>Photo Gallery</h4>
+            <div className="photo-gallery">
+              {artist.images?.length > 0 ? (
+                artist.images.map((img, i) => (
+                  <img key={i} src={img} alt={`Gallery ${i}`} />
+                ))
+              ) : (
+                <p className="text-muted">No images available.</p>
+              )}
             </div>
-          ))
-        ) : (
-          <p className="text-muted">No images available.</p>
-        )}
-      </div>
+          </div>
 
-      {/* Video Gallery */}
-      <h6 className="fw-semibold mb-2">Video Gallery</h6>
-      <div className="row g-2 mb-3">
-        {artist.videoLink && artist.videoLink.length > 0 ? (
-          artist.videoLink.map((link, i) => (
-            <div key={i} className="col-6">
-              <div className="ratio ratio-16x9">
-                <iframe
-                  src={convertToEmbedUrl(link)}
-                  title={`Video ${i}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
+          {/* Video Gallery */}
+          <div className="gallery">
+            <h4>Video Gallery</h4>
+            <div className="video-gallery">
+              {artist.videoLink?.length > 0 ? (
+                artist.videoLink.map((link, i) => (
+                  <div key={i} className="video-wrapper">
+                    <iframe
+                      src={convertToEmbedUrl(link)}
+                      title={`Video ${i}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted">No videos available.</p>
+              )}
             </div>
-          ))
-        ) : (
-          <p className="text-muted">No videos available.</p>
-        )}
-      </div>
+          </div>
 
-      <div className="mt-4">
-        <button
-          className="btn btn-success me-5"
-          onClick={() => {
-            if (window.confirm("Approve this artist?")) {
-              approveArtist(artist._id);
-            }
-          }}
-        >
-          Approve
-        </button>
-        <button onClick={handleReject} className="btn btn-danger">
-          Reject
-        </button>
+          {/* Action Buttons */}
+          <div className="action-buttons">
+            <button
+              className="btn-approve"
+              onClick={() =>
+                window.confirm("Approve this artist?") && approveArtist(artist._id)
+              }
+            >
+              Approve
+            </button>
+            <button className="btn-reject" onClick={handleReject}>
+              Reject
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

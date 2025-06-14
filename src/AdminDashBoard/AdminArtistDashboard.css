@@ -1,0 +1,60 @@
+/* Admin Dashboard Header */
+.admin-header {
+  background: linear-gradient(to right, #8e0000, #c30000);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.admin-header h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.admin-header p {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* City Filter Dropdown */
+.city-filter {
+  width: 220px;
+  min-width: 200px;
+  font-size: 14px;
+}
+
+/* Artist Cards */
+.artist-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.artist-card:hover {
+  transform: scale(1.02);
+}
+
+.artist-img {
+  height: 230px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.no-image {
+  height: 230px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Button */
+.btn-danger {
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+}

@@ -30,13 +30,19 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">Home</Link>
+              <Link className="nav-link active" to="/">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/aboutUs">About Us</Link>
+              <Link className="nav-link" to="/aboutUs">
+                About Us
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/ArtistBooking">Artist Booking</Link>
+              <Link className="nav-link" to="/ArtistBooking">
+                Artist Booking
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <Link
@@ -44,7 +50,9 @@ function Navbar() {
                 to="#"
                 role="button"
                 data-bs-toggle="dropdown"
-                onClick={() => handleComingSoon("Volunteer Booking Coming Soon")}
+                onClick={() =>
+                  handleComingSoon("Volunteer Booking Coming Soon")
+                }
               >
                 Venue Booking
               </Link>
@@ -58,33 +66,45 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
-              <button className="nav-link btn btn-link  border-0 shadow-none" onClick={() => handleComingSoon("Volunteer Booking Coming Soon")}>
+              <Link className="nav-link" to="/VolunteerBooking">
                 Volunteer Booking
-              </button>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <button className="nav-link btn btn-link border-0 shadow-none" onClick={() => handleComingSoon("Event Rental Coming Soon")}>
+              <button
+                className="nav-link btn btn-link border-0 shadow-none"
+                onClick={() => handleComingSoon("Event Rental Coming Soon")}
+              >
                 Event Rental
               </button>
             </li>
 
             <li className="nav-item">
-              <button className="nav-link btn btn-link border-0 shadow-none" onClick={() => handleComingSoon("Event Planner Coming Soon")}>
+              <button
+                className="nav-link btn btn-link border-0 shadow-none"
+                onClick={() => handleComingSoon("Event Planner Coming Soon")}
+              >
                 Event Planner
               </button>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/services">Services</Link>
+              <Link className="nav-link" to="/services">
+                Services
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/ContactUs">Contact Us</Link>
+              <Link className="nav-link" to="/ContactUs">
+                Contact Us
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/newsblog">News & Blog</Link>
+              <Link className="nav-link" to="/newsblog">
+                News & Blog
+              </Link>
             </li>
           </ul>
         </div>

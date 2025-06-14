@@ -6,6 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 const BasicDetail = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [customTravelMode, setCustomTravelMode] = useState(false);
+  const [customCategoryMode, setCustomCategoryMode] = useState(false);
+const [customGenreMode, setCustomGenreMode] = useState(false);
+
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -40,19 +44,19 @@ const BasicDetail = () => {
     }
   }, [formData.images]);
 
- // Validate mobile: allows optional +91 and exactly 10 digits
-const validateMobile = (mobile) => {
-  const regex = /^(?:\+91[-\s]?)?[0]?[6-9]\d{9}$/;
-  return regex.test(mobile);
-};
-
+  // Validate mobile: allows optional +91 and exactly 10 digits
+  const validateMobile = (mobile) => {
+    const regex = /^(?:\+91[-\s]?)?[0]?[6-9]\d{9}$/;
+    return regex.test(mobile);
+  };
 
   // Validate YouTube URL (only if not empty)
-const isValidYoutubeUrl = (url) => {
-  if (!url.trim()) return true;
-  const ytRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}(&.*|\?.*)?$/;
-  return ytRegex.test(url.trim());
-};
+  const isValidYoutubeUrl = (url) => {
+    if (!url.trim()) return true;
+    const ytRegex =
+      /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}(&.*|\?.*)?$/;
+    return ytRegex.test(url.trim());
+  };
 
   // Check duplicate YouTube URLs (ignoring empty)
   const hasDuplicateYoutubeUrls = (urls) => {
@@ -62,44 +66,50 @@ const isValidYoutubeUrl = (url) => {
 
   // Handle text input changes
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { name, id, value } = e.target;
+    const key = name || id;
 
-    // Mobile validation on typing - only digits allowed
-    if (id === "mobile") {
+    // Custom travel logic
+    if (key === "travel" && value === "custom") {
+      setCustomTravelMode(true);
+      setFormData((prev) => ({ ...prev, travel: "" }));
+      return;
+    }
+
+    if (key === "mobile") {
       if (value && !/^\d*$/.test(value)) {
         toast.error("Mobile number must contain digits only");
         return;
       }
     }
 
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
   // Handle video link input change
-const handleVideoLinkChange = (index, value) => {
-  if (value.trim() === '') {
-    // Empty allowed
-    const newLinks = [...formData.videoLink];
-    newLinks[index] = value;
-    setFormData({ ...formData, videoLink: newLinks });
-    return;
-  }
-
-  if (isValidYoutubeUrl(value)) {
-    const newLinks = [...formData.videoLink];
-    newLinks[index] = value;
-    setFormData({ ...formData, videoLink: newLinks });
-  } else {
-    const minLength = 15;
-    if (value.length >= minLength) {
-      toast.error(`Invalid YouTube URL at position ${index + 1}`);
+  const handleVideoLinkChange = (index, value) => {
+    if (value.trim() === "") {
+      // Empty allowed
+      const newLinks = [...formData.videoLink];
+      newLinks[index] = value;
+      setFormData({ ...formData, videoLink: newLinks });
+      return;
     }
-    const newLinks = [...formData.videoLink];
-    newLinks[index] = value;
-    setFormData({ ...formData, videoLink: newLinks });
-  }
-};
 
+    if (isValidYoutubeUrl(value)) {
+      const newLinks = [...formData.videoLink];
+      newLinks[index] = value;
+      setFormData({ ...formData, videoLink: newLinks });
+    } else {
+      const minLength = 15;
+      if (value.length >= minLength) {
+        toast.error(`Invalid YouTube URL at position ${index + 1}`);
+      }
+      const newLinks = [...formData.videoLink];
+      newLinks[index] = value;
+      setFormData({ ...formData, videoLink: newLinks });
+    }
+  };
 
   // Add new video link input (max 6)
   const addVideoLinkInput = () => {
@@ -274,8 +284,18 @@ const handleVideoLinkChange = (index, value) => {
         profileDescription: "",
       });
     } catch (err) {
-      toast.error("Error submitting form");
-      console.error(err);
+      const { errors, message } = err?.response?.data || {};
+
+      if (Array.isArray(errors) && errors.length > 0) {
+        toast.error(errors[0]); // Toast with first error
+      } else if (message) {
+        toast.error(message); // Toast with message
+      } else {
+        const fallback = "Something went wrong";
+        toast.error(fallback);
+      }
+
+      console.log("Server Response:", err.response.data);
     } finally {
       setLoading(false);
     }
@@ -372,6 +392,7 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       required
+                      placeholder="Enter Your First Name"
                     />
                   </div>
                   <div className="mb-3">
@@ -385,6 +406,7 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       required
+                      placeholder="Enter Your Last Name"
                     />
                   </div>
                   <div className="mb-3">
@@ -398,6 +420,7 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       required
+                      placeholder="Enter Your Email"
                     />
                   </div>
                   <div className="mb-3">
@@ -412,6 +435,7 @@ const handleVideoLinkChange = (index, value) => {
                       maxLength={15}
                       className="form-control"
                       required
+                      placeholder="Enter Your Mobile No."
                     />
                     <small className="form-text text-muted">
                       Digits only, 10 characters
@@ -435,11 +459,12 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       required
+                      placeholder="Enter The City Where You Live"
                     />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="duration" className="form-label">
-                      Duration *
+                      Performance Duration *
                     </label>
                     <input
                       type="text"
@@ -448,34 +473,118 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       required
+                      placeholder="Enter Performance Duration (e.g. 1 Hour 30 Minutes)"
                     />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="travel" className="form-label">
                       Travel *
                     </label>
-                    <input
-                      type="text"
-                      id="travel"
-                      value={formData.travel}
-                      onChange={handleChange}
-                      className="form-control"
-                      required
-                    />
+
+                    {!customTravelMode ? (
+                      <select
+                        id="travel"
+                        name="travel"
+                        value={formData.travel}
+                        onChange={handleChange}
+                        className="form-control"
+                        required
+                      >
+                        <option value="">Select travel scope</option>
+                        <option value="national">National</option>
+                        <option value="international">International</option>
+                        <option value="worldwide">Worldwide</option>
+                        {/* <option value="yes">YES</option> */}
+                        <option value="no">NO</option>
+                        <option value="custom">Custom</option>
+                      </select>
+                    ) : (
+                      <>
+                        <input
+                          type="text"
+                          name="travel"
+                          value={formData.travel}
+                          onChange={handleChange}
+                          className="form-control"
+                          placeholder="Enter your custom travel preference"
+                          required
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-link p-0 mt-1"
+                          onClick={() => {
+                            setCustomTravelMode(false);
+                            setFormData((prev) => ({ ...prev, travel: "" }));
+                          }}
+                        >
+                          ← Back To Select Travel Options
+                        </button>
+                      </>
+                    )}
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="category" className="form-label">
-                      Category *
-                    </label>
-                    <input
-                      type="text"
-                      id="category"
-                      value={formData.category}
-                      onChange={handleChange}
-                      className="form-control"
-                      required
-                    />
-                  </div>
+
+
+
+
+
+<div className="mb-3">
+  <label htmlFor="category" className="form-label">
+    Artist Type *
+  </label>
+
+  {!customCategoryMode ? (
+    <select
+      id="category"
+      name="category"
+      value={formData.category}
+      onChange={(e) => {
+        if (e.target.value === "custom") {
+          setCustomCategoryMode(true);
+          setFormData((prev) => ({ ...prev, category: "" }));
+        } else {
+          handleChange(e);
+        }
+      }}
+      className="form-control"
+      required
+    >
+      <option value="">Select artist type</option>
+      <option value="singer">Singer</option>
+      <option value="dancer">Dancer</option>
+      <option value="comedian">Comedian</option>
+      <option value="magician">Magician</option>
+      <option value="band">Band</option>
+      <option value="custom">Custom</option>
+    </select>
+  ) : (
+    <div className="position-relative">
+      <input
+        type="text"
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+        className="form-control"
+        placeholder="Enter your custom artist type"
+        required
+      />
+      <button
+        type="button"
+        className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
+        onClick={() => {
+          setCustomCategoryMode(false);
+          setFormData((prev) => ({ ...prev, category: "" }));
+        }}
+      >
+        ⟵
+      </button>
+    </div>
+  )}
+</div>
+
+
+
+
+
                 </>
               )}
 
@@ -483,25 +592,66 @@ const handleVideoLinkChange = (index, value) => {
               {step === 3 && (
                 <>
                   <h4>Additional Info</h4>
-                  <div className="mb-3">
-                    <label htmlFor="genre" className="form-label">
-                      Genre *
-                    </label>
-                    <input
-                      type="text"
-                      id="genre"
-                      value={formData.genre}
-                      onChange={handleChange}
-                      className="form-control"
-                      required
-                    />
-                  </div>
+            <div className="mb-3">
+  <label htmlFor="genre" className="form-label">
+    Music/Genre *
+  </label>
+
+  {!customGenreMode ? (
+    <select
+      id="genre"
+      name="genre"
+      value={formData.genre}
+      onChange={(e) => {
+        if (e.target.value === "custom") {
+          setCustomGenreMode(true);
+          setFormData((prev) => ({ ...prev, genre: "" }));
+        } else {
+          handleChange(e);
+        }
+      }}
+      className="form-control"
+      required
+    >
+      <option value="">Select genre</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="classical">Classical</option>
+      <option value="hiphop">Hip Hop</option>
+      <option value="folk">Folk</option>
+      <option value="custom">Custom</option>
+    </select>
+  ) : (
+    <div className="position-relative">
+      <input
+        type="text"
+        name="genre"
+        value={formData.genre}
+        onChange={handleChange}
+        className="form-control"
+        placeholder="Enter your custom genre"
+        required
+      />
+      <button
+        type="button"
+        className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
+        onClick={() => {
+          setCustomGenreMode(false);
+          setFormData((prev) => ({ ...prev, genre: "" }));
+        }}
+      >
+        ⟵
+      </button>
+    </div>
+  )}
+</div>
+
                   <div className="mb-3">
                     <label htmlFor="team" className="form-label">
-                      Team *
+                      Team Members *
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       id="team"
                       value={formData.team}
                       onChange={handleChange}
@@ -532,6 +682,8 @@ const handleVideoLinkChange = (index, value) => {
                       onChange={handleChange}
                       className="form-control"
                       rows={3}
+                          maxLength={300}
+                           minLength={100} 
                       required
                     />
                   </div>
