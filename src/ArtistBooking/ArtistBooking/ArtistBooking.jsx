@@ -68,13 +68,13 @@ const ArtistBooking = () => {
         <div className="row">
           {filteredArtists.length > 0 ? (
             filteredArtists.map((artist, i) => (
-              <div key={i} className="col-md-3 mb-4">
+              <div key={i} className="col-md-3 mb-4"> 
                 <div className="card artist-card5 h-100 shadow-sm">
                   {artist.images?.length > 0 ? (
                     <img
                       loading="lazy"
                       style={{ height: "230px", objectFit: "cover" }}
-                      src={artist.images[0]}
+                      src={artist.profileImage}
                       alt={`${artist.firstName} ${artist.lastName}`}
                       className="img-fluid rounded shadow-lg artist-main-img"
                     />
@@ -93,7 +93,7 @@ const ArtistBooking = () => {
                     <p className="text-muted mb-1">
                       ⭐ {artist.rating || "N/A"} ({artist.reviews || 0} Reviews)
                     </p>
-                    <p className="text-muted small">
+                    <p className="text-muted small">  
                       Performance Duration: {artist.duration || "N/A"}
                     </p>
                     <Link to={`/artist/${artist._id}`} className="btn btn-danger btn-sm">

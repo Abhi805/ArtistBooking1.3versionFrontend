@@ -56,7 +56,7 @@ const handleReject = async () => {
       <div className="artist-card">
         <div className="left-panel">
           <img
-            src={artist.images?.[0] || "/placeholder.png"}
+            src={artist.profileImage || "/placeholder.png"}
             alt="Profile"
             className="profile-image"
           />

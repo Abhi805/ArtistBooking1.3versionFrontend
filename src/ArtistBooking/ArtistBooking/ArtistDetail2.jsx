@@ -13,6 +13,9 @@ const ArtistDetail2 = () => {
   const [imageSrc, setImageSrc] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("photos");
+  const [review, setReview] = useState({ rating: 0, comment: "" });
+
+  const [reviews, setReviews] = useState([]);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -90,6 +93,48 @@ const ArtistDetail2 = () => {
     }
   };
 
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!review.rating || !review.comment.trim()) {
+      toast.error("Please provide both a rating and a comment.");
+      return;
+    }
+
+    try {
+      await axios.post(`http://localhost:5000/api/reviews/${id}`, review, {
+        withCredentials: true, // ✅ Cookie-based auth
+      });
+      toast.success("Review submitted successfully!");
+      setReview({ rating: 0, comment: "" });
+      fetchReviews(); // Update review list after new submit
+     
+    } catch (err) {
+      console.error("Review submission error:", err);
+      const message =
+        err?.response?.data?.message || "Failed to submit review.";
+      toast.error(message);
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [id]);
+
+  const fetchReviews = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/reviews/${id}/reviews`
+      );
+      setReviews(res.data);
+     console.log("Review API Response:", res.data);
+
+    } catch (err) {
+      console.error("Failed to load reviews:", err);
+      toast.error("Unable to load reviews.");
+    }
+  };
+
   if (!artist) {
     return <div className="text-center py-5">Loading...</div>;
   }
@@ -103,15 +148,13 @@ const ArtistDetail2 = () => {
       <div className="container-fluid px-0 pt-3">
         <div className="container" data-aos="fade-up">
           <div className="row g-4 align-items-start">
-
             <div className="container py-5">
               <div className="row g-4 align-items-start">
-
                 {/* Left Image */}
                 <div className="col-lg-4 text-center">
                   <img
                     style={{ height: "480px", objectFit: "cover" }}
-                    src={imageSrc[0]}
+                    src={artist.profileImage}
                     alt={`${artist.firstName} ${artist.lastName}`}
                     className="img-fluid rounded shadow-lg"
                   />
@@ -121,22 +164,65 @@ const ArtistDetail2 = () => {
                 <div className="col-lg-8">
                   <div className="booking-form p-4 bg-white rounded shadow">
                     <h5 className="fw-bold text-danger mb-3">
-                      Book <span className="text-dark">{artist.firstName} {artist.lastName}</span>, Now !!
+                      Book{" "}
+                      <span className="text-dark">
+                        {artist.firstName} {artist.lastName}
+                      </span>
+                      , Now !!
                     </h5>
                     <p className="text-muted mb-4">
-                      Book {artist.firstName} for corporate event, wedding & college fest. Contact details, booking & charges are available on GNVIndia.
+                      Book {artist.firstName} for corporate event, wedding &
+                      college fest. Contact details, booking & charges are
+                      available on GNVIndia.
                     </p>
                     <form onSubmit={handleSubmit}>
                       <div className="row g-3">
                         {[
-                          { name: "fullName", placeholder: "YOUR NAME*", type: "text", required: true },
-                          { name: "email", placeholder: "EMAIL ADDRESS*", type: "email", required: true },
-                          { name: "phone", placeholder: "PHONE NUMBER*", type: "tel", required: true },
-                          { name: "eventType", placeholder: "EVENT TYPE*", type: "text", required: true },
-                          { name: "eventDate", placeholder: "DD–MM–YYYY", type: "date", required: true },
-                          { name: "budget", placeholder: "BUDGET", type: "text" },
-                          { name: "city", placeholder: "CITY NAME", type: "text" },
-                          { name: "requirement", placeholder: "Type here your requirement.", type: "text" },
+                          {
+                            name: "fullName",
+                            placeholder: "YOUR NAME*",
+                            type: "text",
+                            required: true,
+                          },
+                          {
+                            name: "email",
+                            placeholder: "EMAIL ADDRESS*",
+                            type: "email",
+                            required: true,
+                          },
+                          {
+                            name: "phone",
+                            placeholder: "PHONE NUMBER*",
+                            type: "tel",
+                            required: true,
+                          },
+                          {
+                            name: "eventType",
+                            placeholder: "EVENT TYPE*",
+                            type: "text",
+                            required: true,
+                          },
+                          {
+                            name: "eventDate",
+                            placeholder: "DD–MM–YYYY",
+                            type: "date",
+                            required: true,
+                          },
+                          {
+                            name: "budget",
+                            placeholder: "BUDGET",
+                            type: "text",
+                          },
+                          {
+                            name: "city",
+                            placeholder: "CITY NAME",
+                            type: "text",
+                          },
+                          {
+                            name: "requirement",
+                            placeholder: "Type here your requirement.",
+                            type: "text",
+                          },
                         ].map((field, i) => (
                           <div className="col-md-6" key={i}>
                             <input
@@ -157,7 +243,10 @@ const ArtistDetail2 = () => {
                             disabled={loading}
                           >
                             {loading ? (
-                              <span className="spinner-border spinner-border-sm me-2" role="status" />
+                              <span
+                                className="spinner-border spinner-border-sm me-2"
+                                role="status"
+                              />
                             ) : (
                               "Book Now"
                             )}
@@ -167,18 +256,41 @@ const ArtistDetail2 = () => {
                     </form>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <div className="info-card-container">
               {[
-                { icon: "⏱", title: "Performance Duration", text: artist.duration || "N/A" },
-                { icon: "👥", title: "Team Members", text: artist.team || "N/A" },
-                { icon: "🌍", title: "Open to Travel", text: artist.location || "Worldwide" },
-                { icon: "🗣", title: "Language", text: artist.language || "English/Hindi" },
-                { icon: "🎵", title: "Music/Genre", text: artist.genre || "Music/Genre" },
-                { icon: "🎤", title: "Artist Type", text: artist.category || "Artist Type / City" },
+                {
+                  icon: "⏱",
+                  title: "Performance Duration",
+                  text: artist.duration || "N/A",
+                },
+                {
+                  icon: "👥",
+                  title: "Team Members",
+                  text: artist.team || "N/A",
+                },
+                {
+                  icon: "🌍",
+                  title: "Open to Travel",
+                  text: artist.location || "Worldwide",
+                },
+                {
+                  icon: "🗣",
+                  title: "Language",
+                  text: artist.language || "English/Hindi",
+                },
+                {
+                  icon: "🎵",
+                  title: "Music/Genre",
+                  text: artist.genre || "Music/Genre",
+                },
+                {
+                  icon: "🎤",
+                  title: "Artist Type",
+                  text: artist.category || "Artist Type / City",
+                },
               ].map((item, i) => (
                 <div className="info-card-glow" key={i}>
                   <div className="display-5">{item.icon}</div>
@@ -200,20 +312,24 @@ const ArtistDetail2 = () => {
         <div className="container py-4" data-aos="fade-up">
           <h4 className="fw-bold text-center mb-2">Artist Gallery</h4>
           <p className="text-center text-muted">
-            Welcome to our gallery! Explore a curated collection of stunning visuals,
-            capturing creativity, beauty, and inspiration.
+            Welcome to our gallery! Explore a curated collection of stunning
+            visuals, capturing creativity, beauty, and inspiration.
           </p>
 
           {/* Tabs */}
           <div className="text-center my-4">
             <button
-              className={`btn tab-btn ${activeTab === "photos" ? "active" : ""}`}
+              className={`btn tab-btn ${
+                activeTab === "photos" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("photos")}
             >
               PHOTOS
             </button>
             <button
-              className={`btn tab-btn ${activeTab === "videos" ? "active" : ""}`}
+              className={`btn tab-btn ${
+                activeTab === "videos" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("videos")}
             >
               VIDEOS
@@ -269,15 +385,23 @@ const ArtistDetail2 = () => {
           <h5 className="fw-bold mb-3">
             Review {artist.firstName} {artist.lastName}
           </h5>
-          <h6 className="text-capitalize">City: {artist.city}</h6>
-          <form>
+          <form onSubmit={handleReviewSubmit}>
             <div className="mb-3">
-              <label className="form-label fw-semibold" htmlFor="rating">
-                Rate Us:
-              </label>
-              <div id="rating" className="star-rating" role="radiogroup" aria-label="Rating">
+              <label className="form-label fw-semibold">Rate Us:</label>
+              <div className="star-rating">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="star" role="radio" aria-checked="false" tabIndex={0}>
+                  <span
+                    key={star}
+                    className="star"
+                    onClick={() =>
+                      setReview((prev) => ({ ...prev, rating: star }))
+                    }
+                    style={{
+                      cursor: "pointer",
+                      fontSize: "24px",
+                      color: review.rating >= star ? "gold" : "#ccc",
+                    }}
+                  >
                     &#9733;
                   </span>
                 ))}
@@ -287,12 +411,37 @@ const ArtistDetail2 = () => {
               className="form-control mb-3"
               rows="3"
               placeholder="Write your review..."
-              aria-label="Write your review"
+              value={review.comment}
+              onChange={(e) =>
+                setReview((prev) => ({ ...prev, comment: e.target.value }))
+              }
+              required
             ></textarea>
             <button type="submit" className="btn btn-danger">
               Submit Review
             </button>
           </form>
+        </div>
+        <div className="container py-4" data-aos="fade-up">
+          <h5 className="fw-bold mb-3">User Reviews</h5>
+          {reviews.length === 0 ? (
+            <p>No reviews yet.</p>
+          ) : (
+            reviews.map((rev, index) => (
+              <div
+                key={index}
+                className="border rounded p-3 mb-3 shadow-sm bg-light"
+              >
+                <strong>{rev.user?.firstName || "User"}</strong>
+                
+                <div style={{ color: "gold" }}>
+                  {"★".repeat(rev.rating)}
+                  {"☆".repeat(5 - rev.rating)}
+                </div>
+                <p className="mb-0">{rev.comment}</p>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
