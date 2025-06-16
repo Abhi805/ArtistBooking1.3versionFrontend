@@ -79,7 +79,7 @@ const BlogPosts = () => {
     <section className="blog-section py-5">
       <div className="container">
         <div className="text-center mb-5">
-          <h2 className="blog-title">
+          <h2 className="section-heading blog-title">
             Latest <span>Blog</span> Posts
           </h2>
           <p className="blog-subtitle">

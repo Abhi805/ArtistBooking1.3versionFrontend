@@ -89,7 +89,7 @@ const settings = {
         <h5 className="pe-subtitle" data-aos="fade-up">
           <p className='fs-3' style={{color:"red"}} >Past Defines The Future</p>
         </h5>
-        <h2 className="pe-title" data-aos="fade-up">
+        <h2 className="section-heading-pastEvent pe-title" data-aos="fade-up">
           <span className="pe-title-highlight">The Best</span> of What Just Happened
         </h2>
         <Slider {...settings}>

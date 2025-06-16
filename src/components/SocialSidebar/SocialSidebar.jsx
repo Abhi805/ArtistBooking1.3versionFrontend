@@ -12,7 +12,7 @@ const SocialSidebar = () => {
   const showSidebar = useScrollTrigger(); // 👈
 
   return (
-    <div className={`social-sidebar ${showSidebar ? 'visible' : ''}`}>
+    <div className={`social-sideBar-sec social-sidebar ${showSidebar ? 'visible' : ''}`}>
       <ul>
         <li className="facebook">
           <Link to="https://www.facebook.com/gnvindiaevents">

@@ -48,7 +48,7 @@ export default function HeroSection() {
                         Find your favorite artist in just one click.
                       </h5>
                       <p className="" style={{ fontWeight: "bolder" }}>
-                        <span className="highlight text-capitalize herofont">
+                        <span className="details-txt highlight text-capitalize herofont">
                           Planning an event? Book the perfect artist now - from
                           singers and dancers to DJs and performers, all in one
                           place.
@@ -59,7 +59,7 @@ export default function HeroSection() {
                         high-energy performers, find and hire the best with GNV.
                       </p>
                       
-                      <div className="d-flex gap-3 mt-4">
+                      <div className="contact-btn">
                         <Link
                           to="/Bhopal"
                           className="custom-btn primary-btn"
@@ -95,10 +95,10 @@ export default function HeroSection() {
                         Book Stunning Venues in Minutes — Only on GNV. es{" "}
                       </h5>
                       <p
-                        className="fs-2"
+                        className="  fs-2"
                         style={{ fontWeight: "bolder", fontSize: "30px" }}
                       >
-                        <span className="text-black text-capitalize ">
+                        <span className="details-txt text-black text-capitalize ">
                           Find & book your ideal hotel — fast, easy, and
                           trusted. Only on GNV.
                         </span>
@@ -109,7 +109,7 @@ export default function HeroSection() {
                         hassle-free. Travel, business, or family — book now,
                         only on GNV.
                       </p>
-                      <div className="d-flex gap-3 mt-4">
+                      <div className="contact-btn ">
                         <Link
                           to="/BhopalCity"
                           className="custom-btn primary-btn"
@@ -146,7 +146,7 @@ export default function HeroSection() {
                         instantly.{" "}
                       </h5>
                       <p
-                        className="fs-2 text-capitalize"
+                        className=" details-txt fs-2 text-capitalize"
                         style={{ fontWeight: "bolder", fontSize: "30px" }}
                       >
                         From weddings to concerts — rent sound, lights, decor &
@@ -157,7 +157,7 @@ export default function HeroSection() {
                         suppliers with photos and reviews. Book quickly and
                         easily — only on GNV.
                       </p>
-                      <div className="d-flex gap-3 mt-4">
+                      <div className=" contact-btn ">
                         <Link
                           to="/EventRental"
                           className="custom-btn primary-btn"
@@ -196,7 +196,7 @@ export default function HeroSection() {
                         className="fs-2"
                         style={{ fontWeight: "bolder", fontSize: "30px" }}
                       >
-                        <span className="highlight text-capitalize herofont">
+                        <span className="details-txt highlight text-capitalize herofont">
                           Your moments matter. We create lasting memories. Every
                           celebration deserves the best.
                         </span>
@@ -209,7 +209,7 @@ export default function HeroSection() {
                         moment.
                       </p>
 
-                      <div className="d-flex gap-3 mt-4">
+                      <div className=" contact-btn ">
                         <Link
                           to="/EventPlanner"
                           className="custom-btn primary-btn"
@@ -246,10 +246,10 @@ export default function HeroSection() {
                         Professional
                       </h5>
                       <p
-                        className="fs-2"
+                        className=" fs-2"
                         style={{ fontWeight: "bolder", fontSize: "30px" }}
                       >
-                        <span className="text-black herofont text-capitalize">
+                        <span className="details-txt text-black herofont text-capitalize">
                           {" "}
                           Book your volunteer team now – because every great
                           event needs strong ground support.
@@ -262,7 +262,7 @@ export default function HeroSection() {
                         organized, and successful.
                       </p>
 
-                      <div className="d-flex gap-3 mt-4">
+                      <div className=" contact-btn ">
                         <Link
                           to="/VolunteerBooking"
                           className="custom-btn primary-btn"

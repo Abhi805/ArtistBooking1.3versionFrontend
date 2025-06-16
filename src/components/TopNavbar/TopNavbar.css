@@ -155,3 +155,8 @@ body.top-navbar-hidden .navbar {
     position: fixed;
     z-index: 9999;
 }
+@media (max-width: 767px) {
+  .top-navbar{
+    display: none !important;
+  }
+}

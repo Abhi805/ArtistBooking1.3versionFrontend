@@ -49,7 +49,7 @@ const Footer = () => {
             </p>
           </div>
   
-          <div className=" col-md-4 mb-5 social-icons1 d-flex">
+          <div className="justify-content-center col-md-4 mb-5 social-icons1 d-flex">
             <a
               href="https://www.facebook.com/gnvindiaevents"
               target="_blank"

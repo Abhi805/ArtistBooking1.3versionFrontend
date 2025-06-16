@@ -38,7 +38,7 @@ const OnlineBooking = () => {
   
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="d-flex flex-wrap gap-3 justify-content-center">
+            <div className="booking-titles d-flex flex-wrap gap-3 justify-content-center">
               {categories.map((item, index) => (
                 <div key={index} className="booking-box">
                   {item}

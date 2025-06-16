@@ -139,3 +139,21 @@
     padding: 10px 24px;
   }
 }
+
+@media (max-width: 768px) {
+
+.event-contact-btn{
+  width: 200px;
+}
+    .contact-detail-sec {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+  .section-title{
+    font-size: 26px !important;
+  }
+}

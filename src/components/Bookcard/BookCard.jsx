@@ -52,7 +52,7 @@ export default function BookCard() {
         <div className="row justify-content-center px-3 px-md-0">
           {cardData.map((card, index) => (
             <div
-              className="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4"
+              className="col-12 col-sm-6 col-md-4 d-flex justify-content-around mb-4"
               key={index}
             >
               <div className="card-custom">

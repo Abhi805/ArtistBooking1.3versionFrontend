@@ -109,7 +109,6 @@ body.top-navbar-hidden .navbar {
 }
 .navbar {
     top: 0;
-   
     z-index: 999999;
     padding-top: 0;
     align-items: flex-start!important;
@@ -118,7 +117,6 @@ body.top-navbar-hidden .navbar {
     z-index: 99999999;
 }
 .navbar{
-      margin-top: 7px;
     padding-bottom: 7px;
     
 }
