@@ -73,3 +73,8 @@
   font-size: 1rem;
   color: #495057;
 }
+@media (max-width: 375px) {
+  .section-heading-pastEvent{
+    font-size: 26px !important;
+  }
+}

@@ -11,7 +11,7 @@ const ContactWidget = () => {
   const showWidget = useScrollTrigger(); // 👈
 
   return (
-    <div className={`contact-widget ${showWidget ? 'visible' : ''}`}>
+    <div className={`sidebar-sec contact-widget ${showWidget ? 'visible' : ''}`}>
      <Link   to="https://wa.me/9691474449" className="widget-btn whatsapp" target="_blank" rel="noopener noreferrer">
        <FaWhatsapp />
      </Link>

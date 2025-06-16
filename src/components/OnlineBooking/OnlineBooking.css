@@ -34,3 +34,14 @@
     border-color: #ff4d30;
   }
   
+  @media (max-width: 480px) {
+    .booking-titles{
+      justify-content: start !important;
+    }
+    .booking-box{
+      font-size: 0.75rem;
+    } 
+    .online-booking-section{
+      display: none;
+    }
+  }

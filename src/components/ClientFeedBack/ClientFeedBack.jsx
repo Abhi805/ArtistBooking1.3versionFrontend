@@ -66,7 +66,7 @@ const ClientFeedBack = () => {
     <section className="client-feedback-section py-5">
       <div className="container">
         <div className="text-center mb-5">
-          <h6 className="title">
+          <h6 className="section-heading title">
             Client <span>FeedBack</span>
           </h6>
         </div>

@@ -58,7 +58,7 @@ function EventPlanner() {
             <Carousel slides={slides} interval={3000} />
           </div>
         </div>  
-        <div className="col-lg-6 mt-4 mt-lg-0">
+        <div className="contact-detail-sec col-lg-6 mt-4 mt-lg-0">
           <h2 className="description animate__animated animate__fadeInRight">
             India is home to a thriving event management
              industry with companies 
@@ -68,7 +68,7 @@ function EventPlanner() {
             With a vision to revolutionize the event industry, GNV India has emerged as a dynamic player in the PAN India space. From event rentals, artist & venue bookings to technicians and full event planning — we offer a one-stop platform to bring your event to life.
           </h2>
 
-          <div className="text-center mt-4">
+          <div className="event-contact-btn text-center mt-4">
             <Link to="/contactUs" className="btn-custom text-white">
               Contact Us
             </Link>

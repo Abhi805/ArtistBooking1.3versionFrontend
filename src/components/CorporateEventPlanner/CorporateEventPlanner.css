@@ -70,3 +70,16 @@
 .animate-fade-right {
   animation: fadeInRight 1s ease-in-out;
 }
+
+@media (max-width: 768px) {
+
+  .know-more-btn{
+    text-align: center;
+  }
+.know-more-btn a{
+  width: 200px;
+}
+.about-headings{
+  text-align: center;
+}
+}
