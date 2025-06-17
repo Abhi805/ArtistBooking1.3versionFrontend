@@ -93,7 +93,8 @@ const VolunteerBooking = () => {
     <div className="container-fluid my-5">
       <div className="venue-header text-white py-5">
         <div className="container">
-          <div className="d-flex justify-content-between align-items-center flex-wrap">
+          <div className="">
+            {/* d-flex justify-content-between align-items-center flex-wrap */}
             <div className="pe-3">
               <h1>Volunteer Booking</h1>
               <p className="text-capitalize text-white">

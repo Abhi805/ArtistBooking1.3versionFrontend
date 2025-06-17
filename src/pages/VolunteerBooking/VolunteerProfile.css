@@ -155,3 +155,11 @@ img.shadow-sm:hover {
 textarea.form-control {
   resize: none;
 }
+
+
+@media (max-width: 480px) {
+  
+  .profile-Heading{
+  padding: 15px !important;
+  }
+}

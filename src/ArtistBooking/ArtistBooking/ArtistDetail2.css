@@ -225,3 +225,8 @@
     height: 100px;
   }
 }
+@media (max-width: 768px) {
+  .full-sec-artish{
+    text-align: center;
+  }
+}

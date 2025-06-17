@@ -63,7 +63,7 @@ const VolunteerProfile = () => {
   return (
     <div className="artist-detail-page bg-light">
       <ToastContainer />
-      <div className="container py-5 text-center">
+      <div className="container profile-Heading py-5 text-center">
         <h2 className="display-5 fw-bold" data-aos="fade-down">
           Volunteer <span>Profile</span>
         </h2>
