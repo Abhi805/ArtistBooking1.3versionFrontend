@@ -146,7 +146,7 @@ const ArtistDetail2 = () => {
       {/* Artist Info Section */}
 
       <div className="container-fluid px-0 pt-3">
-        <div className="container" data-aos="fade-up">
+        <div className="container full-sec-artish" data-aos="fade-up">
           <div className="row g-4 align-items-start">
             <div className="container py-5">
               <div className="row g-4 align-items-start">
