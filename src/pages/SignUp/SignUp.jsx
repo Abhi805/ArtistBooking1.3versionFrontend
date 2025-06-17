@@ -22,6 +22,7 @@ const Signup = () => {
     mobileNumber: "",
     password: "",
     confirmPassword: "",
+    role: "", // 👈 Role added
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -43,10 +44,15 @@ const Signup = () => {
       return;
     }
 
+    if (!formData.role) {
+      toast.error("Please select a role", { position: "top-center" });
+      return;
+    }
+
     try {
       setIsLoading(true);
 
-      // First: Signup API
+      // Step 1: Register
       const registerRes = await axios.post(
         "http://localhost:5000/api/auth/register",
         formData,
@@ -54,12 +60,12 @@ const Signup = () => {
       );
 
       if (registerRes.status === 201) {
-        toast.success("Signup successful! Auto Logging you in...", {
+        toast.success("Signup successful! Logging you in...", {
           position: "top-center",
           autoClose: 2000,
         });
 
-        // Second: Auto Login API
+        // Step 2: Auto-login
         const loginRes = await axios.post(
           "http://localhost:5000/api/auth/login",
           {
@@ -71,7 +77,14 @@ const Signup = () => {
 
         if (loginRes.status === 200) {
           setTimeout(() => {
-            navigate("/basicdetail");
+            const userRole = loginRes.data?.user?.role;
+            if (userRole === "artist") {
+              navigate("/basicdetail");
+            } else if (userRole === "volunteer") {
+              navigate("/volunteerform");
+            } else {
+              navigate("/");
+            }
           }, 2000);
         } else {
           toast.error("Auto login failed. Please login manually.", {
@@ -126,6 +139,7 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
+
                   <div className="mb-3">
                     <input
                       type="email"
@@ -137,6 +151,7 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
+
                   <div className="mb-3">
                     <input
                       type="tel"
@@ -147,6 +162,21 @@ const Signup = () => {
                       value={formData.mobileNumber}
                       onChange={handleChange}
                     />
+                  </div>
+
+                  {/* 👇 Role Dropdown */}
+                  <div className="mb-3">
+                    <select
+                      name="role"
+                      className="form-select"
+                      required
+                      value={formData.role}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select Role</option>
+                      <option value="artist">Artist</option>
+                      <option value="volunteer">Volunteer</option>
+                    </select>
                   </div>
 
                   <div className="mb-3 position-relative">
@@ -168,7 +198,6 @@ const Signup = () => {
                         cursor: "pointer",
                         color: "#555",
                       }}
-                      aria-label={showPassword ? "Hide Password" : "Show Password"}
                     >
                       <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                     </span>
@@ -185,7 +214,9 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                     <span
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                       className="position-absolute"
                       style={{
                         right: "10px",
@@ -193,9 +224,6 @@ const Signup = () => {
                         cursor: "pointer",
                         color: "#555",
                       }}
-                      aria-label={
-                        showConfirmPassword ? "Hide Password" : "Show Password"
-                      }
                     >
                       <FontAwesomeIcon
                         icon={showConfirmPassword ? faEyeSlash : faEye}

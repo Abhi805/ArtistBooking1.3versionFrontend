@@ -1,7 +1,6 @@
-// // Login.jsx
-// import React, { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import axios from "axios";
-// import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate, useLocation } from "react-router-dom";
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 // import "./Login.css";
@@ -13,6 +12,9 @@
 
 // const Login = () => {
 //   const navigate = useNavigate();
+//   const location = useLocation();
+//   const redirect = new URLSearchParams(location.search).get("redirect");
+
 //   const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [showPassword, setShowPassword] = useState(false);
@@ -37,7 +39,7 @@
 //       const res = await axios.post(
 //         "http://localhost:5000/api/auth/login",
 //         { email, password },
-//         { withCredentials: true } // very important for cookie-based auth
+//         { withCredentials: true }
 //       );
 
 //       if (rememberMe) {
@@ -48,10 +50,12 @@
 
 //       toast.success("Login successful!", { position: "top-center" });
 
-//       const role = res.data.user.role; // ✅ Check user role here
+//       const role = res.data.user.role;
 
 //       setTimeout(() => {
-//         if (role === "admin") {
+//         if (redirect === "volunteer") {
+//           navigate("/volunteerForm");
+//         } else if (role === "admin") {
 //           navigate("/AdminDashboard");
 //         } else {
 //           navigate("/user-dashboard");
@@ -114,9 +118,7 @@
 //                       }}
 //                       title={showPassword ? "Hide Password" : "Show Password"}
 //                     >
-//                       <FontAwesomeIcon
-//                         icon={showPassword ? faEyeSlash : faEye}
-//                       />
+//                       <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
 //                     </span>
 //                   </div>
 
@@ -128,10 +130,7 @@
 //                       checked={rememberMe}
 //                       onChange={() => setRememberMe(!rememberMe)}
 //                     />
-//                     <label
-//                       className="form-check-label"
-//                       htmlFor="rememberMeCheck"
-//                     >
+//                     <label className="form-check-label" htmlFor="rememberMeCheck">
 //                       Remember Me
 //                     </label>
 //                   </div>
@@ -142,23 +141,18 @@
 //                       className="btn btn-primary login-btn"
 //                       disabled={loading}
 //                     >
-//                       {loading ? (
-//                         <Spinner animation="border" size="sm" />
-//                       ) : (
-//                         "Sign in"
-//                       )}
+//                       {loading ? <Spinner animation="border" size="sm" /> : "Sign in"}
 //                     </button>
 //                   </div>
 
 //                   <p className="text-center mb-0">
-//                     Don’t have an account? <Link to="/signup">Sign up</Link>
+//                     Don’t have an account?{" "}
+//                     <Link to="/signup">Sign up</Link>
 //                   </p>
 //                 </form>
 //               </div>
 //             </div>
 //           </div>
-
-//           {/* Optional image column */}
 //         </div>
 //       </div>
 //     </section>
@@ -166,13 +160,9 @@
 // };
 
 // export default Login;
-
-
-
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Login.css";
@@ -184,11 +174,10 @@ import { Spinner } from "react-bootstrap";
 
 const Login = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const redirect = new URLSearchParams(location.search).get("redirect");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState(""); // new state
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -210,7 +199,7 @@ const Login = () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/api/auth/login",
-        { email, password },
+        { email, password, role },
         { withCredentials: true }
       );
 
@@ -222,15 +211,17 @@ const Login = () => {
 
       toast.success("Login successful!", { position: "top-center" });
 
-      const role = res.data.user.role;
+      const userRole = res.data.user.role;
 
       setTimeout(() => {
-        if (redirect === "volunteer") {
-          navigate("/volunteerForm");
-        } else if (role === "admin") {
+        if (userRole === "other") {
           navigate("/AdminDashboard");
+        } else if (userRole === "artist") {
+          navigate("/basicdetail");
+        } else if (userRole === "volunteer") {
+          navigate("/volunteerform");
         } else {
-          navigate("/user-dashboard");
+          navigate("/");
         }
       }, 2000);
     } catch (err) {
@@ -256,6 +247,24 @@ const Login = () => {
                 </p>
 
                 <form onSubmit={handleSubmit}>
+                  {/* Role Selection */}
+                  <div className="mb-3">
+                    <label className="form-label">Select Role</label>
+                    <select
+                      className="form-select"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      required
+                    >
+                      <option value="">Choose Role</option>
+                      <option value="admin">other</option>
+                      <option value="artist">Artist</option>
+                      <option value="volunteer">Volunteer</option>
+                     {/* <option value="user">User</option>  */}
+                    </select>
+                  </div>
+
+                  {/* Email Field */}
                   <div className="mb-3">
                     <label className="form-label">Email address</label>
                     <input
@@ -268,6 +277,7 @@ const Login = () => {
                     />
                   </div>
 
+                  {/* Password Field */}
                   <div className="mb-3 position-relative">
                     <label className="form-label">Password</label>
                     <input
@@ -294,6 +304,7 @@ const Login = () => {
                     </span>
                   </div>
 
+                  {/* Remember Me */}
                   <div className="mb-3 form-check">
                     <input
                       type="checkbox"
@@ -307,6 +318,7 @@ const Login = () => {
                     </label>
                   </div>
 
+                  {/* Submit */}
                   <div className="d-grid mb-3">
                     <button
                       type="submit"
@@ -317,9 +329,9 @@ const Login = () => {
                     </button>
                   </div>
 
+                  {/* Link to Signup */}
                   <p className="text-center mb-0">
-                    Don’t have an account?{" "}
-                    <Link to="/signup">Sign up</Link>
+                    Don’t have an account? <Link to="/signup">Sign up</Link>
                   </p>
                 </form>
               </div>
