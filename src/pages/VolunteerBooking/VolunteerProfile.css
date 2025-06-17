@@ -18,13 +18,34 @@
 }    
 
 
+.artist-main-img {
+  border-radius: 8px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
 
+.gallery-img-wrapper {
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
 
+.gallery-img {
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
 
+.gallery-img:hover {
+  transform: scale(1.05);
+}
 
-
-
-
+.star-rating .star {
+  font-size: 20px;
+  color: gold;
+}
 
 .artist-main-img {
   max-width: 100%;

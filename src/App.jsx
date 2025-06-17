@@ -110,6 +110,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+             <Route path="/VolunteerForm" element={   <ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
           {/* <Route
             path="/user-dashboard"
             element={
@@ -133,8 +134,9 @@ function App() {
           <Route path="/RentalDetail" element={<RentalDetail />} />
           <Route path="/PlannerProfile" element={<PlannerProfile />} />
           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
-          <Route path="/VolunteerForm" element={<VolunteerForm />} />
-          <Route path="/VolunteerProfile" element={<VolunteerProfile />} />
+       
+         <Route path="/volunteers/:id" element={<VolunteerProfile />} />
+
           <Route path="/EventRentalForm" element={<EventRentalForm />} />
           <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/IndoreCity" element={<IndoreCity />} />
