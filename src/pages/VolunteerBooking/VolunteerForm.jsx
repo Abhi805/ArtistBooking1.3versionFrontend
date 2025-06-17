@@ -38,7 +38,10 @@ const VolunteerRegistration = () => {
   };
 
   const handleAddSkill = () => {
-    setFormData({ ...formData, skills: [...formData.skills, { tool: "", level: "" }] });
+    setFormData({
+      ...formData,
+      skills: [...formData.skills, { tool: "", level: "" }],
+    });
   };
 
   const handleFileChange = (e) => {
@@ -97,7 +100,13 @@ const VolunteerRegistration = () => {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/volunteers/add", submitData);
+      await axios.post("http://localhost:5000/api/volunteers/add", submitData, {
+        withCredentials: true, // ✅ Send cookies (like JWT token)
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       toast.success("Volunteer registered successfully!");
       setFormData({
         fullName: "",
@@ -128,58 +137,152 @@ const VolunteerRegistration = () => {
     <form className="volunteer-form" onSubmit={handleSubmit}>
       <ToastContainer />
       <h2>Volunteer Registration</h2>
-      <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleInputChange} required />
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
-      <input type="text" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleInputChange} required />
-      <input type="date" name="dob" value={formData.dob} onChange={handleInputChange} required />
-      <input type="text" name="location" placeholder="Location" value={formData.location} onChange={handleInputChange} required />
-      <textarea name="summary" placeholder="Professional Summary" value={formData.summary} onChange={handleInputChange}></textarea>
+      <input
+        type="text"
+        name="fullName"
+        placeholder="Full Name"
+        value={formData.fullName}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="text"
+        name="mobile"
+        placeholder="Mobile"
+        value={formData.mobile}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="date"
+        name="dob"
+        value={formData.dob}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="text"
+        name="location"
+        placeholder="Location"
+        value={formData.location}
+        onChange={handleInputChange}
+        required
+      />
+      <textarea
+        name="summary"
+        placeholder="Professional Summary"
+        value={formData.summary}
+        onChange={handleInputChange}
+      ></textarea>
 
       <h4>Skills</h4>
       {formData.skills.map((skill, i) => (
         <div key={i} className="skill-input">
-          <input type="text" placeholder="Tool" value={skill.tool} onChange={(e) => handleSkillChange(i, "tool", e.target.value)} />
-          <input type="number" placeholder="Level (%)" value={skill.level} onChange={(e) => handleSkillChange(i, "level", e.target.value)} />
+          <input
+            type="text"
+            placeholder="Tool"
+            value={skill.tool}
+            onChange={(e) => handleSkillChange(i, "tool", e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Level (%)"
+            value={skill.level}
+            onChange={(e) => handleSkillChange(i, "level", e.target.value)}
+          />
         </div>
       ))}
-      <button type="button" onClick={handleAddSkill}>+ Add Skill</button>
+      <button type="button" onClick={handleAddSkill}>
+        + Add Skill
+      </button>
 
       <h4>Profile Photo</h4>
       <input type="file" accept="image/*" onChange={handleFileChange} />
       {preview && (
         <div className="preview-wrapper">
           <img src={preview} alt="Preview" />
-          <button type="button" className="remove-btn" onClick={handleRemoveProfile}>Remove</button>
+          <button
+            type="button"
+            className="remove-btn"
+            onClick={handleRemoveProfile}
+          >
+            Remove
+          </button>
         </div>
       )}
 
       <h4>Gallery Photos (Max 10)</h4>
-      <input type="file" multiple accept="image/*" onChange={handleGalleryChange} />
+      <input
+        type="file"
+        multiple
+        accept="image/*"
+        onChange={handleGalleryChange}
+      />
       <div className="gallery-preview">
         {galleryPreview.map((img, i) => (
           <div key={i} className="gallery-item">
             <img src={img} alt={`gallery-${i}`} />
-            <button type="button" className="remove-btn" onClick={() => handleRemoveGalleryImage(i)}>×</button>
+            <button
+              type="button"
+              className="remove-btn"
+              onClick={() => handleRemoveGalleryImage(i)}
+            >
+              ×
+            </button>
           </div>
         ))}
       </div>
 
-      <textarea name="education" placeholder="Education (comma separated)" value={formData.education.join(",")} onChange={(e) => setFormData({ ...formData, education: e.target.value.split(",") })}></textarea>
-      <textarea name="awards" placeholder="Awards (comma separated)" value={formData.awards.join(",")} onChange={(e) => setFormData({ ...formData, awards: e.target.value.split(",") })}></textarea>
-      <textarea name="exhibitions" placeholder="Exhibitions (comma separated)" value={formData.exhibitions.join(",")} onChange={(e) => setFormData({ ...formData, exhibitions: e.target.value.split(",") })}></textarea>
+      <textarea
+        name="education"
+        placeholder="Education (comma separated)"
+        value={formData.education.join(",")}
+        onChange={(e) =>
+          setFormData({ ...formData, education: e.target.value.split(",") })
+        }
+      ></textarea>
+      <textarea
+        name="awards"
+        placeholder="Awards (comma separated)"
+        value={formData.awards.join(",")}
+        onChange={(e) =>
+          setFormData({ ...formData, awards: e.target.value.split(",") })
+        }
+      ></textarea>
+      <textarea
+        name="exhibitions"
+        placeholder="Exhibitions (comma separated)"
+        value={formData.exhibitions.join(",")}
+        onChange={(e) =>
+          setFormData({ ...formData, exhibitions: e.target.value.split(",") })
+        }
+      ></textarea>
 
-      <textarea name="experienceDetails" placeholder="Experience (Role|Company|Duration per line)" onChange={(e) => setFormData({
-        ...formData,
-        experienceDetails: e.target.value.split("\n").map((line) => {
-          const [role, company, duration] = line.split("|");
-          return { role, company, duration };
-        }),
-      })}></textarea>
+      <textarea
+        name="experienceDetails"
+        placeholder="Experience (Role|Company|Duration per line)"
+        onChange={(e) =>
+          setFormData({
+            ...formData,
+            experienceDetails: e.target.value.split("\n").map((line) => {
+              const [role, company, duration] = line.split("|");
+              return { role, company, duration };
+            }),
+          })
+        }
+      ></textarea>
 
-    <button type="submit" disabled={loading}>
-  {loading ? <div className="button-spinner"></div> : "Register"}
-</button>
-
+      <button type="submit" disabled={loading}>
+        {loading ? <div className="button-spinner"></div> : "Register"}
+      </button>
     </form>
   );
 };

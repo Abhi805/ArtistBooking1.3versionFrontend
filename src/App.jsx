@@ -60,13 +60,7 @@ import MyBoard from "./pages/MyBoard/MyBoard";
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 function App() {
-  // const FullyProtected = ({ children }) => {
-  //   return (
-  //     <ProtectedRoute>
-  //       <PrivateRoute>{children}</PrivateRoute>
-  //     </ProtectedRoute>
-  //   );
-  // };
+
 
   return (
     <>
@@ -82,6 +76,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
+{/* Protected Router*/}
           <Route
             path="/AdminDashboard"
             element={
@@ -114,24 +109,21 @@ function App() {
               </ProtectedRoute>
             }
           />
-             <Route path="/VolunteerForm" element={   <ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
-          {/* <Route
-            path="/user-dashboard"
-            element={
-              <FullyProtected>
-                <MyBoard />
-              </FullyProtected>
-            }
-          /> */} 
+<Route path="/VolunteerForm" element={   <ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
+<Route path="/MyDashBoard" element={ <ProtectedRoute><MyDashboardRedirect /></ProtectedRoute>} />
+<Route path="/volunteer/edit/:id" element={<ProtectedRoute><VolunteerEditForm /></ProtectedRoute>} />
 
-          <Route path="/MyDashBoard" element={<MyDashboardRedirect />} />
+{/*Protected Router*/}
+
+
+
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
-          <Route path="/volunteer/edit/:id" element={<VolunteerEditForm />} />
+         
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
