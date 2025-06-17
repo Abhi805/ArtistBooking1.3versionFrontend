@@ -8,8 +8,7 @@ const BasicDetail = () => {
   const [loading, setLoading] = useState(false);
   const [customTravelMode, setCustomTravelMode] = useState(false);
   const [customCategoryMode, setCustomCategoryMode] = useState(false);
-const [customGenreMode, setCustomGenreMode] = useState(false);
-
+  const [customGenreMode, setCustomGenreMode] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -24,6 +23,9 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
     team: "",
     location: "",
     description: "",
+
+    profileImage: null,
+
     images: [],
     videoLink: [""], // Optional video links
     profileTitle: "",
@@ -34,15 +36,27 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
 
   // Update preview when images change
-  useEffect(() => {
-    if (formData.images.length > 0) {
-      const objectUrl = URL.createObjectURL(formData.images[0]);
-      setPreviewUrl(objectUrl);
-      return () => URL.revokeObjectURL(objectUrl);
-    } else {
-      setPreviewUrl(null);
-    }
-  }, [formData.images]);
+  // useEffect(() => {
+  //   if (formData.images.length > 0) {
+  //     const objectUrl = URL.createObjectURL(formData.images[0]);
+  //     setPreviewUrl(objectUrl);
+  //     return () => URL.revokeObjectURL(objectUrl);
+  //   } else {
+  //     setPreviewUrl(null);
+  //   }
+  // }, [formData.images]);
+
+useEffect(() => {
+  if (formData.profileImage) {
+    const objectUrl = URL.createObjectURL(formData.profileImage);
+    setPreviewUrl(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  } else {
+    setPreviewUrl(null);
+  }
+}, [formData.profileImage]);
+
+
 
   // Validate mobile: allows optional +91 and exactly 10 digits
   const validateMobile = (mobile) => {
@@ -150,6 +164,33 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
     }));
   };
 
+  // Handle image upload 1 photo
+  const handleProfileImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    // File type check
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG, PNG or WebP files are allowed");
+      return;
+    }
+
+    // Size limit: 2MB
+    const maxSize = 2 * 1024 * 1024;
+    if (file.size > maxSize) {
+      toast.error("Profile image must be under 2MB");
+      return;
+    }
+
+    // Save to formData
+    setFormData((prev) => ({
+      ...prev,
+      profileImage: file,
+    }));
+  };
+
   // Remove image by index
   const removeImage = (index) => {
     setFormData((prev) => ({
@@ -244,7 +285,19 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
     try {
       const submitData = new FormData();
 
-      // Append fields to formData for submission
+      // // Append fields to formData for submission
+      // Object.entries(formData).forEach(([key, value]) => {
+      //   if (key === "images") {
+      //     value.forEach((file) => submitData.append("images", file));
+      //   } else if (key === "videoLink") {
+      //     nonEmptyLinks.forEach((link) =>
+      //       submitData.append("videoLink[]", link)
+      //     );
+      //   } else {
+      //     submitData.append(key, value);
+      //   }
+      // });
+
       Object.entries(formData).forEach(([key, value]) => {
         if (key === "images") {
           value.forEach((file) => submitData.append("images", file));
@@ -252,6 +305,8 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
           nonEmptyLinks.forEach((link) =>
             submitData.append("videoLink[]", link)
           );
+        } else if (key === "profileImage") {
+          if (value) submitData.append("profileImage", value);
         } else {
           submitData.append(key, value);
         }
@@ -277,6 +332,9 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
         team: "",
         location: "",
         description: "",
+
+        profileImage: null,
+
         images: [],
         videoLink: [""],
         profileTitle: "",
@@ -337,12 +395,13 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
             <div className="upload-btn-wrapper mb-4">
               <input
                 type="file"
-                multiple
                 accept="image/*"
-                onChange={handleImageChange}
+                onChange={handleProfileImageChange} // create this function separately
                 className="form-control"
               />
-              <small className="text-muted">Upload up to 5 unique images</small>
+              <small className="text-muted">
+                Upload a single profile photo (JPG, PNG)
+              </small>
             </div>
 
             {/* Show uploaded images with remove button */}
@@ -523,68 +582,59 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
                     )}
                   </div>
 
+                  <div className="mb-3">
+                    <label htmlFor="category" className="form-label">
+                      Artist Type *
+                    </label>
 
-
-
-
-<div className="mb-3">
-  <label htmlFor="category" className="form-label">
-    Artist Type *
-  </label>
-
-  {!customCategoryMode ? (
-    <select
-      id="category"
-      name="category"
-      value={formData.category}
-      onChange={(e) => {
-        if (e.target.value === "custom") {
-          setCustomCategoryMode(true);
-          setFormData((prev) => ({ ...prev, category: "" }));
-        } else {
-          handleChange(e);
-        }
-      }}
-      className="form-control"
-      required
-    >
-      <option value="">Select artist type</option>
-      <option value="singer">Singer</option>
-      <option value="dancer">Dancer</option>
-      <option value="comedian">Comedian</option>
-      <option value="magician">Magician</option>
-      <option value="band">Band</option>
-      <option value="custom">Custom</option>
-    </select>
-  ) : (
-    <div className="position-relative">
-      <input
-        type="text"
-        name="category"
-        value={formData.category}
-        onChange={handleChange}
-        className="form-control"
-        placeholder="Enter your custom artist type"
-        required
-      />
-      <button
-        type="button"
-        className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
-        onClick={() => {
-          setCustomCategoryMode(false);
-          setFormData((prev) => ({ ...prev, category: "" }));
-        }}
-      >
-        ⟵
-      </button>
-    </div>
-  )}
-</div>
-
-
-
-
-
+                    {!customCategoryMode ? (
+                      <select
+                        id="category"
+                        name="category"
+                        value={formData.category}
+                        onChange={(e) => {
+                          if (e.target.value === "custom") {
+                            setCustomCategoryMode(true);
+                            setFormData((prev) => ({ ...prev, category: "" }));
+                          } else {
+                            handleChange(e);
+                          }
+                        }}
+                        className="form-control"
+                        required
+                      >
+                        <option value="">Select artist type</option>
+                        <option value="singer">Singer</option>
+                        <option value="dancer">Dancer</option>
+                        <option value="comedian">Comedian</option>
+                        <option value="magician">Magician</option>
+                        <option value="band">Band</option>
+                        <option value="custom">Custom</option>
+                      </select>
+                    ) : (
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          name="category"
+                          value={formData.category}
+                          onChange={handleChange}
+                          className="form-control"
+                          placeholder="Enter your custom artist type"
+                          required
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
+                          onClick={() => {
+                            setCustomCategoryMode(false);
+                            setFormData((prev) => ({ ...prev, category: "" }));
+                          }}
+                        >
+                          ⟵
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </>
               )}
 
@@ -592,59 +642,59 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
               {step === 3 && (
                 <>
                   <h4>Additional Info</h4>
-            <div className="mb-3">
-  <label htmlFor="genre" className="form-label">
-    Music/Genre *
-  </label>
+                  <div className="mb-3">
+                    <label htmlFor="genre" className="form-label">
+                      Music/Genre *
+                    </label>
 
-  {!customGenreMode ? (
-    <select
-      id="genre"
-      name="genre"
-      value={formData.genre}
-      onChange={(e) => {
-        if (e.target.value === "custom") {
-          setCustomGenreMode(true);
-          setFormData((prev) => ({ ...prev, genre: "" }));
-        } else {
-          handleChange(e);
-        }
-      }}
-      className="form-control"
-      required
-    >
-      <option value="">Select genre</option>
-      <option value="rock">Rock</option>
-      <option value="pop">Pop</option>
-      <option value="classical">Classical</option>
-      <option value="hiphop">Hip Hop</option>
-      <option value="folk">Folk</option>
-      <option value="custom">Custom</option>
-    </select>
-  ) : (
-    <div className="position-relative">
-      <input
-        type="text"
-        name="genre"
-        value={formData.genre}
-        onChange={handleChange}
-        className="form-control"
-        placeholder="Enter your custom genre"
-        required
-      />
-      <button
-        type="button"
-        className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
-        onClick={() => {
-          setCustomGenreMode(false);
-          setFormData((prev) => ({ ...prev, genre: "" }));
-        }}
-      >
-        ⟵
-      </button>
-    </div>
-  )}
-</div>
+                    {!customGenreMode ? (
+                      <select
+                        id="genre"
+                        name="genre"
+                        value={formData.genre}
+                        onChange={(e) => {
+                          if (e.target.value === "custom") {
+                            setCustomGenreMode(true);
+                            setFormData((prev) => ({ ...prev, genre: "" }));
+                          } else {
+                            handleChange(e);
+                          }
+                        }}
+                        className="form-control"
+                        required
+                      >
+                        <option value="">Select genre</option>
+                        <option value="rock">Rock</option>
+                        <option value="pop">Pop</option>
+                        <option value="classical">Classical</option>
+                        <option value="hiphop">Hip Hop</option>
+                        <option value="folk">Folk</option>
+                        <option value="custom">Custom</option>
+                      </select>
+                    ) : (
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          name="genre"
+                          value={formData.genre}
+                          onChange={handleChange}
+                          className="form-control"
+                          placeholder="Enter your custom genre"
+                          required
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-light position-absolute end-0 top-0 mt-1 me-2"
+                          onClick={() => {
+                            setCustomGenreMode(false);
+                            setFormData((prev) => ({ ...prev, genre: "" }));
+                          }}
+                        >
+                          ⟵
+                        </button>
+                      </div>
+                    )}
+                  </div>
 
                   <div className="mb-3">
                     <label htmlFor="team" className="form-label">
@@ -682,8 +732,8 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
                       onChange={handleChange}
                       className="form-control"
                       rows={3}
-                          maxLength={300}
-                           minLength={100} 
+                      maxLength={300}
+                      minLength={100}
                       required
                     />
                   </div>
@@ -694,6 +744,22 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
               {step === 4 && (
                 <>
                   <h4>SEO & Video Links</h4>
+
+                  {/* ✅ Profile Image Upload Section */}
+                  <div className="upload-btn-wrapper mb-4">
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="form-control"
+                    />
+                    <small className="text-muted">
+                      Upload up to 5 unique images
+                    </small>
+                  </div>
+
+                  {/* ✅ Profile Title */}
                   <div className="mb-3">
                     <label htmlFor="profileTitle" className="form-label">
                       Profile Title
@@ -706,6 +772,8 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
                       className="form-control"
                     />
                   </div>
+
+                  {/* ✅ Keywords */}
                   <div className="mb-3">
                     <label htmlFor="profileKeywords" className="form-label">
                       Profile Keywords
@@ -718,6 +786,8 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
                       className="form-control"
                     />
                   </div>
+
+                  {/* ✅ Description */}
                   <div className="mb-3">
                     <label htmlFor="profileDescription" className="form-label">
                       Profile Description
@@ -731,6 +801,7 @@ const [customGenreMode, setCustomGenreMode] = useState(false);
                     />
                   </div>
 
+                  {/* ✅ YouTube Links */}
                   <div>
                     <label className="form-label">
                       YouTube Video Links (optional)

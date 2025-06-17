@@ -125,14 +125,14 @@ const TopNavbar = () => {
                 <>
                   <li>
                     <Link className="dropdown-item" to="/login">
-                      Login
+                      Login/Signup
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link className="dropdown-item" to="/signup">
                       Signup
                     </Link>
-                  </li>
+                  </li> */}
                 </>
               )}
 
@@ -144,7 +144,6 @@ const TopNavbar = () => {
                 </li>
               )}
 
-         
               {/* Manual Submenu Toggle */}
               <li className="dropdown-submenu position-relative">
                 <button
@@ -173,14 +172,12 @@ const TopNavbar = () => {
                       </button>
                     </li>
                     <li>
-                      <button
+                      <Link
+                        to="/login?redirect=volunteer"
                         className="dropdown-item"
-                        onClick={() =>
-                          alert("Volunteer Registration coming soon!")
-                        }
                       >
-                        Volunteer Registration
-                      </button>
+                        Become a Volunteer
+                      </Link>
                     </li>
                     <li>
                       <button

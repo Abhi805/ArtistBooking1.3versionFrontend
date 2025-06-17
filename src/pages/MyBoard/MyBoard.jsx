@@ -23,7 +23,7 @@ const MyBoard = () => {
           {/* Right Side - Buttons */}
           <div className="col-md-6 text-md-end text-center">
             <button className="btn btn-outline-primary me-2 mb-2">My Profile</button>
-            <button className="btn btn-outline-success me-2 mb-2">Create Artist Profile</button>
+            <button className="btn btn-outline-success me-2 mb-2">Create  Profile</button>
             <button className="btn btn-outline-danger mb-2">Change Password</button>
           </div>
         </div>
