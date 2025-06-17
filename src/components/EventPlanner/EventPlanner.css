@@ -3,7 +3,7 @@
 
 
 .event-planner-container {
-  background: #ffffff; /* White background */
+  background: #ffffff; 
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(255, 100, 0, 0.2);
   color: #333;
@@ -109,7 +109,7 @@
   color: #fff;
 }
 
-/* Responsive */
+
 @media (max-width: 992px) {
   .section-title,
   .description {

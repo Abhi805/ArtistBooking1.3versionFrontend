@@ -8,14 +8,15 @@ import {
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-
+import { useParams } from "react-router-dom";
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const { id } = useParams();
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -37,8 +38,13 @@ const TopNavbar = () => {
           { withCredentials: true }
         );
         setIsLoggedIn(res.data.loggedIn);
+        setUserId(res.data.user?.id); // set the id here
+
+        console.log(res.data.user?.id, "DFgfgf");
+        console.log(res.data.loggedIn, "DFgfgf");
       } catch (error) {
         setIsLoggedIn(false);
+        setUserId(null);
       }
     };
     checkLoginStatus();
@@ -164,12 +170,9 @@ const TopNavbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => alert("Venue Registration coming soon!")}
-                      >
+                      <Link className="dropdown-item" to="/VenueBooking">
                         Venue Registration
-                      </button>
+                      </Link>
                     </li>
                     <li>
                       <Link
@@ -180,34 +183,31 @@ const TopNavbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() =>
-                          alert("Event Planner Registration coming soon!")
-                        }
-                      >
+                      <Link className="dropdown-item" to="/EventPlanner">
                         Event Planner Registration
-                      </button>
+                      </Link>
                     </li>
                     <li>
-                      <button
+                      <Link
                         className="dropdown-item"
-                        onClick={() =>
-                          alert("Event Equipment Registration coming soon!")
-                        }
+                        to="/EventEquipmentRental"
                       >
                         Event Equipment Registration
-                      </button>
+                      </Link>
                     </li>
                   </ul>
                 )}
               </li>
-
-              <li>
-                <Link className="dropdown-item" to="/MyDashBoard">
-                  MyDashboard
-                </Link>
-              </li>
+              {isLoggedIn && userId && (
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to={`/volunteer/edit/${userId}`}
+                  >
+                    MyDashboard
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

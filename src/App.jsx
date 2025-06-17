@@ -32,10 +32,12 @@ import UjjainCity from "./VenueBooking/UjjainCity/UjjainCity";
 import BasicDetail from "./CreateArtistProfile/BasicDetail/BasicDetail";
 import EditArtistProfile from "./CreateArtistProfile/EditArtistProfile/EditArtistProfile";
 import TopNavbar from "./components/TopNavbar/TopNavbar";
+import ComingPage from "./components/ComingPage/ComingPage";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
 import Services from "./pages/Services/Services";
 import EventRental from "./pages/EventRental/EventRental";
+
 import EventPlanner from "./pages/EventPlanner/EventPlanner";
 import ContactUs from "./pages/Contact Us/ContactUs";
 import VolunteerBooking from "./pages/VolunteerBooking/VolunteerBooking";
@@ -55,6 +57,8 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
 import MyBoard from "./pages/MyBoard/MyBoard";
+import VenueBooking from "./VenueBooking/VenueBooking";
+import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 function App() {
   // const FullyProtected = ({ children }) => {
   //   return (
@@ -118,7 +122,7 @@ function App() {
                 <MyBoard />
               </FullyProtected>
             }
-          /> */}
+          /> */} 
 
           <Route path="/MyDashBoard" element={<MyDashboardRedirect />} />
           <Route path="/AboutUs" element={<AboutUs />} />
@@ -126,8 +130,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/ComingPage" element={<ComingPage />} />
+          <Route path="/volunteer/edit/:id" element={<VolunteerEditForm />} />
 
-          <Route path="/EventRental" element={<EventRental />} />
+          <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
           <Route path="/Registration" element={<VendorRegistration />} />
           <Route path="/ArtistBooking" element={<ArtistBooking />} />
@@ -136,7 +142,8 @@ function App() {
           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
        
          <Route path="/volunteers/:id" element={<VolunteerProfile />} />
-
+         <Route path="/VenueBooking" element={<VenueBooking />} />
+ 
           <Route path="/EventRentalForm" element={<EventRentalForm />} />
           <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/IndoreCity" element={<IndoreCity />} />

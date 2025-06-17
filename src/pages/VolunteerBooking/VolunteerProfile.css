@@ -1,186 +1,343 @@
-.artist-detail-page {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
-}
-.star-rating {
-  font-size: 1.5rem;
-  color: #ccc;
-  cursor: pointer;
+.profile-container {
+  background: #f5e0c0;
+  padding: 107px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #5c4635;
 }
 
-.star-rating .star:hover,
-.star-rating .star:hover ~ .star {
-  color: #ffca08;
+.profile-card {
+  background: #fff5cc;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #d4c1a1;
+  position: relative;
+  border: 5px solid #fff;
 }
 
-.star-rating .star:hover ~ .star {   
-  color: #ccc;
-}    
-
-
-.artist-main-img {
-  border-radius: 8px;
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
+.header {
+  position: relative;
+  padding-bottom: 30px;
+  border-bottom: 2px dashed #d4c1a1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.gallery-img-wrapper {
-  overflow: hidden;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.header-left h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.gallery-img {
-  transition: transform 0.3s ease;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.gallery-img:hover {
-  transform: scale(1.05);
-}
-
-.star-rating .star {
+.header-left h2 {
   font-size: 20px;
-  color: gold;
+  color: #827160;
 }
 
-.artist-main-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
+.header-right {
+  text-align: right;
 }
 
-.star-rating .star {
-  font-size: 24px;
-  color: gold;
-  cursor: pointer;
+.header-contact {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
-.booking-form input,
-.booking-form textarea {
-  border-radius: 0.5rem;
+.header-contact li {
+  margin-bottom: 10px;
+  color: #827160;
+}
+
+/* .header-profile-image {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+  background: #ffcc33;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 0 20px #fff5cc;
+} */
+
+.header-profile-image {
+  position: absolute;
+  /* top: 20px; */
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid #fff;
+  box-shadow: 0 0 20px #fff5cc;
+  /* border-radius: 50%; */
+  padding: 5px;
+  /* background: #ffcc33; */
+  margin-bottom: 2px;
+}
+
+.header-profile-image img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  /* border-radius: 50%; */
+  display: block;
 }
 
 
-         
-.kap{
-  margin: 0;        
+
+.header-contact {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
 }
-.hover-zoom {
+
+.header-contact li {
+  margin-bottom: 10px;
+  color: #827160;
+}
+.artist-rating {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ffcc33;
+}
+
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.main-content section {
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff5cc;
+  box-shadow: 0 0 10px #d4c1a1;
+  margin-bottom: 30px;
+}
+
+.main-content section h3 {
+  color: #5c4635;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.main-content ul {
+  list-style: none;
+  padding: 0;
+  color: #827160;
+}
+
+.main-content ul li {
+  margin-bottom: 10px;
+}
+
+.skills-list span {
+  font-weight: bold;
+  color: #fff;
+  background: #ffcc33;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.progress {
+  background: #fff5cc;
+  border-radius: 20px;
+  height: 20px;
+  overflow: hidden;
+  border: 1px solid #d4c1a1;
+  margin-bottom: 10px;
+}
+
+.progress div {
+  background: #ffcc33;
+  height: 100%;
+}
+
+
+/*  Gallery Section */
+
+.gallery-section {
+  margin-top: 30px;
+}
+
+.gallery-section h3 {
+  margin-bottom: 15px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+  gap: 10px;
+}
+
+.gallery-grid img {
   width: 100%;
-  height: 80%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.hover-zoom:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Info Card Glow */
-.info-card-glow {
-  background: linear-gradient(145deg, #ffffff, #f3f3f3);
-  border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
   cursor: pointer;
-}
-.info-card-glow:hover {
-  transform: perspective(1000px) rotateX(4deg) rotateY(4deg) scale(1.05);
-  box-shadow: 0 10px 25px rgba(220, 53, 69, 0.35);
+  transition: transform 0.3s ease;
 }
 
-/* Booking Form Styling */
-.booking-form {
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  cursor: zoom-out;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.5);
+  cursor: default;
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
   background: #fff;
-  transition: all 0.3s ease;
-  border: 1px solid #ececec;
-  border-radius: 1rem;
-}
+  color: #000;
+  border: none;
 
-.booking-form input {
-  border-radius: 0.6rem;
-  transition: all 0.2s ease-in-out;
-}
-.booking-form input:focus {
-  box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
-  border-color: #dc3545;
-}
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
 
-.booking-form button {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: 0.6rem;
-}
-.booking-form button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.35);
-}
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
 
-/* Review Box */
-textarea.form-control:focus {
-  box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
-  border-color: #dc3545;
-  transition: all 0.3s ease;
-}
+  z-index: 1001;
 
-/* Video Embed Frame */
-.ratio iframe {
-  border-radius: 0.75rem;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-.ratio iframe:hover {
-  transform: scale(1.02);
-}
-
-/* Gallery Image Glow */
-img.shadow-sm:hover {
-  box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3) !important;
-
-}
-
-.artist-detail-page {
-  background-color: #f8f9fa;
-}
-
-.artist-main-img {
-  width: 100%;
-  max-width: 220px;
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
-
-.booking-form {
-  border-radius: 1rem;
-  transition: all 0.3s ease-in-out;
-}
-
-.booking-form:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.star-rating .star {
-  font-size: 1.5rem;
-  color: gold;
   cursor: pointer;
 }
 
-.review-box {
-  border-radius: 1rem;
+.close-button:hover {
+  background: #000;
+  color: #fff;
+  transform: translateX(-50%) scale(1.1);
 }
 
-textarea.form-control {
-  resize: none;
+/* Prev and Next remain the same as previously provided */
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
 }
 
+.prev-button {
+  left: 20px;
+}
+
+.next-button {
+  right: 20px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+/* Book Button */
+.book-button {
+  display: block;
+  width: 200px;
+  margin: 30px auto 0;
+  padding: 12px 20px;
+  background: #ffcc33;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.book-button:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
 
 @media (max-width: 480px) {
-  
-  .profile-Heading{
-  padding: 15px !important;
+  .header-profile-image {
+    position: static;
+    transform: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .header-profile-image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .gallery-section {
+    padding: 0 10px;
+    width: 100%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
+    gap: 5px;
+    width: 100%;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
 }

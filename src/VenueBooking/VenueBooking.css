@@ -1,0 +1,53 @@
+ .coming-soon {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #ff7675, #fdcb6e);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 100px;
+  perspective: 1000px; /* for 3D effects */
+}
+
+.coming-soon h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px #fff5cc;
+}
+
+.coming-soon p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transform: translateZ(0);
+}
+
+.counter div {
+  background: #fff5cc;
+  color: #ff7675;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgb(0 0 0 / 0.5);
+  font-size: 1.5rem;
+  font-weight: bold;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.counter div span {
+  font-size: 2.5rem;
+  color: #d63031;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.counter div:hover {
+  transform: translateZ(100px) rotateY(20deg);
+  box-shadow: 0 40px 60px rgb(0 0 0 / 0.7);
+}

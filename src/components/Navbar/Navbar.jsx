@@ -45,15 +45,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                onClick={() =>
-                  handleComingSoon("Volunteer Booking Coming Soon")
-                }
-              >
+                  <Link className="nav-link" to="/VenueBooking">
                 Venue Booking
               </Link>
               {/* <ul className="dropdown-menu">
@@ -72,21 +64,15 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
-              <button
-                className="nav-link btn btn-link border-0 shadow-none"
-                onClick={() => handleComingSoon("Event Rental Coming Soon")}
-              >
-                Event Rental
-              </button>
+              <Link className="nav-link" to="/EventEquipmentRental">
+                Event Equipment Rental
+              </Link>
             </li>
 
             <li className="nav-item">
-              <button
-                className="nav-link btn btn-link border-0 shadow-none"
-                onClick={() => handleComingSoon("Event Planner Coming Soon")}
-              >
+                <Link className="nav-link" to="/EventPlanner">
                 Event Planner
-              </button>
+              </Link>
             </li>
 
             <li className="nav-item">

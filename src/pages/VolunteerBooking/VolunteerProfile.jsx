@@ -1,397 +1,167 @@
-// import React, { useEffect, useState } from "react";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// import { useParams } from "react-router-dom";
-// import axios from "axios";
-// import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import volunteer from "./Volunteerimg/volunteer1.jpeg";
-// import "./VolunteerProfile.css";
-
-// const VolunteerProfile = () => {
-//   useEffect(() => {
-//     AOS.init({ duration: 1000, once: true });
-//   }, []);
-
-//   const { id } = useParams();
-
-//   const [formData, setFormData] = useState({
-//     fullName: "",
-//     phone: "",
-//     email: "",
-//     service: "",
-//     calendar: "",
-//     budget: "",
-//     city: "",
-//     requirement: "",
-//   });
-
-//   const [loading, setLoading] = useState(false);
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       await axios.post(
-//         "http://localhost:5000/api/inquiry/form/volunteerbooking",
-//         formData
-//       );
-//       toast.success("🎉 Booking submitted successfully!");
-//       setFormData({
-//         fullName: "",
-//         phone: "",
-//         email: "",
-//         service: "",
-//         calendar: "",
-//         budget: "",
-//         city: "",
-//         requirement: "",
-//       });
-//     } catch (error) {
-//       const msg = error.response?.data?.message || "❌ Submission failed.";
-//       toast.error(msg);
-//     }
-
-//     setLoading(false);
-//   };
-
-//   return (
-//     <div className="artist-detail-page bg-light">
-//       <ToastContainer />
-//       <div className="container py-5 text-center">
-//         <h2 className="display-5 fw-bold" data-aos="fade-down">
-//           Volunteer <span>Profile</span>
-//         </h2>
-//         <p className="text-muted" data-aos="fade-up">
-//           <strong>{id}</strong>
-//         </p>
-//       </div>
-
-//       <div className="container" data-aos="fade-up">
-//         <div className="row justify-content-center">
-//           <div className="col-lg-8">
-//             <div className="row g-4 align-items-start">
-//               <div className="col-md-4 text-center">
-//                 <img
-//                   src={volunteer}
-//                   alt="volunteer"
-//                   className="img-fluid artist-main-img"
-//                 />
-//               </div>
-//               <div className="col-md-8">
-//                 <div className="booking-form p-4 bg-white">
-//                   <h5 className="text-center mb-4 fw-bold">
-//                     Book {id} for Your Event
-//                   </h5>
-//                   <form onSubmit={handleSubmit}>
-//                     <div className="row g-3">
-//                       {[
-//                         { name: "fullName", placeholder: "Full Name" },
-//                         {
-//                           name: "phone",
-//                           placeholder: "Phone Number",
-//                           type: "tel",
-//                         },
-//                         {
-//                           name: "email",
-//                           placeholder: "Email Address",
-//                           type: "email",
-//                         },
-//                         { name: "service", placeholder: "Event Type" },
-//                         {
-//                           name: "calendar",
-//                           placeholder: "Event Date",
-//                           type: "date",
-//                         },
-//                         { name: "budget", placeholder: "Budget" },
-//                         { name: "city", placeholder: "City Name" },
-//                         {
-//                           name: "requirement",
-//                           placeholder: "Type of Requirement",
-//                         },
-//                       ].map(({ name, placeholder, type = "text" }) => (
-//                         <div className="col-md-6" key={name}>
-//                           <input
-//                             type={type}
-//                             name={name}
-//                             value={formData[name]}
-//                             onChange={handleChange}
-//                             className="form-control"
-//                             placeholder={placeholder}
-//                             required={[
-//                               "fullName",
-//                               "phone",
-//                               "calendar",
-//                               "city",
-//                               "service",
-//                             ].includes(name)}
-//                           />
-//                         </div>
-//                       ))}
-//                     </div>
-//                     <div className="text-center mt-4">
-//                       <button
-//                         className="btn btn-danger w-100 fw-semibold"
-//                         disabled={loading}
-//                       >
-//                         {loading ? (
-//                           <>
-//                             <span
-//                               className="spinner-border spinner-border-sm me-2"
-//                               role="status"
-//                               aria-hidden="true"
-//                             ></span>
-//                             Sending...
-//                           </>
-//                         ) : (
-//                           "🚀 Submit Request"
-//                         )}
-//                       </button>
-//                     </div>
-//                   </form>
-//                 </div>
-//               </div>
-//             </div>
-
-            
-//           </div>
-//           {/* Review Section */}
-//             <div className="review-box m-5 container">
-//               <h5 className="fw-bold mb-3">Review {id}</h5>
-
-//               <label className="form-label fw-semibold">Rate Us:</label>
-//               <div className="star-rating mb-3">
-//                 {[1, 2, 3, 4, 5].map((star) => (
-//                   <span key={star} className="star">
-//                     &#9733;
-//                   </span>
-//                 ))}
-//               </div>
-
-//               <textarea
-//                 className="form-control mb-3"
-//                 rows="3"
-//                 placeholder="Write your review..."
-//               ></textarea>
-//               <button className="btn btn-danger">Submit Review</button>
-//             </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VolunteerProfile;
 
 
 
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; // ✅ useParams to get dynamic ID
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./VolunteerProfile.css";
 
-const VolunteerProfile = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-    fetchVolunteerDetails();
-  }, []);
-
-  const { id } = useParams();
-
+function VolunteerProfile() {
   const [volunteer, setVolunteer] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const { id } = useParams(); // ✅ get id from route
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    service: "",
-    calendar: "",
-    budget: "",
-    city: "",
-    requirement: "",
-  });
+  useEffect(() => {
+    const fetchVolunteer = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/volunteers/${id}`);
+        console.log("backend", res.data);
+        setVolunteer(res.data);
+      } catch (err) {
+        console.error("Error fetching volunteer:", err);
+      }
+    };
+    fetchVolunteer();
+  }, [id]);
 
-  const fetchVolunteerDetails = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/api/volunteers/${id}`);
-      setVolunteer(res.data);
-    } catch (error) {
-      console.error("Error fetching volunteer details:", error);
-    }
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prev) =>
+      prev === 0 ? volunteer.galleryPhotos.length - 1 : prev - 1
+    );
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prev) =>
+      prev === volunteer.galleryPhotos.length - 1 ? 0 : prev + 1
+    );
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      await axios.post("http://localhost:5000/api/inquiry/form/volunteerbooking", formData);
-      toast.success("🎉 Booking submitted successfully!");
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        service: "",
-        calendar: "",
-        budget: "",
-        city: "",
-        requirement: "",
-      });
-    } catch (error) {
-      const msg = error.response?.data?.message || "❌ Submission failed.";
-      toast.error(msg);
-    }
-
-    setLoading(false);
-  };
+  if (!volunteer) return <div>Loading...</div>;
 
   return (
-    <div className="artist-detail-page bg-light">
-      <ToastContainer />
-      <div className="container profile-Heading py-5 text-center">
-        <h2 className="display-5 fw-bold" data-aos="fade-down">
-          Volunteer <span>Profile</span>
-        </h2>
-        <p className="text-muted" data-aos="fade-up">
-          ID: <strong>{id}</strong>
-        </p>
-      </div>
+    <div className="profile-container">
+      <div className="profile-card">
+        {/* Header */}
+        <header className="header">
+          <div className="header-left">
+            <h1>{volunteer.fullName}</h1>
+            <h2>{volunteer.category}</h2>
+            <div className="artist-rating text-black">Rating: ⭐⭐⭐⭐☆ (4/5)</div>
+          </div>
 
-      <div className="container" data-aos="fade-up">
-        <div className="row justify-content-center">
-          <div className="col-lg-8">
-            <div className="row g-4 align-items-start">
-              <div className="col-md-4 text-center">
-                <img
-                  src={
-                    volunteer?.profilePhoto ||
-                    "https://via.placeholder.com/200x200?text=Volunteer"
-                  }
-                  alt="volunteer"
-                  className="img-fluid artist-main-img"
-                />
-                <h6 className="mt-2">{volunteer?.fullName}</h6>
-                <p className="text-muted">{volunteer?.category}</p>
-              </div>
+          <div className="header-right">
+            <ul className="header-contact">
+              <li>📱 {volunteer.mobile}</li>
+              <li>✉ {volunteer.email}</li>
+              <li>Date of Birth: {new Date(volunteer.dob).toLocaleDateString()}</li>
+              <li>Location: {volunteer.location}</li>
+            </ul>
+          </div>
 
-              <div className="col-md-8">
-                <div className="booking-form p-4 bg-white">
-                  <h5 className="text-center mb-4 fw-bold">
-                    Book {volunteer?.fullName || "Volunteer"} for Your Event
-                  </h5>
-                  <form onSubmit={handleSubmit}>
-                    <div className="row g-3">
-                      {[
-                        { name: "fullName", placeholder: "Full Name" },
-                        { name: "phone", placeholder: "Phone Number", type: "tel" },
-                        { name: "email", placeholder: "Email Address", type: "email" },
-                        { name: "service", placeholder: "Event Type" },
-                        { name: "calendar", placeholder: "Event Date", type: "date" },
-                        { name: "budget", placeholder: "Budget" },
-                        { name: "city", placeholder: "City Name" },
-                        { name: "requirement", placeholder: "Type of Requirement" },
-                      ].map(({ name, placeholder, type = "text" }) => (
-                        <div className="col-md-6" key={name}>
-                          <input
-                            type={type}
-                            name={name}
-                            value={formData[name]}
-                            onChange={handleChange}
-                            className="form-control"
-                            placeholder={placeholder}
-                            required={[
-                              "fullName",
-                              "phone",
-                              "calendar",
-                              "city",
-                              "service",
-                            ].includes(name)}
-                          />
-                        </div>
-                      ))}
+          <div className="header-profile-image">
+            <img src={volunteer.profilePhoto} alt="Profile" />
+          </div>
+        </header>
+
+        <div className="main-content">
+          <div className="left-column">
+            {/* Exhibitions */}
+            <section>
+              <h3>EXHIBITIONS:</h3>
+              <ul>
+                {volunteer.exhibitions.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Skills */}
+            <section>
+              <h3>SKILLS:</h3>
+              <ul className="skills-list">
+                {volunteer.skills.map((skill, i) => (
+                  <li key={i}>
+                    <span>{skill.tool}</span>
+                    <div className="progress">
+                      <div style={{ width: `${skill.level}%` }}></div>
                     </div>
-                    <div className="text-center mt-4">
-                      <button
-                        className="btn btn-danger w-100 fw-semibold"
-                        disabled={loading}
-                      >
-                        {loading ? (
-                          <>
-                            <span
-                              className="spinner-border spinner-border-sm me-2"
-                              role="status"
-                              aria-hidden="true"
-                            ></span>
-                            Sending...
-                          </>
-                        ) : (
-                          "🚀 Submit Request"
-                        )}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
+            {/* Awards */}
+            <section>
+              <h3>AWARDS:</h3>
+              <ul>
+                {volunteer.awards.map((award, i) => (
+                  <li key={i}>{award}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
 
-                  {/* Gallery Section */}
-            {volunteer?.galleryPhotos?.length > 0 && (
-              <div className="gallery-box mt-5 p-4 bg-white rounded shadow">
-                <h5 className="fw-bold mb-3">Gallery</h5>
-                <div className="row g-3">
-                  {volunteer.galleryPhotos.map((imgUrl, index) => (
-                    <div className="col-md-4 col-sm-6" key={index}>
-                      <div className="gallery-img-wrapper">
-                        <img
-                          src={imgUrl}
-                          alt={`Volunteer Image ${index + 1}`}
-                          className="img-fluid rounded gallery-img"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+          {/* Right column */}
+          <div className="right-column">
+            <section>
+              <h3>PROFESSIONAL SUMMARY:</h3>
+              <p>{volunteer.summary}</p>
+            </section>
 
-            {/* Review Section */}
-            <div className="review-box mt-5 p-4 bg-white rounded shadow">
-              <h5 className="fw-bold mb-3">Review {volunteer?.fullName}</h5>
-              <label className="form-label fw-semibold">Rate Us:</label>
-              <div className="star-rating mb-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="star">&#9733;</span>
+            {/* Education */}
+            <section>
+              <h3>EDUCATION:</h3>
+              <ul>
+                {volunteer.education.map((edu, i) => (
+                  <li key={i}>{edu}</li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Experience */}
+            <section>
+              <h3>EXPERIENCE:</h3>
+              <ul>
+                {volunteer.experienceDetails.map((exp, i) => (
+                  <li key={i}>
+                    {exp.role} - {exp.company} ({exp.duration})
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Gallery */}
+            <section className="gallery-section">
+              <h3>GALLERY</h3>
+              <div className="gallery-grid">
+                {volunteer.galleryPhotos.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt={`gallery-${i}`}
+                    onClick={() => setSelectedIndex(i)}
+                  />
                 ))}
               </div>
-              <textarea
-                className="form-control mb-3"
-                rows="3"
-                placeholder="Write your review..."
-              ></textarea>
-              <button className="btn btn-danger">Submit Review</button>
-            </div>
 
-      
+              {/* Lightbox */}
+              {selectedIndex !== null && (
+                <div className="lightbox" onClick={() => setSelectedIndex(null)}>
+                  <button className="close-button" onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}>✕</button>
+                  <button className="prev-button" onClick={handlePrev}>Prev</button>
+                  <img src={volunteer.galleryPhotos[selectedIndex]} alt="selected" />
+                  <button className="next-button" onClick={handleNext}>Next</button>
+                </div>
+              )}
+            </section>
           </div>
         </div>
+        <a href="#" className="book-button">Book Now</a>
       </div>
     </div>
   );
-};
+}
 
 export default VolunteerProfile;
