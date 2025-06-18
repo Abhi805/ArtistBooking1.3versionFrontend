@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./ArtistApprovalDetail.css";
+import axiosInstance from "../api/axiosInstance.jsx";
 
 const ArtistApprovalDetail = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const ArtistApprovalDetail = () => {
   useEffect(() => {
     const fetchArtist = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/artists/${id}`);
+        const res = await axiosInstance.get(`api/artists/${id}`);
         setArtist(res.data);
       } catch (err) {
         console.error("Failed to load artist", err);
@@ -29,7 +30,7 @@ const ArtistApprovalDetail = () => {
 
   const approveArtist = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/api/artists/${id}/approve`);
+      await axiosInstance.patch(`/artists/${id}/approve`);
       alert("Artist approved");
     } catch (err) {
       console.error("Approval error:", err);
@@ -41,7 +42,7 @@ const handleReject = async () => {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/artists/${id}`);
+    await axiosInstance.delete(`api/artists/${id}`);
     alert("Artist rejected/deleted");
   } catch (err) {
     console.error("Rejection failed", err);

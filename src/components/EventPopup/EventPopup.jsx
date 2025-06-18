@@ -1,71 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
-import axios from "axios";
 import "./EventPopup.css";
 import image from "./pop.jpeg";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const EventPopup = () => {
-  // const [show, setShow] = useState(false);
-  // const [submitted, setSubmitted] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  // const [success, setSuccess] = useState(false);
-
-  // const [formData, setFormData] = useState({
-  //   fullName: "",
-  //   phone: "",
-  //   email: "",
-  //   service: "",
-  //   consent: false,
-  // });
-
-  // useEffect(() => {
-  //   if (!submitted) {
-  //     const timer = setTimeout(() => setShow(true), 3000);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [submitted]);
-
-  // const handleClose = () => setShow(false);
-
-  // const handleChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     await axios.post("http://localhost:5000/api/inquiry/form", formData);
-  //     setSuccess(true);
-  //     setFormData({
-  //       fullName: "",
-  //       phone: "",
-  //       email: "",
-  //       service: "",
-  //       consent: false,
-  //     });
-  //     setTimeout(() => {
-  //       setShow(false);
-  //       setSubmitted(true);
-  //       setSuccess(false);
-  //     }, 2000);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("Submission failed. Please try again.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
 
-  // my Code 
 
-
-  const [show, setShow] = useState(false);
+const [show, setShow] = useState(false);
 const [submitted, setSubmitted] = useState(false);
 const [loading, setLoading] = useState(false);
 const [success, setSuccess] = useState(false);
@@ -103,7 +46,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
   try {
-    await axios.post("http://localhost:5000/api/inquiry/form", formData);
+    await axiosInstance.post("api/inquiry/form", formData);
     setSuccess(true);
     setFormData({
       fullName: "",

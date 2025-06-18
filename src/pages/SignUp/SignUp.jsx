@@ -66,13 +66,13 @@ const Signup = () => {
         });
 
         // Step 2: Auto-login
-        const loginRes = await axios.post(
-          "http://localhost:5000/api/auth/login",
+        const loginRes = await axiosInstance.post(
+          "api/auth/login",
           {
             email: formData.email,
             password: formData.password,
           },
-          { withCredentials: true }
+
         );
 
         if (loginRes.status === 200) {

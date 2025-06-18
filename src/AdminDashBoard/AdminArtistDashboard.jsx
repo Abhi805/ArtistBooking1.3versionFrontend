@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./AdminArtistDashboard.css"; // 💡 Import your CSS file
+import axiosInstance from "../api/axiosInstance.jsx";
 
 const AdminArtistDashboard = () => {
   const [artistData, setArtistData] = useState([]);
@@ -14,7 +15,7 @@ const AdminArtistDashboard = () => {
 
     const fetchArtists = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/artists/pending");
+        const response = await axiosInstance.get("api/artists/pending");
         setArtistData(response.data);
       } catch (error) {
         console.error("Error fetching artist data:", error);

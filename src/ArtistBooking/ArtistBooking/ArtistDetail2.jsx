@@ -71,8 +71,8 @@ const ArtistDetail2 = () => {
         artistId: id,
         artistName: `${artist.firstName} ${artist.lastName}`,
       };
-      await axios.post(
-        "http://localhost:5000/api/artists/booking/form",
+      await axiosInstance.post(
+        "artists/booking/form",
         payload
       );
       toast.success("🎉 Booking submitted successfully!");
@@ -103,7 +103,7 @@ const ArtistDetail2 = () => {
     }
 
     try {
-      await axios.post(`http://localhost:5000/api/reviews/${id}`, review, {
+      await axiosInstance.post(`api/reviews/${id}`, review, {
         withCredentials: true, // ✅ Cookie-based auth
       });
       toast.success("Review submitted successfully!");
@@ -123,8 +123,8 @@ const ArtistDetail2 = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/reviews/${id}/reviews`
+      const res = await axiosInstance.get(
+        `api/reviews/${id}/reviews`
       );
       setReviews(res.data);
       console.log("Review API Response:", res.data);

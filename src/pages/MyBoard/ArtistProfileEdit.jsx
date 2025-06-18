@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ArtistProfileEdit.css";
-
+import axiosInstance from "../../api/axiosInstance.jsx";
 const ArtistProfileEdit = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,9 +14,7 @@ const ArtistProfileEdit = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/artist/mer", {
-          withCredentials: true,
-        });
+        const res = await axiosInstance.get("api/artist/mer");
         const { name, email, phone, bio } = res.data;
         setFormData({ name, email, phone, bio, image: null });
       } catch (error) {
@@ -47,8 +45,8 @@ const ArtistProfileEdit = () => {
     }
 
     try {
-      await axios.put("http://localhost:5000/api/artist/update", data, {
-        withCredentials: true,
+      await axios.put("api/artist/update", data, {
+        
         headers: {
           "Content-Type": "multipart/form-data",
         },

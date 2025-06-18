@@ -97,9 +97,7 @@ const VolunteerEditForm = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/volunteers/update/${id}`, updateData, {
-        withCredentials: true,
-      });
+      await axios.put(`api/volunteers/update/${id}`, updateData);
       toast.success("Profile updated successfully");
     } catch (err) {
       console.error(err);

@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 import Eq1 from "./Eqimage/gallery1.jpg";
 import Eq2 from "./Eqimage/gallery2.jpg";
@@ -43,7 +44,7 @@ const RentalDetail = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/inquiry/form/rentalBooking", formData);
+      const response = await axiosInstance.post("api/inquiry/form/rentalBooking", formData);
       toast.success(response.data.message || "Booking submitted successfully!");
 
       // Reset form
