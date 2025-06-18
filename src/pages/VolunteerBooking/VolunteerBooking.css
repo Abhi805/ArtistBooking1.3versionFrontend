@@ -190,3 +190,7 @@
     width: 100%;
   }
 }
+.input-group input{
+  margin: auto !important;
+  border: none !important;
+}
