@@ -30,7 +30,7 @@ const ArtistApprovalDetail = () => {
 
   const approveArtist = async (id) => {
     try {
-      await axiosInstance.patch(`/artists/${id}/approve`);
+      await axiosInstance.patch(`api/artists/${id}/approve`);
       alert("Artist approved");
     } catch (err) {
       console.error("Approval error:", err);

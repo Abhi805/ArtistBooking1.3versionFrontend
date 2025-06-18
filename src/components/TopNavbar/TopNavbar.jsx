@@ -35,7 +35,7 @@ const TopNavbar = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const res = await axiosInstance.get("api/auth/check-auth",);
+        const res = await axiosInstance.get("api/auth/check-auth");
         const loggedIn = res.data.loggedIn;
         const uid = res.data.user?.id;
         setIsLoggedIn(loggedIn);
