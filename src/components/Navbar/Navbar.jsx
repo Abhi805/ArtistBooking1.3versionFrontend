@@ -4,9 +4,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const handleComingSoon = (msg) => {
-    alert(msg || "Coming Soon");
-  };
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white">

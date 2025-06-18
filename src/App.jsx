@@ -56,9 +56,10 @@ import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
-import MyBoard from "./pages/MyBoard/MyBoard";
+
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
+import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
 function App() {
   return (
     <>
@@ -103,7 +104,7 @@ function App() {
             path="/user-dashboard"
             element={
               <ProtectedRoute>
-                <MyBoard />
+                <ArtistProfileEdit />
               </ProtectedRoute>
             }
           />

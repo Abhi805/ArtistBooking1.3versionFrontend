@@ -23,9 +23,7 @@ const BasicDetail = () => {
     team: "",
     location: "",
     description: "",
-
     profileImage: null,
-
     images: [],
     videoLink: [""], // Optional video links
     profileTitle: "",
@@ -46,17 +44,15 @@ const BasicDetail = () => {
   //   }
   // }, [formData.images]);
 
-useEffect(() => {
-  if (formData.profileImage) {
-    const objectUrl = URL.createObjectURL(formData.profileImage);
-    setPreviewUrl(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  } else {
-    setPreviewUrl(null);
-  }
-}, [formData.profileImage]);
-
-
+  useEffect(() => {
+    if (formData.profileImage) {
+      const objectUrl = URL.createObjectURL(formData.profileImage);
+      setPreviewUrl(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
+    } else {
+      setPreviewUrl(null);
+    }
+  }, [formData.profileImage]);
 
   // Validate mobile: allows optional +91 and exactly 10 digits
   const validateMobile = (mobile) => {

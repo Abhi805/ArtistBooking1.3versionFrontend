@@ -171,7 +171,7 @@ const VolunteerEditForm = () => {
                 <button
                   type="button"
                   className="btn btn-sm btn-danger"
-                  style={{
+                  style={{ 
                     position: "absolute",
                     top: 0,
                     right: 0,
