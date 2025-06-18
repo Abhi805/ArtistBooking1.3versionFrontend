@@ -5,61 +5,127 @@ import "./EventPopup.css";
 import image from "./pop.jpeg";
 
 const EventPopup = () => {
+  // const [show, setShow] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [success, setSuccess] = useState(false);
+
+  // const [formData, setFormData] = useState({
+  //   fullName: "",
+  //   phone: "",
+  //   email: "",
+  //   service: "",
+  //   consent: false,
+  // });
+
+  // useEffect(() => {
+  //   if (!submitted) {
+  //     const timer = setTimeout(() => setShow(true), 3000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [submitted]);
+
+  // const handleClose = () => setShow(false);
+
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     await axios.post("http://localhost:5000/api/inquiry/form", formData);
+  //     setSuccess(true);
+  //     setFormData({
+  //       fullName: "",
+  //       phone: "",
+  //       email: "",
+  //       service: "",
+  //       consent: false,
+  //     });
+  //     setTimeout(() => {
+  //       setShow(false);
+  //       setSubmitted(true);
+  //       setSuccess(false);
+  //     }, 2000);
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Submission failed. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
+  // my Code 
+
+
   const [show, setShow] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+const [submitted, setSubmitted] = useState(false);
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    service: "",
-    consent: false,
-  });
+const [formData, setFormData] = useState({
+  fullName: "",
+  phone: "",
+  email: "",
+  service: "",
+  consent: false,
+});
 
-  useEffect(() => {
-    if (!submitted) {
-      const timer = setTimeout(() => setShow(true), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [submitted]);
+useEffect(() => {
+  const isSubmitted = localStorage.getItem("popupSubmitted");
+  if (isSubmitted) {
+    setSubmitted(true);
+    setShow(false);
+  } else if (!submitted) {
+    const timer = setTimeout(() => setShow(true), 3000);
+    return () => clearTimeout(timer);
+  }
+}, [submitted]);
 
-  const handleClose = () => setShow(false);
+const handleClose = () => setShow(false);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === "checkbox" ? checked : value,
+  }));
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await axios.post("http://localhost:5000/api/inquiry/form", formData);
-      setSuccess(true);
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        service: "",
-        consent: false,
-      });
-      setTimeout(() => {
-        setShow(false);
-        setSubmitted(true);
-        setSuccess(false);
-      }, 2000);
-    } catch (err) {
-      console.error(err);
-      alert("Submission failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    await axios.post("http://localhost:5000/api/inquiry/form", formData);
+    setSuccess(true);
+    setFormData({
+      fullName: "",
+      phone: "",
+      email: "",
+      service: "",
+      consent: false,
+    });
+    localStorage.setItem("popupSubmitted", "true"); // ✅ Save in localStorage
+    setTimeout(() => {
+      setShow(false);
+      setSubmitted(true);
+      setSuccess(false);
+    }, 2000);
+  } catch (err) {
+    console.error(err);
+    alert("Submission failed. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <>
