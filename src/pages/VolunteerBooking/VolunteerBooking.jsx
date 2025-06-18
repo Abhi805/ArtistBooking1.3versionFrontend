@@ -20,7 +20,9 @@ const VolunteerBooking = () => {
 
   const fetchVolunteers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/volunteers/fetch");
+      // const res = await axios.get("http://localhost:5000/api/volunteers/fetch");
+      const res = await axios.get("https://artistbooking1-3versionbackend.onrender.com/api/volunteers/fetch");
+
       setVolunteers(res.data);
       console.log(res.data);
     } catch (err) {
