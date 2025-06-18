@@ -108,7 +108,6 @@ const ArtistDetail2 = () => {
       toast.success("Review submitted successfully!");
       setReview({ rating: 0, comment: "" });
       fetchReviews(); // Update review list after new submit
-     
     } catch (err) {
       console.error("Review submission error:", err);
       const message =
@@ -127,8 +126,7 @@ const ArtistDetail2 = () => {
         `http://localhost:5000/api/reviews/${id}/reviews`
       );
       setReviews(res.data);
-     console.log("Review API Response:", res.data);
-
+      console.log("Review API Response:", res.data);
     } catch (err) {
       console.error("Failed to load reviews:", err);
       toast.error("Unable to load reviews.");
@@ -142,15 +140,14 @@ const ArtistDetail2 = () => {
   return (
     <div className="artist-detail-page">
       <ToastContainer />
-        <div className="venue-header text-white">
+      <div className="venue-header text-white">
         <div className="container-fluid text-center">
-          <h1>{artist.firstName} {artist.lastName}</h1>
+          <h1>
+            {artist.firstName} {artist.lastName}
+          </h1>
           <p className="text-capitalize text-white">
-            At Gnv India Entertainment, we’re transforming the way events come
-            to life. Our all-in-one digital platform connects organizers,
-            artists, and service providers to deliver seamless, impactful
-            experiences — from corporate events and weddings to concerts and
-            cultural festivals.
+            Available for corporate events, weddings, college fests & more on
+            GNV India Entertainment.
           </p>
         </div>
       </div>
@@ -161,7 +158,7 @@ const ArtistDetail2 = () => {
         <div className="container full-sec-artish" data-aos="fade-up">
           <div className="row g-4 align-items-start">
             <div className="container py-5">
-              <div className="row g-4 mt-4 align-items-start">
+              <div className="row g-4 align-items-start">
                 {/* Left Image */}
                 <div className="col-lg-4 text-center">
                   <img
@@ -445,7 +442,7 @@ const ArtistDetail2 = () => {
                 className="border rounded p-3 mb-3 shadow-sm bg-light"
               >
                 <strong>{rev.user?.firstName || "User"}</strong>
-                
+
                 <div style={{ color: "gold" }}>
                   {"★".repeat(rev.rating)}
                   {"☆".repeat(5 - rev.rating)}

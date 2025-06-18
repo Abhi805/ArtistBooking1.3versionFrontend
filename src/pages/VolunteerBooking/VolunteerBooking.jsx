@@ -12,6 +12,7 @@ const VolunteerBooking = () => {
   const [searchCity, setSearchCity] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
 
+
   useEffect(() => {
     AOS.init({ duration: 800 });
     fetchVolunteers();
@@ -112,9 +113,7 @@ const VolunteerBooking = () => {
                     <h6 className="card-title fw-bold">
                       Name: {artist.fullName}
                     </h6>
-                    {/* <h6 className="card-title fw-bold">Mobile No.: {artist.mobile}</h6>
-                    <h6 className="card-title fw-bold">Email: {artist.email}</h6> */}
-                    {/* <h6 className="card-title fw-bold">Experience: {artist.experience}</h6> */}
+
                     <h6 className="card-title fw-bold">
                       Location: {artist.location}
                     </h6>

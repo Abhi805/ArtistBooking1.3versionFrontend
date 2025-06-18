@@ -56,20 +56,20 @@
 }
 
 /* Individual card themes */
-.card-address {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
+.card-address{
+     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), #0f2481db)
 }
 
 .card-email {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), #0f2481db);
 }
 
 .card-phone {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), #0f2481db)
 }
 
 .card-whatsapp {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Blue-Violet */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), #0f2481db)
 }
 
 /* Hover effect */

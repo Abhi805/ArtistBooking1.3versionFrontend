@@ -106,8 +106,8 @@ const ContactUs = () => {
               },
               {
                 title: "Email",
-                text: "events@gnvindia.in",
-                link: "mailto:events@gnvindia.in",
+                text: "info@gnvindia.in",
+                link: "mailto:info@gnvindia.in",
                 cardClass: "card-email",
               },
               {
