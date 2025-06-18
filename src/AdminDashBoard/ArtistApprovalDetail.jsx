@@ -1,7 +1,7 @@
 // ArtistApprovalDetail.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+
 import "./ArtistApprovalDetail.css";
 import axiosInstance from "../api/axiosInstance.jsx";
 
