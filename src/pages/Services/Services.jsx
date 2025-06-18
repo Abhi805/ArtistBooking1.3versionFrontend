@@ -6,6 +6,7 @@ import bookArtists from '../Services/Bookartists.jpeg';
 import rentEquipment from '../Services/renteventequipment.jpeg';
 import planner from '../Services/planner.jpeg';
 import bookVenue from '../Services/bookeventvenue.webp';
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -24,7 +25,11 @@ const services = [
     img: rentEquipment,
     title: "Rent Event Equipment",
     desc: "Power your event with top-quality equipment delivered and managed seamlessly. From professional sound systems, lighting rigs, LED walls, projectors, trussing, and staging to generators and décor tech — GNV India Entertainment offers a complete range of rental solutions. We ensure timely setup, on-site support, and reliable performance so your event runs flawlessly.",
+<<<<<<< HEAD
     link: "/ComingPage"
+=======
+    link: "/EventEquipmentRental"
+>>>>>>> eb4f6bb71e2b4e396e05b27b7430ff1946a0cb3f
   },
   {
     img: planner,
@@ -36,7 +41,11 @@ const services = [
     img: bookVenue,
     title: "Event Venues",
     desc: "Find the perfect venue for your perfect event — faster and easier with GNV India Entertainment. We offer access to a wide network of premium venues across India, from lavish banquet halls and open lawns to resorts, heritage properties, and luxury hotels. Based on your budget, theme, and guest size, we help you shortlist, visit, and book the ideal location to match your vision.",
+<<<<<<< HEAD
     link: "/ComingPage"
+=======
+    link: "/VenueBooking"
+>>>>>>> eb4f6bb71e2b4e396e05b27b7430ff1946a0cb3f
   },
 ];
 
@@ -56,7 +65,7 @@ export default function Services() {
             <div className="col-md-6">
               <h3 className="service-title">{service.title}</h3>
               <p className="service-desc">{service.desc}</p>
-              <a href={service.link} className="btn btn-custom mt-3">Book Now</a>
+              <Link to={service.link} className="btn btn-custom mt-3">Book Now</Link>
             </div>
           </div>
         ))}

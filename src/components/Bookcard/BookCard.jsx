@@ -19,13 +19,13 @@ export default function BookCard() {
       img: Bookartists,
       title: "Book Artists",
       btn: "Book Now",
-      link: "/Bhopal",
+      link: "/ArtistBooking",
     },
        {
       img: bookeventvenue,
       title: "Book Event Venue",
       btn: "Book Now",
-      link:  "/BhopalCity",
+      link:  "/ComingPage",
     },
         {
       img: volunteer,
@@ -37,7 +37,7 @@ export default function BookCard() {
       img: renteventequipment,
       title: "Rent Event Equipment",
       btn: "Book Now",
-      link: "/EventRental",
+      link: "/ComingPage",
     },
 
   ];  
