@@ -79,14 +79,13 @@ const ContactUs = () => {
             Let's Get In Touch
           </h1>
           <p className="mt-3 text-white text-capitalize" data-aos="fade-up">
-            GNVIndia is your trusted partner in event management, proudly
-            serving Indore, Bhopal, Jabalpur, and Gwalior. Whether it’s a grand
-            exhibition, a cultural celebration, or a corporate gathering — we’re
-            just one click away from making your vision come alive.
+            From small gatherings to large-scale productions, we ensure every
+            detail is handled with precision. Our customized event solutions
+            align with your goals, audience, and budget — all while maintaining
+            top-tier quality and creativity.
           </p>
         </div>
       </section>
-
       {/* Contact Info */}
       <section className="py-5 bg-light">
         <div className="container text-center">
@@ -151,7 +150,7 @@ const ContactUs = () => {
         <div className="container">
           <div className="row g-5 align-items-start justify-content-center text-center">
             {/* Left content unchanged... */}
- <div className="col-12 col-md-6" data-aos="fade-right">
+            <div className="col-12 col-md-6" data-aos="fade-right">
               <h3 className="fw-bold">
                 Let's Create Your Perfect Event – Contact GNVIndia!
               </h3>

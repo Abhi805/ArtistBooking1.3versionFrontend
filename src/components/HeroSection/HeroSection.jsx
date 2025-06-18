@@ -61,7 +61,7 @@ export default function HeroSection() {
                       
                       <div className="contact-btn">
                         <Link
-                          to="/Bhopal"
+                          to="/ArtistBooking"
                           className="custom-btn primary-btn"
                         >
                           Explore Now <span>&rarr;</span>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                       </p>
                       <div className="contact-btn ">
                         <Link
-                          to="/BhopalCity"
+                          to="/VenueBooking"
                           className="custom-btn primary-btn"
                         >
                           Explore Now <span>&rarr;</span>
@@ -159,7 +159,7 @@ export default function HeroSection() {
                       </p>
                       <div className=" contact-btn ">
                         <Link
-                          to="/EventRental"
+                          to="/EventEquipmentRental"
                           className="custom-btn primary-btn"
                         >
                           Explore Now <span>&rarr;</span>
