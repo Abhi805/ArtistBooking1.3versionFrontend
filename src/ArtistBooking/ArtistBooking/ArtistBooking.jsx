@@ -3,8 +3,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./ArtistBooking.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
+import axiosInstance from "../../api/axiosInstance.jsx";
 const ArtistBooking = () => {
   const [artistData, setArtistData] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
@@ -14,7 +14,7 @@ const ArtistBooking = () => {
 
     const fetchArtists = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/artists/");
+        const response = await axiosInstance.get("api/artists/");
         setArtistData(response.data);
       } catch (error) {
         console.error("Error fetching artist data:", error);

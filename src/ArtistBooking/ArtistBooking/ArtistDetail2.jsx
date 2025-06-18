@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ArtistDetail2.css";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const ArtistDetail2 = () => {
   const { id } = useParams();
@@ -45,7 +46,7 @@ const ArtistDetail2 = () => {
 
   const fetchArtist = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/artists/${id}`);
+      const res = await axiosInstance.get(`api/artists/${id}`);
       const data = res.data;
       setArtist(data);
       if (data.images && data.images.length > 0) {

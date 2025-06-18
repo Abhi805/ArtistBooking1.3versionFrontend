@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -53,10 +54,9 @@ const Signup = () => {
       setIsLoading(true);
 
       // Step 1: Register
-      const registerRes = await axios.post(
-        "http://localhost:5000/api/auth/register",
+      const registerRes = await axiosInstance.post(
+        "api/auth/register",
         formData,
-        { withCredentials: true }
       );
 
       if (registerRes.status === 201) {

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // ✅ useParams to get dynamic ID
 import axios from "axios";
 import "./VolunteerProfile.css";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 function VolunteerProfile() {
   const [volunteer, setVolunteer] = useState(null);
@@ -14,7 +15,7 @@ function VolunteerProfile() {
   useEffect(() => {
     const fetchVolunteer = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/volunteers/${id}`);
+        const res = await axiosInstance.get(`api/volunteers/${id}`);
         console.log("backend", res.data);
         setVolunteer(res.data);
       } catch (err) {

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosInstance from "../../../api/axiosInstance.jsx";
+
 
 const VolunteerEditForm = () => {
   const { id } = useParams();
@@ -14,9 +16,7 @@ const VolunteerEditForm = () => {
   useEffect(() => {
     const fetchVolunteer = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/volunteers/${id}`, {
-          withCredentials: true,
-        });
+        const { data } = await axiosInstance.get(`api/volunteers/${id}`)
         setFormData({ ...data, newGalleryPhotos: [] });
         if (data.profilePhoto) setPreview(data.profilePhoto);
         if (data.galleryPhotos) setGalleryPreview(data.galleryPhotos);
