@@ -25,7 +25,7 @@ export default function BookCard() {
       img: bookeventvenue,
       title: "Book Event Venue",
       btn: "Book Now",
-      link:  "/ComingPage",
+      link:  "/VenueBooking",
     },
         {
       img: volunteer,
@@ -37,7 +37,7 @@ export default function BookCard() {
       img: renteventequipment,
       title: "Rent Event Equipment",
       btn: "Book Now",
-      link: "/ComingPage",
+      link: "/EventEquipmentRental",
     },
 
   ];  

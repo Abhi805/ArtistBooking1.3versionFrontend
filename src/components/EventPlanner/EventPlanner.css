@@ -150,6 +150,9 @@
         display: flex;
         flex-direction: column;
     }
+    .event-contact-btn {
+      text-align: center;
+    }
 }
 
 @media (max-width: 375px) {

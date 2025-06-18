@@ -66,7 +66,7 @@ function EventPlanner() {
             <br />A leading name in the industry, known for managing all types of events with creativity and perfection — from corporate and government events to exhibitions, concerts, and cultural shows. Every event is executed with precision, passion, and purpose.
           </h2>
 
-          <div className="event-contact-btn text-center mt-4">
+          <div className="event-contact-btn  mt-4">
             <Link to="/contactUs" className="btn-custom text-white">
               Contact Us
             </Link>
