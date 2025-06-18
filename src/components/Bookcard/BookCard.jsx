@@ -6,6 +6,7 @@ import Bookartists from './assets3/Bookartists.jpeg';
 import renteventequipment from './assets3/renteventequipment.jpeg';
 import eventplanner from './assets3/planner.jpeg';
 import bookeventvenue from './assets3/bookeventvenue.webp';
+import { Link } from "react-router-dom";
 
 export default function BookCard() {
   const cardData = [
@@ -56,9 +57,9 @@ export default function BookCard() {
                 <img src={card.img} alt={card.title} className="card-img" />
                 <div className="card-body">
                   <h5 className="card-title">{card.title}</h5>
-                  <a href={card.link} className="btn-custom text-white">
+                  <Link to={card.link} className="btn-custom text-white">
                     {card.btn}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
