@@ -18,25 +18,25 @@ const services = [
     img: bookArtists,
     title: "Artists",
     desc: "Make your event unforgettable by booking top-tier artists from across India. Whether you need singers, dancers, stand-up comedians, anchors, DJs, or celebrity performers — GNV India Entertainment connects you with talent that elevates every celebration. We curate performers based on your theme, audience, and vibe to deliver a show that leaves lasting impressions.",
-    link: "/Bhopal"          
+    link: "/ArtistBooking"          
   },
   {
     img: rentEquipment,
     title: "Rent Event Equipment",
     desc: "Power your event with top-quality equipment delivered and managed seamlessly. From professional sound systems, lighting rigs, LED walls, projectors, trussing, and staging to generators and décor tech — GNV India Entertainment offers a complete range of rental solutions. We ensure timely setup, on-site support, and reliable performance so your event runs flawlessly.",
-    link: "/EventRental"
+    link: "/ComingPage"
   },
   {
     img: planner,
     title: "Hire Event Planners",
     desc: "From concept to celebration — we plan it all. GNV India Entertainment specializes in curating unforgettable experiences with meticulous planning, creative themes, and flawless execution. Whether it’s a wedding, corporate event, concert, or private party, our planners handle everything — venue, vendors, design, logistics, and guest management — so you enjoy your event stress-free.",
-    link: "/EventPlanner"
+    link: "/ComingPage"
   },
   {
     img: bookVenue,
     title: "Event Venues",
     desc: "Find the perfect venue for your perfect event — faster and easier with GNV India Entertainment. We offer access to a wide network of premium venues across India, from lavish banquet halls and open lawns to resorts, heritage properties, and luxury hotels. Based on your budget, theme, and guest size, we help you shortlist, visit, and book the ideal location to match your vision.",
-    link: "/BhopalCity"
+    link: "/ComingPage"
   },
 ];
 
