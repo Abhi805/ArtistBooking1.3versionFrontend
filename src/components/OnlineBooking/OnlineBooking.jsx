@@ -29,7 +29,7 @@ const OnlineBooking = () => {
     <section className="online-booking-section py-5">
       <div className="container text-center">
         <h2 className="booking-title">
-          Book Artists Online For Your <span style={{color:"red"}}>Event, Wedding And Corporate Event</span>
+          Book Artists Online For Your Event, <span style={{color:"red"}}> Corporate Event And Social Event</span>
         </h2>
         <p className="booking-subtitle mb-4">   
           Discover and book top-rated artists for weddings, events, and corporate gatherings. 

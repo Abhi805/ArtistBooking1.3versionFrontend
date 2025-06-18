@@ -128,7 +128,9 @@
   transform: scale(1.2);
 }
 
-
+.my-5 {
+    margin-top: 1rem !important;
+}
 
 /* ----------------- 📱 MOBILE RESPONSIVENESS ------------------ */
 @media (max-width: 576px) {

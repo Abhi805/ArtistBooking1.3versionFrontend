@@ -63,9 +63,7 @@ function EventPlanner() {
             India is home to a thriving event management
              industry with companies 
             that deliver excellence across weddings, corporate events, concerts, brand activations, and more.
-            <br />✨ And proudly, <strong>GNV India Entertainment</strong> stands among them!
-            <br />
-            With a vision to revolutionize the event industry, GNV India has emerged as a dynamic player in the PAN India space. From event rentals, artist & venue bookings to technicians and full event planning — we offer a one-stop platform to bring your event to life.
+            <br />A leading name in the industry, known for managing all types of events with creativity and perfection — from corporate and government events to exhibitions, concerts, and cultural shows. Every event is executed with precision, passion, and purpose.
           </h2>
 
           <div className="event-contact-btn text-center mt-4">

@@ -1,19 +1,16 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  const handleComingSoon = (msg) => {
-    alert(msg || "Coming Soon");
-  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+         <NavLink className="navbar-brand" to="/">
           <img src={logo} alt="Gnv logo" />
-        </Link>
+         </NavLink>
 
         <button
           className="navbar-toggler"
@@ -30,67 +27,60 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+               <NavLink className="nav-link " to="/">
                 Home
-              </Link>
+               </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/aboutUs">
+               <NavLink className="nav-link" to="/aboutUs">
                 About Us
-              </Link>
+               </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/ArtistBooking">
+               <NavLink className="nav-link" to="/ArtistBooking">
                 Artist Booking
-              </Link>
+               </NavLink>
             </li>
             <li className="nav-item dropdown">
-                  <Link className="nav-link" to="/VenueBooking">
+                   <NavLink className="nav-link" to="/VenueBooking">
                 Venue Booking
-              </Link>
-              {/* <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/IndoreCity">Indore City</Link></li>
-                <li><Link className="dropdown-item" to="/BhopalCity">Bhopal City</Link></li>
-                <li><Link className="dropdown-item" to="/UjjainCity">Ujjain City</Link></li>
-                <li><Link className="dropdown-item" to="/JabalpurCity">Jabalpur City</Link></li>
-                <li><Link className="dropdown-item" to="/GwaliorCity">Gwalior City</Link></li>
-              </ul> */}
+               </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/VolunteerBooking">
+               <NavLink className="nav-link" to="/VolunteerBooking">
                 Volunteer Booking
-              </Link>
+               </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/EventEquipmentRental">
+               <NavLink className="nav-link" to="/EventEquipmentRental">
                 Event Equipment Rental
-              </Link>
+               </NavLink>
             </li>
 
             <li className="nav-item">
-                <Link className="nav-link" to="/EventPlanner">
+                 <NavLink className="nav-link" to="/EventPlanner">
                 Event Planner
-              </Link>
+               </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/services">
+               <NavLink className="nav-link" to="/services">
                 Services
-              </Link>
+               </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/ContactUs">
+               <NavLink className="nav-link" to="/ContactUs">
                 Contact Us
-              </Link>
+               </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/newsblog">
+               <NavLink className="nav-link" to="/newsblog">
                 News & Blog
-              </Link>
+               </NavLink>
             </li>
           </ul>
         </div>

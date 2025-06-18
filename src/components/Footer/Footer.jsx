@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/logo.png";
+
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import {
@@ -16,13 +16,10 @@ const Footer = () => {
         <div className="row text-center mb-5">
           <div className="col-12">
             <h2 className="footer-title">
-              GNV India Entertainment – Your Trusted Event Management Partner
+               GNV India Entertainment {/*– Your Trusted Event Management Partner */}
             </h2>
             <p className="footer-description text-capitalize">
-              GNV India Entertainment is a leading event management company in Madhya
-              Pradesh offering expert solutions for corporate events, trade
-              shows, artist bookings, equipment rentals, and more. From planning
-              to execution, we ensure seamless and memorable experiences.
+             India is home to a thriving event management industry with companies that deliver excellence across weddings, corporate events, concerts, brand activations, and more
             </p>
           </div>
         </div>
@@ -87,10 +84,10 @@ const Footer = () => {
 
         <div className="bottom-bar text-center">
           <p className="mb-1">
-            © 2023–2025 GNV India Events. All Rights Reserved.
+            © 2023–2025 GNV India Entertainment. All Rights Reserved.
           </p>
           <p className="designed-by">
-            Designed by <span>GNV Web Team</span>
+            Designed by <span>GNV Tech Team</span>
           </p>
         </div>
       </div>

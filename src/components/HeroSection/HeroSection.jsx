@@ -42,7 +42,7 @@ export default function HeroSection() {
             <div className=" karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div className="row">
-                  <div className="col-5">
+                  <div className="col-5 left-sec-hero">
                     <div className="content" data-swiper-parallax="-100">
                       <h5 className=" cold text-capitalize ">
                         Find your favorite artist in just one click.
@@ -89,7 +89,7 @@ export default function HeroSection() {
             <div className="karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div style={{ marginTop: "50px" }} className="row">
-                  <div className="col-5">
+                  <div className="col-5 left-sec-hero">
                     <div data-swiper-parallax="-100">
                       <h5 className="cold text-capitalize">
                         Book Stunning Venues in Minutes — Only on GNV. es{" "}
@@ -139,7 +139,7 @@ export default function HeroSection() {
             <div className="karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div style={{ marginTop: "50px" }} className="row">
-                  <div className="col-5">
+                  <div className="col-5 left-sec-hero">
                     <div data-swiper-parallax="-100">
                       <h5 className="cold text-capitalize">
                         The right equipment for every event — find and book
@@ -187,7 +187,7 @@ export default function HeroSection() {
             <div className="karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div style={{ marginTop: "50px" }} className="row">
-                  <div className="col-5">
+                  <div className="col-5 left-sec-hero">
                     <div data-swiper-parallax="-100">
                       <h5 className="cold text-capitalize">
                         Your Event, Our Planning – Perfection Guaranteed!
@@ -239,7 +239,7 @@ export default function HeroSection() {
             <div className="karlop" data-swiper-parallax="-100">
               <div className="container">
                 <div style={{ marginTop: "50px" }} className="row">
-                  <div className="col-5">
+                  <div className="col-5  left-sec-hero">
                     <div data-swiper-parallax="-100">
                       <h5 className="cold text-capitalize">
                         Trained Volunteers for Every Event – Easy, Reliable &

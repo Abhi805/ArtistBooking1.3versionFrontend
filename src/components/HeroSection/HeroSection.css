@@ -224,3 +224,6 @@ background: linear-gradient(135deg, #fff4ec, #ffe7d94f);
   justify-content: center !important;
  }
 }
+.left-sec-hero{
+  align-self: center;
+}

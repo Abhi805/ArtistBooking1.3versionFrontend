@@ -9,6 +9,12 @@ import bookeventvenue from './assets3/bookeventvenue.webp';
 
 export default function BookCard() {
   const cardData = [
+           {
+      img: eventplanner,
+      title: "Event Planner",
+      btn: "Book Now",
+      link: "/EventPlanner",
+    },
         {
       img: Bookartists,
       title: "Book Artists",
@@ -22,27 +28,18 @@ export default function BookCard() {
       link:  "/BhopalCity",
     },
         {
-      img: renteventequipment,
-      title: "Rent Event Equipment",
-      btn: "Book Now",
-      link: "/EventRental",
-    },
-       {
-      img: eventplanner,
-      title: "Event Planner",
-      btn: "Book Now",
-      link: "/EventPlanner",
-    },
-    {
       img: volunteer,
       title: "Book Volunteer",
       btn: "Book Now",
       link: "/VolunteerBooking"
     },
+        {
+      img: renteventequipment,
+      title: "Rent Event Equipment",
+      btn: "Book Now",
+      link: "/EventRental",
+    },
 
-
- 
- 
   ];  
 
   return (

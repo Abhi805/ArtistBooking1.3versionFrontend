@@ -142,6 +142,18 @@ const ArtistDetail2 = () => {
   return (
     <div className="artist-detail-page">
       <ToastContainer />
+        <div className="venue-header text-white">
+        <div className="container-fluid text-center">
+          <h1>{artist.firstName} {artist.lastName}</h1>
+          <p className="text-capitalize text-white">
+            At Gnv India Entertainment, we’re transforming the way events come
+            to life. Our all-in-one digital platform connects organizers,
+            artists, and service providers to deliver seamless, impactful
+            experiences — from corporate events and weddings to concerts and
+            cultural festivals.
+          </p>
+        </div>
+      </div>
 
       {/* Artist Info Section */}
 
