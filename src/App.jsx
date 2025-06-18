@@ -60,8 +60,6 @@ import MyBoard from "./pages/MyBoard/MyBoard";
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 function App() {
-
-
   return (
     <>
       <Router>
@@ -76,7 +74,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-{/* Protected Router*/}
+          {/* Protected Router*/}
           <Route
             path="/AdminDashboard"
             element={
@@ -109,13 +107,32 @@ function App() {
               </ProtectedRoute>
             }
           />
-<Route path="/VolunteerForm" element={   <ProtectedRoute><VolunteerForm /></ProtectedRoute>} />
-<Route path="/MyDashBoard" element={ <ProtectedRoute><MyDashboardRedirect /></ProtectedRoute>} />
-<Route path="/volunteer/edit/:id" element={<ProtectedRoute><VolunteerEditForm /></ProtectedRoute>} />
+          <Route 
+            path="/VolunteerForm"
+            element={
+              <ProtectedRoute>
+                <VolunteerForm />
+              </ProtectedRoute>
+            }
+          /> 
+          <Route
+            path="/MyDashBoard"
+            element={
+              <ProtectedRoute>
+                <MyDashboardRedirect />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/volunteer/edit/:id"
+            element={
+              <ProtectedRoute>
+                <VolunteerEditForm />
+              </ProtectedRoute>
+            }
+          />
 
-{/*Protected Router*/}
-
-
+          {/*Protected Router*/}
 
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/login" element={<Login />} />
@@ -123,7 +140,6 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
-         
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -132,10 +148,10 @@ function App() {
           <Route path="/RentalDetail" element={<RentalDetail />} />
           <Route path="/PlannerProfile" element={<PlannerProfile />} />
           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
-       
-         <Route path="/volunteers/:id" element={<VolunteerProfile />} />
-         <Route path="/VenueBooking" element={<VenueBooking />} />
- 
+
+          <Route path="/volunteers/:id" element={<VolunteerProfile />} />
+          <Route path="/VenueBooking" element={<VenueBooking />} />
+
           <Route path="/EventRentalForm" element={<EventRentalForm />} />
           <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/IndoreCity" element={<IndoreCity />} />
