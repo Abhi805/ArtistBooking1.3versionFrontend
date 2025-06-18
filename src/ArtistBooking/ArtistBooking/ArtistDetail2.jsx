@@ -72,7 +72,7 @@ const ArtistDetail2 = () => {
         artistName: `${artist.firstName} ${artist.lastName}`,
       };
       await axiosInstance.post(
-        "artists/booking/form",
+        "/artists/booking/form",
         payload
       );
       toast.success("🎉 Booking submitted successfully!");
