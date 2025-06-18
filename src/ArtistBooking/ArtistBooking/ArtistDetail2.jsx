@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import axios from "axios";
+
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,7 +26,7 @@ const ArtistDetail2 = () => {
     eventDate: "",
     budget: "",
     city: "",
-    requirement: "",
+    requirement: "", 
   });
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const ArtistDetail2 = () => {
     try {
       const res = await axiosInstance.get(`api/artists/${id}`);
       const data = res.data;
+      console.log("artist id",data)
       setArtist(data);
       if (data.images && data.images.length > 0) {
         setImageSrc(data.images);
@@ -64,17 +65,14 @@ const ArtistDetail2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true); 
     try {
       const payload = {
         ...formData,
         artistId: id,
         artistName: `${artist.firstName} ${artist.lastName}`,
       };
-      await axiosInstance.post(
-        "/artists/booking/form",
-        payload
-      );
+    await axiosInstance.post("api/artists/booking/form", payload);
       toast.success("🎉 Booking submitted successfully!");
       setFormData({
         fullName: "",
@@ -103,9 +101,7 @@ const ArtistDetail2 = () => {
     }
 
     try {
-      await axiosInstance.post(`api/reviews/${id}`, review, {
-        withCredentials: true, // ✅ Cookie-based auth
-      });
+      await axiosInstance.post(`api/reviews/${id}`, review);
       toast.success("Review submitted successfully!");
       setReview({ rating: 0, comment: "" });
       fetchReviews(); // Update review list after new submit
