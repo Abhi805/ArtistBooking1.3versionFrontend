@@ -161,7 +161,7 @@ const ArtistDetail2 = () => {
         <div className="container full-sec-artish" data-aos="fade-up">
           <div className="row g-4 align-items-start">
             <div className="container py-5">
-              <div className="row g-4 align-items-start">
+              <div className="row g-4 mt-4 align-items-start">
                 {/* Left Image */}
                 <div className="col-lg-4 text-center">
                   <img
@@ -314,7 +314,7 @@ const ArtistDetail2 = () => {
           </div>
         </div>
 
-        <div className="container py-4" data-aos="fade-up">
+        <div className="container mt-2 Artist-About py-4" data-aos="fade-up">
           <h4 className="fw-bold mb-3">
             About {artist.firstName} {artist.lastName}
           </h4>
