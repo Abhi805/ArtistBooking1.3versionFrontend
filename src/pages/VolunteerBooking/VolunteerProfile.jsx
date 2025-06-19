@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./VolunteerProfile.css";
-import BookingForm from "./BookingForm";
 
 function VolunteerProfile() {
   const [volunteer, setVolunteer] = useState(null);
@@ -15,22 +14,8 @@ function VolunteerProfile() {
     const fetchVolunteer = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/volunteers/${id}`);
-        const cleanData = { ...res.data };
-
-        ['education', 'exhibitions', 'skills', 'awards', 'experienceDetails', 'galleryPhotos'].forEach((key) => {
-          try {
-            let val = cleanData[key];
-            if (Array.isArray(val) && val.length === 1 && typeof val[0] === 'string' && val[0].startsWith("[")) {
-              cleanData[key] = JSON.parse(val[0]);
-            } else if (typeof val === 'string' && val.startsWith("[")) {
-              cleanData[key] = JSON.parse(val);
-            }
-          } catch (e) {
-            console.warn(`Failed to parse ${key}`, e);
-          }
-        });
-
-        setVolunteer(cleanData);
+        console.log("backend", res.data);
+        setVolunteer(res.data);
       } catch (err) {
         console.error("Error fetching volunteer:", err);
       }

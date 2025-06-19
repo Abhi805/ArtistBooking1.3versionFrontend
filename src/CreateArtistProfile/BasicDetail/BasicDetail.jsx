@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import axiosInstance from "../../api/axiosInstance.jsx";
 const BasicDetail = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -309,9 +309,7 @@ const BasicDetail = () => {
       });
 
       // Replace URL with your backend endpoint
-      await axios.post("http://localhost:5000/api/artists/add", submitData, {
-        withCredentials: true,
-      });
+      await axiosInstance.post("api/artists/add", submitData);
 
       toast.success("Profile submitted successfully!");
       setStep(1);

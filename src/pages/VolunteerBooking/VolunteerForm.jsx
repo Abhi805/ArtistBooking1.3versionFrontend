@@ -4,6 +4,7 @@ import axios from "axios";
 import "./VolunteerForm.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const VolunteerRegistration = () => {
   const [formData, setFormData] = useState({
@@ -100,8 +101,8 @@ const VolunteerRegistration = () => {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/volunteers/add", submitData, {
-        withCredentials: true, // ✅ Send cookies (like JWT token)
+      await axiosInstance.post("api/volunteers/add", submitData, {
+     
         headers: {
           "Content-Type": "multipart/form-data",
         },

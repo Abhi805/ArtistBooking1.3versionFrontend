@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VolunteerBooking.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const VolunteerBooking = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -13,14 +13,16 @@ const VolunteerBooking = () => {
   const [searchCategory, setSearchCategory] = useState("");
 
 
-  useEffect(() => {
+  useEffect(() => { 
     AOS.init({ duration: 800 });
     fetchVolunteers();
   }, []);
 
   const fetchVolunteers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/volunteers/fetch");
+   
+      const res = await axiosInstance.get("api/volunteers/fetch");
+
       setVolunteers(res.data);
       console.log(res.data);
     } catch (err) {

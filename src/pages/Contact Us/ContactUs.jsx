@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,8 +47,8 @@ const ContactUs = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(
-        "http://localhost:5000/api/inquiry/form/contactUs",
+      const res = await axiosInstance.post(
+        "api/inquiry/form/contactUs",
         formData
       );
       toast.success(res.data.message || "Submitted successfully!");

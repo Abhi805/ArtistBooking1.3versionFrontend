@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "react-bootstrap";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,10 +36,9 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+      const res = await axiosInstance.post(
+        "api/auth/login",
         { email, password, role },
-        { withCredentials: true }
       );
 
       if (rememberMe) {

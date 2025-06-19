@@ -336,8 +336,11 @@ width: 80%;
 }
 
 }
-
-
+@media (max-width: 768px) {
+.profile-container {
+    margin-top: 0px;
+  }
+}
 @media (max-width: 480px) {
 .profile-card{
   padding: 20px 10px;
@@ -349,5 +352,6 @@ width: 80%;
 .right-column{
 width: 90%;
 }
+
 }
 

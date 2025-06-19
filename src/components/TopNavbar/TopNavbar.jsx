@@ -7,7 +7,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance.jsx";
 
 const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -23,9 +23,7 @@ const TopNavbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:5000/api/auth/logout", {
-        withCredentials: true,
-      });
+      await axiosInstance.get("api/auth/logout");
       setIsLoggedIn(false);
       navigate("/login");
     } catch (error) {
@@ -37,10 +35,7 @@ const TopNavbar = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/auth/check-auth",
-          { withCredentials: true }
-        );
+        const res = await axiosInstance.get("api/auth/check-auth");
         const loggedIn = res.data.loggedIn;
         const uid = res.data.user?.id;
         setIsLoggedIn(loggedIn);
@@ -48,8 +43,8 @@ const TopNavbar = () => {
 
         // ✅ Fetch VolunteerId
         if (loggedIn && uid) {
-          const volunteerRes = await axios.get(
-            `http://localhost:5000/api/volunteers/by-user/${uid}`
+          const volunteerRes = await axiosInstance.get(
+            `volunteers/by-user/${uid}`
           );
           setVolunteerId(volunteerRes.data.volunteer._id);
         }

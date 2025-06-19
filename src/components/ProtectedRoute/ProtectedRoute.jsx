@@ -1,17 +1,15 @@
 // src/components/ProtectedRoute.js
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
+import axiosInstance from "../../api/axiosInstance.jsx";
 const ProtectedRoute = ({ children }) => {
   const [auth, setAuth] = useState(null); // null = loading
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/protected", {
-          withCredentials: true,
-        });
+        const res = await axiosInstance.get("api/auth/protected")
          console.log("Protected route response:", res);
         setAuth(res.status === 200);
      

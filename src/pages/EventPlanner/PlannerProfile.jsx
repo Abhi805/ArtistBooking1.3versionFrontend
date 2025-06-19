@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,8 +38,8 @@ const PlannerProfile = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/inquiry/form/eventplanner",
+      const res = await axiosInstance.post(
+        "api/inquiry/form/eventplanner",
         formData
       );
 

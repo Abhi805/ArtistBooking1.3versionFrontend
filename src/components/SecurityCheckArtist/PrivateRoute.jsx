@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
-
+import axiosInstance from "../../api/axiosInstance.jsx";
 const PrivateRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading state
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/verify", {
-          withCredentials: true,
-        });
+        const res = await axiosInstance.get("api/auth/verify")
         if (res.data.success) {
           setIsAuthenticated(true);
         } else {

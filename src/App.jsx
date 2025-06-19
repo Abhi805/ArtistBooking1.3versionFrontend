@@ -178,3 +178,14 @@ function App() {
 }
 
 export default App;
+
+// import React from "react";
+// import ComingSoon from "./pages/ComingSoon/ComingSoon.jsx";
+
+// function App() {
+//   return <ComingSoon />;
+// }
+
+// export default App;
+
+
