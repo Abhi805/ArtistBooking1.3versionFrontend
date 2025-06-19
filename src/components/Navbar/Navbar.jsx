@@ -175,7 +175,7 @@ function Navbar() {
             <li className="nav-item"><NavLink className="nav-link" to="/newsblog">News & Blog</NavLink></li>
 
             {/* ✅ Account Dropdown */}
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown navaccounte">
               <button
                 className="nav-link account dropdown-toggle btn btn-link"
                 id="accountDropdown"
