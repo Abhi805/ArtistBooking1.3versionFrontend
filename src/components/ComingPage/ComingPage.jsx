@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ComingPage.css";
 
 function ComingPage() {
-  // Fixed deadline - 15th July 2025
+
   const deadline = "2025-07-15T00:00:00";
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -36,16 +36,16 @@ function ComingPage() {
       <p>We are launching on 15th July 2025</p>
       <div className="counter">
         <div>
-          <span>{timeLeft.days}</span>days
+          <span>{timeLeft.days}</span>Days
         </div>
         <div>
-          <span>{timeLeft.hours}</span>hours
+          <span>{timeLeft.hours}</span>Hours
         </div>
         <div>
-          <span>{timeLeft.minutes}</span>minutes
+          <span>{timeLeft.minutes}</span>Min
         </div>
         <div>
-          <span>{timeLeft.seconds}</span>seconds
+          <span>{timeLeft.seconds}</span>Sec
         </div>
       </div>
     </div>
