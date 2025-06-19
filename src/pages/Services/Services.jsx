@@ -13,7 +13,7 @@ const services = [
     img: volunteer,
     title: "Volunteers",
     desc: "Ensure smooth and professional execution of your event with our trained volunteers. From guest handling and backstage coordination to registration desks and crowd management, GNV India Entertainment provides skilled and well-groomed volunteers who act as the backbone of every successful event. Let our support team bring structure, energy, and professionalism to your occasion.",
-    link: "/ComingPage"
+    link: "/VolunteerBooking"
   },
   {
     img: bookArtists,
