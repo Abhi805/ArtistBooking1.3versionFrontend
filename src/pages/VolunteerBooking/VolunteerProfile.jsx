@@ -193,8 +193,16 @@ function VolunteerProfile() {
         console.error("Error fetching volunteer:", err);
       }
     };
+
     fetchVolunteer();
   }, [id]);
+
+  const scrollToBooking = () => {
+    setShowBooking(true);
+    setTimeout(() => {
+      bookingRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   const handlePrev = (e) => {
     e.stopPropagation();
@@ -223,7 +231,6 @@ function VolunteerProfile() {
       <ToastContainer />
       <div className="container">
         <div className="profile-card">
-          {/* Header */}
           <header className="header">
             <div className="header-left">
               <h1>{volunteer.fullName}</h1>
@@ -251,21 +258,19 @@ function VolunteerProfile() {
 
           <div className="main-content">
             <div className="left-column">
-              {/* Exhibitions */}
               <section>
                 <h3>EXHIBITIONS:</h3>
                 <ul>
-                  {volunteer.exhibitions.map((item, index) => (
-                    <li key={index}>{item}</li>
+                  {volunteer.exhibitions?.map((item, i) => (
+                    <li key={i}>{item}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Skills */}
               <section>
                 <h3>SKILLS:</h3>
                 <ul className="skills-list">
-                  {volunteer.skills.map((skill, i) => (
+                  {volunteer.skills?.map((skill, i) => (
                     <li key={i}>
                       <span>{skill.tool}</span>
                       <div className="progress">
@@ -276,11 +281,10 @@ function VolunteerProfile() {
                 </ul>
               </section>
 
-              {/* Awards */}
               <section>
                 <h3>AWARDS:</h3>
                 <ul>
-                  {volunteer.awards.map((award, i) => (
+                  {volunteer.awards?.map((award, i) => (
                     <li key={i}>{award}</li>
                   ))}
                 </ul>
@@ -294,17 +298,15 @@ function VolunteerProfile() {
                 <p>{volunteer.summary}</p>
               </section>
 
-              {/* Education */}
               <section>
                 <h3>EDUCATION:</h3>
                 <ul>
-                  {volunteer.education.map((edu, i) => (
+                  {volunteer.education?.map((edu, i) => (
                     <li key={i}>{edu}</li>
                   ))}
                 </ul>
               </section>
 
-              {/* Experience */}
               <section>
                 <h3>EXPERIENCE:</h3>
                 <ul>
@@ -314,11 +316,10 @@ function VolunteerProfile() {
                 </ul>
               </section>
 
-              {/* Gallery */}
               <section className="gallery-section">
                 <h3>GALLERY</h3>
                 <div className="gallery-grid">
-                  {volunteer.galleryPhotos.map((img, i) => (
+                  {volunteer.galleryPhotos?.map((img, i) => (
                     <img
                       key={i}
                       src={img}
@@ -328,7 +329,6 @@ function VolunteerProfile() {
                   ))}
                 </div>
 
-                {/* Lightbox */}
                 {selectedIndex !== null && (
                   <div className="lightbox" onClick={() => setSelectedIndex(null)}>
                     <button
@@ -399,6 +399,16 @@ function VolunteerProfile() {
             Book Now
           </a>
         </div>
+
+        {showBooking && (
+          <div ref={bookingRef}>
+            <BookingForm
+              artistName={volunteer.fullName}
+              category={volunteer.category}
+              onClose={() => setShowBooking(false)}
+            />
+          </div>
+        )}
       </div>
 
 

@@ -79,7 +79,7 @@ const Login = () => {
           <div className="col-md-6" data-aos="fade-up">
             <div className="card8 p-5 shadow-lg bg-white rounded-4">
               <div className="card-body">
-                <h2 className="login-title mb-2 text-center">Welcome back</h2>
+                <h2 className="login-title mb-2 text-center">Welcome To GNVIndia</h2>
                 <p className="login-subtitle mb-4 text-center">
                   Please enter your details
                 </p>

@@ -48,7 +48,7 @@ const Footer = () => {
   
           <div className="justify-content-center col-md-4 mb-5 social-icons1 d-flex">
             <a
-              href="https://www.facebook.com/gnvindiaevents"
+              href="https://www.facebook.com/share/19jPBM2Cis/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -56,23 +56,23 @@ const Footer = () => {
               <FaFacebookF className="facebook" />
             </a>
             <a
-              href="https://www.instagram.com/gnvindiaevents/"
+              href="https://www.instagram.com/gnvindia_ent/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
             >
               <FaInstagram className="instagram" />
             </a>
-            <a
+            {/* <a
               href="https://www.linkedin.com/company/gnv-india-entertainment/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               <FaLinkedinIn className="linkedin" />
-            </a>
+            </a> */}
             <a
-              href="https://www.youtube.com/@gnvindia7"
+              href="https://www.youtube.com/@GNVIndiaentertaiment"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"

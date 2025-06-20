@@ -113,16 +113,19 @@ const Signup = () => {
                 data-aos="fade-right"
               >
                 <p className="mb-4 fs-1 fw-bold text-white ">
-                  List Your Talent & Get Booked Online Instantly
+                  All-in-One Event Service Platform
                 </p>
                 <p className="fs-5 text-white ">
-                  Join our platform and showcase your talent to a wide audience.
-                  Create your artist profile today and start receiving event
-                  bookings instantly!
+                  Sign up now to access everything you need for a successful
+                  event — from artist booking, venue reservations, and event
+                  rental equipment to volunteer support and professional event
+                  planning. Whether you're hosting an event or offering your
+                  services, our platform connects you to the right people,
+                  resources, and opportunities — all in one place!
                 </p>
-                <p className="btn mt-5" style={{ cursor: "default" }}>
+                {/* <p className="btn mt-5" style={{ cursor: "default" }}>
                   Boost Your Brand & Network
-                </p>
+                </p> */}
               </div>
 
               <div className="col-md-6 bg-white p-4" data-aos="fade-left">
@@ -199,7 +202,9 @@ const Signup = () => {
                         color: "#555",
                       }}
                     >
-                      <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                      <FontAwesomeIcon
+                        icon={showPassword ? faEyeSlash : faEye}
+                      />
                     </span>
                   </div>
 
