@@ -95,8 +95,8 @@ const Login = () => {
                       required
                     >
                       <option value="">Choose Role</option>
-                      <option value="admin">other</option>
-                      <option value="artist">Artist</option>
+                      {/* <option value="admin">other</option> */}
+                      {/* <option value="artist">Artist</option> */}
                       <option value="volunteer">Volunteer</option>
                      {/* <option value="user">User</option>  */}
                     </select>

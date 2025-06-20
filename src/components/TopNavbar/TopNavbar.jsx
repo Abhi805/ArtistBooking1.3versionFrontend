@@ -375,7 +375,7 @@ const TopNavbar = () => {
                 {showSubmenu && (
                   <ul className="dropdown-menu show-submenu">
                     <li>
-                      <Link className="dropdown-item" to="/basicdetail">
+                      <Link className="dropdown-item" to="/ComingPage">
                         Artist Registration
                       </Link>
                     </li>

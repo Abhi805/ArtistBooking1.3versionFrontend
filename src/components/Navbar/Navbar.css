@@ -1,5 +1,5 @@
 
-  
+/*   
 .navbar {
   position: sticky;
   top: 40px; 
@@ -134,4 +134,415 @@ body.top-navbar-hidden .navbar {
 
     
 
+ */
+.navbar-container {
 
+  position: sticky;
+  top: 40px; 
+  width: 100%;
+  z-index: 1020;
+  transition: top 0.3s ease;
+        }
+        
+     .navbar {
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0px 15px;
+    background-color: white;
+}
+        
+        .logo a {
+          font-size: 30px;
+          color: #fff;
+          text-decoration: none;
+          font-weight: 600;
+        }
+         .logo a img{
+          width: 130px;
+         }
+        .nav-links {
+          line-height: 70px;
+          height: 100%;
+        }
+        
+        .links {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .links li {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 14px;
+        }
+        
+        .links li {
+          height: 100%;
+          text-decoration: none;
+          white-space: nowrap;
+          color: black;
+          font-size: 15px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+        }
+        
+        .link-with-arrow,
+        .more span {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          cursor: pointer;
+        }
+        
+        .arrow {
+          width: 22px;
+          line-height: 70px;
+          text-align: center;
+          color: black;
+          transition: all 0.3s ease;
+        }
+        
+        .sub-menu {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          line-height: 40px;
+          background: white;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          border-radius: 0 0 4px 4px;
+          display: none;
+          z-index: 2;
+          min-width: 200px;
+        }
+        
+        .sub-menu li {
+          padding: 0 22px;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sub-menu a {
+          color: black;
+          font-size: 15px;
+          font-weight: 500;
+          text-decoration: none;
+        }
+        
+        .more-sub-menu {
+          position: absolute;
+          top: 0;
+          left: 100%;
+          border-radius: 0 4px 4px 4px;
+          background: white;
+          min-width: 150px;
+        }
+        
+        .nav-links.show1 .htmlCss-sub-menu {
+          display: block;
+        }
+        
+        .nav-links.show3 .js-sub-menu {
+          display: block;
+        }
+        
+        .nav-links.show2 .more-sub-menu {
+          display: block;
+        }
+        
+        .nav-links.show1 .htmlcss-arrow {
+          transform: rotate(180deg);
+        }
+        
+        .nav-links.show3 .js-arrow {
+          transform: rotate(180deg);
+        }
+        
+        .nav-links.show2 .more-arrow {
+          transform: rotate(90deg);
+        }
+        
+        /* .search-box {
+          position: relative;
+          height: 40px;
+          width: 40px;
+        }
+        
+        .search-icon {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          line-height: 40px;
+          text-align: center;
+          font-size: 22px;
+          color: #fff;
+          cursor: pointer;
+        }
+        
+        .input-box {
+          position: absolute;
+          right: calc(100% - 40px);
+          top: 80px;
+          height: 60px;
+          width: 300px;
+          background: #3E8DA8;
+          border-radius: 6px;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.4s ease;
+        }
+        
+        .search-box.showInput .input-box {
+          top: 65px;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        
+        .input-box::before {
+          content: '';
+          position: absolute;
+          height: 20px;
+          width: 20px;
+          background: #3E8DA8;
+          right: 10px;
+          top: -6px;
+          transform: rotate(45deg);
+        }
+        
+        .input-box input {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 35px;
+          width: 280px;
+          border: none;
+          padding: 0 15px;
+          font-size: 16px;
+          border-radius: 4px;
+          outline: none;
+        }
+         */
+        /* .bx-menu {
+          display: none;
+          font-size: 35px;
+          color: black;
+          cursor: pointer;
+        }
+        
+        .sidebar-logo {
+          display: none;
+        }
+        .Acc-sec{
+          display: none !important;
+        }
+       
+        @media (max-width: 920px) {
+          .navbar {
+            padding: 0 25px;
+          }
+          .logo a {
+            font-size: 27px;
+          }
+          .links li {
+            padding: 0 10px;
+          }
+          .bx-menu {
+            display: block;
+          }
+          
+          .nav-links {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            max-width: 500px;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            line-height: 40px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            transition: all 0.5s ease;
+            z-index: 1000;
+          }
+          
+          .nav-links.open {
+            left: 0;
+          }
+          
+          .sidebar-logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            font-size: 25px;
+            margin-bottom: 20px;
+          }
+          
+          .sidebar-logo .close-icon {
+            color: black;
+            font-size: 35px;
+            cursor: pointer;
+          }
+          
+          .links {
+            display: block;
+          }
+          
+          .links li {
+            display: block;
+            padding: 0;
+            margin: 5px 0;
+          }
+          
+          .sub-menu {
+            position: relative;
+            box-shadow: none;
+            top: 0;
+            border-radius: 0;
+          }
+          
+          .more-sub-menu {
+            position: relative;
+            left: 0;
+          }
+          
+          .arrow {
+            line-height: 40px;
+          }
+          .Acc-sec{
+            display: block !important;
+          }
+           .navbar-container {
+            top: 0;
+        }}
+        
+        @media (max-width: 370px) {
+          .nav-links {
+            max-width: 100%;
+          }
+        }
+
+
+
+ */
+
+
+
+ .bx-menu {
+  display: none;
+  font-size: 35px;
+  color: black;
+  cursor: pointer;
+}
+
+.sidebar-logo {
+  display: none;
+}
+
+.Acc-sec {
+  display: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 920px) {
+  .navbar {
+    padding: 0 25px;
+  }
+
+  .logo a {
+    font-size: 27px;
+  }
+
+  .links li {
+    padding: 0 10px;
+  }
+
+  .bx-menu {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    max-width: 500px;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    line-height: 40px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    left: 0;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar-logo .close-icon {
+    color: black;
+    font-size: 35px;
+    cursor: pointer;
+  }
+
+  .links {
+    display: block;
+  }
+
+  .links li {
+    display: block;
+    padding: 0;
+    margin: 5px 0;
+  }
+
+  .sub-menu {
+    position: relative;
+    box-shadow: none;
+    top: 0;
+    border-radius: 0;
+  }
+
+  .more-sub-menu {
+    position: relative;
+    left: 0;
+  }
+
+  .arrow {
+    line-height: 40px;
+  }
+
+  .Acc-sec {
+    display: block !important;
+  }
+
+  .navbar-container {
+    top: 0;
+  }
+}
+
+@media (max-width: 370px) {
+  .nav-links {
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
+  }
+}

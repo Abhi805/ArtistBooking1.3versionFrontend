@@ -172,16 +172,19 @@
 
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
 import "./VolunteerProfile.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BookingForm from "./BookingForm"; // 🔁 Ensure this import exists
 
 function VolunteerProfile() {
   const [volunteer, setVolunteer] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [showBooking, setShowBooking] = useState(false); // ✅ Added state
+  const bookingRef = useRef(null); // ✅ Ref for scrolling
   const { id } = useParams();
 
   useEffect(() => {
@@ -234,7 +237,7 @@ function VolunteerProfile() {
           <header className="header">
             <div className="header-left">
               <h1>{volunteer.fullName}</h1>
-              <h2>{volunteer.category}</h2>
+              <h2><span style={{color:"black"}} >Volunteer Type:</span> {volunteer.category}</h2>
               <div className="artist-rating text-black">
                 Rating: ⭐⭐⭐⭐☆ (4/5)
               </div>
@@ -254,7 +257,6 @@ function VolunteerProfile() {
               </ul>
             </div>
           </header>
-
 
           <div className="main-content">
             <div className="left-column">
@@ -292,7 +294,6 @@ function VolunteerProfile() {
             </div>
 
             <div className="right-column">
-              {/* Summary */}
               <section>
                 <h3>PROFESSIONAL SUMMARY:</h3>
                 <p>{volunteer.summary}</p>
@@ -330,7 +331,10 @@ function VolunteerProfile() {
                 </div>
 
                 {selectedIndex !== null && (
-                  <div className="lightbox" onClick={() => setSelectedIndex(null)}>
+                  <div
+                    className="lightbox"
+                    onClick={() => setSelectedIndex(null)}
+                  >
                     <button
                       className="close-button"
                       onClick={(e) => {
@@ -355,8 +359,7 @@ function VolunteerProfile() {
               </section>
             </div>
           </div>
-
-          {/* Share Buttons */}
+<h4>To Share Your Profile</h4>
           <div className="share-buttons m-2 d-flex flex-wrap gap-2">
             <button className="btn btn-outline-primary" onClick={handleShareProfile}>
               📋 Copy Profile Link
@@ -395,9 +398,10 @@ function VolunteerProfile() {
               🐦 Share on Twitter
             </a>
           </div>
-          <a href="#" className="book-button">
+
+          <button className="book-button" onClick={scrollToBooking}>
             Book Now
-          </a>
+          </button>
         </div>
 
         {showBooking && (
@@ -410,8 +414,6 @@ function VolunteerProfile() {
           </div>
         )}
       </div>
-
-
     </div>
   );
 }

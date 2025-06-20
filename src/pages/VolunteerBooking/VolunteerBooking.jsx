@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,15 +10,13 @@ const VolunteerBooking = () => {
   const [searchCity, setSearchCity] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
 
-
-  useEffect(() => { 
+  useEffect(() => {
     AOS.init({ duration: 800 });
     fetchVolunteers();
   }, []);
 
   const fetchVolunteers = async () => {
     try {
-   
       const res = await axiosInstance.get("api/volunteers/fetch");
 
       setVolunteers(res.data);
@@ -79,7 +75,14 @@ const VolunteerBooking = () => {
                   value={searchCategory}
                   onChange={(e) => setSearchCategory(e.target.value)}
                 >
-                  <option value="">Select Category</option>
+                  <option value="">-- Select Volunteer Category --</option>
+                  <option value="Photographer">Photographer</option>
+                  <option value="Videographer">Videographer</option>
+                  <option value="Graphic Designer">Graphic Designer</option>
+                  <option value="Event Coordinator">Event Coordinator</option>
+                  <option value="Social Media Volunteer">
+                    Social Media Volunteer
+                  </option>
                   <option value="DJ Operation">DJ Operation</option>
                   <option value="Light Setup">Light Setup</option>
                   <option value="Sound Mixing">Sound Mixing</option>
@@ -91,6 +94,7 @@ const VolunteerBooking = () => {
                   <option value="Lighting rig & setup">
                     Lighting rig & setup
                   </option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>

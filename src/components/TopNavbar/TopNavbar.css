@@ -1,4 +1,21 @@
 /* Z-index to keep above all */
+
+/* body.top-navbar-hidden .navbar {
+    
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+} */
+
+
+body.top-navbar-hidden .navbar {
+    /* top: 0; */
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
+
+
 .top-navbar {
   position: fixed;
   top: 0;

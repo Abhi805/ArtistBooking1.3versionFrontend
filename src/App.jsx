@@ -23,10 +23,8 @@ import VolunteerProfile from "./pages/VolunteerBooking/VolunteerProfile";
 import EventRentalForm from "./pages/EventRental/EventRentalForm";
 
 import ArtistDetail2 from "./ArtistBooking/ArtistBooking/ArtistDetail2";
-
 import IndoreCity from "./VenueBooking/IndoreCity/IndoreCity";
 import BhopalCity from "./VenueBooking/BhopalCity/BhopalCity";
-
 import GwaliorCity from "./VenueBooking/GwaliorCity/GwaliorCity";
 import UjjainCity from "./VenueBooking/UjjainCity/UjjainCity";
 import BasicDetail from "./CreateArtistProfile/BasicDetail/BasicDetail";
@@ -37,7 +35,6 @@ import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
 import Services from "./pages/Services/Services";
 import EventRental from "./pages/EventRental/EventRental";
-
 import EventPlanner from "./pages/EventPlanner/EventPlanner";
 import ContactUs from "./pages/Contact Us/ContactUs";
 import VolunteerBooking from "./pages/VolunteerBooking/VolunteerBooking";
@@ -54,10 +51,9 @@ import EventBookingModel8 from "./VenueBooking/IndoreCity/BookingModel8/EventBoo
 import AdminArtistDashboard from "./AdminDashBoard/AdminArtistDashboard";
 import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
-
 
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
@@ -110,14 +106,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route 
+          <Route
             path="/VolunteerForm"
             element={
               <ProtectedRoute>
                 <VolunteerForm />
               </ProtectedRoute>
             }
-          /> 
+          />
           <Route
             path="/MyDashBoard"
             element={
@@ -143,7 +139,7 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
-<Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/thank-you" element={<ThankYou />} />
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -190,5 +186,3 @@ export default App;
 // }
 
 // export default App;
-
-
