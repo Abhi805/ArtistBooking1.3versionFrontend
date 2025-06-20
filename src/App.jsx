@@ -35,7 +35,7 @@ import TopNavbar from "./components/TopNavbar/TopNavbar";
 import ComingPage from "./components/ComingPage/ComingPage";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
-import Services from "./pages/Services/Services";
+import Services from "./pages/Services/Services";  
 import EventRental from "./pages/EventRental/EventRental";
 
 import EventPlanner from "./pages/EventPlanner/EventPlanner";

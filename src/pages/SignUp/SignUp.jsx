@@ -20,6 +20,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
+    username: "",
     mobileNumber: "",
     password: "",
     confirmPassword: "",
@@ -135,6 +136,17 @@ const Signup = () => {
                       placeholder="Name"
                       required
                       value={formData.fullName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                   <div className="mb-3">
+                    <input
+                      type="text"
+                      name="username"
+                      className="form-control"
+                      placeholder="username"
+                      required
+                      value={formData.username}
                       onChange={handleChange}
                     />
                   </div>

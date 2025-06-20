@@ -18,7 +18,7 @@ const VolunteerBooking = () => {
   const fetchVolunteers = async () => {
     try {
       const res = await axiosInstance.get("api/volunteers/fetch");
-
+console.error("volunteer user id:", res.data.volunteers);
       setVolunteers(res.data);
       console.log(res.data);
     } catch (err) {
