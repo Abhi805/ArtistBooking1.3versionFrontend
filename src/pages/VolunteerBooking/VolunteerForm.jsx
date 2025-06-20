@@ -1,12 +1,14 @@
 // VolunteerRegistration.jsx
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./VolunteerForm.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../api/axiosInstance.jsx";
+import {  useNavigate } from "react-router-dom";
 
 const VolunteerRegistration = () => {
+  const [hasFollowed, setHasFollowed] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -22,10 +24,52 @@ const VolunteerRegistration = () => {
     profilePhoto: null,
     galleryPhotos: [],
   });
-
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [preview, setPreview] = useState(null);
   const [galleryPreview, setGalleryPreview] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const checkVolunteerStatus = async () => {
+      try {
+        const authRes = await axiosInstance.get("api/auth/check-auth");
+        const userId = authRes.data.user?.id;
+
+        if (userId) {
+          const volRes = await axiosInstance.get(
+            `api/volunteers/by-user/${userId}`
+          );
+          if (volRes.data.volunteer) {
+            setAlreadyRegistered(true);
+          }
+        }
+      } catch (err) {
+        console.error("Error checking volunteer status:", err);
+        setAlreadyRegistered(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkVolunteerStatus();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+
+  if (alreadyRegistered) {
+    return (
+      <div className="container mt-5">
+        <h4>You have already registered as a volunteer ✅</h4>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => navigate("/MyDashboard")}
+        >
+          Go to Dashboard
+        </button>
+      </div>
+    );
+  }
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -100,15 +144,22 @@ const VolunteerRegistration = () => {
       }
     });
 
+
+    
+  if (!hasFollowed) {
+    toast.error("Please follow us on Instagram/Facebook before submitting.");
+    return;
+  }
+
     try {
       await axiosInstance.post("api/volunteers/add", submitData, {
-     
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
       toast.success("Volunteer registered successfully!");
+    navigate("/thank-you"); // ✅ thank you page par bhejo
       setFormData({
         fullName: "",
         email: "",
@@ -132,7 +183,10 @@ const VolunteerRegistration = () => {
     } finally {
       setLoading(false);
     }
+
   };
+
+  
 
   return (
     <form className="volunteer-form" onSubmit={handleSubmit}>
@@ -191,12 +245,14 @@ const VolunteerRegistration = () => {
             type="text"
             placeholder="Tool"
             value={skill.tool}
+            required
             onChange={(e) => handleSkillChange(i, "tool", e.target.value)}
           />
           <input
             type="number"
             placeholder="Level (%)"
             value={skill.level}
+            required
             onChange={(e) => handleSkillChange(i, "level", e.target.value)}
           />
         </div>
@@ -206,7 +262,12 @@ const VolunteerRegistration = () => {
       </button>
 
       <h4>Profile Photo</h4>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <input
+        type="file"
+        required
+        accept="image/*"
+        onChange={handleFileChange}
+      />
       {preview && (
         <div className="preview-wrapper">
           <img src={preview} alt="Preview" />
@@ -224,6 +285,7 @@ const VolunteerRegistration = () => {
       <input
         type="file"
         multiple
+        required
         accept="image/*"
         onChange={handleGalleryChange}
       />
@@ -244,6 +306,7 @@ const VolunteerRegistration = () => {
 
       <textarea
         name="education"
+        required
         placeholder="Education (comma separated)"
         value={formData.education.join(",")}
         onChange={(e) =>
@@ -266,7 +329,6 @@ const VolunteerRegistration = () => {
           setFormData({ ...formData, exhibitions: e.target.value.split(",") })
         }
       ></textarea>
-
       <textarea
         name="experienceDetails"
         placeholder="Experience (Role|Company|Duration per line)"
@@ -274,14 +336,51 @@ const VolunteerRegistration = () => {
           setFormData({
             ...formData,
             experienceDetails: e.target.value.split("\n").map((line) => {
-              const [role, company, duration] = line.split("|");
-              return { role, company, duration };
+              const parts = line.split("|");
+              return {
+                role: parts[0]?.trim() || "",
+                company: parts[1]?.trim() || "",
+                duration: parts[2]?.trim() || "",
+              };
             }),
           })
         }
-      ></textarea>
+      />
 
-      <button type="submit" disabled={loading}>
+      <div style={{ marginTop: "20px" }}>
+        <p>📣 Please follow our social pages before submitting:</p>
+        <p>
+          <a
+            href="https://instagram.com/gnvindia"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>{" "}
+          |
+          <a
+            href="https://facebook.com/gnvindia"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Facebook
+          </a>
+        </p>
+
+        <div style={{ marginTop: "10px" }}>
+          <input
+            type="checkbox"
+            id="followCheck"
+            checked={hasFollowed}
+            onChange={(e) => setHasFollowed(e.target.checked)}
+          />
+          <label htmlFor="followCheck" style={{ marginLeft: "8px" }}>
+            I have followed GNV India on Instagram and Facebook
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" disabled={loading || !hasFollowed}>
         {loading ? <div className="button-spinner"></div> : "Register"}
       </button>
     </form>

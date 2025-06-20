@@ -27,7 +27,7 @@ const VolunteerEditForm = () => {
 
     if (id) fetchVolunteer();
   }, [id]);
-
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -97,7 +97,7 @@ const VolunteerEditForm = () => {
     }
 
     try {
-      await axios.put(`api/volunteers/update/${id}`, updateData);
+      await axiosInstance.put(`api/volunteers/update/${id}`, updateData);
       toast.success("Profile updated successfully");
     } catch (err) {
       console.error(err);
@@ -252,9 +252,9 @@ const VolunteerEditForm = () => {
           {formData.experienceDetails.map((exp, index) => (
             <div className="border p-3 mb-3 rounded" key={index}>
               <input className="form-control mb-2" placeholder="Role" value={exp.role} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value, true, "role")} />
-              <input className="form-control mb-2" placeholder="From" value={exp.from} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value, true, "from")} />
+              {/* <input className="form-control mb-2" placeholder="From" value={exp.from} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value, true, "from")} />
               <input className="form-control mb-2" placeholder="To" value={exp.to} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value, true, "to")} />
-              <textarea className="form-control" placeholder="Points (comma-separated)" value={exp.points.join(", ")} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value.split(","), true, "points")} />
+              <textarea className="form-control" placeholder="Points (comma-separated)" value={exp.points.join(", ")} onChange={(e) => handleArrayChange("experienceDetails", index, e.target.value.split(","), true, "points")} /> */}
               <button className="btn btn-danger mt-2" type="button" onClick={() => removeFromArray("experienceDetails", index)}>Remove</button>
             </div>
           ))}
