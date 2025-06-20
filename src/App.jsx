@@ -171,7 +171,7 @@ function App() {
           <Route path="/EventBookingModel6" element={<EventBookingModel6 />} />
           <Route path="/EventBookingModel7" element={<EventBookingModel7 />} />
           <Route path="/EventBookingModel8" element={<EventBookingModel8 />} />
-          <Route path="/VolunteerBooking" element={<VolunteerBooking />} />
+          <Route path="/Volunteer" element={<VolunteerBooking />} />
         </Routes>
         <Footer />
       </Router>
