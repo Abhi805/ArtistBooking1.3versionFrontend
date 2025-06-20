@@ -3,7 +3,7 @@ import "./ComingSoon.css";
 
 function ComingPage() {
   // Fixed deadline - 15th July 2025
-  const deadline = "2025-06-20T16:00:00";
+  const deadline = "2025-06-20T17:00:00";
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -32,7 +32,7 @@ function ComingPage() {
 
   return (
     <div className="coming-soon"> 
-      <h1>Coming Soon</h1>
+      <h1>Coming Soon t</h1>
       <p>We are launching on 20th Jun 2025</p>
       <div className="counter">
         <div>
