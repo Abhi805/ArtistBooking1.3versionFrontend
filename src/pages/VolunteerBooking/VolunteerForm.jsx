@@ -765,7 +765,7 @@ const VolunteerRegistration = () => {
         <p>📣 Please follow our social pages before submitting:</p>
         <p>
           <a
-            href="https://instagram.com/gnvindia"
+            href="https://www.instagram.com/gnvindia_ent/"
             target="_blank"
             rel="noreferrer"
           >
@@ -773,11 +773,29 @@ const VolunteerRegistration = () => {
           </a>{" "}
           |{" "}
           <a
-            href="https://facebook.com/gnvindia"
+            href="https://www.facebook.com/profile.php?id=61577712865938"
             target="_blank"
             rel="noreferrer"
           >
             Facebook
+          </a>
+          {" "}
+          |{" "}
+           <a
+            href="https://www.youtube.com/@GNVIndiaentertaiment"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Youtube
+          </a>
+           {" "}
+          |{" "}
+           <a
+            href="https://whatsapp.com/channel/0029VbAhMbeJf05jWPKTvR2t"
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp
           </a>
         </p>
 
