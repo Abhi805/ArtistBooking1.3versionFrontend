@@ -1,20 +1,20 @@
-// VolunteerRegistration.jsx
+
 import React, { useEffect, useState } from "react";
 import "./VolunteerForm.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../api/axiosInstance.jsx";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const VolunteerRegistration = () => {
   const [hasFollowed, setHasFollowed] = useState(false);
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     mobile: "",
     dob: "",
     location: "",
+    category: "", // ✅ Added category
     summary: "",
     skills: [{ tool: "", level: "" }],
     education: [""],
@@ -29,6 +29,7 @@ const VolunteerRegistration = () => {
   const [galleryPreview, setGalleryPreview] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const checkVolunteerStatus = async () => {
       try {
@@ -69,7 +70,6 @@ const VolunteerRegistration = () => {
       </div>
     );
   }
-  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -129,6 +129,18 @@ const VolunteerRegistration = () => {
     e.preventDefault();
     setLoading(true);
 
+    if (!formData.category) {
+      toast.error("Please select a volunteer category.");
+      setLoading(false);
+      return;
+    }
+
+    if (!hasFollowed) {
+      toast.error("Please follow us on Instagram/Facebook before submitting.");
+      setLoading(false);
+      return;
+    }
+
     const submitData = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
       if (Array.isArray(value)) {
@@ -144,13 +156,6 @@ const VolunteerRegistration = () => {
       }
     });
 
-
-    
-  if (!hasFollowed) {
-    toast.error("Please follow us on Instagram/Facebook before submitting.");
-    return;
-  }
-
     try {
       await axiosInstance.post("api/volunteers/add", submitData, {
         headers: {
@@ -159,13 +164,16 @@ const VolunteerRegistration = () => {
       });
 
       toast.success("Volunteer registered successfully!");
-    navigate("/thank-you"); // ✅ thank you page par bhejo
+      navigate("/thank-you");
+
+      // Reset form
       setFormData({
         fullName: "",
         email: "",
         mobile: "",
         dob: "",
         location: "",
+        category: "",
         summary: "",
         skills: [{ tool: "", level: "" }],
         education: [""],
@@ -183,10 +191,7 @@ const VolunteerRegistration = () => {
     } finally {
       setLoading(false);
     }
-
   };
-
-  
 
   return (
     <form className="volunteer-form" onSubmit={handleSubmit}>
@@ -231,6 +236,30 @@ const VolunteerRegistration = () => {
         onChange={handleInputChange}
         required
       />
+
+      {/* ✅ Volunteer Category Dropdown */}
+      <select
+        name="category"
+        value={formData.category}
+        onChange={handleInputChange}
+        required
+      >
+        <option value="">-- Select Volunteer Category --</option>
+        <option value="Photographer">Photographer</option>
+        <option value="Videographer">Videographer</option>
+        <option value="Graphic Designer">Graphic Designer</option>
+        <option value="Event Coordinator">Event Coordinator</option>
+        <option value="Social Media Volunteer">Social Media Volunteer</option>
+        <option value="DJ Operation">DJ Operation</option>
+        <option value="Light Setup">Light Setup</option>
+        <option value="Sound Mixing">Sound Mixing</option>
+        <option value="Registration Desk">Registration Desk</option>
+        <option value="Artist Runner">Artist Runner</option>
+        <option value="Social Media Coverage">Social Media Coverage</option>
+        <option value="Lighting rig & setup">Lighting rig & setup</option>
+        <option value="Other">Other</option>
+      </select>
+
       <textarea
         name="summary"
         placeholder="Professional Summary"
@@ -357,7 +386,7 @@ const VolunteerRegistration = () => {
           >
             Instagram
           </a>{" "}
-          |
+          |{" "}
           <a
             href="https://facebook.com/gnvindia"
             target="_blank"

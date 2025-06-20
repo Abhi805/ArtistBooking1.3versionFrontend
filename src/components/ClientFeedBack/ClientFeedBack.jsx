@@ -9,32 +9,22 @@ const feedbacks = [
     name: "Nithya Iyer",
     role: "Senior Manager BD",
     feedback:
-      "Thank you, GNVIndia, for making our corporate conference a success! Everything went smoothly, and the team exceeded our expectations. Will definitely use them again!",
+      "I’m a volunteer, and ever since I created my profile on gnvindia.com, I’ve been getting great event projects. This platform is genuine, trustworthy, and has really helped me grow in the event industry. Thank you, gnvindia.com!",
   },
   {
     name: "Akash Chauhan",
     role: "Project Manager",
     feedback:
-      "I had a fabulous experience with this company. They shared valuable tips for planning successful events within my budget. I am happy to share my experience on Google 👍🏼👍🏼",
+      "I’m a regular user of gnvindia.com, and I often need event planners, volunteers, artists, and venues for my events. This platform is really helpful — it provides all event-related services with great suggestions in one place. It's easy to use and has made managing my events much simpler. Highly recommended!",
   },
-  {
-    name: "Subhash Tripathi",
-    role: "Human Resource Management",
-    feedback:
-      "This team is excellent for corporate events. They provide practical solutions and deliver positive outcomes.",
-  },
+
   {
     name: "Priya Sharma",
     role: "Marketing Executive",
     feedback:
-      "The event was handled very professionally. GNV India ensured smooth coordination, creative setups, and timely execution. Loved it!",
+      "I used gnvindia.com to search for hotels and event vendors for a conference, and it turned out to be a great experience. This is a very useful search engine that helped me find the right services and vendors in my city. The platform is reliable and makes the entire planning process much easier.",
   },
-  {
-    name: "Rohit Verma",
-    role: "Operations Head",
-    feedback:
-      "Very reliable and innovative team. They delivered beyond expectations for our annual meet.",
-  },
+
 ];
 
 const ClientFeedBack = () => {

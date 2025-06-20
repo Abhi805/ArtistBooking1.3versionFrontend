@@ -1,7 +1,4 @@
 
-
-
-
 import React from 'react';
 import './SocialSidebar.css';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';

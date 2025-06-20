@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./EventPlanner.css";
 import ep1 from "../EventPlanner/dna.png";
-import ep2 from "../EventPlanner/emg.png";
-import ep3 from "../EventPlanner/gnv.jpeg";
+import ep2 from "../EventPlanner/emgi.png";
+import ep3 from "../EventPlanner/logoo.png";
 import ep4 from "../EventPlanner/percept.png";
-import ep5 from "../EventPlanner/seven.png";
-import ep6 from "../EventPlanner/showtime.jpg";
+import ep5 from "../EventPlanner/seven.jpg";
+import ep6 from "../EventPlanner/showtime.png";
 import { Link } from "react-router-dom";
 
 function Carousel({ slides, interval = 3000 }) {
@@ -20,13 +20,13 @@ function Carousel({ slides, interval = 3000 }) {
     return () => clearInterval(slideInterval);
   }, [slides.length, interval, isHovered]);
 
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  // const prevSlide = () => {
+  //   setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  // };
 
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
+  // const nextSlide = () => {
+  //   setCurrent((prev) => (prev + 1) % slides.length);
+  // };
 
   return (
     <div
@@ -63,7 +63,7 @@ function EventPlanner() {
             India is home to a thriving event management
              industry with companies 
             that deliver excellence across weddings, corporate events, concerts, brand activations, and more.
-            <br />A leading name in the industry, known for managing all types of events with creativity and perfection — from corporate and government events to exhibitions, concerts, and cultural shows. Every event is executed with precision, passion, and purpose.
+            <br />A leading name in the industry, known for managing all types of events with creativity and perfection — from corporate and government events to exhibitions, concerts, and cultural shows. Every event is executed with precision, passion, and purpose.
           </h2>
 
           <div className="event-contact-btn  mt-4">

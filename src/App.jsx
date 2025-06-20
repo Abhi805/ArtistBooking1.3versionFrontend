@@ -58,7 +58,6 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
 
-
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
@@ -110,14 +109,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route 
+          <Route
             path="/VolunteerForm"
             element={
               <ProtectedRoute>
                 <VolunteerForm />
               </ProtectedRoute>
             }
-          /> 
+          />
           <Route
             path="/MyDashBoard"
             element={
@@ -143,7 +142,7 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
-<Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/thank-you" element={<ThankYou />} />
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
@@ -190,5 +189,3 @@ export default App;
 // }
 
 // export default App;
-
-

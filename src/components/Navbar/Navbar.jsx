@@ -3,7 +3,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import logo from "../../assets/logooNEww.png";
+import logo from "../../assets/logo5.jpg";
 import "./Navbar.css";
 import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance";
