@@ -56,7 +56,7 @@ const Signup = () => {
       // Step 1: Register
       const registerRes = await axiosInstance.post(
         "api/auth/register",
-        formData,
+        formData
       );
 
       if (registerRes.status === 201) {
@@ -66,14 +66,10 @@ const Signup = () => {
         });
 
         // Step 2: Auto-login
-        const loginRes = await axiosInstance.post(
-          "api/auth/login",
-          {
-            email: formData.email,
-            password: formData.password,
-          },
-
-        );
+        const loginRes = await axiosInstance.post("api/auth/login", {
+          email: formData.email,
+          password: formData.password,
+        });
 
         if (loginRes.status === 200) {
           setTimeout(() => {
@@ -113,15 +109,15 @@ const Signup = () => {
                 data-aos="fade-right"
               >
                 <p className="mb-4 fs-1 fw-bold text-white ">
-                  All-in-One Event Service Platform
+                  Join as a Volunteer – Be a Part of Incredible Events!
                 </p>
                 <p className="fs-5 text-white ">
-                  Sign up now to access everything you need for a successful
-                  event — from artist booking, venue reservations, and event
-                  rental equipment to volunteer support and professional event
-                  planning. Whether you're hosting an event or offering your
-                  services, our platform connects you to the right people,
-                  resources, and opportunities — all in one place!
+                  Sign up now to become a volunteer and get the chance to work
+                  at exciting events across India instead of city. Whether
+                  you're looking to gain experience, explore the event industry,
+                  or simply be part of something big — this is your platform.
+                  Connect with event organizers, grow your skills, and be on the
+                  frontlines of amazing experiences!
                 </p>
                 {/* <p className="btn mt-5" style={{ cursor: "default" }}>
                   Boost Your Brand & Network
