@@ -29,22 +29,22 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
   // Disable right-click with warning message
-  // document.addEventListener('contextmenu', event => {
-  //   event.preventDefault();
-  //   alert("© All content is protected. Right-click is disabled.");
-  // });
+  document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+    alert("© All content is protected. Right-click is disabled.");
+  });
 
-  // // Disable inspect via keyboard shortcuts with warning
-  // document.onkeydown = function(e) {
-  //   if (
-  //     e.keyCode === 123 || // F12
-  //     (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I / Ctrl+Shift+J
-  //     (e.ctrlKey && e.keyCode === 85) // Ctrl+U
-  //   ) {
-  //     alert("© Developer tools access is restricted on this website.");
-  //     return false;
-  //   }
-  // };
+  // Disable inspect via keyboard shortcuts with warning
+  document.onkeydown = function(e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I / Ctrl+Shift+J
+      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+    ) {
+      alert("© Developer tools access is restricted on this website.");
+      return false;
+    }
+  };
 </script>
 
   </body>
