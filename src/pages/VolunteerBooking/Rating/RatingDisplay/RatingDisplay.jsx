@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import axiosInstance from "../../../../api/axiosInstance.jsx";
 
 const RatingDisplay = ({ artistId, refresh }) => {
   const [averageRating, setAverageRating] = useState(null);
 
   const fetchRating = async () => {
     try {
-     const res = await axios.get(`http://localhost:5000/api/volunteers/${artistId}/rating`);
+     const res = await axiosInstance.get(`api/volunteers/${artistId}/rating`);
 console.log("API Response: ", res.data);
 setAverageRating(res.data.averageRating || 0);
 

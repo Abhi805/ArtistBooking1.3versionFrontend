@@ -18,7 +18,7 @@ const VolunteerBooking = () => {
   const fetchVolunteers = async () => {
     try {
       const res = await axiosInstance.get("api/volunteers/fetch");
-console.error("volunteer user id:", res.data.volunteers);
+      console.error("volunteer user id:", res.data);
       setVolunteers(res.data);
       console.log(res.data);
     } catch (err) {
@@ -127,9 +127,17 @@ console.error("volunteer user id:", res.data.volunteers);
                       Volunteer Type: {artist.category}
                     </h6>
                     <div className="text-center mt-2">
-                      <Link
+                      {/* <Link
                         className="btn btn-outline-danger text-white"
                         to={`/volunteers/${artist._id}`}
+                      >
+                        Contact Us
+                      </Link> */}
+                      <Link
+                        className="btn btn-outline-danger text-white"
+                        to={`/volunteers/${
+                          artist.userId?.username || artist.userId?._id
+                        }`}
                       >
                         Contact Us
                       </Link>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import axiosInstance from "../../../../api/axiosInstance.jsx";
 
 const RatingForm = ({ artistId, onRatingSubmitted }) => {
   const [rating, setRating] = useState(0);
@@ -12,14 +13,14 @@ const RatingForm = ({ artistId, onRatingSubmitted }) => {
     console.log({ artistId, stars: rating, comment });
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/volunteers/create",
+      await axiosInstance.post(
+        "api/volunteers/create",
         {
           artistId,
           stars: rating,
           comment,
         },
-        { withCredentials: true }
+      
       );
       setMessage("Rating submitted successfully!");
       if (onRatingSubmitted) onRatingSubmitted();

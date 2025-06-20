@@ -35,7 +35,7 @@ import TopNavbar from "./components/TopNavbar/TopNavbar";
 import ComingPage from "./components/ComingPage/ComingPage";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
 import ContactWidget from "./components/ContactWidget/ContactWidget";
-import Services from "./pages/Services/Services";  
+import Services from "./pages/Services/Services";
 import EventRental from "./pages/EventRental/EventRental";
 
 import EventPlanner from "./pages/EventPlanner/EventPlanner";
@@ -149,18 +149,18 @@ function App() {
           <Route path="/Registration" element={<VendorRegistration />} />
           <Route path="/ArtistBooking" element={<ArtistBooking />} />
           <Route path="/RentalDetail" element={<RentalDetail />} />
-          <Route path="/PlannerProfile" element={<PlannerProfile />} />
+           <Route path="/PlannerProfile" element={<PlannerProfile />} />
           <Route path="/EventPlannerForm" element={<EventPlannerForm />} />
-
-          <Route path="/volunteers/:id" element={<VolunteerProfile />} />
+          <Route path="/volunteers/:username" element={<VolunteerProfile />} />
+          {/* <Route path="/volunteers/:id" element={<VolunteerProfile />} /> */}
           <Route path="/VenueBooking" element={<VenueBooking />} />
-
+ 
           <Route path="/EventRentalForm" element={<EventRentalForm />} />
           <Route path="/artist/:id" element={<ArtistDetail2 />} />
           <Route path="/IndoreCity" element={<IndoreCity />} />
           <Route path="/BhopalCity" element={<BhopalCity />} />
           <Route path="/GwaliorCity" element={<GwaliorCity />} />
-          <Route path="/UjjainCity" element={<UjjainCity />} />
+          <Route path="/UjjainCity" element={<UjjainCity />} /> 
           <Route path="/EditArtistProfile" element={<EditArtistProfile />} />
           <Route path="/newsblog" element={<NewsBlog />} />
           <Route path="/EventBookingModel1" element={<EventBookingModel1 />} />
