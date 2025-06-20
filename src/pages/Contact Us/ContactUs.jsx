@@ -105,7 +105,7 @@ const ContactUs = () => {
               },
               {
                 title: "Email",
-                text: "info@gnvindia.in",
+                text: "info@gnvindia.com",
                 link: "mailto:info@gnvindia.in",
                 cardClass: "card-email",
               },
@@ -161,20 +161,17 @@ const ContactUs = () => {
                 {[
                   {
                     name: "instagram",
-                    link: "https://www.instagram.com/gnvindiaevents/",
+                    link: "https://www.instagram.com/gnvindia_ent/",
                   },
                   {
                     name: "facebook",
-                    link: "https://www.facebook.com/gnvindiaevents",
+                    link: "https://www.facebook.com/share/19jPBM2Cis/",
                   },
                   {
                     name: "youtube",
-                    link: "https://www.youtube.com/@gnvindia7",
+                    link:"https://www.youtube.com/@GNVIndiaentertaiment",
                   },
-                  {
-                    name: "linkedin",
-                    link: "https://www.linkedin.com/company/gnv-india-entertainment/",
-                  },
+
                 ].map((icon, idx) => (
                   <a
                     href={icon.link}

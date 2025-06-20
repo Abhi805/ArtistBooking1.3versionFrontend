@@ -4,7 +4,7 @@ import { Pagination, Autoplay, Parallax } from "swiper/modules";
 import image1 from "../../assets/heroartist.png";
 import image2 from "../../assets/herovenue.png";
 import image3 from "../../assets/herorental.png";
-import image4 from "../../assets/heroevent.png";
+import image4 from "../../assets/Web.png";
 import image5 from "../../assets/herovolunteer.png";
 
 import "./HeroSection.css";

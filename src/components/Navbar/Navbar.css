@@ -434,7 +434,23 @@ body.top-navbar-hidden .navbar {
 
  */
 
+.nav-link {
+  font-weight: 500;
+  padding: 2px 2px;
+  color: #333 !important;
+  transition: all 0.3s ease;
+}
 
+.nav-link:hover {
+  color: #d32f2f !important;
+  background-color: rgba(211, 47, 47, 0.05);
+  border-radius: 4px;
+}
+
+.nav-link.active {
+  /* font-weight: bold; */
+  color: #d32f2f !important;
+}
 
  .bx-menu {
   display: none;

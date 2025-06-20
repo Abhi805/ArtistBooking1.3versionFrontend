@@ -5,7 +5,7 @@ import volunteer from './assets3/volunteer.jpeg';
 import Bookartists from './assets3/Bookartists.jpeg';
 import renteventequipment from './assets3/renteventequipment.jpeg';
 import eventplanner from './assets3/planner.jpeg';
-import bookeventvenue from './assets3/bookeventvenue.webp';
+import bookeventvenue from './assets3/venue.jpg';
 import { Link } from "react-router-dom";
 
 export default function BookCard() {

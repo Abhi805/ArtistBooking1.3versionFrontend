@@ -131,7 +131,7 @@ const VolunteerBooking = () => {
                         className="btn btn-outline-danger text-white"
                         to={`/volunteers/${artist._id}`}
                       >
-                        Book Now
+                        Contact Us
                       </Link>
                     </div>
                   </div>

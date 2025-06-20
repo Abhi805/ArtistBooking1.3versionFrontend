@@ -2,56 +2,35 @@ import React from "react";
 import "./OnlineBooking.css";
 
 const categories = [
-  "Book Actor/Actress",
-  "Book Anchor",
-  "Book Belly Dancer",
-  "Book Bhangra Group",
+    "Hire artist for event",
+    "Book celebrity for event",
+    "Artist booking agency",
+    "Live band booking for weddings",
+    "DJ booking online",
 
-  "Book Bollywood Dance",
-  "Book Celebrity",
-  "Book Stand-up Comedian",
-  "Book Dancer",
+    "Event planner near me",
+    "Event management company",
+    "Best event planners in [City]",
+    "Corporate event organizers",
+    "Wedding and party planners",
 
-  "Book Dancetroupe",
-  "Book DJ",
-  "Book Duo, Trio Band",
-  "Book Equipments",
-  "Live Show Orgainser",
+     "Event volunteers for hire",
+    "Volunteer staffing for events",
+    "Hire crew for events",
+    "Trained event staff",
+    "Event support manpower",
 
   "Book Fire Dancer",
   "Virtual Event Orgainser",
   "Award Ceremony orgainser",
   "Technology Event Planner",
 
-  "Book Singer",
-  "Book Artist",
-  "Event Production",
-  "Sports Event Planner",
+      "Book event venue online",
+    "Wedding halls near me",
+    "Banquet halls in [City]",
+    "Conference venues for corporate events",
+    "Hotel booking for events"
 
-  "Winter carnival event organiser",
-  "Virtual Event Orgainser",
-  "Training session organiser",
-  "Trade shows Event Planner",
-
-  "Team Building Activities Planner",
-  "Talent hunt event organiser",
-  "Startup event planner",
-  "standup comedy event planner",
-
-  "Company Event Planner",
-  "Social welfare event organiser",
-  "Seminar Organiser",
-  "Social Event Organiser",
-
-  "Social welfare event organiser",
-  "Sales Meet Event Planner",
-  "NGO Event Organiser",
-  "Investment event organiser",
-
-  "PM rally event organiser",
-  "Live music show organiser",
-  "Dealer Meet Organiser",
-  "Corporate Tour Planner",
 ];
 
 const OnlineBooking = () => {
@@ -59,9 +38,9 @@ const OnlineBooking = () => {
     <section className="online-booking-section py-5">
       <div className="container text-center">
         <h2 className="booking-title">
-          Be a Part of the{" "}
+          Step Into the Future of Events –{" "}
           <span style={{ color: "red" }}>
-            Biggest and Most Memorable Events
+             Join the Largest Digital Platform
           </span>
         </h2>
         <p className="booking-subtitle mb-4">

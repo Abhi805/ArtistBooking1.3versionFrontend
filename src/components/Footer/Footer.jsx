@@ -31,9 +31,9 @@ const Footer = () => {
               Phone: <a href="tel:+919691474449">+91-9691474449</a>
             </p>
             <p>
-              Email: <a href="mailto:events@gnvindia.in">info@gnvindia.in</a>
+              Email: <a href="mailto:events@gnvindia.in">info@gnvindia.com</a>
             </p>
-            <p>Office Time: 10:00 AM – 6:00 PM (Mon to Sat)</p>
+
           </div>
 
           <div className="col-md-4 mb-4">
