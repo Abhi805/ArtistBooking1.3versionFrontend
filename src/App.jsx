@@ -61,6 +61,7 @@ import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
 import VenueBooking from "./VenueBooking/VenueBooking";
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
+import VolunteerRegis from "./components/RegisterPage/VolunteerRegis.jsx";
 function App() {
   return (
     <>
@@ -143,6 +144,8 @@ function App() {
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/VolunteerRegis" element={<VolunteerRegis/>} />
+
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
