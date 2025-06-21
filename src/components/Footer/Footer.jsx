@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h5>Address</h5>
             <p>
-              GNV India Entertainment Shop No.5, 3rd Floor,Plot no. 53,Shree Jee
+              GNV India Entertainment Shop No.5, 3rd Floor,Plot no. 53,ShreeJee
               Avanue,Scheme no. 53,
               <br />
               Vijay Nagar indore, Madhya Pradesh, India

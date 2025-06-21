@@ -1,0 +1,309 @@
+/* VolunteerRegis.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f8f9fa, #e0f7fa);
+}
+
+.form-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #de0c0c;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-row label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="number"],
+.form-row input[type="file"],
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.profile-preview {
+  margin-top: 10px;
+}
+
+.profile-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.phone-otp-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phone-input {
+  width: 100%;
+  max-width: 100%;
+}
+/* Wrap district section into a neat card box */
+.district-card {
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px 20px;
+  max-height: 300px; /* limit height */
+  overflow-y: auto;  /* scroll if too long */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Keep the heading styled */
+.district-card h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Grid layout for checkboxes */
+.district-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+}
+
+/* Style each label */
+.district-checkboxes label {
+  display: flex;
+  align-items: center;
+  min-width: 120px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+  align-self: start;
+}
+
+button:hover {
+  background-color: #2c80b4;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+  margin: 0;
+}
+
+ul li {
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+.gallery-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .phone-otp-row button {
+    width: 100%;
+  }
+  .gallery-thumb {
+    width: 80px;
+    height: 80px;
+  }
+}
+.submit {
+  grid-column: 1 / -1; /* Full width across columns */
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.submit button {
+  padding: 12px 30px;
+  font-size: 16px;
+  background-color: #de0c0c;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit button:hover {
+  background-color: #000000;
+}
+
+
+
+
+/* Main CSS remains unchanged above */
+
+/* ✨ Add this updated media query at the END of your CSS file */
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr; /* stack inputs in one column */
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .phone-otp-row button {
+    width: 100%;
+  }
+
+  .gallery-thumb {
+    width: 80px;
+    height: 80px;
+  }
+
+  .district-card {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 15px;
+  }
+
+  .district-checkboxes label {
+    min-width: 100px;
+    font-size: 13px;
+  }
+
+  .submit {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .submit button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+    margin: 20px 10px;
+  }
+
+  .form-container h2 {
+    font-size: 22px;
+  }
+
+  .form-row input[type="text"],
+  .form-row input[type="email"],
+  .form-row input[type="number"],
+  .form-row input[type="file"],
+  .form-row textarea,
+  .form-row select {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .district-card h4 {
+    font-size: 14px;
+  }
+
+  .district-checkboxes {
+    gap: 6px 15px;
+  }
+
+  .district-checkboxes label {
+    min-width: 90px;
+    font-size: 12.5px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .submit button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  ul li {
+    font-size: 14px;
+  }
+  button {
+    font-size: 13px;
+    padding: 8px 14px;
+    width: auto;
+    min-width: 120px;
+    max-width: 90%;
+    align-self: center;
+  }
+
+  .submit button {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: auto;
+    min-width: 130px;
+    max-width: 90%;
+    align-self: center;
+  }
+}
+
