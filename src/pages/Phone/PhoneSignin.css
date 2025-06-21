@@ -1,0 +1,35 @@
+.phone-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.phone-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.phone-input-container {
+  width: 100%;
+}
+
+.phone-input {
+  width: 100% !important;
+  height: 45px;
+  font-size: 16px;
+}
+
+.phone-button {
+  border: none;
+}
+
+.phone-display {
+  margin-top: 15px;
+  color: #555;
+  text-align: center;
+}

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axiosInstance from "../../api/axiosInstance.jsx";
+import PhoneSignin from "../Phone/PhoneSignin.jsx";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -323,6 +324,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <PhoneSignin />
     </section>
   );
 };
