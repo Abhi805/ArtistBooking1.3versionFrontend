@@ -309,8 +309,8 @@ function VolunteerProfile() {
       } catch (err) {
         console.error("Error fetching volunteer by username:", err);
       }
-    };
-
+    };           
+   
     fetchVolunteer();
   }, [username]);
 

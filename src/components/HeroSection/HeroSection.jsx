@@ -264,7 +264,7 @@ export default function HeroSection() {
 
                       <div className=" contact-btn ">
                         <Link
-                          to="/VolunteerBooking"
+                          to="/Volunteer"
                           className="custom-btn primary-btn"
                         >
                           Explore Now <span>&rarr;</span>
