@@ -26,8 +26,8 @@ function VolunteerProfile() {
       } catch (err) {
         console.error("Error fetching volunteer:", err);
       }
-    };
-
+    };           
+   
     fetchVolunteer();
   }, [id]);
 

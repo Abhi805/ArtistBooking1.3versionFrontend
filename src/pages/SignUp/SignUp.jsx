@@ -51,6 +51,53 @@ const Signup = () => {
       return;
     }
 
+    // FRONTEND VALIDATIONS
+    if (formData.fullName.trim().length < 3) {
+      toast.error("Full Name must be at least 3 characters", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    // FRONTEND VALIDATIONS
+    if (formData.fullName.trim().length < 3) {
+      toast.error("Full Name must be at least 3 characters", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Enter a valid email address", { position: "top-center" });
+      return;
+    }
+
+    const mobileRegex = /^[6-9]\d{9}$/;
+    if (!mobileRegex.test(formData.mobileNumber)) {
+      toast.error("Enter a valid 10-digit mobile number", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match", { position: "top-center" });
+      return;
+    }
+
+    if (!formData.role) {
+      toast.error("Please select a role", { position: "top-center" });
+      return;
+    }
+
     try {
       setIsLoading(true);
 
@@ -90,7 +137,20 @@ const Signup = () => {
         }
       }
     } catch (err) {
-      toast.error(err.response?.data?.msg || "Signup failed", {
+      const rawError =
+        err.response?.data?.error || err.response?.data?.msg || "Signup failed";
+
+      // Mobile number validation specific error detection
+      let userFriendlyError = rawError;
+      if (rawError.includes("mobileNumber")) {
+        userFriendlyError = "Mobile number is invalid (Must be 10 digits)";
+      } else if (rawError.includes("username")) {
+        userFriendlyError = "Username is invalid or already taken";
+      }
+
+      console.log("Register Error:", err.response?.data);
+
+      toast.error(userFriendlyError, {
         position: "top-center",
       });
     } finally {
@@ -139,7 +199,7 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
-                   <div className="mb-3">
+                  <div className="mb-3">
                     <input
                       type="text"
                       name="username"
