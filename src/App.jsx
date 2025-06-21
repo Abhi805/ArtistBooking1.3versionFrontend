@@ -312,15 +312,31 @@
 
 
 // App.jsx
-import React from "react";
-import ComingSoon from "./pages/ComingSoon/ComingSoon.jsx";
+// import React from "react";
+// import ComingSoon from "./pages/ComingSoon/ComingSoon.jsx";
 
+// const App = () => {
+//   return (
+//     <>
+//       <ComingSoon />
+//     </>
+//   );
+// };
+
+// export default App;
+
+
+
+import React from 'react'
+import PhoneSignin from './pages/Phone/PhoneSignin.jsx'
 const App = () => {
   return (
-    <>
-      <ComingSoon />
-    </>
+    <div>
+      <h1>Hello from App</h1>
+      <PhoneSignin />
+    </div>
   );
 };
 
-export default App;
+export default App; // ✅ default export
+

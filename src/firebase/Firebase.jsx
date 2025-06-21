@@ -1,23 +1,34 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyArKnvOM4LPac4mResFdo8YzzS1d6RHCzo",
   authDomain: "gnvproject-5c8bd.firebaseapp.com",
   projectId: "gnvproject-5c8bd",
-  storageBucket: "gnvproject-5c8bd.firebasestorage.app",
+  storageBucket: "gnvproject-5c8bd.appspot.com", // ✅ Fix: .app → .appspot.com
   messagingSenderId: "150289189690",
   appId: "1:150289189690:web:fa48aef2e03330e0845e03",
   measurementId: "G-5640LCY88J"
 };
 
+// ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// ✅ Initialize analytics
+const analytics = getAnalytics(app);
+
+// ✅ Initialize auth
 const auth = getAuth(app);
 
-export { auth, RecaptchaVerifier, signInWithPhoneNumber };
+// ✅ Set test mode for local only (optional)
+if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+  // This is OPTIONAL and should not be used in production!
+  try {
+    auth.settings.appVerificationDisabledForTesting = true;
+  } catch (err) {
+    console.warn("⚠️ Unable to set appVerificationDisabledForTesting", err);
+  }
+}
+
+export { auth };
