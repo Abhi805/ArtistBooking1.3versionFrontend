@@ -3,7 +3,7 @@ import "./ComingSoon.css";
 
 function ComingPage() {
   // Fixed deadline - 15th July 2025
-  const deadline = "2025-06-22T19:00:00";
+  const deadline = "2025-06-25T19:00:00";
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 

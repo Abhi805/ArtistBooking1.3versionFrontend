@@ -1,184 +1,117 @@
-
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "./Login.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // For navigation
+import axiosInstance from "../../api/axiosInstance"; // Update path as needed
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Spinner } from "react-bootstrap";
-import axiosInstance from "../../api/axiosInstance.jsx";
+import "./Login.css"; // Your custom CSS if needed
 
-const Login = () => {
-  const navigate = useNavigate();
+const LoginForm = () => {
+  const [loginData, setLoginData] = useState({
+    loginId: "",
+    password: "",
+  });
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState(""); // new state
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // For redirecting to signup page
 
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
+  const handleChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
 
-    const savedEmail = localStorage.getItem("rememberEmail");
-    if (savedEmail) {
-      setEmail(savedEmail);
-      setRememberMe(true);
-    }
-  }, []);
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    let { loginId, password } = loginData;
+
+    if (!loginId || !password) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    // Check if loginId is a 10-digit mobile number, add +91 if missing
+    const isMobile = /^[0-9]{10}$/.test(loginId);
+    if (isMobile) {
+      loginId = `+91${loginId}`;
+    }
 
     try {
-      const res = await axiosInstance.post(
-        "api/auth/login",
-        { email, password, role },
-      );
+      setLoading(true);
+      const res = await axiosInstance.post("/api/twilio/login", {
+        loginId,
+        password,
+      });
 
-      if (rememberMe) {
-        localStorage.setItem("rememberEmail", email);
-      } else {
-        localStorage.removeItem("rememberEmail");
-      }
+      toast.success(res.data.msg || "Login successful");
+      // Optionally navigate to dashboard or home page
 
-      toast.success("Login successful!", { position: "top-center" });
-
-      const userRole = res.data.user.role;
-
+      // Wait for 2 seconds before navigating
       setTimeout(() => {
-        if (userRole === "other") {
-          navigate("/AdminDashboard");
-        } else if (userRole === "artist") {
-          navigate("/basicdetail");
-        } else if (userRole === "volunteer") {
-          navigate("/volunteerform");
-        } else {
-          navigate("/");
-        }
+        navigate("/MyDashBoard"); // Replace with your actual route
       }, 2000);
     } catch (err) {
-      toast.error(err.response?.data?.msg || "Login failed", {
-        position: "top-center",
-      });
+      const message = err.response?.data?.error || "Login failed";
+      toast.error(message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="login-section">
-      <ToastContainer />
-      <div className="container">
-        <div className="row align-items-center justify-content-center">
-          <div className="col-md-6" data-aos="fade-up">
-            <div className="card8 p-5 shadow-lg bg-white rounded-4">
-              <div className="card-body">
-                <h2 className="login-title mb-2 text-center">Welcome To GNVIndia</h2>
-                <p className="login-subtitle mb-4 text-center">
-                  Please enter your details
-                </p>
+    <form
+      onSubmit={handleLogin}
+      className="login-form mt-5 p-4 border rounded shadow"
+      style={{ maxWidth: "400px", margin: "auto" }}
+    >
+      <h2 className="text-center mb-4">Login</h2>
 
-                <form onSubmit={handleSubmit}>
-                  {/* Role Selection */}
-                  <div className="mb-3">
-                    <label className="form-label">Select Role</label>
-                    <select
-                      className="form-select"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                      required
-                    >
-                      <option value="">Choose Role</option>
-                      {/* <option value="admin">other</option> */}
-                      {/* <option value="artist">Artist</option> */}
-                      <option value="volunteer">Volunteer</option>
-                     {/* <option value="user">User</option>  */}
-                    </select>
-                  </div>
+      <input
+        type="text"
+        name="loginId"
+        placeholder="Mobile (+91) / Email / Username"
+        value={loginData.loginId}
+        onChange={handleChange}
+        required
+        className="form-control mb-3"
+      />
 
-                  {/* Email Field */}
-                  <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={loginData.password}
+        onChange={handleChange}
+        required
+        className="form-control mb-3"
+      />
 
-                  {/* Password Field */}
-                  <div className="mb-3 position-relative">
-                    <label className="form-label">Password</label>
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      className="form-control"
-                      placeholder="Enter password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                    <span
-                      onClick={() => setShowPassword(!showPassword)}
-                      style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "38px",
-                        cursor: "pointer",
-                        userSelect: "none",
-                        color: "#555",
-                      }}
-                      title={showPassword ? "Hide Password" : "Show Password"}
-                    >
-                      <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                    </span>
-                  </div>
+      <button
+        type="submit"
+        disabled={loading}
+        className="btn btn-primary w-100 mb-2"
+      >
+        {loading ? "Logging in..." : "Login"}
+      </button>
 
-                  {/* Remember Me */}
-                  <div className="mb-3 form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="rememberMeCheck"
-                      checked={rememberMe}
-                      onChange={() => setRememberMe(!rememberMe)}
-                    />
-                    <label className="form-check-label" htmlFor="rememberMeCheck">
-                      Remember Me
-                    </label>
-                  </div>
+      <p style={{ textAlign: "center" }}>
+        Don't have an account?{" "}
+        <button
+          type="button"
+          onClick={() => navigate("/signup")}
+          className="btn btn-link p-0"
+          style={{
+            color: "#007bff",
+            textDecoration: "underline",
+            background: "none",
+            border: "none",
+          }}
+        >
+          Sign Up
+        </button>
+      </p>
 
-                  {/* Submit */}
-                  <div className="d-grid mb-3">
-                    <button
-                      type="submit"
-                      className="btn btn-primary login-btn"
-                      disabled={loading}
-                    >
-                      {loading ? <Spinner animation="border" size="sm" /> : "Sign in"}
-                    </button>
-                  </div>
-
-                  {/* Link to Signup */}
-                  <p className="text-center mb-0">
-                    Don’t have an account? <Link to="/signup">Sign up</Link>
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <ToastContainer position="top-right" autoClose={3000} />
+    </form>
   );
 };
 
-export default Login;
+export default LoginForm;
