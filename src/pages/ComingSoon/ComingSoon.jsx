@@ -33,7 +33,7 @@ function ComingPage() {
   return (
     <div className="coming-soon"> 
       <h1>Coming Soon </h1>
-      <p>We are launching on 24th Jun 2025</p>
+      <p>We are launching on 25th Jun 2025</p>
       <div className="counter">
         <div>
           <span>{timeLeft.days}</span>days
