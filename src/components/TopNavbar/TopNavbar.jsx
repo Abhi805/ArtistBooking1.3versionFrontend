@@ -1,11 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import "./TopNavbar.css";
 import {
   FaFacebookF,
   FaInstagram,
   FaYoutube,
-  FaLinkedinIn,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
@@ -15,6 +13,7 @@ const TopNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [role, setRole] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,12 +36,12 @@ const TopNavbar = () => {
     const checkLoginStatus = async () => {
       try {
         const res = await axiosInstance.get("api/auth/check-auth");
-        console.log("Auth Check Response:", res.data);
-
         const loggedIn = res.data.loggedIn;
         const uid = res.data.user?.id;
+        const userRole = res.data.user?.role;
         setIsLoggedIn(loggedIn);
         setUserId(uid);
+        setRole(userRole);
       } catch (error) {
         console.error("Login Check Error:", error);
         setIsLoggedIn(false);
@@ -67,7 +66,7 @@ const TopNavbar = () => {
   return (
     <div className={`top-navbar py-2 px-3 ${isVisible ? "show" : "hide"}`}>
       <div className="container-fluid d-flex flex-wrap justify-content-between align-items-center">
-        
+
         {/* ✅ Left Contact Info */}
         <div className="d-flex align-items-center gap-3 flex-wrap contact-info text-dark">
           <span>
@@ -114,7 +113,6 @@ const TopNavbar = () => {
             <FaYoutube className="icon" /> YouTube
           </a>
 
-
           {/* ✅ Account Dropdown */}
           <div className="dropdown position-relative">
             <button
@@ -142,11 +140,15 @@ const TopNavbar = () => {
                       Logout
                     </button>
                   </li>
-                  <li>
-                    <Link className="dropdown-item" to="/MyDashBoard">
-                      My Dashboard
-                    </Link>
-                  </li>
+
+                  {/* ✅ Dashboard only if role !== 'user' */}
+                  {(role !== "user" || role === "unassigned") && (
+                    <li>
+                      <Link className="dropdown-item" to="/MyDashBoard">
+                        My Dashboard
+                      </Link>
+                    </li>
+                  )}
                 </>
               )}
 
@@ -175,12 +177,19 @@ const TopNavbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link
+                      <button
                         className="dropdown-item"
-                        to="/login?redirect=volunteer"
+                        onClick={() => {
+                          if (isLoggedIn) {
+                            navigate("/MyDashBoard");
+                          } else {
+                            navigate("/login?redirect=volunteer");
+                          }
+                        }}
+                        style={{ background: "none", border: "none", padding: 0 }}
                       >
                         Become a Volunteer
-                      </Link>
+                      </button>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/EventPlanner">
