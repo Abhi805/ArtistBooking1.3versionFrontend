@@ -42,7 +42,7 @@ const Footer = () => {
               GNV India Entertainment Shop No.5, 3rd Floor,Plot no. 53,ShreeJee
               Avanue,Scheme no. 53,
               <br />
-              Vijay Nagar indore, Madhya Pradesh, India
+              Vijay Nagar Indore, Madhya Pradesh, India
             </p>
           </div>
   

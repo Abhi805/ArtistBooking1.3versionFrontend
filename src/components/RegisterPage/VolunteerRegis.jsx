@@ -3,10 +3,6 @@ import "./VolunteerRegis.css";
 import districtMap from "./data/districtMap";
 import { IoAddCircleOutline } from "react-icons/io5";
 
-
-
-
-
 const VolunteerRegis = () => {
   const [skills, setSkills] = useState([]);
   const [newSkill, setNewSkill] = useState("");

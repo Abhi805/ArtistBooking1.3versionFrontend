@@ -169,6 +169,9 @@
 
 import React, { useState, useEffect } from "react";
 import "./EventPlanner.css";
+import "../ComingSoon/ComingSoon.css"
+
+
 
 function EventPlanner() {
   // Fixed deadline - 15th July 2025
@@ -217,6 +220,7 @@ function EventPlanner() {
           <span>{timeLeft.seconds}</span>seconds
         </div>
       </div>
+
     </div>
   );
 }

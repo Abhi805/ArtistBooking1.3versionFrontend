@@ -5,7 +5,7 @@ import volunteer from '../Services/volunteer.jpeg';
 import bookArtists from '../Services/Bookartists.jpeg';
 import rentEquipment from '../Services/renteventequipment.jpeg';
 import planner from '../Services/planner.jpeg';
-import bookVenue from '../Services/bookeventvenue.webp';
+import bookVenue from '../Services/venue.jpg';
 import { Link } from "react-router-dom";
 
 const services = [
@@ -31,7 +31,7 @@ const services = [
     img: planner,
     title: "Hire Event Planners",
     desc: "From concept to celebration — we plan it all. GNV India Entertainment specializes in curating unforgettable experiences with meticulous planning, creative themes, and flawless execution. Whether it’s a wedding, corporate event, concert, or private party, our planners handle everything — venue, vendors, design, logistics, and guest management — so you enjoy your event stress-free.",
-    link: "/ComingPage"
+    link: "/EventPlanner"
   },
   {
     img: bookVenue,
