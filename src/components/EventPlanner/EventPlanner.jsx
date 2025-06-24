@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./EventPlanner.css";
 import ep1 from "../EventPlanner/dna.png";
 import ep2 from "../EventPlanner/emgi.png";
-import ep3 from "../EventPlanner/logoo.png";
+import ep3 from "../EventPlanner/logo.png";
 import ep4 from "../EventPlanner/percept.png";
-import ep5 from "../EventPlanner/seven.jpg";
+import ep5 from "../EventPlanner/seven.png";
 import ep6 from "../EventPlanner/showtime.png";
 import { Link } from "react-router-dom";
 

@@ -32,7 +32,7 @@ export default function BookCard() {
       img: volunteer,
       title: "Book Volunteer",
       btn: "Book Now",
-      link: "/VolunteerBooking"
+      link: "/Volunteer"
     },
         {
       img: renteventequipment,

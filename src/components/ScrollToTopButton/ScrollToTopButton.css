@@ -1,11 +1,11 @@
 .scroll-to-top-btn {
   position: fixed;
   bottom: 40px;
-  right: 30px;
+  right: 25px;
   background: linear-gradient(45deg, #cd211d, #e95200);
   color: white;
   border: none;
-  padding: 12px 14px;
+  padding: 10px 14px;
   font-size: 1.2rem;
   border-radius: 50%;
   cursor: pointer;

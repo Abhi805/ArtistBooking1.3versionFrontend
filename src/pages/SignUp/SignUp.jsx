@@ -1,332 +1,258 @@
-import React, { useState, useEffect } from "react";
-
-import "./Signup.css";
-import { Link, useNavigate } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
-import PhoneSignin from "../Phone/PhoneSignin.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import "./Signup.css";
 
-const Signup = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
-
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
+const SignupForm = () => {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    dob: "",
+    gender: "",
     username: "",
-    mobileNumber: "",
     password: "",
     confirmPassword: "",
-    role: "", // 👈 Role added
+    mobile: "+91",
+    otp: "",
+    email: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [otpSent, setOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [resendTimer, setResendTimer] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    const newErrors = { ...errors };
+
+    if (name === "username" && value.length < 4) {
+      newErrors.username = "Username must be at least 4 characters";
+    } else {
+      delete newErrors.username;
+    }
+
+    if (name === "email" && value && !/^\S+@\S+\.\S+$/.test(value)) {
+      newErrors.email = "Invalid email address";
+    } else {
+      delete newErrors.email;
+    }
+
+    if (name === "password" && value.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    } else {
+      delete newErrors.password;
+    }
+
+    if (name === "confirmPassword" && value !== form.password) {
+      newErrors.confirmPassword = "Passwords do not match";
+    } else {
+      delete newErrors.confirmPassword;
+    }
+
+    setErrors(newErrors);
   };
 
-  const handleSubmit = async (e) => {
+  const isOtpButtonDisabled = () => {
+    const { firstName, lastName, dob, gender, username, mobile } = form;
+    return (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !dob ||
+      !gender ||
+      !username.trim() ||
+      !mobile.trim() ||
+      mobile.trim().length < 13
+    );
+  };
+
+  const getOtpDisabledReason = () => {
+    if (!form.firstName.trim()) return "First name is required";
+    if (!form.lastName.trim()) return "Last name is required";
+    if (!form.dob) return "Date of birth is required";
+    if (!form.gender) return "Gender is required";
+    if (!form.username.trim()) return "Username is required";
+    if (!form.mobile.trim() || form.mobile.trim().length < 13)
+      return "Valid mobile number is required";
+    return "";
+  };
+
+  const startResendTimer = () => {
+    setResendTimer(30);
+    const interval = setInterval(() => {
+      setResendTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  const sendOtp = async () => {
+    if (isOtpButtonDisabled()) {
+      toast.error(getOtpDisabledReason());
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await axiosInstance.post("/api/twilio/send-otp", {
+        mobile: form.mobile,
+        username: form.username,
+        email: form.email,
+      });
+      toast.success(res.data.message);
+      setOtpSent(true);
+      startResendTimer();
+    } catch (err) {
+      toast.error(err.response?.data?.error || "Failed to send OTP");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match", { position: "top-center" });
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "dob",
+      "gender",
+      "username",
+      "password",
+      "confirmPassword",
+      "mobile",
+      "otp",
+    ];
+
+    const isEmptyField = requiredFields.some(
+      (key) => !form[key] || form[key].trim() === ""
+    );
+
+    if (isEmptyField) {
+      toast.error("Please fill in all required fields.");
       return;
     }
 
-    if (!formData.role) {
-      toast.error("Please select a role", { position: "top-center" });
+    if (Object.keys(errors).length > 0) {
+      toast.error("Please correct the errors above.");
       return;
     }
 
-    // FRONTEND VALIDATIONS
-    if (formData.fullName.trim().length < 3) {
-      toast.error("Full Name must be at least 3 characters", {
-        position: "top-center",
-      });
-      return;
-    }
-
-    // FRONTEND VALIDATIONS
-    if (formData.fullName.trim().length < 3) {
-      toast.error("Full Name must be at least 3 characters", {
-        position: "top-center",
-      });
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Enter a valid email address", { position: "top-center" });
-      return;
-    }
-
-    const mobileRegex = /^[6-9]\d{9}$/;
-    if (!mobileRegex.test(formData.mobileNumber)) {
-      toast.error("Enter a valid 10-digit mobile number", {
-        position: "top-center",
-      });
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      toast.error("Password must be at least 6 characters", {
-        position: "top-center",
-      });
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match", { position: "top-center" });
-      return;
-    }
-
-    if (!formData.role) {
-      toast.error("Please select a role", { position: "top-center" });
-      return;
-    }
-
+    setLoading(true);
     try {
-      setIsLoading(true);
+      // Step 1: Register user
+      const res = await axiosInstance.post("/api/twilio/register", form);
+      // toast.success(res.data.message || "Signup successful");
 
-      // Step 1: Register
-      const registerRes = await axiosInstance.post(
-        "api/auth/register",
-        formData
-      );
-
-      if (registerRes.status === 201) {
-        toast.success("Signup successful! Logging you in...", {
-          position: "top-center",
-          autoClose: 2000,
-        });
-
-        // Step 2: Auto-login
-        const loginRes = await axiosInstance.post("api/auth/login", {
-          email: formData.email,
-          password: formData.password,
-        });
-
-        if (loginRes.status === 200) {
-          setTimeout(() => {
-            const userRole = loginRes.data?.user?.role;
-            if (userRole === "artist") {
-              navigate("/basicdetail");
-            } else if (userRole === "volunteer") {
-              navigate("/volunteerform");
-            } else {
-              navigate("/");
-            }
-          }, 2000);
-        } else {
-          toast.error("Auto login failed. Please login manually.", {
-            position: "top-center",
-          });
-        }
-      }
-    } catch (err) {
-      const rawError =
-        err.response?.data?.error || err.response?.data?.msg || "Signup failed";
-
-      // Mobile number validation specific error detection
-      let userFriendlyError = rawError;
-      if (rawError.includes("mobileNumber")) {
-        userFriendlyError = "Mobile number is invalid (Must be 10 digits)";
-      } else if (rawError.includes("username")) {
-        userFriendlyError = "Username is invalid or already taken";
-      }
-
-      console.log("Register Error:", err.response?.data);
-
-      toast.error(userFriendlyError, {
-        position: "top-center",
+      // Step 2: Auto login after signup
+      const loginRes = await axiosInstance.post("/api/twilio/login", {
+        loginId: form.username || form.mobile || form.email,
+        password: form.password,
       });
+
+      toast.success("Signup and Auto login successful");
+
+      // Step 3: Navigate after 2 seconds
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+
+    } catch (err) {
+      toast.error(err.response?.data?.error || "Signup/Login failed");
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <section className="signup-section">
-      <ToastContainer />
-      <div className="container">
-        <div className="row justify-content-center align-items-center mt-5">
-          <div className="col-lg-10">
-            <div className="row shadow-lg card-wrapper">
-              <div
-                className="col-md-6 bg-primary text-white p-5 text-center d-flex flex-column justify-content-center"
-                data-aos="fade-right"
-              >
-                <p className="mb-4 fs-1 fw-bold text-white ">
-                  Join as a Volunteer – Be a Part of Incredible Events!
-                </p>
-                <p className="fs-5 text-white ">
-                  Sign up now to become a volunteer and get the chance to work
-                  at exciting events across India instead of city. Whether
-                  you're looking to gain experience, explore the event industry,
-                  or simply be part of something big — this is your platform.
-                  Connect with event organizers, grow your skills, and be on the
-                  frontlines of amazing experiences!
-                </p>
-                {/* <p className="btn mt-5" style={{ cursor: "default" }}>
-                  Boost Your Brand & Network
-                </p> */}
-              </div>
+    <>
+      <form onSubmit={handleRegister} className="signup-form" style={{ maxWidth: "500px", margin: "auto" }}>
+        <h2 className="text-center">Signup</h2>
 
-              <div className="col-md-6 bg-white p-4" data-aos="fade-left">
-                <h2 className="text-center mb-4">Signup</h2>
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      name="fullName"
-                      className="form-control"
-                      placeholder="Name"
-                      required
-                      value={formData.fullName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      name="username"
-                      className="form-control"
-                      placeholder="username"
-                      required
-                      value={formData.username}
-                      onChange={handleChange}
-                    />
-                  </div>
+        <input name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} />
+        <input name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleChange} />
+        <input type="date" name="dob" value={form.dob} onChange={handleChange} />
+        <select name="gender" value={form.gender} onChange={handleChange}>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
 
-                  <div className="mb-3">
-                    <input
-                      type="email"
-                      name="email"
-                      className="form-control"
-                      placeholder="Email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
+        <input name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+        {errors.username && <small style={{ color: "red" }}>{errors.username}</small>}
 
-                  <div className="mb-3">
-                    <input
-                      type="tel"
-                      name="mobileNumber"
-                      className="form-control"
-                      placeholder="Mobile Number"
-                      required
-                      value={formData.mobileNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
+        <input name="email" placeholder="Email (optional)" value={form.email} onChange={handleChange} />
+        {errors.email && <small style={{ color: "red" }}>{errors.email}</small>}
 
-                  {/* 👇 Role Dropdown */}
-                  <div className="mb-3">
-                    <select
-                      name="role"
-                      className="form-select"
-                      required
-                      value={formData.role}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select Role</option>
-                      {/* <option value="artist">Artist</option> */}
-                      <option value="volunteer">Volunteer</option>
-                    </select>
-                  </div>
-
-                  <div className="mb-3 position-relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      className="form-control"
-                      placeholder="Password"
-                      required
-                      value={formData.password}
-                      onChange={handleChange}
-                    />
-                    <span
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="position-absolute"
-                      style={{
-                        right: "10px",
-                        top: "8px",
-                        cursor: "pointer",
-                        color: "#555",
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={showPassword ? faEyeSlash : faEye}
-                      />
-                    </span>
-                  </div>
-
-                  <div className="mb-4 position-relative">
-                    <input
-                      type={showConfirmPassword ? "text" : "password"}
-                      name="confirmPassword"
-                      className="form-control"
-                      placeholder="Confirm Password"
-                      required
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                    />
-                    <span
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                      className="position-absolute"
-                      style={{
-                        right: "10px",
-                        top: "8px",
-                        cursor: "pointer",
-                        color: "#555",
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={showConfirmPassword ? faEyeSlash : faEye}
-                      />
-                    </span>
-                  </div>
-
-                  <div className="d-grid mb-3">
-                    <button
-                      type="submit"
-                      className="btn btn-primary"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? "Creating..." : "Signup"}
-                    </button>
-                  </div>
-
-                  <p className="text-center mb-0">
-                    Already have an account? <Link to="/login">Sign in</Link>
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
+        <div style={{ position: "relative" }}>
+          <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+          <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: 10, top: "50%", cursor: "pointer" }}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
         </div>
-      </div>
-      <PhoneSignin />
-    </section>
+        {errors.password && <small style={{ color: "red" }}>{errors.password}</small>}
+
+        <div style={{ position: "relative" }}>
+          <input type={showConfirm ? "text" : "password"} name="confirmPassword" placeholder="Confirm Password" value={form.confirmPassword} onChange={handleChange} />
+          <span onClick={() => setShowConfirm(!showConfirm)} style={{ position: "absolute", right: 10, top: "50%", cursor: "pointer" }}>
+            {showConfirm ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+        {errors.confirmPassword && <small style={{ color: "red" }}>{errors.confirmPassword}</small>}
+
+        <input name="mobile" placeholder="+91..." value={form.mobile} onChange={handleChange} />
+
+        {!otpSent ? (
+          <>
+            <button type="button" onClick={sendOtp} disabled={isOtpButtonDisabled() || loading}>
+              {loading ? "Sending..." : "Send OTP"}
+            </button>
+            {isOtpButtonDisabled() && (
+              <small style={{ color: "red" }}>{getOtpDisabledReason()}</small>
+            )}
+          </>
+        ) : (
+          <>
+            <input name="otp" placeholder="Enter OTP" value={form.otp} onChange={handleChange} />
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button type="submit" disabled={loading}>
+                {loading ? "Registering..." : "Register"}
+              </button>
+              <button type="button" onClick={sendOtp} disabled={resendTimer > 0 || loading}>
+                {resendTimer > 0 ? `Resend OTP (${resendTimer}s)` : "Resend OTP"}
+              </button>
+            </div>
+          </>
+        )}
+
+        <p className="text-center mt-3">
+          Already have an account?{" "}
+          <button
+            type="button"
+            onClick={() => navigate("/login")}
+            className="btn btn-link p-0"
+            style={{ color: "#007bff", textDecoration: "underline", background: "none", border: "none" }}
+          >
+            Login
+          </button>
+        </p>
+      </form>
+
+      <ToastContainer position="top-right" autoClose={4000} />
+    </>
   );
 };
 
-export default Signup;
+export default SignupForm;

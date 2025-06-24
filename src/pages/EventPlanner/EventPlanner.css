@@ -1,4 +1,4 @@
-/* .artist-card {
+.artist-card {
   border: none;
   border-radius: 20px;
   overflow: hidden;
@@ -106,12 +106,10 @@
   .artist-card img {
     height: 250px !important;
   }
-}
+
 
 @media (min-width: 992px) {
   .artist-card img {
     height: 300px !important;
   }
 }
-=======
->>>>>>> 3b83cb33c22bbcbcb4bcccd979c4fffe839ed1bc */

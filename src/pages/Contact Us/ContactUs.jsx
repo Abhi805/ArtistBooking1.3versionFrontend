@@ -99,7 +99,7 @@ const ContactUs = () => {
             {[
               {
                 title: "Address",
-                text: "Shop No. 5, 3rd Floor, Plot No. 53, Shree Jee Avanue, Scheme No53, Vijay Nagar Indore 452011",
+                text: "Shop No. 5, 3rd Floor, Plot No. 53, ShreeJee Avanue, Scheme No. 53, Vijay Nagar Indore 452011",
                 link: "https://www.google.com/maps?q=Shop+No.+5,+3rd+Floor,+Plot+No.+53,+Shree+Jee+Avanue,+Scheme+No53,+Vijay+Nagar+Indore+452011",
                 cardClass: "card-address",
               },
