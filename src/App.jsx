@@ -36,10 +36,16 @@ import AdminArtistDashboard from "./AdminDashBoard/AdminArtistDashboard";
 import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
+<<<<<<< HEAD
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; 
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
 import ChooseRole from "./components/ChooseRole/ChooseRole.jsx";
+=======
+import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
+import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
+import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
+>>>>>>> ab0fa39723c520815bd7f39b7ae9ced791583110
 
 function App() {
   return (
@@ -123,7 +129,10 @@ function App() {
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
+<<<<<<< HEAD
           <Route path="/choose-role" element={<ChooseRole />} />
+=======
+>>>>>>> ab0fa39723c520815bd7f39b7ae9ced791583110
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />

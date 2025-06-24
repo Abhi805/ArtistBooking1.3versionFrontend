@@ -232,7 +232,6 @@ const LoginForm = () => {
           Sign Up
         </button>
       </p>
-
       <ToastContainer position="top-right" autoClose={3000} />
     </form>
   );
