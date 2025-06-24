@@ -28,6 +28,7 @@ const LoginForm = () => {
       return;
     }
 
+    // Check if loginId is a 10-digit mobile number, add +91 if missing
     const isMobile = /^[0-9]{10}$/.test(loginId);
     if (isMobile) {
       loginId = `+91${loginId}`;
@@ -62,7 +63,7 @@ const LoginForm = () => {
       style={{ maxWidth: "400px", margin: "auto" }}
     >
       <h2 className="text-center mb-4">Login</h2>
-      <label>Email</label>
+
       <input
         type="text"
         name="loginId"
@@ -72,7 +73,7 @@ const LoginForm = () => {
         required
         className="form-control mb-3"
       />
-      <label>Password</label>
+
       <input
         type="password"
         name="password"
@@ -107,7 +108,6 @@ const LoginForm = () => {
           Sign Up
         </button>
       </p>
-       {/* <a href="/forgot-password">Forgot Password?</a> */}
       <ToastContainer position="top-right" autoClose={3000} />
     </form>
   );

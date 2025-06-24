@@ -13,8 +13,8 @@ const ThankYou = () => {
       <p className="lead">Your volunteer profile has been submitted successfully.</p>
       {/* <p>Our team will review it and get back to you soon.</p> */}
 
-      <button className="btn btn-primary mt-4" onClick={() => navigate("/")}>
-        Go To Home Page
+      <button className="btn btn-primary mt-4" onClick={() => navigate("/MyDashBoard")}>
+        Go To Dashboard
       </button>
     </div>
   );

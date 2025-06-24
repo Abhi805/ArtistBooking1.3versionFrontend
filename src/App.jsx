@@ -32,17 +32,13 @@ import ContactUs from "./pages/Contact Us/ContactUs";
 import VolunteerBooking from "./pages/VolunteerBooking/VolunteerBooking";
 import { ScrollProvider } from "./components/ScrollTriger/ScrollTrigger";
 import NewsBlog from "./pages/NewsandBlog/NewsBlog";
-
 import AdminArtistDashboard from "./AdminDashBoard/AdminArtistDashboard";
 import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
-
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
-import VenueBooking from "./VenueBooking/VenueBooking.jsx";
-import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton.jsx";
 
 function App() {
   return (
@@ -54,7 +50,6 @@ function App() {
         <ScrollProvider>
           <SocialSidebar />
           <ContactWidget />
-          <ScrollToTopButton/>
         </ScrollProvider>
 
         <Routes>
@@ -130,7 +125,6 @@ function App() {
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />
-          <Route path="/Venuebooking" element={<VenueBooking />} />
           <Route path="/Registration" element={<VendorRegistration />} />
           <Route path="/ArtistBooking" element={<ArtistBooking />} />
           <Route path="/RentalDetail" element={<RentalDetail />} />
@@ -158,7 +152,7 @@ export default App;
 
 
 
-// App.jsx
+
 // import React from "react";
 // import ComingSoon from "./pages/ComingSoon/ComingSoon.jsx";
 

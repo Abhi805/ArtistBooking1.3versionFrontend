@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
 
@@ -9,7 +9,7 @@ const MyDashboardRedirect = () => {
     const checkUser = async () => {
       try {
         const res = await axiosInstance.get("api/auth/check-auth");
-        console.log("✅ Auth Response:", res.data); // Check auth response
+        console.log("✅ Auth Response:", res.data);
 
         const user = res.data.user;
 
@@ -21,18 +21,27 @@ const MyDashboardRedirect = () => {
           navigate("/user-dashboard");
         } else if (user.role === "volunteer") {
           console.log("🧑‍🤝‍🧑 Volunteer detected, fetching volunteer details...");
-          const volunteerRes = await axiosInstance.get(
-            `api/volunteers/by-user/${user.id}`
-          );
-          console.log("📦 Volunteer Data:", volunteerRes.data);
+          try {
+            const volunteerRes = await axiosInstance.get(
+              `api/volunteers/by-user/${user.id}`
+            );
+            const volunteerData = volunteerRes.data.volunteer;
 
-          const vid = volunteerRes.data.volunteer._id;
-          console.log("🆔 Volunteer ID:", vid);
-          navigate(`/volunteer/edit/${vid}`);
+            if (volunteerData) {
+              console.log("📦 Volunteer Data:", volunteerData);
+              navigate(`/volunteer/edit/${volunteerData._id}`);
+            } else {
+              console.log("🆕 No Volunteer Profile Found. Redirecting to Registration...");
+              navigate("/VolunteerForm");
+            }
+          } catch (volunteerErr) {
+            console.log("📭 No Volunteer Record Yet. Redirecting to Registration...");
+            navigate("/VolunteerForm");
+          }
         }
       } catch (err) {
         console.error("❌ Error in checkUser:", err);
-        navigate("/login");
+        navigate("/login"); // optional fallback
       }
     };
 
