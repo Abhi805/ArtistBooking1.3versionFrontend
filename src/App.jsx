@@ -39,6 +39,7 @@ import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
+import VenueBooking from "./VenueBooking/VenueBooking.jsx";
 
 function App() {
   return (
@@ -139,6 +140,7 @@ function App() {
           <Route path="/EditArtistProfile" element={<EditArtistProfile />} />
           <Route path="/newsblog" element={<NewsBlog />} />
           <Route path="/Volunteer" element={<VolunteerBooking />} />
+          <Route path="/VenueBooking" element={<VenueBooking />} /> 
         </Routes>
         <Footer />
       </Router>

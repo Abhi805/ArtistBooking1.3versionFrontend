@@ -1,3 +1,4 @@
+/* Volunteer Card Styles */
 .artist-card img {
   height: 200px;
   width: 100%;
@@ -30,10 +31,12 @@
   color: #333;
   margin-bottom: 5px;
 }
+
 .artist-card .text-muted {
   font-size: 0.85rem;
 }
 
+/* Rating badge */
 .rating-badge {
   position: absolute;
   top: 10px;
@@ -46,6 +49,7 @@
   font-size: 0.75rem;
 }
 
+/* Button Styles */
 .btn-outline-danger {
   border-radius: 50px;
   padding: 6px 18px;
@@ -60,6 +64,7 @@
   transform: scale(1.05);
 }
 
+/* Header */
 .venue-header {
   background: linear-gradient(45deg, #cd211d, #e95200);
   padding: 40px 0;
@@ -73,7 +78,36 @@
   color: white;
 }
 
-/* Search Box Styles */
+/* React Select Custom Styling */
+.css-13cymwt-control,  /* default container */
+.css-1pahdxg-control,  /* focused container */
+.css-1dimb5e-singleValue, 
+.css-qc6sy-singleValue {
+  background-color: white !important;
+  color: #333 !important;
+  border-radius: 8px !important;
+  border: 1px solid #ccc !important;
+  min-height: 40px;
+  font-size: 0.95rem;
+  box-shadow: none !important;
+}
+
+.css-1n7v3ny-option {
+  background-color: white !important;
+  color: #333 !important;
+  font-size: 0.9rem;
+}
+
+.css-1n7v3ny-option:hover {
+  background-color: #f7e4dc !important;
+  color: #000 !important;
+}
+
+.css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+/* Search Box */
 .search-box {
   max-width: 250px;
   width: 100%;
@@ -84,10 +118,10 @@
   border-radius: 50px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-  transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   background: #ffffff;
+  transition: all 0.3s ease-in-out;
 }
 
 .search-input {
@@ -101,8 +135,6 @@
 }
 
 .search-input:focus {
-  outline: none;
-  box-shadow: none;
   background-color: #fff8f2;
 }
 
@@ -115,8 +147,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 0 50px 50px 0;
-  transition: transform 0.3s ease;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .search-icon i {
@@ -127,13 +159,19 @@
   transform: scale(1.2);
 }
 
+/* Margin Fix */
 .my-5 {
-    margin-top: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+/* Input inside .input-group */
+.input-group input {
+  margin: auto !important;
+  border: none !important;
 }
 
 /* ----------------- 📱 MOBILE RESPONSIVENESS ------------------ */
 @media (max-width: 576px) {
-
   .venue-header h1 {
     font-size: 1.8rem;
   }
@@ -163,6 +201,7 @@
   .search-box {
     max-width: 100%;
     margin: 1rem auto;
+    border-radius: 5%;
   }
 
   .stylish-input {
@@ -189,8 +228,5 @@
   .search-inputs input {
     width: 100%;
   }
-}
-.input-group input{
-  margin: auto !important;
-  border: none !important;
+
 }
