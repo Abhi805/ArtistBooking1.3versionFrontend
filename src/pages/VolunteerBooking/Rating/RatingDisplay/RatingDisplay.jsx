@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import axiosInstance from "../../../../api/axiosInstance.jsx";
 
 const RatingDisplay = ({ artistId, refresh }) => {
@@ -18,7 +18,7 @@ setAverageRating(res.data.averageRating || 0);
 
   useEffect(() => {
     fetchRating();
-  }, [artistId, refresh]); // 🔁 trigger re-fetch on refresh
+  }, [artistId, refresh]); 
 
   return (
     <div className="mb-2">

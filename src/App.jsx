@@ -24,6 +24,9 @@ import EditArtistProfile from "./CreateArtistProfile/EditArtistProfile/EditArtis
 import TopNavbar from "./components/TopNavbar/TopNavbar";
 import ComingPage from "./components/ComingPage/ComingPage";
 import SocialSidebar from "./components/SocialSidebar/SocialSidebar";
+import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
+import Loader from './components/Loader/Loader';
+
 import ContactWidget from "./components/ContactWidget/ContactWidget";
 import Services from "./pages/Services/Services";  
 import EventRental from "./pages/EventRental/EventRental";
@@ -39,11 +42,17 @@ import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect
 import ThankYou from "./pages/ThankYou/ThankYou.jsx"; 
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
+
+import VenueBooking from "./VenueBooking/VenueBooking.jsx";
+import LoaderWrapper from "./components/Loader/Loader";
+
 import ChooseRole from "./components/ChooseRole/ChooseRole.jsx";
+
 
 function App() {
   return (
     <>
+      <LoaderWrapper>
       <Router>
         <EventPopup />
         <TopNavbar />
@@ -51,6 +60,7 @@ function App() {
         <ScrollProvider>
           <SocialSidebar />
           <ContactWidget />
+          <ScrollToTopButton/>
         </ScrollProvider>
 
         <Routes>
@@ -141,9 +151,11 @@ function App() {
           <Route path="/EditArtistProfile" element={<EditArtistProfile />} />
           <Route path="/newsblog" element={<NewsBlog />} />
           <Route path="/Volunteer" element={<VolunteerBooking />} />
+          <Route path="/VenueBooking" element={<VenueBooking />} /> 
         </Routes>
         <Footer />
       </Router>
+      </LoaderWrapper>
     </>
   );
 }
@@ -154,19 +166,19 @@ export default App;
 
 
 
-
+{/* 
 // import React from "react";
 // import ComingSoon from "./pages/ComingSoon/ComingSoon.jsx";
 
-// const App = () => {
-//   return (
+// const App = () => { */}
+{/* //   return (
 //     <>
 //       <ComingSoon />
 //     </>
 //   );
 // };
 
-// export default App;
+// export default App; */}
 
 
 

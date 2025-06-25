@@ -10,7 +10,7 @@ const categories = [
 
     "Event planner near me",
     "Event management company",
-    "Best event planners in [City]",
+    "Best event planners in City",
     "Corporate event organizers",
     "Wedding and party planners",
 
@@ -27,7 +27,7 @@ const categories = [
 
       "Book event venue online",
     "Wedding halls near me",
-    "Banquet halls in [City]",
+    "Banquet halls in City",
     "Conference venues for corporate events",
     "Hotel booking for events"
 
