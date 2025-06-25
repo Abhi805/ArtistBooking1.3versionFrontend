@@ -1,4 +1,4 @@
-.volunteer-form {
+/* .volunteer-form {
   max-width: 700px;
   margin: 40px auto;
   padding: 30px;
@@ -155,5 +155,118 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+} */
+
+.volunteer-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.volunteer-form h2 {
+  text-align: center;
+  color: #2b6cb0;
+  margin-bottom: 20px;
+}
+
+.volunteer-form input,
+.volunteer-form select,
+.volunteer-form textarea,
+.volunteer-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.volunteer-form textarea {
+  min-height: 100px;
+}
+
+.skill-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-wrapper,
+.gallery-item {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.preview-wrapper img,
+.gallery-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.remove-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #2b6cb0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gallery-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .skill-input {
+    flex-direction: column;
+  }
+
+  .volunteer-form {
+    padding: 15px;
+  }
+
+  .preview-wrapper img,
+  .gallery-item img {
+    width: 80px;
+    height: 80px;
   }
 }

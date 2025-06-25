@@ -81,7 +81,7 @@ function App() {
               <ProtectedRoute>
                 <ArtistApprovalDetail />
               </ProtectedRoute>
-            }
+            } 
           />
           <Route
             path="/BasicDetail"
@@ -93,7 +93,7 @@ function App() {
           />
           <Route
             path="/user-dashboard"
-            element={
+            element={ 
               <ProtectedRoute>
                 <ArtistProfileEdit />
               </ProtectedRoute>
