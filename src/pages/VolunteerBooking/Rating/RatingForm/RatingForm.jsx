@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../api/axiosInstance.jsx";
 
 const RatingForm = ({ artistId, onRatingSubmitted }) => {
+  const { username } = useParams();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
@@ -10,31 +11,25 @@ const RatingForm = ({ artistId, onRatingSubmitted }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({ artistId, stars: rating, comment });
-
     try {
-      await axiosInstance.post(
-        "api/volunteers/create",
-        {
-          artistId,
-          stars: rating,
-          comment,
-        },
-      
-      );
-      setMessage("Rating submitted successfully!");
+      const res = await axiosInstance.post(`/api/ratings/volunteer/${username}`, {
+        stars: rating,
+        comment,
+      });
+
+      setMessage("✅ Rating submitted successfully!");
       if (onRatingSubmitted) onRatingSubmitted();
       setRating(0);
       setComment("");
     } catch (err) {
-      setMessage("Something went wrong.");
-      console.error(err);
+      setMessage("❌ Something went wrong.");
+      console.error("Rating error:", err);
     }
   };
 
   return (
     <div className="p-3 border rounded shadow">
-      <h4>Rate this Artist</h4>
+      <h4>Rate this Volunteer</h4>
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
           {[1, 2, 3, 4, 5].map((star) => (

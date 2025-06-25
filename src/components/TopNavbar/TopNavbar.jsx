@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./TopNavbar.css";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
 
@@ -66,7 +62,6 @@ const TopNavbar = () => {
   return (
     <div className={`top-navbar py-2 px-3 ${isVisible ? "show" : "hide"}`}>
       <div className="container-fluid d-flex flex-wrap justify-content-between align-items-center">
-
         {/* ✅ Left Contact Info */}
         <div className="d-flex align-items-center gap-3 flex-wrap contact-info text-dark">
           <span>
@@ -177,19 +172,23 @@ const TopNavbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => {
-                          if (isLoggedIn) {
-                            navigate("/MyDashBoard");
-                          } else {
-                            navigate("/login?redirect=volunteer");
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to={
+                            isLoggedIn
+                              ? "/MyDashBoard"
+                              : "/login?redirect=volunteer"
                           }
-                        }}
-                        style={{ background: "none", border: "none", padding: 0 }}
-                      >
-                        Become a Volunteer
-                      </button>
+                          onClick={(e) => {
+                            if (!isLoggedIn) return; // let it navigate normally
+                            e.preventDefault(); // prevent default if logged in
+                            navigate("/MyDashBoard");
+                          }}
+                        >
+                          Become a Volunteer
+                        </Link>
+                      </li>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/EventPlanner">
