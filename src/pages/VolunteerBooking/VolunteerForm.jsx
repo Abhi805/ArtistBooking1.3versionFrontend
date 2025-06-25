@@ -429,7 +429,7 @@ const VolunteerRegistration = () => {
 
       <button type="submit" disabled={loading || !hasFollowed}>
         {loading ? <div className="button-spinner"></div> : "Register"}
-      </button>
+      </button> 
     </form>
   );
 };

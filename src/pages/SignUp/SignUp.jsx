@@ -166,7 +166,7 @@ const SignupForm = () => {
 
       // Step 3: Navigate after 2 seconds
       setTimeout(() => {
-        navigate("/");
+        navigate("/MyDashBoard");
       }, 2000);
 
     } catch (err) {

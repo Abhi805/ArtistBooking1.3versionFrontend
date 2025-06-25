@@ -35,7 +35,7 @@ const CorporateEventPlanner = () => {
     if (isMobile) {
       return (
         <>
-          {isReadMore ? `${fullText.slice(0, 250)}...` : fullText}
+          {isReadMore ? `${fullText.slice(0, 250)}... `: fullText}
           <span
             onClick={toggleReadMore}
             style={{

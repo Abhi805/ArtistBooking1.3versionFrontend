@@ -39,11 +39,15 @@ import AdminArtistDashboard from "./AdminDashBoard/AdminArtistDashboard";
 import ArtistApprovalDetail from "./AdminDashBoard/ArtistApprovalDetail";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MyDashboardRedirect from "./pages/MyDashboardRedirect/MyDashboardRedirect";
-import ThankYou from "./pages/ThankYou/ThankYou.jsx"; // import karo
+import ThankYou from "./pages/ThankYou/ThankYou.jsx"; 
 import VolunteerEditForm from "./pages/VolunteerBooking/VolunteerEditForm/VolunteerEditForm";
 import ArtistProfileEdit from "./pages/MyBoard/ArtistProfileEdit";
+
 import VenueBooking from "./VenueBooking/VenueBooking.jsx";
 import LoaderWrapper from "./components/Loader/Loader";
+
+import ChooseRole from "./components/ChooseRole/ChooseRole.jsx";
+
 
 function App() {
   return (
@@ -129,6 +133,7 @@ function App() {
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ComingPage" element={<ComingPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/choose-role" element={<ChooseRole />} />
 
           <Route path="/EventEquipmentRental" element={<EventRental />} />
           <Route path="/EventPlanner" element={<EventPlanner />} />

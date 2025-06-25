@@ -301,11 +301,12 @@ function VolunteerProfile() {
   const { username } = useParams();
   const [refreshRating, setRefreshRating] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchVolunteer = async () => {
       try {
         const res = await axiosInstance.get(`/api/volunteers/username/${username}`);
         setVolunteer(res.data);
+        console.log("Fetched volunteer data:", res.data);
       } catch (err) {
         console.error("Error fetching volunteer by username:", err);
       }

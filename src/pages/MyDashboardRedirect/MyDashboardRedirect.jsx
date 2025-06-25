@@ -75,14 +75,7 @@ const MyDashboardRedirect = () => {
         const res = await axiosInstance.get("api/auth/check-auth");
         const user = res.data.user;
 
-        // Not registered (still unassigned)
-        if (user.role === "unassigned") {
-          if (!location.pathname.includes("/VolunteerForm") && !location.pathname.includes("/ClientForm")) {
-            navigate("/choose-role"); // or directly to /VolunteerForm
-          }
-          return; // allow registration form to render
-        }
-
+      
         // Admin
         if (user.role === "admin") {
           navigate("/AdminDashboard");
@@ -91,9 +84,24 @@ const MyDashboardRedirect = () => {
 
         // Artist
         if (user.role === "artist") {
-          navigate("/user-dashboard");
+          navigate("/user-dashboard"); 
+          return; 
+        }
+
+         // Artist
+        if (user.role === "user") {
+          navigate("/");
           return;
         }
+          if (user.role === "unassigned") {
+          navigate("/choose-role");
+          return;
+        }
+
+                  //  if (user.role === "volunteer") {
+                  //      navigate("/choose-role");
+                  // return;
+                  //  }git
 
         // Volunteer
         if (user.role === "volunteer") {
