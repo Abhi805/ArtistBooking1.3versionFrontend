@@ -852,31 +852,8 @@ const VolunteerRegistration = () => {
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = "First name required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name required";
-    if (!formData.email.trim()) newErrors.email = "Email required";
-    if (!formData.phone.trim()) newErrors.phone = "Phone required";
-    if (!formData.dob) newErrors.dob = "DOB required";
-    if (!formData.gender) newErrors.gender = "Gender required";
-    if (!formData.address) newErrors.address = "Address required";
-    if (!formData.addressState) newErrors.addressState = "State required";
-    if (!formData.addressDistrict) newErrors.addressDistrict = "District required";
-    if (!formData.educationLevel) newErrors.educationLevel = "Education level required";
-    if (!formData.degree) newErrors.degree = "Degree required";
-    if (!formData.profileImage) newErrors.profileImage = "Profile image required";
-    if (formData.galleryImages.length === 0) newErrors.galleryImages = "At least one gallery image required";
-    if (!hasFollowed) newErrors.social = "Please follow us on social platforms";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-
     setLoading(true);
     const formData = new FormData();
 
@@ -1175,7 +1152,6 @@ const VolunteerRegistration = () => {
           </div>
         </div>
       )}
-      {errors.profileImage && <span className="error">{errors.profileImage}</span>}
 
       {/* Exhibition */}
       <div className="form-row full-width">
@@ -1189,7 +1165,6 @@ const VolunteerRegistration = () => {
           <option value="No">No</option>
         </select>
       </div>
-      {errors.galleryImages && <span className="error">{errors.galleryImages}</span>}
 
       {hasExhibition === "Yes" && (
         <div className="form-row full-width">
@@ -1246,7 +1221,6 @@ const VolunteerRegistration = () => {
             required
           />
         </div>
-        {errors.social && <span className="error">{errors.social}</span>}
       </div>
 
       <div>

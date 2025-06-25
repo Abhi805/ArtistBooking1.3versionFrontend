@@ -1,20 +1,9 @@
-<<<<<<< HEAD
 /* VolunteerRegis.css */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to right, #f0f4f7, #e8f6f9);
-=======
-/* .volunteer-form {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 12px;
-  background: #f9f9f9;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
->>>>>>> 35334ea21c1f8a55a01a7a4baf14c1e499ae690c
 }
 
 .form-container {
@@ -234,96 +223,6 @@ ul li {
   to {
     transform: rotate(360deg);
   }
-<<<<<<< HEAD
-}
-
-
-@media (max-width: 768px) {
-  form {
-    grid-template-columns: 1fr;
-  }
-  
-  .two-cols {
-    grid-template-columns: 1fr;
-  }
-  
-  .form-container {
-    padding: 25px;
-    margin: 20px;
-  }
-  
-  .form-row {
-    gap: 8px;
-  }
-  
-  .gallery-thumb {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .district-card {
-    max-height: 250px;
-  }
-  
-  .district-checkboxes label {
-    min-width: 90px;
-    font-size: 13px;
-  }
-  
-  button,
-  .submit button {
-    width: 100%;
-    font-size: 14px;
-  }
-  
-  ul li {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-container {
-    padding: 20px;
-    margin: 10px;
-  }
-  
-  .form-container h2 {
-    font-size: 22px;
-  }
-  
-  .form-row input,
-  .form-row select,
-  .form-row textarea {
-    font-size: 14px;
-    padding: 8px 12px; 
-  }
-  
-  .district-card h4 {
-    font-size: 14px;
-  }
-  
-  .district-checkboxes {
-    gap: 6px 10px;
-  }
-  
-  .district-checkboxes label {
-    min-width: 85px;
-    font-size: 12.5px;
-  }
-  
-  button,
-  .submit button {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-  
-  .performance-section h3 {
-    font-size: 18px;
-  }
-}
-
-
-=======
 } */
 
 .volunteer-form {
@@ -438,4 +337,3 @@ ul li {
     height: 80px;
   }
 }
->>>>>>> 35334ea21c1f8a55a01a7a4baf14c1e499ae690c
