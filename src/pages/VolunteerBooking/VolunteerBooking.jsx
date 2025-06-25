@@ -70,7 +70,7 @@ const VolunteerBooking = () => {
               </div>
 
               <div style={{ minWidth: "220px", marginLeft: "800px" }}>
-                <select
+                {/* <select
                   className="form-select"
                   value={searchCategory}
                   onChange={(e) => setSearchCategory(e.target.value)}
@@ -95,7 +95,7 @@ const VolunteerBooking = () => {
                     Lighting rig & setup
                   </option>
                   <option value="Other">Other</option>
-                </select>
+                </select> */}
               </div>
             </div>
           </div>
@@ -113,15 +113,15 @@ const VolunteerBooking = () => {
                   <img
                     src={artist.profilePhoto}
                     className="card-img-top"
-                    alt={artist.fullName}
+                    alt={artist.firstName + " " + artist.lastName}
                   />
                   <div className="card-body">
                     <h6 className="card-title fw-bold">
-                      Name: {artist.fullName}
+                      Name: {artist.firstName} {artist.lastName}
                     </h6>
 
                     <h6 className="card-title fw-bold">
-                      Location: {artist.location}
+                      Location: {artist.addressDistrict}, {artist.addressState}
                     </h6>
                     <h6 className="card-title fw-bold">
                       Volunteer Type: {artist.category}
