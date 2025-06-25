@@ -57,59 +57,72 @@ const VolunteerBooking = () => {
         }))
       : [];
 
-      const customStyles = {
-  control: (base, state) => ({
-    ...base,
-    backgroundColor: "#2c2c2c",
-    borderColor: state.isFocused ? "#007bff" : "#555",
-    color: "#fff",
-    boxShadow: state.isFocused ? "0 0 0 1px #007bff" : "none",
-    "&:hover": {
-      borderColor: "#007bff",
-    },
-  }),
-  menu: (base) => ({
-    ...base,
-    backgroundColor: "#2c2c2c",
-    color: "#fff",
-    zIndex: 9999,
-  }),
-  option: (base, state) => ({
-    ...base,
-    backgroundColor: state.isSelected
-      ? "#007bff"
-      : state.isFocused
-      ? "#444"
-      : "#2c2c2c",
-    color: "#fff",
-    cursor: "pointer",
-  }),
-  singleValue: (base) => ({
-    ...base,
-    color: "#fff",
-  }),
-  placeholder: (base) => ({
-    ...base,
-    color: "",
-  }),
-  multiValue: (base) => ({
-    ...base,
-    backgroundColor: "#007bff",
-  }),
-  multiValueLabel: (base) => ({
-    ...base,
-    color: "white",
-  }),
-  multiValueRemove: (base) => ({
-    ...base,
-    color: "white",
-    ':hover': {
-      backgroundColor: "#ff4b2b",
+  const customStyles = {
+    control: (base, state) => ({
+      ...base,
+      backgroundColor: "#2c2c2c",
+      borderColor: state.isFocused ? "#007bff" : "#555",
+      color: "#fff",
+      boxShadow: state.isFocused ? "0 0 0 1px #007bff" : "none",
+      "&:hover": {
+        borderColor: "#007bff",
+      },
+    }),
+    menu: (base) => ({
+      ...base,
+      backgroundColor: "#2c2c2c",
+      color: "#fff",
+      zIndex: 9999,
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? "#007bff"
+        : state.isFocused
+        ? "#444"
+        : "#2c2c2c",
+      color: "#fff",
+      cursor: "pointer",
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: "#fff",
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: "",
+    }),
+    multiValue: (base) => ({
+      ...base,
+      backgroundColor: "#007bff",
+    }),
+    multiValueLabel: (base) => ({
+      ...base,
       color: "white",
-    }
-  })
-};
+    }),
+    multiValueRemove: (base) => ({
+      ...base,
+      color: "white",
+      ":hover": {
+        backgroundColor: "#ff4b2b",
+        color: "white",
+      },
+    }),
+  };
 
+  // const handleContactClick = async (userId) => {
+  //   const viewedKey = `volunteer_viewed_${userId}`;
+
+  //   // Prevent multiple counts from the same device
+  //   if (localStorage.getItem(viewedKey)) return;
+
+  //   try {
+  //     await axiosInstance.put(`/api/volunteer-reach/increase/${userId}`);
+  //     localStorage.setItem(viewedKey, "true");
+  //   } catch (error) {
+  //     console.error("Reach update failed:", error);
+  //   }
+  // };
 
   return (
     <div className="container-fluid my-5">
@@ -119,8 +132,8 @@ const VolunteerBooking = () => {
             <h1>Volunteer Booking</h1>
             <p className="text-capitalize text-white">
               Every great event has silent heroes behind the scenes. Our
-              volunteers are the energy, passion, and precision that power
-              every moment.
+              volunteers are the energy, passion, and precision that power every
+              moment.
             </p>
             <Link to="/login?redirect=volunteer">
               <button className="btn btn-primary px-4 py-2 mt-4">
@@ -172,10 +185,22 @@ const VolunteerBooking = () => {
                     alt={artist.fullName}
                   />
                   <div className="card-body">
-                    <h6 className="card-title fw-bold">Name: {artist.fullName}</h6>
-                    <h6 className="card-title fw-bold">Location: {artist.location}</h6>
-                    <h6 className="card-title fw-bold">District: {artist.district}</h6>
-                    <h6 className="card-title fw-bold">Volunteer Type: {artist.category}</h6>
+                    <h6 className="card-title fw-bold">
+                      Name: {artist.fullName}
+                    </h6>
+                    <h6 className="card-title fw-bold">
+                      Location: {artist.location}
+                    </h6>
+                    <h6 className="card-title fw-bold">
+                      District: {artist.district}
+                    </h6>
+                    <h6 className="card-title fw-bold">
+                      Volunteer Type: {artist.category}
+                    </h6>
+                    {/* <h6 className="card-title fw-bold">
+                      Reach Count: {artist.reachCount || 0}
+                    </h6> */}
+
                     <div className="text-center mt-2">
                       <Link
                         className="btn btn-outline-danger text-white"
@@ -185,6 +210,15 @@ const VolunteerBooking = () => {
                       >
                         Contact Us
                       </Link>
+                      {/* <Link
+                        className="btn btn-outline-danger text-white"
+                        to={`/volunteers/${
+                          artist.userId?.username || artist.userId?._id
+                        }`}
+                        onClick={() => handleContactClick(artist.userId?._id)}
+                      >
+                        Contact Us
+                      </Link> */}
                     </div>
                   </div>
                 </div>
