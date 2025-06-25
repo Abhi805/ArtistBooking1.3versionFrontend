@@ -52,7 +52,7 @@ import ChooseRole from "./components/ChooseRole/ChooseRole.jsx";
 function App() {
   return (
     <>
-      <LoaderWrapper>
+      {/* <LoaderWrapper> */}
       <Router>
         <EventPopup />
         <TopNavbar />
@@ -155,7 +155,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-      </LoaderWrapper>
+      {/* </LoaderWrapper> */}
     </>
   );
 }
