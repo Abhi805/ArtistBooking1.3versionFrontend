@@ -6,22 +6,71 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../../api/axiosInstance.jsx";
 import districtMap from "../../components/RegisterPage/data/districtMap";
 import Select from "react-select";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const VolunteerBooking = () => {
   const [volunteers, setVolunteers] = useState([]);
   const [selectedState, setSelectedState] = useState(null);
   const [selectedDistricts, setSelectedDistricts] = useState([]);
-const [searchCity, setSearchCity] = useState("");
+  const [searchCity, setSearchCity] = useState("");
+  const [ratingsMap, setRatingsMap] = useState({});
 
   useEffect(() => {
     AOS.init({ duration: 800 });
     fetchVolunteers();
   }, []);
 
+  const renderStars = (rating) => {
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
+    const empty = 5 - full - (half ? 1 : 0);
+
+    return (
+      <>
+        {[...Array(full)].map((_, i) => (
+          <FaStar key={`f-${i}`} color="#ffc107" />
+        ))}
+        {half && <FaStarHalfAlt color="#ffc107" />}
+        {[...Array(empty)].map((_, i) => (
+          <FaRegStar key={`e-${i}`} color="#ccc" />
+        ))}
+      </>
+    );
+  };
+
   const fetchVolunteers = async () => {
     try {
       const res = await axiosInstance.get("api/volunteers/fetch");
-      setVolunteers(res.data);
+      const volunteersData = res.data;
+      setVolunteers(volunteersData);
+
+      // Fetch ratings for each volunteer
+      const ratings = await Promise.all(
+        volunteersData.map(async (vol) => {
+          const username = vol.userId?.username;
+          if (!username) return null;
+
+          try {
+            const ratingRes = await axiosInstance.get( 
+              `/api/ratings/volunteer/${username}`
+            );
+            return { username, rating: ratingRes.data.averageRating };
+           } catch (err) {
+            if (err.response && err.response.status === 404) {
+              // No rating yet for this user
+              return { username, rating: 0 };
+            }
+            console.error(`Rating fetch failed for ${username}`, err);
+            return { username, rating: null };
+          }
+        })
+      );
+
+      const ratingMap = {};
+      ratings.forEach((r) => {
+        if (r && r.username) ratingMap[r.username] = r.rating;
+      });
+      setRatingsMap(ratingMap);
     } catch (err) {
       console.error("Error fetching volunteers:", err);
     }
@@ -29,7 +78,7 @@ const [searchCity, setSearchCity] = useState("");
 
   const handleStateChange = (selectedOption) => {
     setSelectedState(selectedOption);
-    setSelectedDistricts([]); // Reset districts when state changes
+    setSelectedDistricts([]);
   };
 
   const handleDistrictChange = (selectedOptions) => {
@@ -40,16 +89,17 @@ const [searchCity, setSearchCity] = useState("");
     const districtMatch =
       selectedDistricts.length === 0 ||
       selectedDistricts.some((d) => d.value === vol.district);
-    return districtMatch;
+    const cityMatch =
+      searchCity.trim() === "" ||
+      vol.city?.toLowerCase().includes(searchCity.toLowerCase());
+    return districtMatch && cityMatch;
   });
 
-  // State options
   const stateOptions = Object.keys(districtMap).map((state) => ({
     value: state,
     label: state,
   }));
 
-  // District options based on selected state
   const districtOptions =
     selectedState && districtMap[selectedState.value]
       ? districtMap[selectedState.value].map((district) => ({
@@ -65,9 +115,7 @@ const [searchCity, setSearchCity] = useState("");
       borderColor: state.isFocused ? "#007bff" : "#555",
       color: "#fff",
       boxShadow: state.isFocused ? "0 0 0 1px #007bff" : "none",
-      "&:hover": {
-        borderColor: "#007bff",
-      },
+      "&:hover": { borderColor: "#007bff" },
     }),
     menu: (base) => ({
       ...base,
@@ -85,45 +133,16 @@ const [searchCity, setSearchCity] = useState("");
       color: "#fff",
       cursor: "pointer",
     }),
-    singleValue: (base) => ({
-      ...base,
-      color: "#fff",
-    }),
-    placeholder: (base) => ({
-      ...base,
-      color: "",
-    }),
-    multiValue: (base) => ({
-      ...base,
-      backgroundColor: "#007bff",
-    }),
-    multiValueLabel: (base) => ({
-      ...base,
-      color: "white",
-    }),
+    singleValue: (base) => ({ ...base, color: "#fff" }),
+    placeholder: (base) => ({ ...base, color: "" }),
+    multiValue: (base) => ({ ...base, backgroundColor: "#007bff" }),
+    multiValueLabel: (base) => ({ ...base, color: "white" }),
     multiValueRemove: (base) => ({
       ...base,
       color: "white",
-      ":hover": {
-        backgroundColor: "#ff4b2b",
-        color: "white",
-      },
+      ":hover": { backgroundColor: "#ff4b2b", color: "white" },
     }),
   };
-
-  // const handleContactClick = async (userId) => {
-  //   const viewedKey = `volunteer_viewed_${userId}`;
-
-  //   // Prevent multiple counts from the same device
-  //   if (localStorage.getItem(viewedKey)) return;
-
-  //   try {
-  //     await axiosInstance.put(`/api/volunteer-reach/increase/${userId}`);
-  //     localStorage.setItem(viewedKey, "true");
-  //   } catch (error) {
-  //     console.error("Reach update failed:", error);
-  //   }
-  // };
 
   return (
     <div className="container-fluid my-5">
@@ -142,6 +161,7 @@ const [searchCity, setSearchCity] = useState("");
               </button>
             </Link>
           </div>
+
           <div className="d-flex flex-wrap gap-4 mt-4 align-items-start">
             <div style={{ minWidth: "250px" }}>
               <Select
@@ -154,49 +174,18 @@ const [searchCity, setSearchCity] = useState("");
               />
             </div>
 
-            <div className="d-flex justify-content-around flex-wrap mt-4">
-              <div className="search-box flex-grow-1">
-                <div className="input-group stylish-input">
-                  <input
-                    type="text"
-                    className="form-control search-input"
-                    placeholder="🔍 Search by City"
-                    value={searchCity}
-                    onChange={(e) => setSearchCity(e.target.value)}
-                  />
-                  <span className="input-group-text search-icon">
-                    <i className="bi bi-search"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div style={{ minWidth: "220px", marginLeft: "800px" }}>
-                {/* <select
-                  className="form-select"
-                  value={searchCategory}
-                  onChange={(e) => setSearchCategory(e.target.value)}
-                >
-                  <option value="">-- Select Volunteer Category --</option>
-                  <option value="Photographer">Photographer</option>
-                  <option value="Videographer">Videographer</option>
-                  <option value="Graphic Designer">Graphic Designer</option>
-                  <option value="Event Coordinator">Event Coordinator</option>
-                  <option value="Social Media Volunteer">
-                    Social Media Volunteer
-                  </option>
-                  <option value="DJ Operation">DJ Operation</option>
-                  <option value="Light Setup">Light Setup</option>
-                  <option value="Sound Mixing">Sound Mixing</option>
-                  <option value="Registration Desk">Registration Desk</option>
-                  <option value="Artist Runner">Artist Runner</option>
-                  <option value="Social Media Coverage">
-                    Social Media Coverage
-                  </option>
-                  <option value="Lighting rig & setup">
-                    Lighting rig & setup
-                  </option>
-                  <option value="Other">Other</option>
-                </select> */}
+            <div className="search-box flex-grow-1">
+              <div className="input-group stylish-input">
+                <input
+                  type="text"
+                  className="form-control search-input"
+                  placeholder="🔍 Search by City"
+                  value={searchCity}
+                  onChange={(e) => setSearchCity(e.target.value)}
+                />
+                <span className="input-group-text search-icon">
+                  <i className="bi bi-search"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -213,9 +202,9 @@ const [searchCity, setSearchCity] = useState("");
               <div key={i} className="col-md-4 mb-4" data-aos="fade-up">
                 <div className="card artist-card h-100 shadow-sm">
                   <img
-                    src={artist.profilePhoto}
+                    src={artist.profileImage}
                     className="card-img-top"
-                    alt={artist.firstName + " " + artist.lastName}
+                    alt={`${artist.firstName} ${artist.lastName}`}
                   />
                   <div className="card-body">
                     <h6 className="card-title fw-bold">
@@ -225,14 +214,9 @@ const [searchCity, setSearchCity] = useState("");
                       Location: {artist.addressDistrict}, {artist.addressState}
                     </h6>
                     <h6 className="card-title fw-bold">
-                      District: {artist.district}
+                      Rating:{" "}
+                      {renderStars(ratingsMap[artist.userId?.username] || 0)}
                     </h6>
-                    <h6 className="card-title fw-bold">
-                      Volunteer Type: {artist.category}
-                    </h6>
-                    {/* <h6 className="card-title fw-bold">
-                      Reach Count: {artist.reachCount || 0}
-                    </h6> */}
 
                     <div className="text-center mt-2">
                       <Link
@@ -243,15 +227,6 @@ const [searchCity, setSearchCity] = useState("");
                       >
                         Contact Us
                       </Link>
-                      {/* <Link
-                        className="btn btn-outline-danger text-white"
-                        to={`/volunteers/${
-                          artist.userId?.username || artist.userId?._id
-                        }`}
-                        onClick={() => handleContactClick(artist.userId?._id)}
-                      >
-                        Contact Us
-                      </Link> */}
                     </div>
                   </div>
                 </div>

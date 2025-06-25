@@ -22,7 +22,7 @@ const RatingForm = ({ artistId, onRatingSubmitted }) => {
       setRating(0);
       setComment("");
     } catch (err) {
-      setMessage("❌ Something went wrong.");
+      setMessage("❌You have already given a rating before.");
       console.error("Rating error:", err);
     }
   };

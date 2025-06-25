@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-// import axios from "axios";
 import axiosInstance from "../../../../api/axiosInstance.jsx";
 
-const RatingDisplay = ({ artistId, refresh }) => {
+const RatingDisplay = ({ username, refresh }) => {
   const [averageRating, setAverageRating] = useState(null);
 
   const fetchRating = async () => {
     try {
-     const res = await axiosInstance.get(`api/volunteers/${artistId}/rating`);
-console.log("API Response: ", res.data);
-setAverageRating(res.data.averageRating || 0);
-
+      const res = await axiosInstance.get(`/api/ratings/volunteer/${username}`);
+      setAverageRating(res.data.averageRating || 0);
     } catch (err) {
-      console.error("Error fetching rating", err);
+      console.error(`Error fetching rating for ${username}`, err);
     }
   };
 
   useEffect(() => {
     fetchRating();
-  }, [artistId, refresh]); 
+  }, [username, refresh]);
 
   return (
     <div className="mb-2">
